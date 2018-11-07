@@ -1,20 +1,65 @@
 """
-Functions for loading connectome
+conectome.load.py
+
+Module for routine loading of connectome data
+
+Functions:
+---------
+from_db(db,chemical=False,electrical=False,adjacency=False,add_poly=False,
+            touch_density=False,remove=None,group=None,dataType='igraph'):
+   Loads connectome data from database. Returns Connectome object.
+
+scrube_neurons(_neurons)
+   Removes neurons in the SCREEN (global variable) list.
+
+created: Christopher Brittin
+date: 01 November 2018
 
 """
 
 #Brittin modules
-import DB
-from Connectome.connectome_igraph import Connectome
-from Connectome.connectome_networkx import Connectome as nxConnectome
+import db
+from connectome.connectome_igraph import connectome
+from connectome.connectome_networkx import connectome as nxConnectome
 import aux
-import LUT
 
 
 SCREEN = ['old','duplicate','Frag','error','unk']
 
 def from_db(db,chemical=False,electrical=False,adjacency=False,add_poly=False,
             touch_density=False,remove=None,group=None,dataType='igraph'):
+    """
+    Loads connectome data from database. Returns Connectome object.
+    
+    Parameters:
+    -----------
+    db : str
+      database name
+    chemical : bool (default False)
+      If true, load chemical graph 
+    electrical : bool (default False)
+      If true, load gap junction graph.
+    adjacency : bool (default False)
+      If true, load adjacency graph.
+    add_poly : bool (default False)
+      If true, record number of polyad and monad syanpses.
+    touch_density : bool (default (False)
+      If true, compute the touch density between adjacent cell in the 
+      adjacency graph
+    remove : list (default None)
+      Remove vertices/cells from the connectome object in the remove list
+    group : dict (default None)
+      Dictionary (key,val) = (cellName,groupName) to groups cells
+    dataType : str (default 'igraph')
+      Either use the 'igraph' or 'networkx' graph data structures. 
+
+
+    Returns:
+    --------
+    Connectome object
+    
+    """
+    
     if db == 'N2U':
         end = 325
     else:
@@ -59,6 +104,19 @@ def from_db(db,chemical=False,electrical=False,adjacency=False,add_poly=False,
     return C
 
 def scrub_neurons(_neurons):
+    """
+    Removes neurons in the SCREEN (global variable) list.
+
+    Parameters:
+    ----------
+    _neurons : list
+     List of cell names to screen
+
+    Returns:
+    --------
+    List of screened cells
+    
+    """
     neurons = []
     for n in _neurons:
         remove = False 
