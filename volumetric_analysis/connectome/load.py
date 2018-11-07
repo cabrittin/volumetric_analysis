@@ -18,22 +18,21 @@ date: 01 November 2018
 """
 
 #Brittin modules
-import db
-from connectome.connectome_igraph import connectome
-from connectome.connectome_networkx import connectome as nxConnectome
-import aux
+import db 
+from connectome.connectome_igraph import Connectome
+from connectome.connectome_networkx import Connectome as nxConnectome
 
 
 SCREEN = ['old','duplicate','Frag','error','unk']
 
-def from_db(db,chemical=False,electrical=False,adjacency=False,add_poly=False,
+def from_db(_db,chemical=False,electrical=False,adjacency=False,add_poly=False,
             touch_density=False,remove=None,group=None,dataType='igraph'):
     """
     Loads connectome data from database. Returns Connectome object.
     
     Parameters:
     -----------
-    db : str
+    _db : str
       database name
     chemical : bool (default False)
       If true, load chemical graph 
@@ -60,42 +59,42 @@ def from_db(db,chemical=False,electrical=False,adjacency=False,add_poly=False,
     
     """
     
-    if db == 'N2U':
+    if _db == 'N2U':
         end = 325
     else:
         end = 500
 
-    con = DB.connect.default(db)
+    con = db.connect.default(_db)
     cur = con.cursor()
     
     if adjacency:
-        neurons = sorted(DB.mine.get_adjacency_cells(cur))
-        adjacency = DB.mine.get_adjacency_data(cur)
+        neurons = sorted(db.mine.get_adjacency_cells(cur))
+        adjacency = db.mine.get_adjacency_data(cur)
         if dataType == 'igraph':
-            C = Connectome(db,neurons)
+            C = Connectome(_db,neurons)
         elif dataType == 'networkx':
-            C = nxConnectome(db,neurons)
+            C = nxConnectome(_db,neurons)
         C.load_adjacency(adjacency,directed=False)
     elif touch_density:
-        neurons = sorted(DB.mine.get_adjacency_cells(cur))
-        adjacency = DB.mine.get_touch_density(cur)
+        neurons = sorted(_db.mine.get_adjacency_cells(cur))
+        adjacency = db.mine.get_touch_density(cur)
         if dataType == 'igraph':
-            C = Connectome(db,neurons)
+            C = Connectome(_db,neurons)
         C.load_adjacency(adjacency,directed=True)
     else:
-        neurons = sorted(scrub_neurons(DB.mine.get_neurons(cur)))
+        neurons = sorted(scrub_neurons(db.mine.get_neurons(cur)))
         if dataType == 'igraph':
-            C = Connectome(db,neurons)
+            C = Connectome(_db,neurons)
         elif dataType == 'networkx':
-            C = nxConnectome(db,neurons)
+            C = nxConnectome(_db,neurons)
         #C = Connectome(db,neurons)
 
     if chemical:
-        synapses = DB.mine.get_synapse_data(cur,'chemical',end=end)
+        synapses = db.mine.get_synapse_data(cur,'chemical',end=end)
         C.load_chemical(synapses,add_poly=add_poly)
 
     if electrical:
-        synapses = DB.mine.get_synapse_data(cur,'electrical',end=end)
+        synapses = db.mine.get_synapse_data(cur,'electrical',end=end)
         C.load_electrical(synapses)
 
     if remove: C.remove_cells(remove)

@@ -1,2 +1,2 @@
-import DB.connect
-import DB.mine
+import db.connect
+import db.mine
