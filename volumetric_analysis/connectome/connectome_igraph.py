@@ -1,7 +1,12 @@
 """
 connectome.py
 
-Connectome data structures
+Connectome data structures. Inherits from iGraph
+
+Required 3rd party packages:
+  igraph
+  csv
+  numpy
 
 Author: Christopher Brittin
 
@@ -16,6 +21,66 @@ import aux
 SCREEN = ['old']
 
 class Connectome:
+    """
+    Class to represent connectome data.
+    
+    ...
+
+    Attributes
+    ----------
+    db : str
+      database name
+    size : int
+      number of neurons in graph
+    neurons : list
+      list of neuron names
+    C  : Network
+      Chemical connectivity graph
+    E  : Network
+      Gap junction connectivity graph
+    A  : Network
+      Adjacency (physical) connectivity graph
+    D  : Network
+      Combined chemical and gap junction graph
+
+    
+    Methods
+    --------
+    update_cells(_neurons)
+      Update the neuron list
+
+    remove_self_loops()
+      Remove self loops from graphs C and E
+
+    remove_cells(vertices)
+      Remove vertices from graphs C, E and A
+
+    group_cells(groups,key='group')
+      Group vertices based on dictionary groups. The grouping identified
+      by key (default 'group'). So multiple groups can be assigned to 
+      same graphs.
+    
+    load_chemical(synapses,add_poly=False)
+      Greate chemical connectivity graph by loading edges from synapses. 
+      If add_poly, then the number of polyad and monad synapses is tracked.
+
+    load_edges(G,vertices,edges,add_poly=False)
+      Load edges between vertices into graph G. If add_poly, then the
+      number of polyad and monad synapses is tracked.
+
+    load_adjacency(_adjacency,directed=False)
+      Load adjacency graph from _adjacency edges. If directed, adjacency graph
+      will be made directed. 
+
+    combine_chem_and_elec()
+      Combine the chemical and gap junction connectivity graphs
+
+    reduce_to_adjacency()
+      Reduce chemical and gap junction connectivity graphs to nodes and
+      edges found in the adjacency graph
+
+    """
+    
     def __init__(self,db,neurons):
         self.db = db
         self.size = len(neurons)
