@@ -61,7 +61,11 @@ class Connectome:
       same graphs.
     
     load_chemical(synapses,add_poly=False)
-      Greate chemical connectivity graph by loading edges from synapses. 
+      Create chemical connectivity graph by loading edges from synapses. 
+      If add_poly, then the number of polyad and monad synapses is tracked.
+
+    load_electrical(synapses,add_poly=False)
+      Create gap junction connectivity graph by loading edges from synapses. 
       If add_poly, then the number of polyad and monad synapses is tracked.
 
     load_edges(G,vertices,edges,add_poly=False)
@@ -82,6 +86,14 @@ class Connectome:
     """
     
     def __init__(self,db,neurons):
+        """
+        Parameters:
+        -----------
+        db : str
+           database name
+        neurons : list
+           list of neuron/cell/node names
+        """
         self.db = db
         self.size = len(neurons)
         self.neurons = neurons
@@ -91,19 +103,39 @@ class Connectome:
         self.D = None
 
     def update_cells(self,_neurons):
+        """
+        Update the neuron/cell/node list
+
+        Parameters:
+        -----------
+        _neurons : list 
+           list of neurons/cell/node/names
+
+        """
         self.neurons = _neurons
         self.size = len(_neurons)
 
     def remove_self_loops(self):
+        """
+        Remove self loops from graph C and E
+        """
         if self.C: self.C.simplify(multiple=True,loops=True)
         if self.E: self.E.simplify(multiple=True,loops=True)
         
     def remove_cells(self,vertices):
+        """"
+        Remove vertices from graphs C, E and A
+        """
         if self.C:self.C.remove_vertices(vertices)
         if self.E:self.E.remove_vertices(vertices)
         if self.A:self.A.remove_vertices(vertices)
 
     def group_cells(self,groups,key='group'):
+        """
+        Group vertices based on dictionary groups. The grouping identified
+        by key (default 'group'). So multiple groups can be assigned to 
+        same graphs.                
+        """
         if self.C:
             self.C.assign_membership(groups,key=key)
             self.C.group_vertices(key)
@@ -115,16 +147,57 @@ class Connectome:
             self.A.group_vertices(key)
                 
     def load_chemical(self,synapses,add_poly=False):
+        """
+        Create chemical connectivity graph by loading edges from synapses. 
+        If add_poly, then the number of polyad and monad synapses is tracked.       
+        
+        Parameters:
+        synapses : list
+          list of synapse data with row format
+          pre_cell,post_cell(s),synapse_weight,synapse_id,data_series
+        add_poly : bool (default False)
+          If true, then tabulate polyadic and monadic synapses
+        
+        """
         self.C = Network(directed=True)
         self.C.add_vertices(self.neurons)
         self.load_edges(self.C,self.neurons,synapses,add_poly=add_poly)
 
     def load_electrical(self,synapses,add_poly=False):
+        """
+        Create gap junction connectivity graph by loading edges from synapses. 
+        If add_poly, then the number of polyad and monad synapses is tracked.       
+        
+        Parameters:
+        synapses : list
+          list of synapse data with row format
+          pre_cell,post_cell(s),synapse_weight,synapse_id,data_series
+        add_poly : bool (default False)
+          If true, then tabulate polyadic and monadic synapses
+
+        """
         self.E = Network()
         self.E.add_vertices(self.neurons)
         self.load_edges(self.E,self.neurons,synapses,add_poly=add_poly)
                 
     def load_edges(self,G,vertices,edges,add_poly=False):
+        """
+        Load edges between vertices into graph G. If add_poly, then the
+        number of polyad and monad synapses is tracked. 
+
+        Parameters:
+        -----------
+        G : Network
+          Graph into which edges will be loaded
+        vertices : list 
+          list of vertex names. At least one vertex in edge
+          must be in the list vertex names
+        edges : list
+          list of edge data with row format
+          pre_cell,post_cell(s),synapse_weight,synapse_id,data_series
+        add_poly : bool (default False)
+          If true, then tabulate polyadic and monadic synapses
+        """
         eid = -1
         for e in edges:
             pre = aux.format.rm_brack(e[0])
@@ -160,6 +233,19 @@ class Connectome:
         #G.vs.select(_degree=0).delete()
 
     def load_adjacency(self,adjacency,directed=False):
+        """
+        Load adjacency graph from _adjacency edges. If directed, adjacency graph
+        will be made directed.        
+
+        Parameters:
+        -----------
+        adjacency : list
+          List of adjacency data with row format
+          cell1,cell2,amount_of_contact,section_number
+        directed: bool
+          If true, the adjacency graph will be directed
+        
+        """
         self.A = Network(directed=directed)
         self.A.add_vertices(self.neurons)
         eid = -1
@@ -178,11 +264,12 @@ class Connectome:
             self.A.es[_eid]['weight'] += weight
             self.A.es[_eid]['count'] += count
 
-    #def combine_chem_and_elec_(self):
-    #    self.D = Network()
-    #    self.D.union([self.C,self.E])
-            
     def combine_chem_and_elec(self):
+        """
+        Combine the chemical and gap junction connectivity graphs
+        Combined graph stored in attribute self.D
+
+        """
         self.D = self.C.copy()
         for e in self.E.es:
             i = self.E.vs[e.source]['name']
@@ -197,15 +284,97 @@ class Connectome:
                 self.D.add_edge(i,j,weight=w,count=c)
 
     def reduce_to_adjacency(self):
+        """
+        Reduce chemical and gap junction connectivity graphs to nodes and
+        edges found in the adjacency graph  
+        """
         if self.C: self.C.reduce_to(self.A)
         if self.E: self.E.reduce_to(self.A)
         
 class Network(igraph.Graph):
+    """
+    Class for storing graph data. Inherits class Graph
+    from package igraph. See http://igraph.org/python/ 
+    for attributes and API.
+    
+    Methods
+    -------
+    get_edge(source,target)
+      Returns the igraph edge going from source to target
+    
+    get_edge_attr(source,target,attr)
+      Returns attribute of igraph edge going from source to target
+    
+    remove_vertices(_remove)
+      Remove vertices from graph in list _remove
+    
+    assign_membership(membership,key)
+      Assign vertices membership to some group. key defines the name
+      of the membership. Vertices can be assigned to multiple memberships
+      Membrship can be a list or dictionary
+    
+    assign_membership_list(membership,key)
+      Use if membership is a list
+    
+    assign_membership_dict(membership,key)
+      Use if membership is a dictionary
+    
+    group_vertices(key,combine_attrs='first')
+      Group vertices beased on membership key.
+    
+    get_numpy_array(directed=False,vertex_order=None,edge_attr=None)
+      Return adjacency matrix as a numpy array. 
+    
+    symmetrize_matrix()
+      Will convert directed graph to undirected
+    
+    get_neighbors(vertex,mode="OUT",vattr="name")
+      Return the neighbors of vertex
+    
+    map_vertex_names(vmap)
+      Changes vertex names to names in dictionary vmap
+    
+    compute_strength(weight='weight')
+      Computes normalized values of the edge weights
+
+    reduce_to(G)
+      Removes edges in graph not in graph G
+
+    threshold_edge_greater_than(eattr,val)
+      Removes edges with edge attribute less than or equal to val
+
+    threshold_edge_less_than(eattr,val)
+      Remove edges with edge attributes greater than or equal to val
+      
+
+    """
     def __init__(self,directed=False):
+        """
+        Parameters:
+        -----------
+        directed : bool (default False)
+          If true, graph will be directed.
+        
+        """
+        
         igraph.Graph.__init__(self,directed=directed)
-        self.labels = None
 
     def get_edge(self,source,target):
+        """
+        Returns the igraph edge going from source to target
+        
+        Parameters:
+        -----------
+        source : str
+           source vertex name
+        target : str
+           target vertex name
+        
+        Returns:
+          igraph edge
+        
+        """
+        
         try:
             i = self.vs.select(name=source)[0].index
             j = self.vs.select(name=target)[0].index
@@ -214,23 +383,78 @@ class Network(igraph.Graph):
             return None
 
     def get_edge_attr(self,source,target,attr):
+        """
+        Returns attribute of igraph edge going from source to target
+        
+        Parameters:
+        -----------
+        source : str
+          source vertex name
+        target : str
+          target vertex name
+        attr : str
+          attr key
+
+        Returns:
+        --------
+        attribute value
+
+        """
+
         i = self.vs.select(name=source)[0].index
         j = self.vs.select(name=target)[0].index
         w1 = self.es.select(_source=i,_target=j)[attr][0]
-        w2 = self.es.select(_source=j,_target=i)[attr][0]
+        #w2 = self.es.select(_source=j,_target=i)[attr][0]
+        return w1
         
-    def remove_vertices(self,remove):
-        for n in remove:
+    def remove_vertices(self,_remove):
+        """
+        Remove vertices from graph in list _remove
+        
+        Parameters:
+        ----------
+        _remove : list
+          List of vertex names to be removed
+
+        """
+        for n in _remove:
             for v in self.vs(name=n):
                 v.delete()
                 
     def assign_membership(self,membership,key='member'):
+        """
+        Assign vertices membership to some group. key defines the name
+        of the membership. Vertices can be assigned to multiple memberships
+        Membrship can be a list or dictionary   
+        
+        Parameters:
+         membersip : list or dict
+           Membership names for vertices
+         key : str
+           ID for the membership. Multiple memberships can be 
+           assigned by using different membership keys
+        
+        """
+    
         if isinstance(membership,list):
             self.assign_membership_list(membership,key=key)
         elif isinstance(membership,dict):
             self.assign_membership_dict(membership,key=key)
 
     def assign_membership_list(self,membership,key='member'):
+        """
+        Use if membership is a list
+        
+        Parameters:
+         membersip : list
+           Membership names for vertices. Order of list should 
+           correspond to vertex indices.
+         key : str
+           ID for the membership. Multiple memberships can be 
+           assigned by using different membership keys        
+        
+        """
+        
         attr = [0]*self.vcount()
         for i in range(len(membership)):
             for j in membership[i]:
@@ -238,6 +462,19 @@ class Network(igraph.Graph):
         self.vs[key] = attr        
 
     def assign_membership_dict(self,membership,key='member'):
+        """
+        Use if membership is a dictionary
+        
+        Parameters:
+         membersip : dict
+           Membership names for vertices. Key is vertex name
+           value is membership name.
+         key : str
+           ID for the membership. Multiple memberships can be 
+           assigned by using different membership keys        
+        
+        """        
+
         attr = [0]*self.vcount()
         for v in self.vs:
             if v['name'] in membership:
@@ -247,6 +484,18 @@ class Network(igraph.Graph):
         self.vs[key] = attr
         
     def group_vertices(self,key,combine_attrs='first'):
+        """
+        Group vertices based on membership key. 
+        
+        Parameters:
+        -----------
+        key : str
+          Key ID for the vertex membership.
+        combine_attrs : str
+          Determines how to combine vertex attributes. See igraph API.
+        
+        """
+        
         if isinstance(self.vs[key][0],str):
             vals = list(set(self.vs[key]))
             imap = dict([(vals[i],i) for i in range(len(vals))])
@@ -257,6 +506,24 @@ class Network(igraph.Graph):
         self.simplify(loops=False,combine_edges=sum)
                 
     def get_numpy_array(self,directed=False,vertex_order=None,edge_attr=None):
+        """
+        Return adjacency matrix as a numpy array.
+        
+        Paramters:
+        ----------
+        directed : bool
+          If false, then the array will be symmetric
+        vertex_order : list
+          List of vertex names used to order rows and columns
+        edge_attr : str
+          Id of eddge attribute to use the matrix entries, e.g. the edge 'weights'
+        
+        Returns:
+        --------
+        Numpy array
+
+        """
+        
         if vertex_order:
             n = len(vertex_order)
             vhash = dict([(vertex_order[i],i) for i in range(n)])
@@ -280,19 +547,63 @@ class Network(igraph.Graph):
         return A
 
     def symmetrize_matrix(self):
+        """
+        Will convert directed graph to undirected
+        """
         self.to_undirected(mode="collapse",combine_edges=sum)
         
     def get_neighbors(self,vertex,mode='OUT',vattr='name'):
+        """
+        Return the neighbors of vertex
+        
+        Parameters:
+        -----------
+        vertex : str
+          Vertex name
+        mode : str
+          Edge direction for neighbors. 'IN' and 'OUT' choices.
+          IN will look and indegree neighbors. OUT is the out degree neighbors.
+        vattr : str
+          Specifies which vertex attribute to return. 
+        
+        Return:
+        -------
+          Neighbor vertex attribute.
+
+        """
         _neigh = self.neighbors(vertex, mode=mode)
         return self.vs[_neigh][vattr]
         
     def map_vertex_names(self,vmap):
+        """
+        Changes vertex names to names in dictionary vmap
+        
+        Parameters:
+        ----------
+        vmap : dict
+         Dictionay used to map vertex names: 
+         (key,val) = (old_vertex_name,new_vertex_name)
+        
+        Returns:
+        --------
+          Graph with new vertex name
+        
+        """
         G = self.copy()
         for v in G.vs:
             v['name'] = vmap[v['name']]
         return G
 
     def compute_strength(self,weight='weight'):
+        """
+        Computes normalized values of the edge weights
+
+        Parameters:
+        -----------
+        weight : str
+          Edge attribute id
+        
+        """
         v = range(self.vcount())
         self.vs['out-strength'] = self.strength(v,mode='out',
                                                 loops=False,weights=weight)
@@ -305,9 +616,18 @@ class Network(igraph.Graph):
             e['out-strength'] = w / sout
             e['in-strength'] = w / sin
 
-
+           
         
     def reduce_to(self,G):
+        """
+        Removes edges in graph not in graph G
+
+        Parameters:
+        -----------
+        G : igraph
+         Reference graph. Only edges in this graph will be maintained.
+        
+        """
         eid = []
         mode  = 0
         if not self.is_directed() and G.is_directed():
@@ -326,9 +646,32 @@ class Network(igraph.Graph):
 
 
     def threshold_edge_greater_than(self,eattr,val):
+        """
+        Removes edges with edge attribute less than or equal to val
+        
+        Parameters:
+        -----------
+        eattr : str
+          Edge attribute name
+        val : int or float
+          Threshold value
+
+        """
         es = [e for e in self.es if e[eattr] <= val]
         self.delete_edges(es)
         
     def threshold_edge_less_than(self,eattr,val):
+        """
+        Remove edges with edge attributes greater than or equal to val
+        
+        Parameters:
+        -----------
+        eattr : str
+          Edge attribute name
+        val : int or float
+          Threshold value
+
+        """        
+        
         es = [e for e in self.es if e[eattr] >= val]
         self.delete_edges(es)
