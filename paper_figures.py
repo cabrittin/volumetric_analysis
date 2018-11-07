@@ -56,5 +56,8 @@ if __name__ == '__main__':
     if params.fig =='f3a':
         import dist_adj_subgrp2
         dist_adj_subgrp2.run(params.fout)
+    elif params.fig == 'f3b':
+        import tpair_adj_deg
+        tpair_adj_deg.run(params.fout)
 
  
