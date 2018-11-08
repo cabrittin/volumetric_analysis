@@ -59,5 +59,7 @@ if __name__ == '__main__':
     elif params.fig == 'f3b':
         import tpair_adj_deg
         tpair_adj_deg.run(params.fout)
-
+    elif params.fig == 'f3c':
+        import tpair_adj_weight
+        tpair_adj_weight.run(params.fout)
  
