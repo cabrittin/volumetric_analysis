@@ -71,7 +71,9 @@ if __name__ == '__main__':
     elif params.fig == 'f4b':
         import tpair_confrac
         tpair_confrac.run(params.fout)
-        
+    elif params.fig == 'f5a':
+        import discrepant_deg_contralateral
+        discrepant_deg_contralateral.run(params.fout)
     elif params.fig == 'fs4':
         import dist_confrac_muscle_correct
         dist_confrac_muscle_correct.run(params.fout)
