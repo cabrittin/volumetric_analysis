@@ -7,14 +7,16 @@ def get_cf(C,vertices=None,_arcsine=False):
     if _arcsine:
         data =  {'pre':arcsine(get_cpre(C,vertices=vertices)),
                  'post':arcsine(get_cpost(C,vertices=vertices)),
-                 'gap':arcsine(get_cgap(C,vertices=vertices)),
-                 'all':arcsine(get_call(C,vertices=vertices))}
+                 'gap':arcsine(get_cgap(C,vertices=vertices))}
+        if C.D:
+            data['all'] = arcsine(get_call(C,vertices=vertices))
         
     else:
         data =  {'pre':get_cpre(C,vertices=vertices),
                  'post':get_cpost(C,vertices=vertices),
-                 'gap':get_cgap(C,vertices=vertices),
-                 'all':get_call(C,vertices=vertices)}
+                 'gap':get_cgap(C,vertices=vertices)}
+        if C.D:
+           data['all'] = get_call(C,vertices=vertices) 
     return data
 
 def get_call(C,vertices=None):
