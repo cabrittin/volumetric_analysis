@@ -3,6 +3,8 @@ connectome.py
 
 Connectome data structures. Inherits from iGraph
 
+See http://igraph.org/python/
+
 Required 3rd party packages:
   igraph
   csv
