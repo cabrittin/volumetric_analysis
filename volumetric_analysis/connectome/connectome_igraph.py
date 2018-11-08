@@ -142,7 +142,7 @@ class Connectome:
 
     def group_cells(self,groups,key='group'):
         """
-        Group vertices based on dictionary groups. The grouping identified
+        Group vertices based on list groups. The grouping identified
         by key (default 'group'). So multiple groups can be assigned to 
         same graphs.                
         
