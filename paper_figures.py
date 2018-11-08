@@ -62,4 +62,7 @@ if __name__ == '__main__':
     elif params.fig == 'f3c':
         import tpair_adj_weight
         tpair_adj_weight.run(params.fout)
+    elif params.fig == 'f3d':
+        import compare_neigh_overlap
+        compare_neigh_overlap.run(params.fout)
  
