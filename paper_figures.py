@@ -68,7 +68,10 @@ if __name__ == '__main__':
     elif params.fig == 'f4a':
         import dist_confrac_subgrp
         dist_confrac_subgrp.run(params.fout)
- 
+    elif params.fig == 'f4b':
+        import tpair_confrac
+        tpair_confrac.run(params.fout)
+        
     elif params.fig == 'fs4':
         import dist_confrac_muscle_correct
         dist_confrac_muscle_correct.run(params.fout)
