@@ -18,6 +18,7 @@ def get_cf(C,vertices=None,_arcsine=False):
     return data
 
 def get_call(C,vertices=None):
+    if not C.D: return None
     if vertices:
         v = vertices
     else:
