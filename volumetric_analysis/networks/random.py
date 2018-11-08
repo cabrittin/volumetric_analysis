@@ -1,5 +1,21 @@
 """"
-functions for generating randomized networks
+random.py
+
+Modules for generating randomized networks.
+
+Functions
+---------
+edge_switch(G,iters=1000)
+  Randomly switch edges in graph G (igraph). Do iters random switches.
+  Preserves in degree and out degree.
+
+mp_edge_switch(G,proFunc,njobs=2,sub_iters=500,es_iters=1000):
+  Do random edge switches in parallel
+
+_mp_edge_switch(G,procFunc,output,sub_iters,es_iters):
+  Target function for mp_edge_switch.
+
+
 """
 from random import randint
 from random import sample
@@ -9,6 +25,18 @@ import progressbar
 
 
 def edge_switch(G,iters=1000):
+    """
+    Randomly switch edges in graph G (igraph). Do iters random switches.
+    Preserves in degree and out degree.
+
+    Parameters
+    ----------
+    G : iGraph
+     Graph in which edges will be randomly switched
+    iters : int (default 1000)
+     Number of edge switches to perform 
+
+    """
     N = G.ecount() - 2
     idx = 0
     while idx < iters:
@@ -34,6 +62,22 @@ def edge_switch(G,iters=1000):
         
     
 def mp_edge_switch(G,procFunc,njobs=2,sub_iters=500,es_iters=1000):
+    """
+    Do random edge switches in parallel
+    
+    Parameters
+    ----------
+    G : iGraph
+     Graph object
+    procFunc : function
+     User supplied function for how to handle the results
+    njobs : int
+     Number cpus to use
+    sub_iters : int
+     number of random graph to generate per job
+    es_iters : int
+     Number of edge switches in a single graph
+    """
     output = mp.Queue()
     processes = [mp.Process(target=_mp_edge_switch,
                             args=(G,procFunc,output,sub_iters,es_iters))
@@ -49,6 +93,23 @@ def mp_edge_switch(G,procFunc,njobs=2,sub_iters=500,es_iters=1000):
 
 
 def _mp_edge_switch(G,procFunc,output,sub_iters,es_iters):
+    """
+    Target function for mp_edge_switch
+    
+    Parameters
+    ----------
+    G : iGraph
+     Graph object
+    procFunc : function
+     User supplied function for how to handle the results
+    output : multprocessor.Queue
+     Queue to output results
+    sub_iters : int
+     number of random graph to generate per job
+    es_iters : int
+     Number of edge switches in a single graph
+    """   
+
     bar = progressbar.ProgressBar(maxval=sub_iters,
                                   widgets=[progressbar.Bar('.','[',']'),
                                            'Edge switch randomization',
