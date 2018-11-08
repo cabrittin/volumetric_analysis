@@ -1,7 +1,9 @@
 """
-connectome.py
+connectome_networkx.py
 
-Connectome data structures
+Connectome data structures. Uses Networkx 
+
+See https://networkx.github.io/
 
 Author: Christopher Brittin
 
@@ -13,37 +15,163 @@ import aux
 SCREEN = ['old']
 
 class Connectome:
+    """
+    Class to represent connectome data.
+    
+    ...
+
+    Attributes
+    ----------
+    db : str
+      database name
+    size : int
+      number of neurons in graph
+    neurons : list
+      list of neuron names
+    C  : Network
+      Chemical connectivity graph
+    E  : Network
+      Gap junction connectivity graph
+    A  : Network
+      Adjacency (physical) connectivity graph
+    D  : Network
+      Combined chemical and gap junction graph
+
+    Methods
+    -------
+    update_neurons(_neurons)
+      Update the neuron list
+    
+    remove_cells(vertices)
+      Removes vertices from graphs C, E and A.
+
+    remove_vertices(G,remove)
+      Remove vertices from graph G
+    
+    group_cells(groups,**kwargs)
+      Group cells based on dictionary groups; 
+      (key,value) = (cell_name,group_name)
+
+    group_vertices(G,GROUPS)
+      Group vertrices in graph G based on dictionary GROUPS
+
+    load_chemical(synapses,add_poly=False)
+      Create chemical connectivity graph by loading edges from synapses. 
+      If add_poly, then the number of polyad and monad synapses is tracked.
+
+    load_electrical(synapses)
+      Create gap junction connectivity graph by loading edges from synapses. 
+      If add_poly, then the number of polyad and monad synapses is tracked.    
+
+    load_edges(G,vertices,edges,add_poly=False)
+      Load edges between vertices into graph G. If add_poly, then the
+      number of polyad and monad synapses is tracked.    
+
+    load_adjacency(adjacency,directed=False)
+      Load adjacency graph from _adjacency edges. If directed, adjacency graph
+      will be made directed. 
+    
+    reduce_to_adjacency()
+      Reduce chemical and gap junction connectivity graphs to nodes and
+      edges found in the adjacency graph
+
+    _reduce_to_adjacency(A,H)
+      Remove edges in graph H that are not in graph A
+
+    """
+
     def __init__(self,db,neurons):
+        """
+        Parameters:
+        -----------
+        db : str
+           database name
+        neurons : list
+           list of neuron/cell/node names
+        """
+        
         self.db = db
         self.size = len(neurons)
         self.neurons = neurons
         self.C = None
         self.E = None
         self.A = None
-        
+       
     def update_neurons(self,_neurons):
+        """
+        Update the neuron/cell/node list
+
+        Parameters:
+        -----------
+        _neurons : list 
+           list of neurons/cell/node/names
+
+        """
         self.neurons = _neurons
         self.size = len(_neurons)
 
     def remove_cells(self,vertices):
+        """"
+        Remove vertices from graphs C, E and A
+        
+        Parameters
+        ----------
+        vertices : list
+          List of vertex names
+
+        """        
         if self.C:self.remove_vertices(self.C,vertices)
         if self.E:self.remove_vertices(self.E,vertices)
         if self.A:self.remove_vertices(self.A,vertices)
 
     def remove_vertices(self,G,remove):
+        """
+        Remove vertices in list remove from graph G
+        
+        Parameters
+        ----------
+        G : Networkx
+         Graph from which vertices will be removed
+        remove : list
+         List of vertex names to be removed.
+        
+        """
         remove = set(remove) & set(G.nodes())
         for n in remove:
             G.remove_node(n)
 
     def group_cells(self,groups,**kwargs):
-        if self.C:
-            self.C = self.group_vertices(self.C,groups)
-        if self.E:
-            self.E = self.group_vertices(self.E,groups)
-        if self.A:
-            self.A = self.group_vertices(self.A,groups)
+        """
+        Group vertices based on dictionary groups. The grouping identified
+        by key (default 'group'). So multiple groups can be assigned to 
+        same graphs.                
+       
+        Parameters
+        ----------
+        groups : dict
+          Dictionary of vertex memberships. 
+          (key,value) = (cell_name,group_name)
+        
+        **kwargs : dummy variable 
+          Not used in for Networkx but kept to remain consistent
+          with igraph implementation
+        """
+        if self.C: self.C = self.group_vertices(self.C,groups)
+        if self.E: self.E = self.group_vertices(self.E,groups)
+        if self.A: self.A = self.group_vertices(self.A,groups)
 
     def group_vertices(self,G,GROUPS):
+        """
+        Group vertices based on dictionary GROUPS in graph G
+
+        Parameters
+        ----------
+        G : Networkx
+          Graph object
+        GROUPS : dict
+          Group assignments. (key,value) = (cell_name,group_name)
+        
+        """
         if nx.is_directed(G):
             H = nx.DiGraph()
         else:
@@ -69,14 +197,57 @@ class Connectome:
         return H
 
     def load_chemical(self,synapses,add_poly=False):
+        """
+        Create chemical connectivity graph by loading edges from synapses. 
+        If add_poly, then the number of polyad and monad synapses is tracked.       
+        
+        Parameters:
+        synapses : list
+          list of synapse data with row format
+          pre_cell,post_cell(s),synapse_weight,synapse_id,data_series
+        add_poly : bool (default False)
+          If true, then tabulate polyadic and monadic synapses
+        
+        """        
         self.C = nx.DiGraph()
         self.load_edges(self.C,self.neurons,synapses,add_poly=add_poly)
 
     def load_electrical(self,synapses):
+        """
+        Create gap junction connectivity graph by loading edges from synapses. 
+        If add_poly, then the number of polyad and monad synapses is tracked.       
+        
+        Parameters:
+        synapses : list
+          list of synapse data with row format
+          pre_cell,post_cell(s),synapse_weight,synapse_id,data_series
+        add_poly : bool (default False)
+          If true, then tabulate polyadic and monadic synapses
+
+        """        
+        
         self.E = nx.Graph()
         self.load_edges(self.E,self.neurons,synapses)
                 
     def load_edges(self,G,vertices,edges,add_poly=False):
+        """
+        Load edges between vertices into graph G. If add_poly, then the
+        number of polyad and monad synapses is tracked. 
+
+        Parameters:
+        -----------
+        G : Network
+          Graph into which edges will be loaded
+        vertices : list 
+          list of vertex names. At least one vertex in edge
+          must be in the list vertex names
+        edges : list
+          list of edge data with row format
+          pre_cell,post_cell(s),synapse_weight,synapse_id,data_series
+        add_poly : bool (default False)
+          If true, then tabulate polyadic and monadic synapses
+        """       
+        
         for e in edges:
             pre = aux.format.rm_brack(e[0])
             if pre not in vertices: continue
@@ -105,6 +276,20 @@ class Connectome:
                     G[pre][post][poly] += 1
 
     def load_adjacency(self,adjacency,directed=False):
+        """
+        Load adjacency graph from _adjacency edges. If directed, adjacency graph
+        will be made directed.        
+
+        Parameters:
+        -----------
+        adjacency : list
+          List of adjacency data with row format
+          cell1,cell2,amount_of_contact,section_number
+        directed: bool
+          If true, the adjacency graph will be directed
+        
+        """        
+        
         if directed:
             self.A = nx.DiGraph()
         else:
@@ -121,6 +306,11 @@ class Connectome:
             self.A[i][j]['count'] += count
             
     def reduce_to_adjacency(self):
+        """
+        Reduce chemical and gap junction connectivity graphs to nodes and
+        edges found in the adjacency graph  
+        """
+        
         self.C = self._reduce_to_adjacency(self.A,self.C)
         self.E = self._reduce_to_adjacency(self.A,self.E)
 
@@ -128,6 +318,16 @@ class Connectome:
     def _reduce_to_adjacency(A,H):
         """
         Eliminates nodes and edges in H not found in A
+        
+        Parameters:
+        -----------
+        A : Networkx
+         Reference graph. Nodes and edges not found in A
+         will be removed.
+        G : Networkx
+         Graph to be changed. Nodes and edges not found in A
+         will be removed from H.
+        
         """
         G = H.copy()
         GnotAnodes = list(set(G.nodes()) - set(A.nodes()))

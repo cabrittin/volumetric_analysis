@@ -85,6 +85,8 @@ class Connectome:
       Reduce chemical and gap junction connectivity graphs to nodes and
       edges found in the adjacency graph
 
+    
+
     """
     
     def __init__(self,db,neurons):
@@ -127,6 +129,12 @@ class Connectome:
     def remove_cells(self,vertices):
         """"
         Remove vertices from graphs C, E and A
+        
+        Parameters
+        ----------
+        vertices : list
+          List of vertex names
+
         """
         if self.C:self.C.remove_vertices(vertices)
         if self.E:self.E.remove_vertices(vertices)
@@ -137,6 +145,17 @@ class Connectome:
         Group vertices based on dictionary groups. The grouping identified
         by key (default 'group'). So multiple groups can be assigned to 
         same graphs.                
+        
+        Parameters
+        ----------
+        groups : list
+          List of vertex memberships. Order of list 
+          should correspond to index labels of vertices.
+        
+        key : str
+          Group ID. Multiple groups can be assigned and
+          retrieved with the ID.
+
         """
         if self.C:
             self.C.assign_membership(groups,key=key)
