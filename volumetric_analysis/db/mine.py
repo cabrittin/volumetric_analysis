@@ -96,9 +96,7 @@ def get_img_number(cur,**kwargs):
        First section number (default -1)
     end : int
        Last section number (default 1e6)
-    """   Returns list of image(sections) names from the NR an VC
-   series. Use kwargs to define range = (start,end) where 
-   start and end are ints.b
+    """   
     args = aux.format.get_args(kwargs,{'start':-1,'end':1e6})
     sql = ("select IMG_Number "
            "from image "
