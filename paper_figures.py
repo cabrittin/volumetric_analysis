@@ -80,6 +80,9 @@ if __name__ == '__main__':
     elif params.fig == 'f5d':
         import dist_adj_weight_decision
         dist_adj_weight_decision.run(params.fout)
+    elif params.fig == 'f5e':
+        import logistic_test
+        logistic_test.run(params.fout)
     elif params.fig == 'fs4':
         import dist_confrac_muscle_correct
         dist_confrac_muscle_correct.run(params.fout)
