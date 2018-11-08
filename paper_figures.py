@@ -65,4 +65,7 @@ if __name__ == '__main__':
     elif params.fig == 'f3d':
         import compare_neigh_overlap
         compare_neigh_overlap.run(params.fout)
+    elif params.fig == 'f4a':
+        import dist_confrac_subgrp
+        dist_confrac_subgrp.run(params.fout)
  
