@@ -1,3 +1,12 @@
+"""
+tpair_adj_deg.py
+
+Plots distribution of the differences in homologous adjacency degrees.
+
+created: Christopher Brittin
+date: 01 November 2018
+
+"""
 import sys
 sys.path.append(r'./volumetric_analysis')
 import matplotlib.pyplot as plt
