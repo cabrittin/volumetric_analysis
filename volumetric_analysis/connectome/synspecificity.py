@@ -13,56 +13,10 @@ import numpy as np
 from scipy.stats import pearsonr
 from tabulate import tabulate
 
-import DB
+import db as DB
 import aux
 import LUT
-from Connectome.subcellular import Subcell
-
-def get_bilateral_specificity(C):
-    db = C.db
-    lr = LUT.neuron_class(db)['lr_dict']
-    lrd = aux.read.into_lr_dict(lr)
-
-    nclass = LUT.neuron_class(db)['homologs']
-    nclass = aux.read.into_list2(nclass)
-    ndict = {}    
-    
-    for n in nclass:
-        for _n in n[1:]:ndict[_n] = n[0]
-    
-    left = LUT.neuron_class(db)['left_nodes']
-    left = aux.read.into_list(left)
-    
-    left.remove('CEHDL')
-    left.remove('CEHVL')
-    left.remove('HSNL')
-    left.remove('PVNL')
-    left.remove('PLNL')
-    _pre = bilateral_specificity(C,left,lrd)
-    _post = bilateral_specificity(C,left,lrd,mode='post')
-    _gap = bilateral_specificity(C,left,lrd,mode='gap') 
-
-    spec = {}
-    for nl in left:
-        spec[nl] = [_gap[nl].p,_pre[nl].p,_post[nl].p]
-    return spec
-
-def get_developmental_specificity(C1,C2):
-    both_nodes = set(C1.A.nodes()) & set(C2.A.nodes())
-    both_nodes.remove('SABD')
-    if 'VD01' in both_nodes: both_nodes.remove('VD01')    
-    
-    _pre = developmental_specificity(C1,C2,both_nodes)
-    _post = developmental_specificity(C1,C2,both_nodes,mode='post')
-    _gap = developmental_specificity(C1,C2,both_nodes,mode='gap')
-
-    #for n in sorted(both_nodes):
-    #    print(n,_pre[n].p,_post[n].p,_gap[n].p)
-    
-    spec = {}
-    for nl in both_nodes:
-        spec[nl] = [_gap[nl].p,_pre[nl].p,_post[nl].p]
-    return spec   
+from connectome.subcellular import Subcell
 
 def bilateral_specificity(C,left,lrd,mode='pre'):
     prob = {}
