@@ -83,6 +83,9 @@ if __name__ == '__main__':
     elif params.fig == 'f5e':
         import logistic_test
         logistic_test.run(params.fout)
+    elif params.fig == 'f6a':
+        import synaptic_specificity
+        synaptic_specificity.run(params.fout)
     elif params.fig == 'fs4':
         import dist_confrac_muscle_correct
         dist_confrac_muscle_correct.run(params.fout)
