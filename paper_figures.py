@@ -89,6 +89,9 @@ if __name__ == '__main__':
     elif params.fig == 'f6b':
         import pre_post_specificity
         pre_post_specificity.run(params.fout)
+    elif params.fig == 'f6c':
+        import synapse_pos_specificity
+        synapse_pos_specificity.run(params.fout)        
     elif params.fig == 'fs4':
         import dist_confrac_muscle_correct
         dist_confrac_muscle_correct.run(params.fout)

@@ -13,7 +13,6 @@ import numpy as np
 from scipy.stats import pearsonr
 from tabulate import tabulate
 
-import db as DB
 import aux
 import LUT
 from connectome.subcellular import Subcell
@@ -115,6 +114,7 @@ def compute_specificity(A,C1,C2):
         num += num1*num2*num3#*num4
     return Prob(M,k,c1,c2,m,num / den)
 
+
 def synapse_positions(cur,neuron):
     S = {'pre':{},'post':{},'gap':{}}
 
@@ -196,12 +196,12 @@ def get_synapses_pos(cur,neuron,pos,fromCol,toCol,stype):
            %(toCol,neuron,stype,fromCol,neuron))
     cur.execute(sql)
     for a in cur.fetchall():
-        print(a[3])
         nodes = a[0].split(',')
         for n in nodes:
             if n not in pos: pos[n] = {'loc':[],'weight':[]}
             pos[n]['loc'].append(a[2])
             pos[n]['weight'].append(a[1])
+
     
 def compute_average_pos(syn):
     all_syn_loc = []
@@ -291,14 +291,7 @@ class Corr:
         self.mean_diff = []
 
         
-def get_bilateral_subcell_specificity(db,fout=None,display=False,
-                                      lr_paris=None,lr_dict=None):
-    neurons = aux.read.into_list2(lr_pairs)
-    lrd = aux.read.into_lr_dict(lr_dict)
-    
-    con = DB.connect.default(db)
-    cur = con.cursor()   
-
+def get_bilateral_subcell_specificity(cur,neurons,lrd,display=False):
     r = {}
     delta = {}
     for [nl,nr] in neurons:
@@ -319,29 +312,11 @@ def get_bilateral_subcell_specificity(db,fout=None,display=False,
         delta[nl][0] = compute_delta(Sl['gap'],Sr['gap'])
         
     if display: batch_display(r)
-
     return delta
 
-def get_developmental_subcell_specificity(db1,db2,display=False):
-    C1 = dl.from_db(db1,adjacency=True)
-    C1.remove_self_loops()
-    C1.reduce_to_adjacency()    
+def get_developmental_subcell_specificity(cur1,cur2,
+                                          both_nodes=None,display=False):
 
-    C2 = dl.from_db(db2,adjacency=True)
-    C2.remove_self_loops()
-    C2.reduce_to_adjacency()     
-
-    both_nodes = set(C1.A.nodes()) & set(C2.A.nodes())
-    both_nodes.remove('SABD')
-    both_nodes.remove('FLPL')
-    both_nodes.remove('FLPR')
-    if 'VD01' in both_nodes: both_nodes.remove('VD01') 
-
-    con1 = DB.connect.default(db1)
-    cur1 = con1.cursor() 
-    con2 = DB.connect.default(db2)
-    cur2 = con2.cursor()
-    
     r = {}
     delta = {}
     for n in sorted(both_nodes):
@@ -354,15 +329,15 @@ def get_developmental_subcell_specificity(db1,db2,display=False):
         #r[n][1] = compute_corr(S1['pre'],S2['pre'])
         #r[n][2] = compute_corr(S1['post'],S2['post'])
         #r[n][0] = compute_corr(S2['gap'],S2['gap'])
-        print('\tpre')
+        print('\tpre dev')
         delta[n][1] = compute_delta(S1['pre'],S2['pre'])
-        print('\tpost')
+        print('\tpost dev')
         delta[n][2] = compute_delta(S1['post'],S2['post'])
-        print('\tgap')
+        print('\tgap dev')
         delta[n][0] = compute_delta(S1['gap'],S2['gap'])
 
     if display: batch_display(r)
-    return delta
+    return delta    
     
     
 def batch_display(corr):
@@ -388,6 +363,7 @@ def compute_delta(l1,l2):
     mean_delta = []
     N1,N2 = l1['size'],l2['size']
     sig1,sig2 = l1['std'],l2['std']
+    #compute average standard deviation
     if (N1 > 1 and N2 > 1):
         num = (N1-1)*sig1**2 + (N2-1)*sig2**2
         den = (N1 + N2 -2)
@@ -396,7 +372,6 @@ def compute_delta(l1,l2):
         den = 2.
     
     sp = np.sqrt(float(num)/den)
-    print(sp)
     for n in l1:
         if n == 'mean': continue
         if n == 'std': continue
@@ -405,7 +380,7 @@ def compute_delta(l1,l2):
         print('\tstd: %s (%1.2f,%1.2f), %1.2f'%(n,l1[n],l2[n],sp))
         #if _delta > 0.5:
         #    print('\tcheck: %s (%1.2f,%1.2f)'%(n,l1[n],l2[n]))
-        delta.append((l1[n] - l2[n])/sp)
+        delta.append((l1[n] - l2[n]))
         #mean_delta.append(abs(l1[n] - l2['mean']))
     return delta
 
