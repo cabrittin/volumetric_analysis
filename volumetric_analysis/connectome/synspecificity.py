@@ -18,6 +18,26 @@ import aux
 import LUT
 from connectome.subcellular import Subcell
 
+def get_bilateral_specificity(C,lrd,left):
+    _pre = bilateral_specificity(C,left,lrd)
+    _post = bilateral_specificity(C,left,lrd,mode='post')
+    _gap = bilateral_specificity(C,left,lrd,mode='gap') 
+
+    spec = {}
+    for nl in left:
+        spec[nl] = [_gap[nl].p,_pre[nl].p,_post[nl].p]
+    return spec
+
+def get_developmental_specificity(C1,C2,both_nodes=None):
+    _pre = developmental_specificity(C1,C2,both_nodes)
+    _post = developmental_specificity(C1,C2,both_nodes,mode='post')
+    _gap = developmental_specificity(C1,C2,both_nodes,mode='gap')
+
+    spec = {}
+    for nl in both_nodes:
+        spec[nl] = [_gap[nl].p,_pre[nl].p,_post[nl].p]
+    return spec
+
 def bilateral_specificity(C,left,lrd,mode='pre'):
     prob = {}
     for nl in left:
@@ -271,11 +291,10 @@ class Corr:
         self.mean_diff = []
 
         
-def get_bilateral_subcell_specificity(db,fout=None,display=False):
-    neurons = LUT.neuron_class(db)['lr_pairs']
-    neurons = aux.read.into_list2(neurons)
-    lr = LUT.neuron_class(db)['lr_dict']
-    lrd = aux.read.into_lr_dict(lr)
+def get_bilateral_subcell_specificity(db,fout=None,display=False,
+                                      lr_paris=None,lr_dict=None):
+    neurons = aux.read.into_list2(lr_pairs)
+    lrd = aux.read.into_lr_dict(lr_dict)
     
     con = DB.connect.default(db)
     cur = con.cursor()   

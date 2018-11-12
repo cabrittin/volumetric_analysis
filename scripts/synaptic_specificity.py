@@ -34,55 +34,10 @@ homologs = './mat/homologs.txt'
 left_nodes = './mat/left_nodes.txt'
 right_nodes = './mat/right_nodes.txt'
 
-def get_bilateral_specificity(C):
-    db = C.db
-    lrd = aux.read.into_lr_dict(lr_dict)
-    nclass = aux.read.into_list2(homologs)
-    left = aux.read.into_list(left_nodes)
-    
-    ndict = {}    
-    for n in nclass:
-        for _n in n[1:]:ndict[_n] = n[0]
-    
-    left.remove('CEHDL')
-    left.remove('CEHVL')
-    left.remove('HSNL')
-    left.remove('PVNL')
-    left.remove('PLNL')
-    _pre = synspec.bilateral_specificity(C,left,lrd)
-    _post = synspec.bilateral_specificity(C,left,lrd,mode='post')
-    _gap = synspec.bilateral_specificity(C,left,lrd,mode='gap') 
-
-    spec = {}
-    for nl in left:
-        spec[nl] = [_gap[nl].p,_pre[nl].p,_post[nl].p]
-    return spec
-
-def get_developmental_specificity(C1,C2):
-    both_nodes = set(C1.A.nodes()) & set(C2.A.nodes())
-    both_nodes.remove('SABD')
-    if 'VD01' in both_nodes: both_nodes.remove('VD01')    
-    
-    _pre = synspec.developmental_specificity(C1,C2,both_nodes)
-    _post = synspec.developmental_specificity(C1,C2,both_nodes,mode='post')
-    _gap = synspec.developmental_specificity(C1,C2,both_nodes,mode='gap')
-
-    #for n in sorted(both_nodes):
-    #    print(n,_pre[n].p,_post[n].p,_gap[n].p)
-    
-    spec = {}
-    for nl in both_nodes:
-        spec[nl] = [_gap[nl].p,_pre[nl].p,_post[nl].p]
-    return spec   
-
-def plot_specificity(ax,db1,db2,fout=None):
-    S1 = get_bilateral_specificity(db1)
-    S2 = get_bilateral_specificity(db2)
-    S3 = get_developmental_specificity(db1,db2)
-
-    B1,O1 = format_bar_specificity(S1)
-    B2,O2 = format_bar_specificity(S2)
-    B3,O3 = format_bar_specificity(S3)
+def plot_specificity(ax,spec1,spec2,devspec,fout=None):
+    B1,O1 = format_bar_specificity(spec1)
+    B2,O2 = format_bar_specificity(spec2)
+    B3,O3 = format_bar_specificity(devspec)
     
     fs = 24
     width = 0.25
@@ -154,13 +109,30 @@ def run(fout=None):
     N2U = 'N2U'
     JSH = 'JSH'
     _remove = ['VC01','VD01','VB01','VB02']
-
+    lrd = aux.read.into_lr_dict(lr_dict)
+    left = aux.read.into_list(left_nodes)
+    left.remove('CEHDL')
+    left.remove('CEHVL')
+    left.remove('HSNL')
+    left.remove('PVNL')
+    left.remove('PLNL')
+    
     N2U = from_db(N2U,adjacency=True,chemical=True,
                   electrical=True,remove=_remove,dataType='networkx')
     JSH = from_db(JSH,adjacency=True,chemical=True,
                   electrical=True,remove=_remove,dataType='networkx')
+
+    both_nodes = set(N2U.A.nodes()) & set(JSH.A.nodes())
+    both_nodes.remove('SABD')
+    if 'VD01' in both_nodes: both_nodes.remove('VD01')  
+              
+    n2uspec = synspec.get_bilateral_specificity(N2U,lrd,left)
+    jshspec = synspec.get_bilateral_specificity(JSH,lrd,left)
+    devspec = synspec.get_developmental_specificity(N2U,JSH,
+                                                    both_nodes=both_nodes)
+    
     fig,ax = plt.subplots(1,1,figsize=(18,10))
-    plot_specificity(ax,N2U,JSH,fout=fout)
+    plot_specificity(ax,n2uspec,jshspec,devspec,fout=fout)
     plt.show()
 
 if __name__=='__main__':
