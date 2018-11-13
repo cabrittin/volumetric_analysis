@@ -6,7 +6,7 @@ from tabulate import tabulate
 import random
 
 #Brittin modules
-import DB
+import db
 import aux
 
 class Gene:
@@ -32,7 +32,7 @@ class Expression:
         self.cam_file = cam_file
         self.cam = aux.read.into_list2(cam_file)
         nodes = sorted(nodes)
-        self.nodes = dict([(nodes[i],i) for i in xrange(len(nodes))])
+        self.nodes = dict([(nodes[i],i) for i in range(len(nodes))])
         self.M = len(nodes)
         self.exp = dict([('pre',np.zeros([self.M,2])),
                          ('post',np.zeros([self.M,2]))
@@ -47,7 +47,7 @@ class Expression:
         for (name,pre,post,isoform) in self.cam:
             if self.splice:
                 _idx = []
-                for j in xrange(int(isoform)):
+                for j in range(int(isoform)):
                     _idx.append(idx)
                     self.gene_idx[idx] = name
                     idx += 1
@@ -60,8 +60,8 @@ class Expression:
 
     def assign_expression_patterns(self,mode='post'):
         self.E = np.zeros([self.M,self.N],dtype=int)
-        for n,idx in self.nodes.iteritems():
-            _genes = DB.mine.get_cell_genes(self.cur,n)
+        for n,idx in self.nodes.items():
+            _genes = db.mine.get_cell_genes(self.cur,n)
             for g in _genes:
                 if (mode == 'post') and (g in self.genes) and (self.genes[g].post):
                     self.genes[g].expression.append(idx)
@@ -73,15 +73,15 @@ class Expression:
                     self.E[idx,jdx] = 1
                    
         self.Diff = np.zeros([self.M,self.M])
-        for n,idx in self.nodes.iteritems():
-            for m,jdx in self.nodes.iteritems():
+        for n,idx in self.nodes.items():
+            for m,jdx in self.nodes.items():
                 self.Diff[idx,jdx] = np.sum(abs(self.E[idx,:] - self.E[jdx,:]))
                 
         self.create_links()
         
     def create_links(self):
         self.exp_link = {}
-        for n,idx in self.nodes.iteritems():
+        for n,idx in self.nodes.items():
             self.exp_link[n] = self.assign_tag(self.E[idx,:])
             
     @staticmethod
