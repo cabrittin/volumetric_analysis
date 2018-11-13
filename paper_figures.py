@@ -100,6 +100,9 @@ if __name__ == '__main__':
         cam_expression_matrix.run(params.fout)
     elif params.fig == 'f7b':
         print("Figure generated with cytoscape")
+    elif params.fig == 'f7c':
+        import cam_lus
+        cam_lus.run(params.fout)
     elif params.fig == 'fs4':
         import dist_confrac_muscle_correct
         dist_confrac_muscle_correct.run(params.fout)
