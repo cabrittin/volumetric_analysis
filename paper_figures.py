@@ -127,4 +127,11 @@ if __name__ == '__main__':
     elif params.fig == 'fs4':
         import dist_confrac_muscle_correct
         dist_confrac_muscle_correct.run(params.fout)
+    elif params.fig == 'fs6a':
+        print("The code to generate this figure is "
+              "currently not in the respository. "
+              "Please check back later.")
+    elif params.fig == 'fs6b':
+        import synapse_pos_correlation
+        synapse_pos_correlation.run(params.fout)
     
