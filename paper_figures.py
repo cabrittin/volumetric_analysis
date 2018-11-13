@@ -103,6 +103,12 @@ if __name__ == '__main__':
     elif params.fig == 'f7c':
         import cam_lus
         cam_lus.run(params.fout)
+    elif params.fig == 'fs1':
+        print("Images take from our web app at "
+              "http://wormwiring.org/apps/neuronVolume.")
+    elif params.fig == 'fs2a':
+        import dist_adj_deg
+        dist_adj_deg.run(params.fout)
     elif params.fig == 'fs4':
         import dist_confrac_muscle_correct
         dist_confrac_muscle_correct.run(params.fout)
