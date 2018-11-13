@@ -10,6 +10,8 @@ from sklearn.neighbors import KernelDensity
 from sklearn.mixture import GaussianMixture
 import scipy.stats as scpstats
 from matplotlib.ticker import MaxNLocator
+from scipy.stats import pearsonr
+
 
 mpl.rcParams['xtick.labelsize'] = 24
 mpl.rcParams['ytick.labelsize'] = 24
@@ -589,7 +591,24 @@ def plot_venn(ax,subsets,labels,title=None,color=None):
     for text in v.subset_labels: text.set_fontsize(14)   
     if title: ax.set_title(title,fontsize=24)
 
+def plot_corr(ax,l1,l2,label=None,_x=0.05,_y=0.9,corr_label='r',
+              col='r',marker='o'):
+    x1,x2 = [],[]
+    for n in l1:
+        if n != 'mean':
+            x1.append(l1[n])
+            x2.append(l2[n])
 
+    r = pearsonr(x1,x2)
+    
+    ax.plot(x1,x2,color=col,marker=marker,linestyle='',label=label,
+            markersize=9)
+    ax.plot([0,1],[0,1],'k')
+    ax.text(_x,_y,'%s = %1.3f' %(corr_label,r[0]**2),
+            verticalalignment='bottom',
+            transform=ax.transAxes,fontsize=24) 
+    
+    
 def stars(p):
    if p < 0.0001:
        return "****"
