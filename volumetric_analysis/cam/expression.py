@@ -107,7 +107,7 @@ class Expression:
 
     def gene_per_neuron_count(self):
         data = np.zeros(self.N)
-        for idx in xrange(self.M):
+        for idx in range(self.M):
             s = int(np.sum(self.E[idx,:]))
             data[s] += 1
         jdx = np.nonzero(data)[0][-1]+1
