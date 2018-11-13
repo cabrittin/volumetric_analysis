@@ -50,6 +50,9 @@ gap_cylinder(cur)
 syn_cylinder(cur)
    Return the cylindrical coordinates of synapses
 
+get_cell_genes(cur,cell):
+    Return the genes expressed in cell
+
 created: Christopher Brittin
 date: 01 November 2018
 """
@@ -359,3 +362,21 @@ def syn_cylinder(cur):
         for p in a[1].split(','):
             post.append([p,r,phi,z])
     return pre,post
+
+def get_cell_genes(cur,cell):
+    """
+    Return the genes expressed in cell
+
+    Parameters
+    ----------
+    cur : MySQLdb cursor
+    cell : str
+      Name of cell
+    """
+    sql = ("select genename from WB.association "
+           "join WB.cells on "
+           "WB.association.idcell = WB.cells.idcells "
+           "where WB.cells.name like '%s'"
+           %cell)
+    cur.execute(sql)
+    return [a[0] for a in cur.fetchall()]
