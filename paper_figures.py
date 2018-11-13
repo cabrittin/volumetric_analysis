@@ -140,3 +140,11 @@ if __name__ == '__main__':
     elif params.fig == 'fs7b':
         import dist_neurons_expr_gene
         dist_neurons_expr_gene.run(params.fout)
+    elif params.fig == 'fs9a':
+        import bar_gene_isoforms
+        bar_gene_isoforms.run(params.fout)
+    elif params.fig == 'fs9b':
+        print('Figure generated in cytoscape.')
+    elif params.fig == 'fs9c':
+        import bar_alt_spliced
+        bar_alt_spliced.run(params.fout)
