@@ -49,31 +49,33 @@ def plot_alt_spliced_genes(ax,Exp,nclass,fout=None):
             genes = ','.join(genes)
             
     count = [(g,c)
-             for (g,c) in sorted(Exp.alt_gene_count.iteritems())]
+             for (g,c) in sorted(Exp.alt_gene_count.items())]
     [x,y] = zip(*count)
     
     plot_bar_chart(ax,x,y,
                    ylabel = '# bilateral neurons expressing gene',
                    title = ('Alt. spliced genes expressed in '
-                            'bilaterally symmetric neurons')
-                   )
+                            'bilaterally symmetric neurons'),
+                   fs=21)
     for label in ax.get_xticklabels():
         label.set_fontstyle('italic')
     plt.tight_layout()
     if fout: plt.savefig(fout)
 
 def plot_bar_chart(ax,x,y,width=0.45,ylabel=None,title=None,
-                   color='k',facecolor='#CAC9C9',linewidth=3):
+                   color='k',facecolor='#CAC9C9',linewidth=3,
+                   fs=32):
     N = len(x)
     ind = np.arange(N)
-    rects = ax.bar(ind,y,width,color=color,facecolor=facecolor,linewidth=linewidth)
+    rects = ax.bar(ind,y,width,color=color,facecolor=facecolor,
+                   linewidth=linewidth)
     ax.set_xticks(ind + width/2)
     ax.set_xticklabels(x)
     labels = ax.get_xticklabels()
     plt.setp(labels, rotation=30)
     ax.set_xlim([-1,N])
-    if ylabel: ax.set_ylabel(ylabel,fontsize=32)
-    if title: ax.set_title(title,fontsize=32)
+    if ylabel: ax.set_ylabel(ylabel,fontsize=fs)
+    if title: ax.set_title(title,fontsize=fs)
                    
     
 def plot_bar(ax,data,xlabel,ylabel):
