@@ -134,4 +134,9 @@ if __name__ == '__main__':
     elif params.fig == 'fs6b':
         import synapse_pos_correlation
         synapse_pos_correlation.run(params.fout)
-    
+    elif params.fig == 'fs7a':
+        import bar_genes_in_neurons
+        bar_genes_in_neurons.run(params.fout)
+    elif params.fig == 'fs7b':
+        import dist_neurons_expr_gene
+        dist_neurons_expr_gene.run(params.fout)
