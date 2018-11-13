@@ -95,6 +95,11 @@ if __name__ == '__main__':
     elif params.fig == 'f6d':
         import tpair_syn_adj_ratio
         tpair_syn_adj_ratio.run(params.fout)
+    elif params.fig == 'f7a':
+        import cam_expression_matrix
+        cam_expression_matrix.run(params.fout)
+    elif params.fig == 'f7b':
+        print("Figure generated with cytoscape")
     elif params.fig == 'fs4':
         import dist_confrac_muscle_correct
         dist_confrac_muscle_correct.run(params.fout)
