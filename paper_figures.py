@@ -115,6 +115,15 @@ if __name__ == '__main__':
     elif params.fig == 'fs2c':
         import dist_syn_deg
         dist_syn_deg.run(params.fout)
+    elif params.fig == 'fs3a':
+        import venn_deg
+        venn_deg.run(params.fout)
+    elif params.fig == 'fs3b':
+        import tpair_syn_deg
+        tpair_syn_deg.run(params.fout)
+    elif params.fig == 'fs3c':
+        import cor_var_syn_adj
+        cor_var_syn_adj.run(params.fout)
     elif params.fig == 'fs4':
         import dist_confrac_muscle_correct
         dist_confrac_muscle_correct.run(params.fout)
