@@ -109,6 +109,12 @@ if __name__ == '__main__':
     elif params.fig == 'fs2a':
         import dist_adj_deg
         dist_adj_deg.run(params.fout)
+    elif params.fig == 'fs2b':
+        import dist_adj_weight
+        dist_adj_weight.run(params.fout)
+    elif params.fig == 'fs2c':
+        import dist_syn_deg
+        dist_syn_deg.run(params.fout)
     elif params.fig == 'fs4':
         import dist_confrac_muscle_correct
         dist_confrac_muscle_correct.run(params.fout)
