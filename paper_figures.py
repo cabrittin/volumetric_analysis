@@ -148,3 +148,13 @@ if __name__ == '__main__':
     elif params.fig == 'fs9c':
         import bar_alt_spliced
         bar_alt_spliced.run(params.fout)
+    elif params.fig == 'fs10c':
+        import count_polyads
+        count_polyads.run(params.fout)
+    elif params.fig == 'fs10d':
+        import count_polyads_connections
+        count_polyads_connections.run(params.fout)
+    elif params.fig == 'fs10e':
+        import count_polyads_repeat
+        count_polyads_repeat.run(params.fout)
+        
