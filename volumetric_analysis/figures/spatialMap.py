@@ -24,10 +24,12 @@ drad = 0.2
 
 
 
-def plot_syn_phiz(db,display,nclass,ccode,fout=None):
+def plot_syn_phiz(db,display,nclass,ccode,left,right,fout=None):
     display = display.split(',')
     nclass = aux.read.into_dict(nclass)
-    ccode = aux.read.into_dict(ccode)    
+    ccode = aux.read.into_dict(ccode)
+    left = aux.read.into_list(left)
+    right = aux.read.into_list(right)
     for c in ccode: ccode[c] = ccode[c].lower()
 
     pre,post = syn_cylinder(db)
@@ -42,10 +44,10 @@ def plot_syn_phiz(db,display,nclass,ccode,fout=None):
     post = scale_data(post)
     gap = scale_data(gap)
     
-    loc = split_left_right(db,loc)
-    pre = split_left_right(db,pre)
-    post = split_left_right(db,post)
-    gap = split_left_right(db,gap)
+    loc = split_left_right(loc,left,right)
+    pre = split_left_right(pre,left,right)
+    post = split_left_right(post,left,right)
+    gap = split_left_right(gap,left,right)
     if display[0] not in ['All','all','ALL']:
         loc = parse_data(loc,nclass,display)
         pre = parse_data(pre,nclass,display)
@@ -253,11 +255,7 @@ def neuron_cylinder(db):
     data = [[a[0],int(a[1]),float(a[2]),int(a[3])] for a in cur.fetchall()]
     return data      
 
-def split_left_right(db,data):
-    lr = LUT.lut.neuron_class(db)
-    left = aux.read.into_list(lr['left_nodes'])
-    right = aux.read.into_list(lr['right_nodes'])
-
+def split_left_right(data,left,right):
     data2 = []
     for d in data:
         if d[0] in left:
