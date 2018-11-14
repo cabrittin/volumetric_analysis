@@ -102,6 +102,53 @@ def from_db(_db,chemical=False,electrical=False,adjacency=False,add_poly=False,
         
     return C
 
+
+def load_lite(_db,chemical=False,electrical=False,add_poly=False,
+              remove=None,group=None,dataType='igraph'):
+
+    """
+    Loads connectome data from database. Used to load non-volumetric data.
+    Returns Connectome object.
+    
+    Parameters:
+    -----------
+    _db : str
+      database name
+    chemical : bool (default False)
+      If true, load chemical graph 
+    electrical : bool (default False)
+      If true, load gap junction graph.
+    add_poly : bool (default False)
+      If true, record number of polyad and monad syanpses.
+    remove : list (default None)
+      Remove vertices/cells from the connectome object in the remove list
+    group : dict (default None)
+      Dictionary (key,val) = (cellName,groupName) to groups cells
+    dataType : str (default 'igraph')
+      Either use the 'igraph' or 'networkx' graph data structures. 
+
+
+    Returns:
+    --------
+    Connectome object
+    
+    """    
+    con = db.connect.default(_db)
+    cur = con.cursor()
+
+    if chemical:
+        synapses = db.mine.get_synapse_data(cur,'chemical',end=end)
+        C.load_chemical(synapses,add_poly=add_poly)
+
+    if electrical:
+        synapses = db.mine.get_synapse_data(cur,'electrical',end=end)
+        C.load_electrical(synapses)
+
+    if remove: C.remove_cells(remove)
+    if group: C.group_cells(group['map'],key=group['key'])
+        
+    return C    
+    
 def scrub_neurons(_neurons):
     """
     Removes neurons in the SCREEN (global variable) list.
