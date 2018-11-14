@@ -143,3 +143,31 @@ def into_homolog_dict(fin):
             for key in row[:-1]:
                 nclass[key] = row[-1]
     return nclass    
+
+
+def into_map(fIn,**kwargs):
+    """
+    Creates a dictionary map where all elements in the row are mapped to 
+    the first element in the row
+
+    Parameters
+    ----------
+    fIn : str
+      path to specify map file
+    delimeter : str (optional)
+        Delimeter for parsing lines in file. (default is ',')
+    """       
+    delimiter = ','
+    if 'delimiter' in kwargs:
+        delimiter = kwargs['delimiter']
+
+    fIn = open(fIn,'r')
+    fInReader = csv.reader(
+        fIn,delimiter = delimiter, 
+        quotechar = ' ', quoting = csv.QUOTE_NONE)    
+    d = {}
+    for line in fInReader:
+        for l in line[1:]:
+            d[l] = line[0]
+    fIn.close()
+    return d     

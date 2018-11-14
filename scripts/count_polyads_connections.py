@@ -19,7 +19,6 @@ SCREEN = ['old','duplicate','Frag','error','unk','sheath']
 mpl.rcParams['xtick.labelsize'] = 32
 mpl.rcParams['ytick.labelsize'] = 32
 
-fout = '/home/cabrittin/Dropbox/PhD/sr_vol/figs2/polyad_frequency_syn.png'
 
 ADULT_COL = '#FFC300'
 L4_COL = '#3380FF'

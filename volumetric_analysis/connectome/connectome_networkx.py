@@ -78,6 +78,9 @@ class Connectome:
     _reduce_to_adjacency(A,H)
       Remove edges in graph H that are not in graph A
 
+    combine_chem_and_elec()
+      Combine the chemical and gap junction connectivity graphs
+
     """
 
     def __init__(self,db,neurons):
@@ -339,3 +342,16 @@ class Connectome:
         return G
             
                 
+    def combine_chem_and_elec(self):
+        """
+        Combine the chemical and gap junction connectivity graphs
+        Combined graph stored in attribute self.D
+
+        """
+        self.D = self.C.copy()
+        for (a,b) in self.E.edges():
+            w = 0.5*self.E[a][b]['weight']
+            if not self.D.has_edge(a,b): self.D.add_edge(a,b,weight=0)
+            if not self.D.has_edge(b,a): self.D.add_edge(b,a,weight=0)
+            self.D[a][b]['weight'] += w
+            self.D[b][a]['weight'] += w

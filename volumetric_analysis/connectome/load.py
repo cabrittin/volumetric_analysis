@@ -135,13 +135,17 @@ def load_lite(_db,chemical=False,electrical=False,add_poly=False,
     """    
     con = db.connect.default(_db)
     cur = con.cursor()
-
+    neurons = sorted(scrub_neurons(db.mine.get_neurons(cur)))
+    if dataType == 'igraph':
+        C = Connectome(_db,neurons)
+    elif dataType == 'networkx':
+        C = nxConnectome(_db,neurons)
     if chemical:
-        synapses = db.mine.get_synapse_data(cur,'chemical',end=end)
+        synapses = db.mine.get_synapse_data(cur,'chemical')
         C.load_chemical(synapses,add_poly=add_poly)
 
     if electrical:
-        synapses = db.mine.get_synapse_data(cur,'electrical',end=end)
+        synapses = db.mine.get_synapse_data(cur,'electrical')
         C.load_electrical(synapses)
 
     if remove: C.remove_cells(remove)
