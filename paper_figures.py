@@ -53,7 +53,16 @@ if __name__ == '__main__':
 
     params = parser.parse_args()
 
-    if params.fig =='f3a':
+    if params.fig == 'f2c':
+        import max_anterior
+        max_anterior.run(params.fout)
+    elif params.fig in ['f2e','f2f']:
+        if not params.fout:
+            print('For this figure, an output file needs to be specified.')
+            break
+        import spatial_map
+        spatial_map.run(params.fout)
+    elif params.fig =='f3a':
         import dist_adj_subgrp2
         dist_adj_subgrp2.run(params.fout)
     elif params.fig == 'f3b':
