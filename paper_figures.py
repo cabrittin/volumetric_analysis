@@ -59,9 +59,9 @@ if __name__ == '__main__':
     elif params.fig in ['f2e','f2f']:
         if not params.fout:
             print('For this figure, an output file needs to be specified.')
-            break
-        import spatial_map
-        spatial_map.run(params.fout)
+        else: 
+            import spatial_map
+            spatial_map.run(params.fout)
     elif params.fig =='f3a':
         import dist_adj_subgrp2
         dist_adj_subgrp2.run(params.fout)
