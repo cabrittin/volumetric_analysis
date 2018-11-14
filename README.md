@@ -1,13 +1,16 @@
 # volumetric_analysis
-Companion code for
+Companion code for generating the figures from 
 
 Brittin, Cook, Hall, Emmons and Cohen. 'Volumetric reconstruction of 
-Caenorhabditis elegans nerve ring supports combinatorial CAM expression 
+*Caenorhabditis elegans* nerve ring supports combinatorial CAM expression 
 model for synaptic specificity'. (2018) Under review. 
 
+If you use any part of this code please site this paper. 
 
 ## Installation
 Clone or download respository. Make sure to maintain the relative paths.
+
+You will need to install and set up the appropriate mysql databases.
 
 ### Prerequisites
 Python3 will need to be installed along with the following python packages 
@@ -23,8 +26,11 @@ networkx 2.1
 ```
 
 ## Usage
-
-
+To generate figures use the following 
+```
+python paper_figures figNum -o /path/to/outputfigure
+```
+where figNum is the figure number. For example, for Figure 3a use f3a. For Figure S3a use fs3a. 
 
 ## Author
 
