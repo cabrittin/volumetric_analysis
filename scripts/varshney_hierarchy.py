@@ -35,7 +35,7 @@ def run():
     nclass = aux.read.into_dict(NCLASS)
     fig,ax = plt.subplots(1,1,figsize=(20,10))
     plot_varshney(ax,nodes,xyz,C.D.edges(),nclass,col)
-    #plt.show()
+    plt.show()
     
 if __name__ == '__main__':
     run()
