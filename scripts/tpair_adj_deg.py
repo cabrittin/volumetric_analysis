@@ -17,7 +17,6 @@ from scipy.stats import ttest_ind
 from connectome.load import from_db
 from networks.stats import *
 from figures.stats import *
-import lut
 import aux
 
 
