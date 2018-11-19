@@ -53,6 +53,12 @@ syn_cylinder(cur)
 get_cell_genes(cur,cell):
     Return the genes expressed in cell
 
+get_object_xy_in_layer(cur,cell,layer):
+    Returns (object_num,x,y) coordinates of cell object in layer
+
+get_synapse_from_layer(cur,layer):
+    Returns synapses in given layer
+
 created: Christopher Brittin
 date: 01 November 2018
 """
@@ -380,3 +386,51 @@ def get_cell_genes(cur,cell):
            %cell)
     cur.execute(sql)
     return [a[0] for a in cur.fetchall()]
+
+def get_object_xy_in_layer(cur,cell,layer):
+    """
+    Returns (object_num,x,y) coordinates of cell object in layer
+
+    Parameters
+    ----------
+    cur : MySQLdb cursor
+    cell : str
+      Name of cell
+    layer : str
+      Layer/image name
+    """
+
+    sql = ("select OBJ_Name,OBJ_X,OBJ_Y "
+           "from object "
+           "join contin on "
+           "contin.CON_Number = object.CON_Number "
+           "where contin.CON_AlternateName like '%s' "
+           "and object.IMG_Number like '%s'"
+           %(cell,layer))
+    cur.execute(sql)
+    return [(int(a[0]),int(a[1]),int(a[2])) for a in cur.fetchall()]
+             
+def get_synapse_from_layer(cur,layer):
+    """
+    Returns synapses in given layer
+    
+    Parameters
+    ----------
+    cur : MySQLdb cursor
+    layer : str
+      Name of layer
+    
+    """
+
+    sql = ("select synapsecombined.mid,"
+           "object.OBJ_X,"
+           "object.OBJ_Y "
+           #"image.IMG_SectionNumber "
+           "from synapsecombined "
+           "join object on object.OBJ_Name=synapsecombined.mid "
+           "join image on image.IMG_Number=object.IMG_Number "
+           "where object.IMG_Number='%s' "
+           #"and synapsecombined.type='chemical'"
+           %layer)
+    cur.execute(sql)
+    return [(int(a[0]),int(a[1]),int(a[2])) for a in cur.fetchall()]

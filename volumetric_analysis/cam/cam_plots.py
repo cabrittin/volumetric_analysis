@@ -24,7 +24,7 @@ def plot_expression_patterns(ax,Exp,fout=None):
     
 def plot_genes_in_neurons(ax,Exp,fout=None):
     gpn = Exp.gene_per_neuron_count()
-    plot_bar(ax,gpn,'# genes expressed in given neuron','# neurons')
+    plot_bar(ax,gpn,'# CAM genes expressed in given neuron','# neurons')
     plt.tight_layout()
     if fout: plt.savefig(fout)
 
@@ -38,7 +38,7 @@ def plot_isoforms_per_gene(ax,Exp,fout=None):
     
 def plot_neurons_expressing_genes(ax,Exp,fout=None):
     npg = Exp.neuron_per_gene_count()
-    plot_hist(ax,npg,'# neurons expressing a given gene', 'Distribution')
+    plot_hist(ax,npg,'# neurons expressing a given CAM gene', 'Distribution')
     plt.tight_layout()
     if fout: plt.savefig(fout)
 
