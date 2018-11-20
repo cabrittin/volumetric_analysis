@@ -20,9 +20,9 @@ import aux
 
 def run(fout=None):
     db = 'N2U'
-    wbe = aux.read.into_list2('./data/'+db+'_wbe.csv')
-    sbe = aux.read.into_list2('./data/'+db+'_sbe.csv')
-    ie = aux.read.into_list2('./data/'+db+'_ie.csv')
+    wbe = aux.read.into_list2('./results/'+db+'_wbe.csv')
+    sbe = aux.read.into_list2('./results/'+db+'_sbe.csv')
+    ie = aux.read.into_list2('./results/'+db+'_ie.csv')
 
     pre_mean = [np.mean([float(d[1]) for d in wbe if float(d[1]) >= 0]),
                 np.mean([float(d[1]) for d in sbe if float(d[1]) >= 0]),
