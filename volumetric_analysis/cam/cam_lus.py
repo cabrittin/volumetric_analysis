@@ -15,25 +15,87 @@ import numpy as np
 import db
 
 class Model(object):
+    """
+    Class for doing the LUS analysis on the different models
+    
+    Attributes
+    ----------
+    lus : dict
+     LUS scores for cells
+    modelName : str
+     Name of model being analyzed
+    
+    Methods
+    -------
+    add_lust(_neuron,_lus,_mode)
+      Adds an LUS score for _neuron
+    get_lus(_mode=None,thresh=0)
+      Returns the LUS scores abouve thresh
+    get_data()
+      Returns model results. 
+      Row format: cell_name,pre_lus,gap_lus
+    
+    """
     def __init__(self,_modelName):
+        """
+        Parameters
+        ---------
+        _modelName : str
+         Name of model
+
+        """
         self.lus = {}
         self.modelName = _modelName
 
     def add_lus(self,_neuron,_lus,_mode):
+        """
+        Adds teh LUS score for _neuron
+        
+        Parameters
+        ----------
+        _neuron : str
+          Name of cell
+        _lus : float
+          LUS score for the cell
+        _mode : str
+         Either 'pre', 'post' or 'gap' synaptic mode
+        """
         if _neuron not in self.lus:
             self.lus[_neuron] = {'gap':-1,'pre':-1,'post':-1}
         self.lus[_neuron][_mode] = _lus
 
     def get_lus(self,_mode=None,thresh=0):
+        """
+        Returns the LUS scores above specified threshold
+        
+        Parameters
+        ----------
+        _mode : str
+          Either 'pre', 'post' or 'gap' synaptic mode. (default = None)
+        thresh : float
+          Threshold for LUS score. (default = 0)
+        """
         return [self.lus[n][_mode] for n in self.lus
                 if self.lus[n][_mode] >= thresh]
 
     def get_data(self):
+        """
+        Returns model results. 
+        Row format: cell_name,pre_lus,gap_lus       
+        """
         data = [[n,self.lus[n]['pre'],self.lus[n]['gap']] for n in self.lus]
         return data
         
 
 def wbe(exp,C):
+    """
+    Whole-cell binary expression model (WBE)
+
+    Parameters
+    ----------
+    exp : Expression object
+    C : Connectome object (Networkx datatype)
+    """
     WBE = Model('WBE')
     for n in C.A.nodes():
         _num,_den = 0.0,0.0
@@ -53,6 +115,17 @@ def wbe(exp,C):
     return WBE
 
 def _wbe(exp,syn,neigh):
+    """
+    Computes LUS for WBE
+    
+    Parameters
+    ----------
+    exp : Expression object
+    syn : list
+      Cells that synapse
+    neigh : list
+      Cells that are adjacent but not synaptic
+    """
     nonsyn = neigh - syn
     lus = -1
     _num,_den = 0.0,0.0
@@ -68,7 +141,18 @@ def _wbe(exp,syn,neigh):
     
 
 def ie(exp,C,iters=1000,mode='post'):
-    
+    """
+    Isoform expression model (IE)
+
+    Parameters
+    ----------
+    exp : Expression object
+    C : Connectome object (Networkx datatype)
+    iters : int
+      Number of iterations to simulate alt. splicing. (default=1000)
+    mode : str
+      'pre' or 'post' synaptic expression. 
+    """
     bar = progressbar.ProgressBar(maxval=iters-1,
                                   widgets=[progressbar.Bar('.','[',']'),
                                            'IE: Alt. splice',
@@ -84,8 +168,17 @@ def ie(exp,C,iters=1000,mode='post'):
     return lus
 
 def sbe(exp,end=500):
-    lus_pre = sbe_pre(exp,end=500)
-    lus_gap = sbe_gap(exp,end=500)
+    """
+    Subcellular binary expression model
+
+    Parameters
+    ----------
+    exp : Expression object
+    end : int
+       Most posterior section number
+    """
+    lus_pre = sbe_pre(exp,end=end)
+    lus_gap = sbe_gap(exp,end=end)
 
     SBE = Model('SBE')
     for n in lus_pre: SBE.add_lus(n,lus_pre[n],'pre')
@@ -93,6 +186,15 @@ def sbe(exp,end=500):
     return SBE
 
 def sbe_pre(exp,end=500):
+    """
+    Subcellular binary expression model for chemical synapses
+
+    Parameters
+    ----------
+    exp : Expression object
+    end : int
+       Most posterior section number
+    """   
     syn = get_synapses(exp.cur,exp.nodes,end=end)
     idx = 0
     lus = {}
@@ -126,6 +228,15 @@ def sbe_pre(exp,end=500):
     return LUS
 
 def sbe_gap(exp,end=500):
+    """
+    Subcellular binary expression model for gap junctions
+
+    Parameters
+    ----------
+    exp : Expression object
+    end : int
+       Most posterior section number
+    """ 
     syn = get_gapjunctions(exp.cur,exp.nodes,end=end)
     idx = 0
     objs = syn.keys()
@@ -159,7 +270,36 @@ def sbe_gap(exp,end=500):
     return LUS
 
 class SynObj:
+    """
+    Class for chemical synapse objects. Used to support SBE analysis
+    
+    Attributes
+    ----------
+    object : int
+      Elegance object number
+    pre : str
+      Presynaptci cell name
+    pre_obje : int
+      Presynaptic object number
+    post : dict 
+      Dictionary that maps postsynaptic cells to object number
+    relabel : 
+       Used to for cell name compatability issues
+
+    Methods
+    -------
+    add_pre(cell,obj)
+      Adds the presynaptic cell
+    add_post(cell,obj)
+      Adds the postsynaptic cell
+    """
     def __init__(self,obj):
+        """
+        Attributes
+        ----------
+        obj : int
+          Elegance object number
+        """
         self.object = obj
         self.pre = None
         self.pre_obj = None
@@ -168,31 +308,41 @@ class SynObj:
                         'PHAR.':'PHAR'}
 
     def add_pre(self,cell,obj):
+        """
+        Adds the presynaptic cell
+        
+        Parameters
+        ----------
+        cell : str
+           cell name
+        obj : int
+           Elegance object number
+        """
         if cell in self.relabel: cell = self.relabel[cell]
         self.pre = cell
         self.pre_obj = obj
 
     def add_post(self,cell,obj):
+        """
+        Adds the postsynaptic cell
+        
+        Attributes
+        ----------
+        cell : str
+           cell name
+        obj : int
+           Elegance object number     
+        
+        """
         if cell in self.relabel: cell = self.relabel[cell]
         if cell: self.post[cell] = obj
 
-    def _post(self):
-        for p in self.post:
-            yield p,self.post[p]
 
-    def get_post_neurons(self):
-        return self.post.keys()
-
-    def get_pre_obj(self):
-        return self.pre_obj
-    
-    def get_pre(self):
-        return self.pre
-    
-    def get_post(self):
-        return self.post
     
 def get_synapses(cur,nodes,end=500):
+    """
+    Gets synapse data from the Elegance database
+    """
     sql = ("select mid,pre,post1,post2,post3,post4,"
            "preobj,postobj1,postobj2,postobj3,postobj4 "
            "from synapsecombined "
@@ -220,7 +370,35 @@ def get_synapses(cur,nodes,end=500):
 
 
 class GapObj:
+    """
+    Class for gap junction objects. Used to support SBE analysis.
+    
+    Attributes
+    ----------
+    object : int
+      Elegance object number
+    cellObjs : dict
+      Dictionary that maps cell name to object number
+    partners : dict
+      Dictionary that maps gap junction partners.
+    
+    Methods
+    -------
+    add_cell_obj(cell,obj)
+      Adds cell and object number
+    add_partner(cell1,cell2)
+      Maps cell1 to cell2
+    get_cells()
+      Returns list of cells
+    
+    """
     def __init__(self,obj):
+        """
+        Attributes
+        ----------
+        obj : int
+          Elegance object number       
+        """
         self.object = obj
         self.cellObjs = {}
         self.relabel = {'PVR.' : 'PVR',
@@ -228,19 +406,46 @@ class GapObj:
         self.partner = {}
         
     def add_cell_obj(self,cell,obj):
+        """
+        Adds cell and object number
+        
+        Attributes
+        ----------
+        cell : str
+          Cell name
+        obj : int
+          Elegance object number
+        
+        """
         if cell in self.relabel: cell = self.relabel[cell]
         self.cellObjs[cell] = obj
             
     def add_partners(self,cell1,cell2):
+        """
+        Maps cell1 to cell2
+        
+        Attributes
+        ----------
+        cell1 : str
+          Cell name
+        cell2 : str
+          Cell name
+        """
         if cell1 in self.relabel: cell1 = self.relabel[cell1]
         if cell2 in self.relabel: cell2 = self.relabel[cell2]
         self.partner[cell1] = cell2
         self.partner[cell2] = cell1
 
     def get_cells(self):
+        """
+        Returns list of cell names
+        """
         return self.cellObjs.keys()
 
 def get_gapjunctions(cur,nodes,end=500):
+    """
+    Gets gap junctions from the Elegance database
+    """
     sql = ("select mid,pre,post1,preobj,postobj1 "
            "from synapsecombined "
            "join object "
