@@ -81,6 +81,12 @@ class Connectome:
     combine_chem_and_elec()
       Combine the chemical and gap junction connectivity graphs
 
+    remove_self_loop(self)
+      Removes loops from graphs self.C and self.E
+
+    _remove_self_loops(G)
+      Removes loops from graph G
+
     """
 
     def __init__(self,db,neurons):
@@ -355,3 +361,28 @@ class Connectome:
             if not self.D.has_edge(b,a): self.D.add_edge(b,a,weight=0)
             self.D[a][b]['weight'] += w
             self.D[b][a]['weight'] += w
+
+    def remove_self_loops(self):
+        """
+        Removes loops from graphs self.C and self.E
+        """
+        self.C = self._remove_self_loops(self.C)
+        self.E = self._remove_self_loops(self.E)
+
+    @staticmethod
+    def _remove_self_loops(G):
+        """
+        Removes loops from graph G
+        
+        Parameters
+        ----------
+        G : Networkx
+          Graph
+        """
+        if nx.is_directed(G):
+            H = nx.DiGraph(G)
+        else:
+            H = nx.Graph(G)
+        for (n1,n2) in G.edges():
+            if n1 == n2: H.remove_edge(n1,n2)
+        return H
