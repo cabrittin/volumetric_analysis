@@ -59,6 +59,9 @@ get_object_xy_in_layer(cur,cell,layer):
 get_synapse_from_layer(cur,layer):
     Returns synapses in given layer
 
+get_object_adjacency(cur,obj):
+    Returns the adjacency of the object number
+
 created: Christopher Brittin
 date: 01 November 2018
 """
@@ -434,3 +437,24 @@ def get_synapse_from_layer(cur,layer):
            %layer)
     cur.execute(sql)
     return [(int(a[0]),int(a[1]),int(a[2])) for a in cur.fetchall()]
+
+def get_object_adjacency(cur,obj):
+    """
+    Returns the adjacency of the object number
+
+    Parameters
+    ----------
+    cur : MySQLdb cursor
+    obj : int
+       Object number
+
+    """
+    sql = ("select pre from adjacency2 "
+           "where postObj = %s "
+           "union "
+           "select post from adjacency2 "
+           "where preObj = %s "
+           %(obj,obj)
+           )
+    cur.execute(sql)
+    return [a[0] for a in cur.fetchall()]
