@@ -1,6 +1,11 @@
+"""
+expression.py
+
+Classes for analyzing the CAM expression data
+
+"""
+
 import sys
-sys.path.append(r'../lib/')
-sys.path.append(r'..')
 import numpy as np
 from tabulate import tabulate
 import random
@@ -10,6 +15,32 @@ import db
 import aux
 
 class Gene:
+    """
+    Class to represent each gene
+    
+    ...
+
+    Attributes
+    ----------
+    idx : int or list 
+      Index of gene. Primarily used to distinguish between different isoforms.
+      If isoforms, then idx is a list of isoform indicies
+    gene : str
+      Gene name
+    pre  : int
+      1 if expressed in presynaptic neurons. Otherwise, 0.
+    post : int
+      1 if expressed in postsynaptic neurons. Otherwise, 0.
+    isoforms : int
+      Number of isoforms
+    expression : list 
+      List of cells in which gene is expressed
+      
+    Methods
+    -------
+    get_idx(): returns index. If an isoform, returns a random index.
+
+    """  
     def __init__(self,idx,gene,pre,post,isoforms):
         self.idx = idx
         self.gene = gene
@@ -17,16 +48,91 @@ class Gene:
         self.post = int(post)
         self.isoforms = int(isoforms)
         self.expression = []
-        self.isoforms = int(isoforms)
         
     def get_idx(self):
+        """
+        Returns index. If an isoform, returns a random index.
+        """
         if isinstance(self.idx,list):
             return random.choice(self.idx)
         else:
             return self.idx
 
 class Expression:
+    """
+    Class to represent the expression data.
+
+    ...
+    
+    Attributes
+    ----------
+    cur : MySQLdb.cursor()
+      MySQL cursor
+    splice : bool
+      If true, use alternative splicing.
+    cam_file : str
+      Path to file with the CAM expression data.
+    cam : 2D list
+      Data in cam_file
+    nodes : dict
+      Diction that maps cell names to index.
+    M : int
+      Number of cells
+    N : int
+      Number of genes
+    genes : dict
+      Dictionary of gene name to Gene object
+    genes_idx : dict
+      dictionary of gene index to gene name
+    E : numpy array
+      Expression matrix
+    exp_link : dict
+      Dictionary that maps cell to binary gene expression pattern
+    Diff : [MxM] array
+      Difference between gene expression patterns
+    combined : 1D array
+      The combined expression of specified cells
+    
+    Methods
+    -------
+    load_genes()
+       Loads genes from the self.cam_file.
+    assign_expression_patterns(mode='post')
+       Generates the expression matrix. Mode specifies whether
+       to look at postsynapti ('post') for presynaptic ('pre')
+       expression. 
+    create_links():
+       Links the cell to the binary gene expression pattern.
+    assign_tag(bits)
+       Converts binary expression into a string.
+    compute_difference(cell1,cell2)
+       Computes gene expression difference between cell1 and cell2
+    set_combined_expression(neurons)
+       Creates the combined expression patterns of cells in list neuron.
+    compute_combined_difference(n)
+       Computes the difference between expression of cell n and the 
+       combined expression (self.combined)
+    gene_per_neuron_count()
+       Counts the number genes expressed in each neuron. 
+    neuron_per_gene_count()
+       Returns the number of neurons expressing a given gene
+    isoform_per_gene_count()
+       Returns the number of isorforms per gene
+    """    
     def __init__(self,cur,cam_file,nodes,splice=False):
+        """
+        Parameters
+        ----------
+        cur : MySQLdb.cursor()
+          MySQL cursor
+        cam_file : str
+          Path to cam expresssion file
+        nodes : list
+          list of cell names
+        splice : bool (optional)
+         If true, use isoform expression. (default = 1)
+
+        """        
         self.cur = cur
         self.splice = splice
         self.cam_file = cam_file
@@ -41,6 +147,10 @@ class Expression:
         self.combined_exp = None
              
     def load_genes(self):
+        """
+        Loads genes from the self.cam_file.
+        """
+        
         self.genes = {}
         self.gene_idx = {}
         idx = 0
@@ -59,6 +169,16 @@ class Expression:
         self.N = idx        
 
     def assign_expression_patterns(self,mode='post'):
+        """
+        Generates the expression matrix. Mode specifies whether
+        to look at postsynapti ('post') for presynaptic ('pre')
+        expression.  
+
+        Parameters
+        ----------
+        mode : str (default='post')
+           Specifies either 'pre' or 'post' synaptic expression.
+        """
         self.E = np.zeros([self.M,self.N],dtype=int)
         for n,idx in self.nodes.items():
             _genes = db.mine.get_cell_genes(self.cur,n)
@@ -80,20 +200,55 @@ class Expression:
         self.create_links()
         
     def create_links(self):
+        """
+        Links the cell to the binary gene expression pattern.
+        """
         self.exp_link = {}
         for n,idx in self.nodes.items():
             self.exp_link[n] = self.assign_tag(self.E[idx,:])
             
     @staticmethod
     def assign_tag(bits):
+        """
+        Converts binary expression into a string
+        
+        Parameters
+        ----------
+        bits : numpy row
+          Row of 1/0 for gene expression.
+        
+        """
         return ''.join(map(str,bits))
 
 
     def compute_difference(self,n1,n2):
+        """
+        Computes gene expression difference between cells n1 and n2
+
+        Parameters
+        ----------
+        n1 : str
+          Cell 1
+        n2 : str
+          Cell 2
+        
+        Returns 
+        -------
+        The modified self.Diff
+        """
         return self.Diff[self.nodes[n1],self.nodes[n2]]
 
 
     def set_combined_expression(self,neurons):
+        """
+        Creates the combined expression patterns of cells in list neuron.
+        
+        Parameters
+        ----------
+        neurons : list
+          List of cells to create the combined expression
+        
+        """
         tmp = np.zeros([1,self.N])
         for n in neurons:
             tmp += self.E[self.nodes[n]]
@@ -101,11 +256,29 @@ class Expression:
         self.combined = tmp
 
     def compute_combined_difference(self,n):
+        """
+        Computes the difference between expression of cell n and the 
+        combined expression (self.combined) 
+
+        Parameters
+        ----------
+        n : str
+          Cell name
+        
+        Returns
+        ---------
+        Sum of binary expression pattern
+        
+        """
         idx = self.nodes[n]
         return np.sum(abs(self.combined - self.E[idx,:]))
 
 
     def gene_per_neuron_count(self):
+        """
+        Return the counts the number genes expressed in each neuron.
+        
+        """
         data = np.zeros(self.N)
         for idx in range(self.M):
             s = int(np.sum(self.E[idx,:]))
@@ -114,9 +287,15 @@ class Expression:
         return data[:jdx]
 
     def neuron_per_gene_count(self):
+        """
+        Returns the number of neurons expressing a given gene
+        """
         return np.sum(self.E,axis=0)
 
     def isoform_per_gene_count(self):
+        """
+        Returns the number of isorforms per gene
+        """
         data = np.zeros(100)
         for g in self.genes:
             s = self.genes[g].isoforms
@@ -125,6 +304,14 @@ class Expression:
         return data[:jdx]
 
     def alt_splice_bilateral_dist(self,nclass):
+        """
+        Returns the distribution of alternative spliced genes
+        in bilaterally symmetric neurons
+        
+        Parameters:
+        nclass : dict
+          Specified the bilateral symmetry
+        """
         self.alt_gene_count = {}
         data = []
         for nc in nclass:
