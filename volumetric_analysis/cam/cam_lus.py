@@ -12,7 +12,7 @@ Created: 08 February 2018
 import progressbar
 import numpy as np
 
-import DB
+import db
 
 class Model(object):
     def __init__(self,_modelName):
@@ -75,7 +75,7 @@ def ie(exp,C,iters=1000,mode='post'):
                                            progressbar.Percentage()])
     bar.start()
     lus = np.zeros((iters,2))
-    for i in xrange(iters):
+    for i in range(iters):
         exp.assign_expression_patterns(mode=mode)
         tmp = wbe(exp,C)
         lus[i,0] = np.mean(tmp.get_lus('pre'))
@@ -106,7 +106,7 @@ def sbe_pre(exp,end=500):
     #objs = ['71193']
     for o in objs:
         if not syn[o].pre_obj: continue
-        adj = set(DB.mine.get_object_adjacency(exp.cur,syn[o].pre_obj))
+        adj = set(db.mine.get_object_adjacency(exp.cur,syn[o].pre_obj))
         post = set(syn[o].post)
         nonsyn = adj - post
         if syn[o].pre not in lus: lus[syn[o].pre] = [0.,0.]
@@ -140,7 +140,7 @@ def sbe_gap(exp,end=500):
         cells = syn[o].get_cells()
         for c in cells:
             try:
-                adj = set(DB.mine.get_object_adjacency(exp.cur,syn[o].cellObjs[c]))
+                adj = set(db.mine.get_object_adjacency(exp.cur,syn[o].cellObjs[c]))
                 s = syn[o].partner[c]
                 post = set([s])
                 nonsyn = adj - post
