@@ -30,7 +30,7 @@ def plot_genes_in_neurons(ax,Exp,fout=None):
 
 def plot_isoforms_per_gene(ax,Exp,fout=None):
     ipg = Exp.isoform_per_gene_count()
-    plot_bar(ax,ipg,'# isoforms', '# genes')
+    plot_bar(ax,ipg,'# of gene isoforms', '# genes')
     ax.set_ylim([0,25])
     ax.set_xlim([0.5,10])    
     plt.tight_layout()
@@ -56,7 +56,7 @@ def plot_alt_spliced_genes(ax,Exp,nclass,fout=None):
                    ylabel = '# bilateral neurons expressing gene',
                    title = ('Alt. spliced genes expressed in '
                             'bilaterally symmetric neurons'),
-                   fs=21)
+                   fs=28)
     for label in ax.get_xticklabels():
         label.set_fontstyle('italic')
     plt.tight_layout()
@@ -81,8 +81,8 @@ def plot_bar_chart(ax,x,y,width=0.45,ylabel=None,title=None,
 def plot_bar(ax,data,xlabel,ylabel):
     data_x = np.arange(len(data))
     ax.bar(data_x,data,align='center',color='black')
-    ax.set_xlabel(xlabel,fontsize=24)
-    ax.set_ylabel(ylabel,fontsize=24)
+    ax.set_xlabel(xlabel,fontsize=28)
+    ax.set_ylabel(ylabel,fontsize=28)
     ax.set_xticks(data_x)
     ax.set_xlim([-1,len(data)])
 
