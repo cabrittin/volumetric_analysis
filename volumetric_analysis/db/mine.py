@@ -62,6 +62,9 @@ get_synapse_from_layer(cur,layer):
 get_object_adjacency(cur,obj):
     Returns the adjacency of the object number
 
+order_synapses_by_section_number(cur,stype='chemical')
+    Returns list of synapses ordered by sections number 
+
 created: Christopher Brittin
 date: 01 November 2018
 """
@@ -415,7 +418,8 @@ def get_object_xy_in_layer(cur,cell,layer):
              
 def get_synapse_from_layer(cur,layer):
     """
-    Returns synapses in given layer
+    Returns synapses in given layer list of tuples:
+    (mid_object,x-pos,y-pos)
     
     Parameters
     ----------
@@ -458,3 +462,29 @@ def get_object_adjacency(cur,obj):
            )
     cur.execute(sql)
     return [a[0] for a in cur.fetchall()]
+
+def order_synapses_by_section_number(cur,stype='chemical'):
+    """
+    Returns synapses ordered by section number. Row format
+    [pre,post,sections,mid obj,continNum,IMG_Number,IMG_SectionNumber,X,Y]
+    
+    Parameters
+    ----------
+    cur : MySQLdb cursor
+    stype : str
+      synapse type : 'chemical' or 'electrical'
+
+    """
+
+    sql = ("select pre,post,sections,mid,continNum,"
+           "object.IMG_Number,image.IMG_SectionNumber, "
+           "object.OBJ_X,object.OBJ_Y "
+           "from synapsecombined "
+           "join object on synapsecombined.mid = object.OBJ_Name "
+           "join image on image.IMG_Number = object.IMG_Number "
+           "where synapsecombined.type = '%s' "
+           "order by image.IMG_SectionNumber"
+           %stype)
+    cur.execute(sql)
+    return cur.fetchall()
+
