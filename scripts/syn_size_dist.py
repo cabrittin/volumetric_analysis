@@ -4,6 +4,7 @@ import numpy as np
 import db
 import matplotlib.pyplot as plt
 import matplotlib as mpl
+import aux
 
 mpl.rcParams['xtick.labelsize'] = 24
 mpl.rcParams['ytick.labelsize'] = 24
@@ -25,6 +26,7 @@ def plot_syn(ax,syn):
     
 def get_synapses(cur,stype):
     syn = db.mine.order_synapses_by_section_number(cur,stype=stype)
+    data = []
     in_plane = []
     nr_45 = []
     not_nr = []
@@ -33,23 +35,29 @@ def get_synapses(cur,stype):
         if s[6] < NRTHRESH:
             if s[8] < INPLANETHRESH:
                 in_plane.append(w)
+                loc = 'NR in plane'
             else:
                 nr_45.append(w)
+                loc = 'NR 45 deg'
         else:
             not_nr.append(w)
-        
+            loc = 'Not NR'
+        data.append(list(s) + [loc])
     #print(len(in_plane),np.mean(in_plane),np.std(in_plane))
     #print(len(nr_45),np.mean(nr_45),np.std(nr_45))
     #print(len(not_nr),np.mean(not_nr),np.std(not_nr))
 
-    return [in_plane,nr_45,not_nr]
+    return [in_plane,nr_45,not_nr],data
 
 _db = 'N2U'
 con = db.connect.default(_db)
 cur = con.cursor()
 
-chem = get_synapses(cur,'chemical')
-elec = get_synapses(cur,'electrical')
+chem,csyn = get_synapses(cur,'chemical')
+elec,celec = get_synapses(cur,'electrical')
+
+syn = csyn + celec
+aux.write.from_list('results/n2u_syn_list_with_loc.csv',syn)
 
 fig,ax = plt.subplots(1,2,figsize=(15,10),sharey=True,sharex=True)
 plot_syn(ax[0],chem)
