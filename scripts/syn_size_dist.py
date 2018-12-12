@@ -10,8 +10,11 @@ import argparse
 mpl.rcParams['xtick.labelsize'] = 24
 mpl.rcParams['ytick.labelsize'] = 24
 
-NRTHRESH = 150
-INPLANETHRESH = 3000
+N2U_NRTHRESH = 150
+N2U_INPLANETHRESH = 3000
+
+N930_NRTHRESH = 920
+N930_INPLANETHESH = 8000
 
 def plot_hist(ax,data,nbins=25,hrange=(0,25),color='k',label=None):
     ax.hist(data,bins=nbins,range=hrange,histtype='step',
@@ -25,7 +28,7 @@ def plot_syn(ax,syn):
     ax.set_ylim([0,1])   
     ax.legend(loc='lower right',fontsize=24)
     
-def get_synapses(cur,stype):
+def get_synapses(cur,stype,nrthresh,inplanethresh):
     syn = db.mine.order_synapses_by_section_number(cur,stype=stype)
     data = []
     in_plane = []
@@ -33,8 +36,8 @@ def get_synapses(cur,stype):
     not_nr = []
     for s in syn:
         w = int(s[2])
-        if s[6] < NRTHRESH:
-            if s[8] < INPLANETHRESH:
+        if s[6] < nrthresh:
+            if s[8] < inplanethresh:
                 in_plane.append(w)
                 loc = 'NR in plane'
             else:
@@ -58,11 +61,19 @@ if __name__ == '__main__':
                         )
    
     params = parser.parse_args()
+
+    if params.db == 'N2U':
+        nrthresh = N2U_NRTHRESH
+        inplane_thresh = N2U_INPLANETHRESH
+    elif params.db == 'n930':
+        nrthresh = N930_NRTHRESH
+        inplane_thresh = N930_INPLANETHRESH
+    
     con = db.connect.default(params.db)
     cur = con.cursor()
 
-    chem,csyn = get_synapses(cur,'chemical')
-    elec,celec = get_synapses(cur,'electrical')
+    chem,csyn = get_synapses(cur,'chemical',nrthresh,inplane_thresh)
+    elec,celec = get_synapses(cur,'electrical',nrthresh,inplane_thresh)
 
     syn = csyn + celec
     aux.write.from_list('results/%s_syn_list_with_loc.csv'%params.db,syn)
