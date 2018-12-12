@@ -14,7 +14,7 @@ N2U_NRTHRESH = 150
 N2U_INPLANETHRESH = 3000
 
 N930_NRTHRESH = 920
-N930_INPLANETHESH = 8000
+N930_INPLANETHRESH = 8000
 
 def plot_hist(ax,data,nbins=25,hrange=(0,25),color='k',label=None):
     ax.hist(data,bins=nbins,range=hrange,histtype='step',
