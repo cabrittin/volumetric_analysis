@@ -5,6 +5,7 @@ import db
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import aux
+import argparse
 
 mpl.rcParams['xtick.labelsize'] = 24
 mpl.rcParams['ytick.labelsize'] = 24
@@ -49,23 +50,30 @@ def get_synapses(cur,stype):
 
     return [in_plane,nr_45,not_nr],data
 
-_db = 'N2U'
-con = db.connect.default(_db)
-cur = con.cursor()
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Outputs list of synapse positions")
+    parser.add_argument('db',
+                        action="store",
+                        help="Database name"
+                        )
+   
+    params = parser.parse_args()
+    con = db.connect.default(params.db)
+    cur = con.cursor()
 
-chem,csyn = get_synapses(cur,'chemical')
-elec,celec = get_synapses(cur,'electrical')
+    chem,csyn = get_synapses(cur,'chemical')
+    elec,celec = get_synapses(cur,'electrical')
 
-syn = csyn + celec
-aux.write.from_list('results/n2u_syn_list_with_loc.csv',syn)
+    syn = csyn + celec
+    aux.write.from_list('results/%s_syn_list_with_loc.csv'%params.db,syn)
 
-fig,ax = plt.subplots(1,2,figsize=(15,10),sharey=True,sharex=True)
-plot_syn(ax[0],chem)
-plot_syn(ax[1],elec)
-ax[0].set_ylabel('Cumulative distribution',fontsize=24)
-ax[0].set_xlabel('Synapse weight (# EM sections)',fontsize=24)
-ax[1].set_xlabel('Synapse weight (# EM sections)',fontsize=24)
-ax[0].set_title('Chemical synapses',fontsize=24)
-ax[1].set_title('Gap junctions',fontsize=24)
-plt.savefig('results/nr_vs_nonnr_syn.png')
-plt.show()
+    fig,ax = plt.subplots(1,2,figsize=(15,10),sharey=True,sharex=True)
+    plot_syn(ax[0],chem)
+    plot_syn(ax[1],elec)
+    ax[0].set_ylabel('Cumulative distribution',fontsize=24)
+    ax[0].set_xlabel('Synapse weight (# EM sections)',fontsize=24)
+    ax[1].set_xlabel('Synapse weight (# EM sections)',fontsize=24)
+    ax[0].set_title('Chemical synapses',fontsize=24)
+    ax[1].set_title('Gap junctions',fontsize=24)
+    plt.savefig('results/nr_vs_nonnr_syn.png')
+    plt.show()
