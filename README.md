@@ -3,7 +3,7 @@ Companion code for generating the figures from
 
 Brittin, Cook, Hall, Emmons and Cohen. 'Volumetric reconstruction of 
 *Caenorhabditis elegans* nerve ring supports combinatorial CAM expression 
-model for synaptic specificity'. (2018) Under review. 
+model for synaptic specificity'. (2018) ([biorxiv](https://www.biorxiv.org/content/early/2018/12/04/485771)). 
 
 If you use any part of this code please site this paper. 
 
