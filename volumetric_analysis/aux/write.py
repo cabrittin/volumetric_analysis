@@ -30,7 +30,10 @@ def from_dict(fout,Dic):
                          quotechar = '"',
                          quoting = csv.QUOTE_MINIMAL)
     for k in sorted(Dic.keys()):
-        fWriter.writerow([k,Dic[k]])
+        if type(Dic[k]) == list:
+            fWriter.writerow([k] + Dic[k])
+        else:
+            fWriter.writerow([k,Dic[k]])
 
 def from_list(fOut,List):
     """
