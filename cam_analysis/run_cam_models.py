@@ -54,7 +54,7 @@ if __name__ == '__main__':
                 electrical=True,dataType='networkx')
     C.remove_self_loops()
     C.reduce_to_adjacency()    
-
+    
     wbe = cam_lus.wbe(e,C)
     wbe_data = wbe.get_data()
     aux.write.from_list('results/'+params.db+'_wbe.csv',wbe_data) 

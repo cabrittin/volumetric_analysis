@@ -21,7 +21,14 @@ import aux
 
 lr_pairs = './mat/lr_dict.txt'
 
-def run(fout=None):
+def write_out(edges,score1,score2,_fout):
+    _out = []
+    for i in range(len(edges)):
+        e = edges[i]
+        _out.append([e,score1[i],score2[i],abs(score1[i]-score2[i])])
+    aux.write.from_list(_fout,_out)
+
+def run(fout=None,source_data=None):
     N2U = 'N2U'
     JSH = 'JSH'
     _lrd = aux.read.into_dict(lr_pairs)
@@ -34,28 +41,42 @@ def run(fout=None):
     n2u = from_db(N2U,adjacency=True,remove=_remove)
     rn2u = n2u.A.map_vertex_names(lrd)
     ntdbound = get_td_bounds(n2u.A.es['weight'])
-    lntd,rntd = get_corresponding_edge_attr(n2u.A,rn2u)
-    lntd,rntd = filter_corresponding_tds(lntd,rntd,[ntdbound,ntdbound])
+    _edges,lntd,rntd = get_corresponding_edge_attr(n2u.A,rn2u)
+    _edges,lntd,rntd = filter_corresponding_tds(_edges,lntd,rntd,[ntdbound,ntdbound])
+    if source_data:
+        fsplit = source_data.split('.')
+        dout = fsplit[0] + '_adult_contralateral.' + fsplit[1]
+        write_out(_edges,lntd,rntd,dout)
 
     jsh = from_db(JSH,adjacency=True,remove=_remove)
     rjsh = jsh.A.map_vertex_names(lrd)
     jtdbound = get_td_bounds(jsh.A.es['weight'])
-    ljtd,rjtd = get_corresponding_edge_attr(jsh.A,rjsh)
-    ljtd,rjtd = filter_corresponding_tds(ljtd,rjtd,[jtdbound,jtdbound])
+    _edges,ljtd,rjtd = get_corresponding_edge_attr(jsh.A,rjsh)
+    _edges,ljtd,rjtd = filter_corresponding_tds(_edges,ljtd,rjtd,[jtdbound,jtdbound])
+    if source_data:
+        fsplit = source_data.split('.')
+        dout = fsplit[0] + '_l4_contralateral.' + fsplit[1]
+        write_out(_edges,ljtd,rjtd,dout)
 
-    bntd,bjtd = get_corresponding_edge_attr(n2u.A,jsh.A)
-    bntd,bjtd = filter_corresponding_tds(bntd,bjtd,[ntdbound,jtdbound])
-
+    
+    _edges,bntd,bjtd = get_corresponding_edge_attr(n2u.A,jsh.A)
+    _edges,bntd,bjtd = filter_corresponding_tds(_edges,bntd,bjtd,[ntdbound,jtdbound])
+    if source_data:
+        fsplit = source_data.split('.')
+        dout = fsplit[0] + '_adult_l4_homologous.' + fsplit[1]
+        write_out(_edges,bntd,bjtd,dout)     
+    
     ndelta = np.array(lntd) - np.array(rntd)
     jdelta = np.array(ljtd) - np.array(rjtd)
     bdelta = np.array(bntd) - np.array(bjtd)
 
     data = [ndelta,jdelta,bdelta]
 
-    print(ttest_rel(lntd,rntd))
-    print(ttest_rel(ljtd,rjtd))
-    print(ttest_rel(bntd,bjtd))
-
+    print('Stats:')
+    print_wilcoxon(ndelta,'Adult L/R')
+    print_wilcoxon(jdelta,'L4 L/R')
+    print_wilcoxon(bdelta,'Adult/L4')
+    
     tval1,pval1 = ttest_ind(ndelta,jdelta)
     tval2,pval2 = ttest_ind(jdelta,bdelta)
     tval3,pval3 = ttest_ind(ndelta,bdelta)

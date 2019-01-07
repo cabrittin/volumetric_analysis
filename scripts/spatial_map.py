@@ -20,7 +20,7 @@ import figures.spatialMap as smplt
 display = 'Sp1,Sp2,I1,I2,SMN,HMNp,Sa,HMNa'
 color_code = './mat/color_code.txt'
 neuron_class = './mat/nerve_ring_classes.txt'
-_db = 'N2U'
+_db = 'JSH'
 left = './mat/left_nodes.txt'
 right = './mat/right_nodes.txt'
 

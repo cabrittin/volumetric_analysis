@@ -84,6 +84,7 @@ def get_td_bounds(td):
 
 def get_corresponding_edge_attr(G1,G2,attr1='weight',attr2='weight'):
     _attr1,_attr2 = [],[]
+    _edges = []
     for _u in G1.vs:
         u = _u['name']
         neigh1 = G1.vs[G1.neighbors(u,mode='out')]['name']
@@ -99,10 +100,11 @@ def get_corresponding_edge_attr(G1,G2,attr1='weight',attr2='weight'):
                 w1 = G1.es[G1.get_eid(u1,v1)][attr1]                
             if G2.are_connected(u2,v2):
                 w2 = G2.es[G2.get_eid(u2,v2)][attr2]
+            _edges.append(u + '-' + v)
             _attr1.append(w1)
             _attr2.append(w2)
         
-    return _attr1,_attr2
+    return _edges,_attr1,_attr2
 
 def get_corresponding_out_strength(G1,G2,edge_attr='weight'):
     attr1,attr2 = [],[]
@@ -127,21 +129,22 @@ def get_corresponding_out_strength(G1,G2,edge_attr='weight'):
         
     return attr1,attr2     
 
-def filter_corresponding_tds(td1,td2,tdbounds):
+def filter_corresponding_tds(edges,td1,td2,tdbounds):
     [tmin1,tmax1] = tdbounds[0]
     [tmin2,tmax2] = tdbounds[1]
     N = len(td1)
-    _td1,_td2 = [],[]
-
+    _edges,_td1,_td2 =[], [],[]
+    
     for i in range(N):
         if td1[i] == 0 or td2[i] == 0: continue
         log1 = np.log(td1[i])
         log2 = np.log(td2[i])
         if ((log1 > tmin1 and log1 < tmax1)
             and (log2 > tmin2 and log2 < tmax2)):
+            _edges.append(edges[i])
             _td1.append(log1)
             _td2.append(log2)
-    return _td1,_td2
+    return _edges,_td1,_td2
             
 def get_neighborhood_similarity(G1,G2,vertices,mode='out'):
     """

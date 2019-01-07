@@ -12,6 +12,8 @@ sys.path.append(r'./volumetric_analysis')
 import matplotlib.pyplot as plt
 from scipy.stats import ttest_rel
 from scipy.stats import ttest_ind
+from scipy.stats import wilcoxon
+from scipy.stats import ttest_1samp
 
 #Brittin modules
 from connectome.load import from_db
@@ -21,18 +23,15 @@ import aux
 
 
 lr_pairs = './mat/lr_neurons.txt'
-dout1 = '../outputs/n2u_adj_def_diff.csv'
-dout2 = '../outputs/jsh_adj_def_diff.csv'
-dout3 = '../outputs/both_adj_def_diff.csv'
 
-def write_out(node,score1,score2,_fout):
+def write_out(nodes,score1,score2,_fout):
     _out = []
-    for i in range(len(node)):
-        _out.append([i,node[i],score1[i],score2[i],abs(score1[i]-score2[i])])
+    for (n1,n2) in nodes:
+        _out.append([n1,n2,score1[n1],score2[n2],abs(score1[n1]-score2[n2])])
 
     aux.write.from_list(_fout,_out)
 
-def run(fout=None):
+def run(fout=None,source_data=None):
     
     N2U = 'N2U'
     JSH = 'JSH'
@@ -45,27 +44,39 @@ def run(fout=None):
     n2u = from_db(N2U,adjacency=True,remove=_remove)
     lnd = get_adj_deg(n2u,vertices = lr[0])
     rnd = get_adj_deg(n2u,vertices = lr[1])
-    #write_out(nodes,lnd,rnd,dout1)
+    if source_data:
+        fsplit = source_data.split('.')
+        dout = fsplit[0] + '_adult_contralateral.' + fsplit[1]
+        write_out(_lr,lnd,rnd,dout)
 
     jsh = from_db(JSH,adjacency=True,remove=_remove)
     ljd = get_adj_deg(jsh,vertices = lr[0])
     rjd = get_adj_deg(jsh,vertices = lr[1])
-    #write_out(nodes,ljd,rjd,dout2)
+    if source_data:
+        fsplit = source_data.split('.')
+        dout = fsplit[0] + '_l4_contralateral.' + fsplit[1]
+        write_out(_lr,ljd,rjd,dout)
 
     cells = sorted((set(n2u.neurons)&set(jsh.neurons))-set(_remove))
     bnd = get_adj_deg(n2u,vertices = cells)
     bjd = get_adj_deg(jsh,vertices = cells)
-    #write_out(nodes,bnd,bjd,dout3)
+    if source_data:
+        fsplit = source_data.split('.')
+        dout = fsplit[0] + '_adult_l4_homologous.' + fsplit[1]
+        write_out(zip(cells,cells),bnd,bjd,dout)    
+    
 
     ndelta = [lnd[k1] - rnd[k2] for (k1,k2) in _lr]
     jdelta = [ljd[k1] - rjd[k2] for (k1,k2) in _lr]
     bdelta = [bnd[k] - bjd[k] for k in bnd.keys() if k in bjd.keys()]
 
     data = [ndelta,jdelta,bdelta]
-    #print(np.mean(ndelta),np.std(ndelta))
-    #print(np.mean(jdelta),np.std(jdelta))
-    #print(np.mean(bdelta),np.std(bdelta))
 
+    print('Stats:')
+    print_wilcoxon(ndelta,'Adult L/R')
+    print_wilcoxon(jdelta,'L4 L/R')
+    print_wilcoxon(bdelta,'Adult/L4')
+    
     tval1,pval1 = ttest_ind(ndelta,jdelta)
     tval2,pval2 = ttest_ind(jdelta,bdelta)
     tval3,pval3 = ttest_ind(ndelta,bdelta)

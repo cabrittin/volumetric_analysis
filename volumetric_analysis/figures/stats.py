@@ -11,7 +11,7 @@ from sklearn.mixture import GaussianMixture
 import scipy.stats as scpstats
 from matplotlib.ticker import MaxNLocator
 from scipy.stats import pearsonr
-
+from scipy.stats import wilcoxon
 
 mpl.rcParams['xtick.labelsize'] = 24
 mpl.rcParams['ytick.labelsize'] = 24
@@ -253,7 +253,7 @@ def plot_boxplots(ax,data,labels=None,pval=[],showfliers=False,
             patch.set_facecolor(color)        
     
     for (i,j,p) in pval:
-        print(stars(p))
+        print(i,j,p,stars(p))
         cap1 = bp['caps'][2*i+1].get_ydata()
         cap2 = bp['caps'][2*j+1].get_ydata()
         y_max = np.max(np.concatenate((cap1,cap2)))
@@ -288,10 +288,12 @@ def plot_overlap_compare(ax,data,pval,fout=None):
                        title = 'Overlapping vs. homologous neighborhoods',
                        showfliers=True,width=0.2,colors=colors)
 
-    ax.set_xticklabels(['Adult L\R',
-                        'L4 L\R',
-                        'Adult/L4'])
+    _len = [len(d) for d in data]
+    ax.set_xticklabels(['Adult L\R\n($n=%d,%d$)' %(_len[0],_len[1]),
+                        'L4 L\R\n($n=%d,%d$)' %(_len[2],_len[3]),
+                        'Adult/L4\n($n=%d,%d$)'%(_len[4],_len[5])])
     ax.set_xticks([1.5,3.5,5.5])
+    ax.xaxis.set_tick_params(labelsize=24)
     ax.axvspan(0,2.5,facecolor='#C3C3C3')
     ax.axvspan(2.5,4.5,facecolor='#D8D7D7')
     ax.axvspan(4.5,7,facecolor='#C3C3C3')
@@ -349,14 +351,16 @@ def dist_adj_subgroups2(ax,data,fout=None):
         pos.append(i+dx)
         colors.extend([ADULT_COL,L4_COL])
 
-    
     bp = plot_boxplots(ax,data,labels=labels,positions=pos,
                        ylabel='Adjacency degree',
                        title='Adjacency degree by group',
                        showfliers=True,width=0.2,colors=colors)
 
-    
-    ax.set_xticklabels(['Sp','Sa','I1','I2','SMN','HMNp','HMNa'])
+
+    _ticklabels = ['Sp','Sa','I1','I2','SMN','HMNp','HMNa']
+    for i in range(len(_ticklabels)):
+        _ticklabels[i] = _ticklabels[i] + '\n($n=%d$)'%len(data[2*i])
+    ax.set_xticklabels(_ticklabels)
     ax.set_xticks([1,2,3,4,5,6,7])
 
     
@@ -430,9 +434,11 @@ def plot_confrac_subgroups(ax,data,fout=None):
                        title='Connectivity fraction by functional class',
                        showfliers=True,width=0.2,colors=colors)
 
-    ax.set_xticklabels(['$C^{\mathrm{gap}}$',
-                        '$C^{\mathrm{pre}}$',
-                        '$C^{\mathrm{post}}$'])
+    
+    _ticklabels = ['$C^{\mathrm{gap}}$',
+                   '$C^{\mathrm{pre}}$',
+                   '$C^{\mathrm{post}}$']
+    ax.set_xticklabels(_ticklabels)
     ax.set_xticks([2, 4, 6])
     ax.axvspan(0,3,facecolor='#C3C3C3')
     ax.axvspan(3,5,facecolor='#D8D7D7')
@@ -442,7 +448,9 @@ def plot_confrac_subgroups(ax,data,fout=None):
     _A, = ax.plot([1,1],SEN_COL)
     _L, = ax.plot([1,1],INT_COL)
     _AL, = ax.plot([1,1],MOT_COL)
-    leg =ax.legend((_A, _L,_AL),('Sensory', 'Interneuron','Motor'),
+    leg =ax.legend((_A, _L,_AL),('Sensory ($n=%d$)'%len(data[0]),
+                                 'Interneuron ($n=%d$)'%len(data[1]),
+                                 'Motor ($n=%d$)'%len(data[2])),
                    loc='upper left',fontsize=24)
     for legobj in leg.legendHandles:
         legobj.set_linewidth(4.0)
@@ -456,12 +464,14 @@ def plot_confrac_subgroups(ax,data,fout=None):
 
 
 def tpair_adj_deg(ax,data,pval,fout=None):
-    labels = ['Adult L/R','L4 L/R','Adult/L4']
+    labels = ['Adult L/R\n($n=$%d)'%len(data[0]),
+              'L4 L/R\n($n=$%d)'%len(data[1]),
+              'Adult/L4\n($n=$%d)'%len(data[2])]
     pos = [1,2,3]
     colors = [ADULT_COL,L4_COL,AL_COL]
     
     bp = plot_boxplots(ax,data,labels=labels,positions=pos,
-                       pval=pval,annotscale=10,
+                       pval=pval,annotscale=10,xfs=28,
                        ylabel='Degree difference',
                        title = 'Homologous adjacency degree',
                        showfliers=True,width=0.2,colors=colors)
@@ -470,12 +480,15 @@ def tpair_adj_deg(ax,data,pval,fout=None):
     if fout: plt.savefig(fout)
 
 def tpair_adj_weight(ax,data,pval,fout=None):
-    labels = ['Adult L/R','L4 L/R','Adult/L4']
+    labels = ['Adult L/R\n($n=$%d)'%len(data[0]),
+              'L4 L/R\n($n=$%d)'%len(data[1]),
+              'Adult/L4\n($n=$%d)'%len(data[2])]    
+    
     pos = [1,2,3]
     colors = [ADULT_COL,L4_COL,AL_COL]
     
     bp = plot_boxplots(ax,data,labels=labels,positions=pos,
-                       pval=pval,annotscale=1.0,
+                       pval=pval,annotscale=1.0,xfs=28,
                        ylabel='log(surface area) difference',
                        title = 'Homologous surface area contacts',
                        showfliers=True,width=0.2,colors=colors)
@@ -508,7 +521,9 @@ def tpair_syn(ax,data,pval,fout=None,ylabel=None,
     _A, = ax.plot([1,1],ADULT_COL)
     _L, = ax.plot([1,1],L4_COL)
     _AL, = ax.plot([1,1],AL_COL)
-    leg =ax.legend((_A, _L,_AL),('Adult L/R', 'L4 L/R','Adult/L4'),fontsize=18)
+    leg =ax.legend((_A, _L,_AL),('Adult L/R ($n=%d$)'%(len(data[0])),
+                                 'L4 L/R ($n=%d$)'%len(data[1]),
+                                 'Adult/L4($n=%d$)'%len(data[2])),fontsize=18)
     for legobj in leg.legendHandles:
         legobj.set_linewidth(4.0)
     _A.set_visible(False)
@@ -531,10 +546,14 @@ def tpair_syn_adj_ratio(ax,data,fout=None):
                        title = 'Adjacency contact occupied by synapse',
                        showfliers=True,width=0.2,colors=colors)
 
-    ax.set_xticklabels(['gap j.',
-                        'presyn.',
-                        'postsyn'])
+    _len = [len(d) for d in data]
+    _ticklabels = ['gap j.', 'presyn.', 'postsyn.']
+    for i in range(3):
+        n = ','.join(list(map(str,[_len[2*i + _j] for _j in range(2)])))
+        _ticklabels[i] += "\n($n=" + n +"$)"
+    ax.set_xticklabels(_ticklabels)
     ax.set_xticks([1.5, 3.5, 5.5])
+    ax.xaxis.set_tick_params(labelsize=32)
     ax.axvspan(0,2.5,facecolor='#C3C3C3')
     ax.axvspan(2.5,4.5,facecolor='#D8D7D7')
     ax.axvspan(4.5,7,facecolor='#C3C3C3')
@@ -620,3 +639,13 @@ def stars(p):
        return "*"
    else:
        return "ns"
+
+def print_wilcoxon(data,label=None):
+    stat,pval = wilcoxon(data)
+    _tmp = (': n=%d,mu=%1.3f,std=%1.3f,se=%1.3f,p-val=%.2E'
+           %(len(data),np.mean(data),
+             np.std(data),np.std(data)/np.sqrt(len(data)),
+             pval))
+    if label:
+        _tmp = label + _tmp
+    print(_tmp)

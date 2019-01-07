@@ -13,8 +13,7 @@ import networkx as nx
 from random import shuffle
 
 import aux
-import DB
-import LUT
+import db
 
 class Subcell:
     def __init__(self,neuron,contin,endpts):

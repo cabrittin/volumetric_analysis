@@ -43,9 +43,12 @@ def plot_specificity(ax,spec1,spec2,devspec,fout=None):
     width = 0.25
     y_pos = np.arange(8)
     ax.grid(zorder=0)
-    ax.barh(y_pos-width,B1,width,label='Adult L/R',zorder=3,color=ADULT_COL)
-    ax.barh(y_pos,B2,width,label='L4 L/R',zorder=3,color=L4_COL)
-    ax.barh(y_pos+width,B3,width,label='Adult/L4',zorder=3,color=AL_COL)
+    ax.barh(y_pos-width,B1,width,label='Adult L/R\n($n=%d$)'%len(spec1),
+            zorder=3,color=ADULT_COL)
+    ax.barh(y_pos,B2,width,label='L4 L/R\n($n=%d$)'%len(spec2),
+            zorder=3,color=L4_COL)
+    ax.barh(y_pos+width,B3,width,label='Adult/L4\n($n=%d$)'%len(devspec),
+            zorder=3,color=AL_COL)
     ax.set_xlim([0,0.5])
     ax.set_yticks(y_pos)
     ax.set_yticklabels(('','','','','','','',''))#gpp)
@@ -105,7 +108,7 @@ def format_bar_specificity(S,thresh = 0.05):
             outliers.append(s)
     return data/N,sorted(outliers)
 
-def run(fout=None):
+def run(fout=None,source_data=None):
     N2U = 'N2U'
     JSH = 'JSH'
     _remove = ['VC01','VD01','VB01','VB02']
@@ -130,7 +133,16 @@ def run(fout=None):
     jshspec = synspec.get_bilateral_specificity(JSH,lrd,left)
     devspec = synspec.get_developmental_specificity(N2U,JSH,
                                                     both_nodes=both_nodes)
-    
+    if source_data:
+        fsplit = source_data.split('.')
+        nout = fsplit[0] + '_adult_contralateral.' + fsplit[1]
+        jout = fsplit[0] + '_l4_contralateral.' + fsplit[1]
+        bout = fsplit[0] + '_adult_l4_homologous.' + fsplit[1]
+        aux.write.from_dict(nout,n2uspec)
+        aux.write.from_dict(jout,jshspec)
+        aux.write.from_dict(bout,devspec)
+        
+        
     fig,ax = plt.subplots(1,1,figsize=(18,10))
     plot_specificity(ax,n2uspec,jshspec,devspec,fout=fout)
     plt.show()

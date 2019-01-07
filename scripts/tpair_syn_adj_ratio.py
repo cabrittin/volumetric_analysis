@@ -56,8 +56,25 @@ def get_ratio(C,S):
 
     return data
 
+def get_source_data(C,S):
+    data = []
+    for (u,v) in C.C.edges():
+        adj = float(C.A[u][v]['count'])
+        w = C.C[u][v]['weight']
+        if u in S and S[u][1] < P_THRESH:
+            data.append(['pre',u,v,w/adj])
+        if v in S and S[v][2] < P_THRESH:
+            data.append(['post',v,u,w/adj])
 
-def run(fout=None):
+    for (u,v) in C.E.edges():
+        adj = float(C.A[u][v]['count'])
+        w = C.E[u][v]['weight']
+        if (u in S) and (v in S) and (S[u][0] < P_THRESH or S[v][0] < P_THRESH):
+            data.append(['gap',u,v,w/adj])
+
+    return data    
+
+def run(fout=None,source_data=None):
     N2U = 'N2U'
     JSH = 'JSH'
     _remove = ['VC01','VD01','VB01','VB02']
@@ -78,6 +95,15 @@ def run(fout=None):
     
     n2uspec = synspec.get_bilateral_specificity(N2U,lrd,left)
     jshspec = synspec.get_bilateral_specificity(JSH,lrd,left)   
+
+    if source_data:
+        fsplit = source_data.split('.')
+        nout = fsplit[0] + '_adult.' + fsplit[1]
+        jout = fsplit[0] + '_l4.' + fsplit[1]
+        src = get_source_data(N2U,n2uspec)
+        aux.write.from_list(nout,src)
+        src = get_source_data(JSH,jshspec)
+        aux.write.from_list(jout,src)
     
     ndata = get_ratio(N2U,n2uspec)
     jdata = get_ratio(JSH,jshspec)
@@ -86,7 +112,7 @@ def run(fout=None):
             ndata['pre'],jdata['pre'],
             ndata['post'],jdata['post']]
 
-    fig,ax = plt.subplots(1,1,figsize=(12,10))
+    fig,ax = plt.subplots(1,1,figsize=(15,10))
     tpair_syn_adj_ratio(ax,data,fout=fout)
     plt.show()
 

@@ -23,7 +23,7 @@ mpl.rcParams['ytick.labelsize'] = 32
 
 _nclass = "./mat/simmu_cell_class.txt"
 
-def run(fout=None):
+def run(fout=None,source_data=None):
     db = 'N2U'
     _remove = ['VC01','VD01','VB01','VB02']
     nclass = aux.read.into_dict(_nclass)
@@ -46,13 +46,21 @@ def run(fout=None):
     s_idx = [v.index for v in C.C.vs.select(group='S')]
     i_idx = [v.index for v in C.C.vs.select(group='I')]
     m_idx = [v.index for v in C.C.vs.select(group='M')]
-
+    
     for s in stype:
         data.append(cf[s][s_idx])
         data.append(cf[s][i_idx])
         data.append(cf[s][m_idx])
 
-    fig,ax = plt.subplots(1,1,figsize=(12,10))
+    if source_data:
+        dout = []
+        vertices = [v['name'] for v in C.A.vs]
+        for s in stype:
+            for i in range(len(vertices)):
+                dout.append([s,vertices[i],cf[s][i]])
+        aux.write.from_list(source_data,dout)
+
+    fig,ax = plt.subplots(1,1,figsize=(15,10))
     plot_confrac_subgroups(ax,data,fout=fout)
 
     plt.tight_layout()

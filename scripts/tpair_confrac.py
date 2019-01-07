@@ -57,13 +57,17 @@ def run(fout=None):
             np.array(ljcf['post']) - np.array(rjcf['post']),
             np.array(bncf['post']) - np.array(bjcf['post'])]
 
-    print(ttest_rel(lncf['pre'],rncf['pre']))
-    print(ttest_rel(ljcf['pre'],rjcf['pre']))
-    print(ttest_rel(bncf['pre'],bjcf['pre']))
+    print('Stats:')
+    print_wilcoxon(data[0],'Adult L/R gap')
+    print_wilcoxon(data[1],'L4 L/R gap')
+    print_wilcoxon(data[2],'Adult/L4 gap')
+    print_wilcoxon(data[3],'Adult L/R pre')
+    print_wilcoxon(data[4],'L4 L/R pre')
+    print_wilcoxon(data[5],'Adult/L4 pre')
+    print_wilcoxon(data[6],'Adult L/R post')
+    print_wilcoxon(data[7],'L4 L/R post')
+    print_wilcoxon(data[8],'Adult/L4 post')
 
-    print(ttest_rel(lncf['post'],rncf['post']))
-    print(ttest_rel(ljcf['post'],rjcf['post']))
-    print(ttest_rel(bncf['post'],bjcf['post']))
 
     tval0,pval0 = ttest_ind(data[0],data[2])
     tval1,pval1 = ttest_ind(data[0],data[1])
@@ -88,6 +92,7 @@ def run(fout=None):
                              '$C^{\mathrm{pre}}$',
                              '$C^{\mathrm{post}}$'],
               ylim=[-1,1])
+
     plt.tight_layout()
     plt.show()
 

@@ -82,10 +82,14 @@ def plot_pre_post_specificity(prob_both,outliers,probs,fout=None):
     plt.text(0.82,0.53,'%1.2f'%probs[3],fontsize=32)
     plt.axvline(x=0.05,ymin=0.05,ymax=1.0,linewidth=4,linestyle='--',color='r')
     plt.axhline(y=0.05,xmin=0.05,xmax=1.0,linewidth=4,linestyle='--',color='r')
-    rect2 = patches.Rectangle((0.7,0.5),0.1,0.1,linewidth=2,edgecolor='k',facecolor='#F7CF64',alpha=0.5)
-    rect1 = patches.Rectangle((0.7,0.6),0.1,0.1,linewidth=4,edgecolor='k',facecolor='#FA4E29',alpha=0.5)
-    rect3 = patches.Rectangle((0.8,0.6),0.1,0.1,linewidth=4,edgecolor='k',facecolor='#F7F364',alpha=0.5)
-    rect4 = patches.Rectangle((0.8,0.5),0.1,0.1,linewidth=4,edgecolor='k',facecolor='#648EF7',alpha=0.5)
+    rect2 = patches.Rectangle((0.7,0.5),0.1,0.1,linewidth=2,
+                              edgecolor='k',facecolor='#F7CF64',alpha=0.5)
+    rect1 = patches.Rectangle((0.7,0.6),0.1,0.1,linewidth=4,
+                              edgecolor='k',facecolor='#FA4E29',alpha=0.5)
+    rect3 = patches.Rectangle((0.8,0.6),0.1,0.1,linewidth=4,
+                              edgecolor='k',facecolor='#F7F364',alpha=0.5)
+    rect4 = patches.Rectangle((0.8,0.5),0.1,0.1,linewidth=4,
+                              edgecolor='k',facecolor='#648EF7',alpha=0.5)
     plt.text(0.63,0.43,'Fraction of neurons',fontsize=32)
     plt.gca().add_patch(rect1)
     plt.gca().add_patch(rect2)

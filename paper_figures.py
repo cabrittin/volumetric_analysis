@@ -20,7 +20,7 @@ Parameters:
                   fs2a is Figure S2a
                   ts1 is Table S1
   -o, --output (str): Output file name (optional).
-
+  -s, --source_data (str): Output file name for source data (optional)
 
 """
 
@@ -50,12 +50,21 @@ if __name__ == '__main__':
                         default = None,
                         help="Output file, if you wish to save the output."
                         )
+    
+    parser.add_argument('-s','--source_data',
+                        dest = 'source',
+                        action="store",
+                        required= False,
+                        default = None,
+                        help="Output file, if you wish to save the output."
+                        )
+    
 
     params = parser.parse_args()
 
     if params.fig == 'f2c':
-        import max_anterior
-        max_anterior.run(params.fout)
+        import max_position
+        max_position.run(_db='N2U',fout=params.fout)
     elif params.fig in ['f2e','f2f']:
         if not params.fout:
             print('For this figure, an output file needs to be specified.')
@@ -64,49 +73,49 @@ if __name__ == '__main__':
             spatial_map.run(params.fout)
     elif params.fig =='f3a':
         import dist_adj_subgrp2
-        dist_adj_subgrp2.run(params.fout)
+        dist_adj_subgrp2.run(params.fout,params.source)
     elif params.fig == 'f3b':
         import tpair_adj_deg
-        tpair_adj_deg.run(params.fout)
+        tpair_adj_deg.run(params.fout,params.source)
     elif params.fig == 'f3c':
         import tpair_adj_weight
-        tpair_adj_weight.run(params.fout)
+        tpair_adj_weight.run(params.fout,params.source)
     elif params.fig == 'f3d':
         import compare_neigh_overlap
-        compare_neigh_overlap.run(params.fout)
+        compare_neigh_overlap.run(params.fout,params.source)
     elif params.fig == 'f4a':
         import dist_confrac_subgrp
-        dist_confrac_subgrp.run(params.fout)
+        dist_confrac_subgrp.run(params.fout,params.source)
     elif params.fig == 'f4b':
         import tpair_confrac
         tpair_confrac.run(params.fout)
     elif params.fig == 'f5a':
         import discrepant_deg_contralateral
-        discrepant_deg_contralateral.run(params.fout)
+        discrepant_deg_contralateral.run(params.fout,params.source)
     elif params.fig in ['f5b','f5c']:
         import discrepant_adj_account
         discrepant_adj_account.run(params.fout)
     elif params.fig == 'f5d':
         import dist_adj_weight_decision
-        dist_adj_weight_decision.run(params.fout)
+        dist_adj_weight_decision.run(params.fout,params.source)
     elif params.fig == 'f5e':
         import logistic_test
-        logistic_test.run(params.fout)
+        logistic_test.run(params.fout,params.source)
     elif params.fig == 'f6a':
         import synaptic_specificity
-        synaptic_specificity.run(params.fout)
+        synaptic_specificity.run(params.fout,params.source)
     elif params.fig == 'f6b':
         import pre_post_specificity
         pre_post_specificity.run(params.fout)
     elif params.fig == 'f6c':
         import synapse_pos_specificity
-        synapse_pos_specificity.run(params.fout)
+        synapse_pos_specificity.run(params.fout,params.source)
     elif params.fig == 'f6d':
         import tpair_syn_adj_ratio
-        tpair_syn_adj_ratio.run(params.fout)
+        tpair_syn_adj_ratio.run(params.fout,params.source)
     elif params.fig == 'f7a':
         import cam_expression_matrix
-        cam_expression_matrix.run(params.fout)
+        cam_expression_matrix.run(params.fout,params.source)
     elif params.fig == 'f7b':
         print("Figure generated with cytoscape")
     elif params.fig == 'f7c':

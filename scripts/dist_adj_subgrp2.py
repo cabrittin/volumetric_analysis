@@ -33,13 +33,26 @@ def get_group_index(A,grp):
         idx = [v.index for v in A.vs.select(group=grp)]
     return idx
 
-def group_degrees(db,_neuron_class):
+def write_degrees(db,_neuron_class,fout):
     _remove = ['VC01','VD01','VB01','VB02']
     nclass = aux.read.into_dict(_neuron_class)
 
     C = from_db(db,adjacency=True,remove=_remove)
     C.A.assign_membership_dict(nclass,key='group')
 
+    data = []
+    for v in C.A.vs():
+        data.append([v['name'],v['group'],C.A.degree(v)])
+
+    aux.write.from_list(fout,data)
+
+def group_degrees(db,_neuron_class):
+    _remove = ['VC01','VD01','VB01','VB02']
+    nclass = aux.read.into_dict(_neuron_class)
+
+    C = from_db(db,adjacency=True,remove=_remove)
+    C.A.assign_membership_dict(nclass,key='group')
+    
     sp_idx = get_group_index(C.A,['Sp1','Sp2'])
     i1_idx = get_group_index(C.A,'I1')
     i2_idx = get_group_index(C.A,'I2')
@@ -58,7 +71,14 @@ def group_degrees(db,_neuron_class):
 
     return degrees
 
-def run(fout=None):
+def run(fout=None,source_data=None):
+    if source_data:
+        fsplit = source_data.split('.')
+        l4out = fsplit[0] + '_l4.' + fsplit[1]
+        adultout = fsplit[0] + '_adult.' + fsplit[1]
+        write_degrees('N2U',neuron_class,l4out)
+        write_degrees('JSH',neuron_class,adultout)
+        
     n2u = group_degrees('N2U',neuron_class)
     jsh = group_degrees('JSH',neuron_class)
     
@@ -67,8 +87,9 @@ def run(fout=None):
         data.append(n2u[i])
         data.append(jsh[i])
 
-    fig,ax = plt.subplots(1,1,figsize=(12,10))
+    fig,ax = plt.subplots(1,1,figsize=(15,10))
     dist_adj_subgroups2(ax,data,fout=fout)
+    ax.xaxis.set_tick_params(labelsize=20) 
     plt.show()
         
 

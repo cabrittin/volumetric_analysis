@@ -11,6 +11,9 @@ get_db(cur)
 get_neurons(cur)
    Returns list of all cell names
 
+get_contins(cur,cell)
+   Returns list of contins for cell name
+
 get_img_number(cur,**kwargs)
    Returns list of image(sections) names from the NR an VC
    series. Use kwargs to define range = (start,end) where 
@@ -35,10 +38,10 @@ get_touch_density(cur,key="pixels_norm")
    Returns list of 'touch_density' measures. Possible key
    values are [pixels,pixels_norm,segments,segments_norm]
 
-maxAnterior(cur,cell)
+maxAnterior(cur,cell,contin=None)
    Returns the max anterior section of cell
 
-maxPosterior(cur,cell)
+maxPosterior(cur,cell,contin=None)
    Returns the max posterior sections of cell
 
 neuron_cylinder(cur)
@@ -101,6 +104,23 @@ def get_neurons(cur):
     
     return list(set([aux.format.rm_brack(a[0]) for a in cur.fetchall()]))
 
+def get_contins(cur,cell):
+    """
+    Returns list of all contin names
+
+    Parameters:
+    -----------
+    cur : MySQLdb cursors
+    cell : str
+      Cell name
+    """
+    sql = ("select CON_Number "
+           "from contin "
+           "where CON_AlternateName like '%%%s%%'"
+           %cell)
+    cur.execute(sql)
+    return [a[0] for a in cur.fetchall()]
+    
 def get_img_number(cur,**kwargs):
     """
     Returns list of image(sections) names from the NR an VC series
@@ -239,7 +259,7 @@ def get_touch_density(cur,key="pixels_norm"):
     cur.execute(sql)
     return [(a[0],a[1],float(a[2])) for a in cur.fetchall()]
 
-def maxAnterior(cur,cell):
+def maxAnterior(cur,cell,contin=None):
     """
     Returns max anterior section of cell
 
@@ -248,20 +268,29 @@ def maxAnterior(cur,cell):
     cur : MySQLdb cursor
     cell : str
       Name of cell
+    contin : str (optional, defautl = None)
+      Contin number
     """
-    sql = ("select min(image.IMG_SectionNumber) "
-           "from radialPharynx "
-           "join object on object.OBJ_Name=radialPharynx.OBJ_Name "
-           "join contin on contin.CON_Number=object.CON_Number "
-           "join image on image.IMG_Number=object.IMG_Number "
-           "where contin.CON_AlternateName like '%%%s%%' "
-           %cell
-           )
-    
+    if contin:
+        sql = ("select min(image.IMG_SectionNumber) "
+               "from image "
+               "join object on image.IMG_Number = object.IMG_Number "
+               "join contin on contin.CON_Number=object.CON_Number "
+               "where (contin.CON_AlternateName like '%%%s%%' ) "
+               "and (contin.CON_Number = %d) "
+               #%(cell,contin))
+               %(cell,int(contin)))
+    else:
+        sql = ("select min(image.IMG_SectionNumber) "
+               "from image "
+               "join object on image.IMG_Number = object.IMG_Number "
+               "join contin on contin.CON_Number=object.CON_Number "
+               "where contin.CON_AlternateName like '%%%s%%' "
+               %cell)    
     cur.execute(sql)
     return cur.fetchone()[0]
 
-def maxPosterior(cur,cell):
+def maxPosterior(cur,cell,contin=None):
     """
     Returns the max posterior sections of cell
 
@@ -270,16 +299,26 @@ def maxPosterior(cur,cell):
     cur : MySQLdb cursor
     cell : str
       name of cell
+    contin : str (optional, defautl = None)
+      Contin number
     """
-    sql = ("select max(image.IMG_SectionNumber) "
-           "from radialPharynx "
-           "join object on object.OBJ_Name=radialPharynx.OBJ_Name "
-           "join contin on contin.CON_Number=object.CON_Number "
-           "join image on image.IMG_Number=object.IMG_Number "
-           "where contin.CON_AlternateName like '%%%s%%' "
-           %cell
-           )
-    
+
+    if contin:
+        sql = ("select max(image.IMG_SectionNumber) "
+               "from image "
+               "join object on image.IMG_Number = object.IMG_Number "
+               "join contin on contin.CON_Number=object.CON_Number "
+               "where (contin.CON_AlternateName like '%%%s%%' ) "
+               "and (contin.CON_Number = %d) "
+               %(cell,int(contin)))
+    else:
+        sql = ("select max(image.IMG_SectionNumber) "
+               "from image "
+               "join object on image.IMG_Number = object.IMG_Number "
+               "join contin on contin.CON_Number=object.CON_Number "
+               "where contin.CON_AlternateName like '%%%s%%' "
+               %cell)
+
     cur.execute(sql)
     return cur.fetchone()[0]
 

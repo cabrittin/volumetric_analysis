@@ -22,6 +22,7 @@ from connectome.load import from_db
 from networks.stats import get_corresponding_edge_attr
 from models.mutual_info import *
 from figures.stats import *
+import aux
 
 db = 'N2U'
 remove = ['VC01','VD01','VB01','VB02']
@@ -35,19 +36,23 @@ def get_data(G1,G2):
     #Get edge weights
     N = G2.ecount()
     data = np.zeros((N,2))
+    edges = []
     for i in range(N):
         e = G2.es[i]
+        v1,v2 = G2.vs[e.source]['name'],G2.vs[e.target]['name']
+        conn = 0
         data[i,0] = e['weight']
         if G1.are_connected(e.source,e.target):
             w = G1.es[G1.get_eid(e.source,e.target)]['weight']
             if w > THETA:
                 data[i,1] = 1
-        
+                conn = 1
+        edges.append([v1,v2,e['weight'],conn])
     data[:,0] = np.log(data[:,0]*SCALE)
-    return data
+    return data,edges
     
 
-def run(fout=None):
+def run(fout=None,source_data=None):
     C = from_db(db,adjacency=True,chemical=True,electrical=True,remove=remove)
     C.C.reduce_to(C.A)
     C.E.reduce_to(C.A)
@@ -55,11 +60,13 @@ def run(fout=None):
 
     C.C.to_undirected(combine_edges=sum)
 
-    data = get_data(C.C,C.A)
+    data,edges = get_data(C.C,C.A)
     data = data[data[:,0].argsort()]
     pos = np.where(data[:,1] == 1)[0]
     neg = np.where(data[:,1] == 0)[0]
 
+    if source_data:
+        aux.write.from_list(source_data,edges)
 
     h1,bins1 = np.histogram(data[neg,0],bins=nbins,
                             range=(-4,4),normed=True,density=True)
@@ -74,10 +81,10 @@ def run(fout=None):
     fig,ax = plt.subplots(1,1,figsize=(15,10))
     n,bins,_ = ax.hist(data[neg,0],bins=nbins,range=(-4,4),histtype='step',
                        density=True,cumulative=False,linewidth=4,
-                       label='(-) synapse')
+                       label='(-) synapse ($n=%d$)'%len(data[neg,0]))
     n,bins,_ = ax.hist(data[pos,0],bins=nbins,range=(-4,4),histtype='step',
                        density=True,cumulative=False,linewidth=4,
-                       label='(+) synapse')
+                       label='(+) synapse ($n=%d$)'%len(data[pos,0]))
     ax.axvline(bins[imin],color='r',linewidth=3)
     #print(bins[imin])
     #plot_skew_norm_fit(ax,data[neg,0],bins)

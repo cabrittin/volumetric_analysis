@@ -37,21 +37,23 @@ lr_dict = './mat/lr_dict.txt'
 
 def get_discrepant_directed(G,lr,left,right):
     _left,_right,_both = 0,0,0
+    _edges = []
     for (u,v) in G.edges():
         if (u not in left) and (u not in right): continue
         ur,vr = lr[u],lr[v]
         if G.has_edge(ur,vr):
             _both += 1
         else:
-            print(u,v,G[u][v]['weight'])
+            _edges.append([u,v,G[u][v]['weight']])
             if u in left:
                 _left += 1
             else:
                 _right += 1
-    return [_left,_right,_both,float(_left + _right + _both)]
+    return [_left,_right,_both,float(_left + _right + _both)],_edges
                 
 def get_discrepant_undirected(G,lr,left,right):
     _left,_right,_both = 0,0,0
+    _edges = []
     for (u,v) in G.edges():
         if (((u not in left) and (u not in right)) or
             ((v not in left) and (v not in right))):
@@ -60,7 +62,7 @@ def get_discrepant_undirected(G,lr,left,right):
         if G.has_edge(ur,vr):
             _both += 1
         else:
-            #print(u,v,G[u][v]['weight'])
+            _edges.append([u,v,G[u][v]['weight']])
             if (u in left) and (v in left):
                 _left += 1
             elif (u in right) and (v in right):
@@ -68,7 +70,7 @@ def get_discrepant_undirected(G,lr,left,right):
             else:
                 _left += 0.5
                 _right += 0.5
-    return [_left,_right,_both,_left + _right + _both]   
+    return [_left,_right,_both,_left + _right + _both],_edges   
 
 def format_data(syn,gap,adj):
     data = np.zeros((3,3))
@@ -83,7 +85,7 @@ def format_data(syn,gap,adj):
     data[2,2] = adj[2]/adj[3]
     return data
 
-def run(fout=None):
+def run(fout=None,source_data=None):
     left = aux.read.into_list(left_nodes)
     right = aux.read.into_list(right_nodes)
     _lrd = aux.read.into_dict(lr_dict)
@@ -100,17 +102,34 @@ def run(fout=None):
                   dataType='networkx',remove=_remove)
 
 
-    nsyn = get_discrepant_directed(n2u.C,lrd,left,right)
-    ngap = get_discrepant_undirected(n2u.E,lrd,left,right)
-    nadj = get_discrepant_undirected(n2u.A,lrd,left,right)
+    nsyn,sedges = get_discrepant_directed(n2u.C,lrd,left,right)
+    ngap,gedges = get_discrepant_undirected(n2u.E,lrd,left,right)
+    nadj,aedges = get_discrepant_undirected(n2u.A,lrd,left,right)
     print(nsyn,ngap,nadj)
-
-
-    jsyn = get_discrepant_directed(jsh.C,lrd,left,right)
-    jgap = get_discrepant_undirected(jsh.E,lrd,left,right)
-    jadj = get_discrepant_undirected(jsh.A,lrd,left,right)
+    if source_data:
+        dsource = 'adult'
+        fsplit = source_data.split('.')
+        fchem = fsplit[0] + '_' + dsource + '_chem.' + fsplit[1]
+        fgap = fsplit[0] + '_' + dsource + '_gap.' + fsplit[1]
+        fadj = fsplit[0] + '_' + dsource + '_adj.' + fsplit[1]
+        aux.write.from_list(fchem,sedges)
+        aux.write.from_list(fgap,gedges)
+        aux.write.from_list(fadj,aedges)
+        
+    jsyn,sedges = get_discrepant_directed(jsh.C,lrd,left,right)
+    jgap,gedges = get_discrepant_undirected(jsh.E,lrd,left,right)
+    jadj,aedges = get_discrepant_undirected(jsh.A,lrd,left,right)
     print(jsyn,jgap,jadj)
-
+    print(nsyn,ngap,nadj)
+    if source_data:
+        dsource = 'l4'
+        fsplit = source_data.split('.')
+        fchem = fsplit[0] + '_' + dsource + '_chem.' + fsplit[1]
+        fgap = fsplit[0] + '_' + dsource + '_gap.' + fsplit[1]
+        fadj = fsplit[0] + '_' + dsource + '_adj.' + fsplit[1]
+        aux.write.from_list(fchem,sedges)
+        aux.write.from_list(fgap,gedges)
+        aux.write.from_list(fadj,aedges)
     _n2u = format_data(nsyn,ngap,nadj)
     _jsh = format_data(jsyn,jgap,jadj)
 

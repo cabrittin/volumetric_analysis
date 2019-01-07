@@ -14,10 +14,26 @@ from scipy.stats import pearsonr
 from tabulate import tabulate
 
 import aux
-import LUT
 from connectome.subcellular import Subcell
 
 def get_bilateral_specificity(C,lrd,left):
+    """
+    Returns the bilateral (contralateral) specificity probabilities
+    
+    Parameters:
+    -----------
+    C : Connecomte object
+    lrd : dict
+     Left/right dictionary
+    left : list
+      List of the left nodes
+
+    Returns:
+    spec : dict
+     Keys are cell names and values are lists with format 
+     [gap specificity probability, presynaptic specificity probability,
+      postsynaptic specificity probability]
+    """
     _pre = bilateral_specificity(C,left,lrd)
     _post = bilateral_specificity(C,left,lrd,mode='post')
     _gap = bilateral_specificity(C,left,lrd,mode='gap') 
@@ -27,7 +43,23 @@ def get_bilateral_specificity(C,lrd,left):
         spec[nl] = [_gap[nl].p,_pre[nl].p,_post[nl].p]
     return spec
 
-def get_developmental_specificity(C1,C2,both_nodes=None):
+def get_developmental_specificity(C1,C2,both_nodes):
+    """
+    Returns the developmental (homologous) specificity probabilities
+    
+    Parameters:
+    -----------
+    C1 : Connectome object
+    C2 : Connectome
+    both_nodes : list
+     List of cell names
+
+    Returns:
+    spec : dict
+     Keys are cell names and values are lists with format 
+     [gap specificity probability, presynaptic specificity probability,
+      postsynaptic specificity probability]    
+    """
     _pre = developmental_specificity(C1,C2,both_nodes)
     _post = developmental_specificity(C1,C2,both_nodes,mode='post')
     _gap = developmental_specificity(C1,C2,both_nodes,mode='gap')
@@ -38,6 +70,23 @@ def get_developmental_specificity(C1,C2,both_nodes=None):
     return spec
 
 def bilateral_specificity(C,left,lrd,mode='pre'):
+    """
+    Returns the bilateral (contralateral) specificity probabilities
+    for the specified connection type
+    
+    Parameters:
+    -----------
+    C : Connecomte object
+    lrd : dict
+     Left/right dictionary
+    left : list
+      List of the left nodes
+    mode : str
+     Connection type ('pre','post','gap'). Default is 'pre'.
+    Returns:
+    prob : dict
+     Keys are cell names and values are Probability objects
+    """
     prob = {}
     for nl in left:
         nr = lrd[nl]
@@ -61,6 +110,22 @@ def bilateral_specificity(C,left,lrd,mode='pre'):
     return prob
 
 def developmental_specificity(C1,C2,nodes,mode='pre'):
+    """
+    Returns the developmenta (homologous) specificity probabilities
+    for the specified connection type
+    
+    Parameters:
+    -----------
+    C1 : Connecomte object
+    C2 : Connectome object
+    nodes : list
+     List of cell names
+    mode : str
+     Connection type ('pre','post','gap'). Default is 'pre'.
+    Returns:
+    prob : dict
+     Keys are cell names and values are Probability objects
+    """
     prob = {}
     for _n in sorted(nodes):
         if not(C1.C.has_node(_n) or C2.C.has_node(_n)): continue
@@ -81,10 +146,24 @@ def developmental_specificity(C1,C2,nodes,mode='pre'):
                 S2 = set([n for n in C2.E.neighbors(_n) if n in cA])
         p = compute_specificity(cA,S1,S2)
         prob[_n] = p
-        #print(_n,mode,p.get_attrib())
     return prob
         
 def compute_specificity(A,C1,C2):
+    """
+    Computes the specificty probability
+
+    Parameters:
+    -----------
+    A : list
+     List of common (physical) neighbors
+    C1 : list
+     List of synaptic partners in A
+    C2 : list
+     List of synaptic partners in A
+
+    Returns:
+     Probability object
+    """
     M = len(A)
     cC = C1 & C2
     k = len(cC)
@@ -116,6 +195,20 @@ def compute_specificity(A,C1,C2):
 
 
 def synapse_positions(cur,neuron):
+    """
+    Returns synapse positions
+
+    Parameters:
+    -----------
+    cur : MySQLdb cursor
+    neuron : str
+      cell name
+
+    Returns:
+    S : dict
+     Three entries 'pre', 'post' and 'gap', which have the synapse positions
+     for each synapse type. 
+    """
     S = {'pre':{},'post':{},'gap':{}}
 
     get_synapses_pos(cur,neuron,S['pre'],'pre','post','chemical')
@@ -128,6 +221,19 @@ def synapse_positions(cur,neuron):
     return S
 
 def format_left_right_subcell(S1,S2,lrd):
+    """
+    Formats the data structures for bilateral (contralateral)
+    comaprisons
+    
+    Parameters:
+    -----------
+    S1 : dict
+     Dictionary of synapses posisions
+    S2 : dict
+     Dictionary of synapse positions
+    lrd : dict
+     Left/right dictionary
+    """
     S1['pre'],S2['pre'] = format_left_right_dicts(S1['pre'],S2['pre'],lrd)
     S1['post'],S2['post'] = format_left_right_dicts(S1['post'],S2['post'],lrd)
     S1['gap'],S2['gap'] = format_left_right_dicts(S1['gap'],S2['gap'],lrd)
@@ -168,6 +274,9 @@ def format_developmental_dicts(d1,d2):
     return d1new,d2new
 
 def make_subcell_table(S1,S2):
+    """
+    Will display the synapse positions in table format
+    """
     def add_data(col,S1,S2,data):
         common = set(S1[col]) | set(S2[col])
         for c in common:
@@ -186,6 +295,35 @@ def make_subcell_table(S1,S2):
                    tablefmt='orgtbl'))
 
 def get_synapses_pos(cur,neuron,pos,fromCol,toCol,stype):
+    """
+    Updates synapses positions for neurons
+    Decided not to place in the db module because
+    the function returns a more sophiticated data type.
+
+    Parameters:
+    -----------
+    cur : MySQLdb cursor
+    neuron : str
+     cell name
+    pos : dict
+     Synapses positons are written here. pos will have the 
+     forma pos[syn_parnter] = {'loc':[], 'weight':[]}, where
+     syn_partner is the name of the synaptic partner, loc is the 
+     location of all synapses, weight is the lenght of the synapse 
+     in EM sections. 
+    fromCol : str
+     Specifies the presynaptic column. Used to accomodate gap junctions
+     which are undirected and do not have pre/post partners
+    toCol : str
+      Specified the postsynaptic column. Used to accomodate gap junctions
+     which are undirected and do not have pre/post partners
+    stype : str
+      Synapse type ('chemical', 'electrical')
+    
+    Note that 'pos' variable is update, but no value is returned. 
+
+    """
+
     sql = ("select %s,sections,position,continNum "
            "from synapsecombined "
            "join synapseskeleton "
@@ -204,12 +342,30 @@ def get_synapses_pos(cur,neuron,pos,fromCol,toCol,stype):
 
     
 def compute_average_pos(syn):
+    """
+    Computes the average position of the synapses
+    
+    Parameters:
+    -----------
+    syn : dict
+     In the formatted data structure. Keys are cell names. 
+     Values are dicts(['loc':[...],'weights':[...]])
+    
+    Note that syn is updated but not returned. 
+    Will add the (key, values):
+     'mean' : weighted mean syanpse position
+     'std'  : weighted standard deviation
+     'size' : number of synapses
+    
+    """
     all_syn_loc = []
     all_syn_weight = []
     for s in syn:
         all_syn_loc += syn[s]['loc']
         all_syn_weight += syn[s]['weight']
+        ###Updates list of synapses with the weighted average
         syn[s] = np.average(syn[s]['loc'],weights=syn[s]['weight'])
+
     if all_syn_weight:
         mu = np.average(all_syn_loc,weights=all_syn_weight)
         syn['mean'] = mu
@@ -283,60 +439,74 @@ class Prob:
     def get_attrib(self):
         return [self.M,self.k,self.c1,self.c2,self.p]
 
-class Corr:
-    def __init__(self,neuron):
-        self.neuron
-        self.corr = -999
-        self.diff = []
-        self.mean_diff = []
+def get_source_data(cur,cells):
+    data = {}
+    for n in cells:
+        data[n] = synapse_positions(cur,n)
+    return data
+            
+def get_bilateral_subcell_specificity(cur,neurons,lrd):
+    """
+    Returns the bilateral subcellular specificity values
 
-        
-def get_bilateral_subcell_specificity(cur,neurons,lrd,display=False):
-    r = {}
+    Parameters:
+    cur : MySQLdb cursor
+    neurons : str
+     list of cell names
+    lrd : dict
+     Left/right dictionary
+
+    Returns:
+    --------
+    delta : dict
+     (key,value) = (cell, [gap_delta,pre_delta,post_delta])
+    """
     delta = {}
     for [nl,nr] in neurons:
-        print(nl)
+        #print(nl)
         Sl = synapse_positions(cur,nl)
         Sr = synapse_positions(cur,nr)
         Sl,Sr = format_left_right_subcell(Sl,Sr,lrd)
-        #r[nl] = [0,0,0]
         delta[nl] = [[],[],[]]
-        #r[nl][1] = compute_corr(Sl['pre'],Sr['pre'])
-        #r[nl][2] = compute_corr(Sl['post'],Sr['post'])
-        #r[nl][0] = compute_corr(Sl['gap'],Sr['gap'])
-        print('\tpre')
+        #print('\tpre')
         delta[nl][1] = compute_delta(Sl['pre'],Sr['pre'])
-        print('\tpost')
+        #print('\tpost')
         delta[nl][2] = compute_delta(Sl['post'],Sr['post'])
-        print('\tgap')
+        #print('\tgap')
         delta[nl][0] = compute_delta(Sl['gap'],Sr['gap'])
-        
-    if display: batch_display(r)
+
     return delta
 
-def get_developmental_subcell_specificity(cur1,cur2,
-                                          both_nodes=None,display=False):
+def get_developmental_subcell_specificity(cur1,cur2,both_nodes=None):
+    """
+    Returns the developmental subcellular specificity values
 
-    r = {}
+    Parameters:
+    cur1 : MySQLdb cursor
+    cur2 : MySQLdb cursor
+    both_nodes : str
+     list of cell names
+
+    Returns:
+    --------
+    delta : dict
+     (key,value) = (cell, [gap_delta,pre_delta,post_delta])
+    """    
+
     delta = {}
     for n in sorted(both_nodes):
-        print(n)
+        #print(n)
         S1 = synapse_positions(cur1,n)
         S2 = synapse_positions(cur2,n)
         S1,S2 = format_developmental_subcell(S1,S2)
-        #r[n] = [0,0,0]
         delta[n] = [[],[],[]]
-        #r[n][1] = compute_corr(S1['pre'],S2['pre'])
-        #r[n][2] = compute_corr(S1['post'],S2['post'])
-        #r[n][0] = compute_corr(S2['gap'],S2['gap'])
-        print('\tpre dev')
+        #print('\tpre dev')
         delta[n][1] = compute_delta(S1['pre'],S2['pre'])
-        print('\tpost dev')
+        #print('\tpost dev')
         delta[n][2] = compute_delta(S1['post'],S2['post'])
-        print('\tgap dev')
+        #print('\tgap dev')
         delta[n][0] = compute_delta(S1['gap'],S2['gap'])
 
-    if display: batch_display(r)
     return delta    
     
     
@@ -344,21 +514,28 @@ def batch_display(corr):
     data = []
     for n in sorted(corr):
         data.append( [n] + corr[n])
-
     print(tabulate(data,
                    headers=['Neuron','Presyn','Postsyn','Gap'],
                    tablefmt='orgtbl'))    
 
-def compute_corr(l1,l2):
-    x1,x2 = [],[]
-    for n in l1:
-        x1.append(l1[n])
-        x2.append(l2[n])
-
-    return pearsonr(x1,x2)[0]
-
 
 def compute_delta(l1,l2):
+    """
+    Returns list of differences between the mean syanpse posistions
+    of synaptic partners
+    
+    Parameters:
+    l1 : dict
+     Dictionary with (key,value) = (synapse partner, average position)
+    l2 : dict 
+     Dictionary with (key,value) = (synapse partner, average position)
+    
+    Returns:
+    delta : list
+     list of difference in synapses positons
+
+    Note that keys: 'mean', 'std', 'size' are skipped
+    """
     delta = []
     mean_delta = []
     N1,N2 = l1['size'],l2['size']
@@ -377,7 +554,7 @@ def compute_delta(l1,l2):
         if n == 'std': continue
         if n == 'size': continue
         _delta = abs(l1[n] - l2[n])
-        print('\tstd: %s (%1.2f,%1.2f), %1.2f'%(n,l1[n],l2[n],sp))
+        #print('\tstd: %s (%1.2f,%1.2f), %1.2f'%(n,l1[n],l2[n],sp))
         #if _delta > 0.5:
         #    print('\tcheck: %s (%1.2f,%1.2f)'%(n,l1[n],l2[n]))
         delta.append((l1[n] - l2[n]))

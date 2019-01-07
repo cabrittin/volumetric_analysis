@@ -32,11 +32,21 @@ homologs = './mat/homologs.txt'
 left_nodes = './mat/left_nodes.txt'
 right_nodes = './mat/right_nodes.txt'
 
+def write_source(fout,_data):
+    data = []
+    for n1 in _data:
+        for stype in _data[n1]:
+            for n2 in _data[n1][stype]:
+                if n2 in ['mean','std','size']: continue
+                data.append([stype,n1,n2,_data[n1][stype][n2]])
+    aux.write.from_list(fout,data)
+
 def format_subcell(S,D,thresh=0.05):
     dgap,mgap = [],[]
     dpre,mpre = [],[]
     dpost,mpost = [],[]
     for n in S:
+        #print(n)
         if S[n][0] <= thresh and n in D:
             dgap += D[n][0]
             #mgap += D[n][0][1]
@@ -54,7 +64,7 @@ def format_subcell(S,D,thresh=0.05):
     #    data[i] = [d for d in data[i] if d <= 1]
     return data
 
-def run(fout=None):
+def run(fout=None,source_data=None):
     N2U = 'N2U'
     JSH = 'JSH'
     _remove = ['VC01','VD01','VB01','VB02']
@@ -72,12 +82,22 @@ def run(fout=None):
                   electrical=True,remove=_remove,dataType='networkx')
     JSH = from_db(JSH,adjacency=True,chemical=True,
                   electrical=True,remove=_remove,dataType='networkx')
-
+    
     n2ucon = db.connect.default('N2U')
     n2ucur = n2ucon.cursor()
     jshcon = db.connect.default('JSH')
     jshcur = jshcon.cursor()    
-    
+
+    if source_data:
+        fsplit = source_data.split('.')
+        nout = fsplit[0] + '_adult.' + fsplit[1]
+        jout = fsplit[0] + '_l4.' + fsplit[1]
+        src = synspec.get_source_data(n2ucur,N2U.A.nodes())
+        write_source(nout,src)
+        src = synspec.get_source_data(jshcur,JSH.A.nodes())
+        write_source(jout,src)
+        
+
     both_nodes = set(N2U.A.nodes()) & set(JSH.A.nodes())
     both_nodes.remove('SABD')
     both_nodes.remove('FLPL')
@@ -107,20 +127,35 @@ def run(fout=None):
             B1[1],B2[1],B3[1],
              B1[2],B2[2],B3[2]]
 
+    print('Stats:')
+    fstats.print_wilcoxon(data[0],'Adult L/R gap')
+    fstats.print_wilcoxon(data[1],'L4 L/R gap')
+    fstats.print_wilcoxon(data[2],'Adult/L4 gap')
+    fstats.print_wilcoxon(data[3],'Adult L/R pre')
+    fstats.print_wilcoxon(data[4],'L4 L/R pre')
+    fstats.print_wilcoxon(data[5],'Adult/L4 pre')
+    fstats.print_wilcoxon(data[6],'Adult L/R post')
+    fstats.print_wilcoxon(data[7],'L4 L/R post')
+    fstats.print_wilcoxon(data[8],'Adult/L4 post')    
+    
     colors = [ADULT_COL,L4_COL,AL_COL,
               ADULT_COL,L4_COL,AL_COL,
               ADULT_COL,L4_COL,AL_COL,]
-    fig,ax = plt.subplots(1,1,figsize=(12,10))
+    fig,ax = plt.subplots(1,1,figsize=(15,10))
     bp = fstats.plot_boxplots(ax,data,labels=labels,positions=pos,
                               ylim=[-5,5],
                               ylabel='Mean position difference',
                               title='Mean synapse position',
                               showfliers=True,width=0.2,colors=colors)
 
-    ax.set_xticklabels(['gap j.',
-                        'presyn.',
-                        'postsyn.'])
+    _len = [len(d) for d in data]
+    _ticklabels = ['gap j.', 'presyn.', 'postsyn.']
+    for i in range(3):
+        n = ','.join(list(map(str,[_len[3*i + _j] for _j in range(3)])))
+        _ticklabels[i] += "\n($n=" + n +"$)"
+    ax.set_xticklabels(_ticklabels)
     ax.set_xticks([2, 4, 6])
+    ax.xaxis.set_tick_params(labelsize=32)
     ax.set_ylim([-1,1])
     ax.axvspan(0,3,facecolor='#C3C3C3')
     ax.axvspan(3,5,facecolor='#D8D7D7')

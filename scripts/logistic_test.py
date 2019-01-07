@@ -22,9 +22,9 @@ from scipy.special import digamma
 
 import matplotlib as mpl
 from sklearn.linear_model import LogisticRegression
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn import metrics
-from sklearn.cross_validation import cross_val_score
+from sklearn.model_selection import cross_val_score
 
 
 from connectome.load import from_db
@@ -32,6 +32,7 @@ from networks.stats import get_corresponding_edge_attr
 from models.mutual_info import *
 from figures.stats import plot_adj_syn_mi
 from models.mht import *
+import aux
 
 mpl.rcParams['xtick.labelsize'] = 32
 mpl.rcParams['ytick.labelsize'] = 32
@@ -80,7 +81,7 @@ def result_data(G1,G2,model):
     
     return data
 
-def run(fout=None):
+def run(fout=None,source_data = None):
     C = from_db(db,adjacency=True,chemical=True,electrical=True,remove=remove)
     C.C.reduce_to(C.A)
     C.E.reduce_to(C.A)
@@ -105,7 +106,12 @@ def run(fout=None):
     #print(model.predict_proba(_x))
 
     _data = result_data(C.C,C.A,model)
-
+    if source_data:
+        dout = []
+        for i in range(C.A.vcount()):
+            dout.append([C.A.vs[i]['name']] + _data[i,:].tolist())
+        aux.write.from_list(source_data,dout)
+    
     """
     plt.figure()
     plt.plot(data[:,1],data[:,2],'bo')

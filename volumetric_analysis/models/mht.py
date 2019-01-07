@@ -101,6 +101,7 @@ def plot_actual_vs_predict(ax,data,colorbar=False,vmin=0,vmax=0.05,
               [neighbors,actual value, predicted value, variance]
     
     """    
+    [N,m] = data.shape
     r =pearsonr(data[:,1],data[:,2])
     pval = pval_norm(data[:,1:])
     scat = ax.scatter(data[:,1],data[:,2],c=pval,s=72,
@@ -111,6 +112,8 @@ def plot_actual_vs_predict(ax,data,colorbar=False,vmin=0,vmax=0.05,
     ax.plot(fit,fit,'r')
     ax.set_xlim(fit)
     ax.set_ylim(fit)
+    ax.text(tx,ty+1.5*th,r'$n$ = %d'%N,
+            transform=ax.transAxes,fontsize=24)
     ax.text(tx,ty,r'$r^2$ = %1.2f' %r[0]**2,
             transform=ax.transAxes,fontsize=24)
     if colorbar: cbar = plt.colorbar(scat)
