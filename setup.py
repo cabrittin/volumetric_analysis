@@ -63,7 +63,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     # the `py_modules` argument instead as follows, which will expect a file
     # called `my_module.py` to exist:
     #
-    #   py_modules=["my_module"],
+       py_modules=["volumetric_analysis"],
     #
     packages=find_packages(exclude=['data', 'mat', 'test','results','upload']),  # Required
 

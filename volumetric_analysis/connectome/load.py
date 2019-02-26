@@ -18,10 +18,10 @@ date: 01 November 2018
 """
 
 #Brittin modules
-import db 
-from connectome.connectome_igraph import Connectome
-from connectome.connectome_networkx import Connectome as nxConnectome
-
+import volumetric_analysis.db as db 
+from volumetric_analysis.connectome.connectome_igraph import Connectome
+from volumetric_analysis.connectome.connectome_networkx import Connectome as nxConnectome
+from volumetric_analysis.connectome.connectome_display import Connectome as dConnectome
 
 SCREEN = ['old','duplicate','Frag','error','unk']
 
@@ -50,7 +50,7 @@ def from_db(_db,chemical=False,electrical=False,adjacency=False,add_poly=False,
     group : dict (default None)
       Dictionary (key,val) = (cellName,groupName) to groups cells
     dataType : str (default 'igraph')
-      Either use the 'igraph' or 'networkx' graph data structures. 
+      Either use the 'igraph', 'networkx' or 'display' graph data structures. 
 
 
     Returns:
@@ -74,6 +74,8 @@ def from_db(_db,chemical=False,electrical=False,adjacency=False,add_poly=False,
             C = Connectome(_db,neurons)
         elif dataType == 'networkx':
             C = nxConnectome(_db,neurons)
+        elif dataType == 'display':
+            C = dConnectome(_db,neurons)
         C.load_adjacency(adjacency,directed=False)
     elif touch_density:
         neurons = sorted(_db.mine.get_adjacency_cells(cur))
@@ -87,6 +89,8 @@ def from_db(_db,chemical=False,electrical=False,adjacency=False,add_poly=False,
             C = Connectome(_db,neurons)
         elif dataType == 'networkx':
             C = nxConnectome(_db,neurons)
+        elif dataType == 'display':
+            C = dConnectome(_db,neurons)
         #C = Connectome(db,neurons)
 
     if chemical:
