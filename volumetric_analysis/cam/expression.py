@@ -14,6 +14,82 @@ import random
 import db
 import aux
 
+class Matrix:
+    """
+    Class to hold expression matrix
+    
+    ...
+
+    Attributes
+    ----------
+    fname : str
+        path to expression matrix csv cam_file
+        Row format [gene,cell,exression level]
+    
+    
+    """
+    
+    def __init__(self,_fname):
+        data = aux.read.into_list2(_fname)
+        _genes = []
+        _cells = []
+        for d in data:
+            if d[0] not in _genes: _genes.append(d[0])
+            if d[1] not in _cells: _cells.append(d[1])
+
+        self.m = len(_cells)
+        self.n = len(_genes)
+        self.cells = dict([(_cells[i],i) for i in range(self.m)])
+        self.cell_idx = {y:x for x,y in self.cells.items()}
+        self.genes = dict([(_genes[i],i) for i in range(self.n)])
+        self.genes_idx = {y:x for x,y in self.genes.items()}
+        
+        self.M = np.zeros((self.m,self.n))
+
+        for [g,c,val] in data:
+            self.M[self.cells[c],self.genes[g]] = float(val)
+
+    def binarize(self,thresh=1):
+        """
+        Creates a binary expression matrix
+
+        Paramters:
+        thresh : float
+            Values below thresh set to zero. Values above thresh 
+            set to 1.
+        """
+        self.E = np.copy(self.M)
+        self.E[self.E<thresh] = 0
+        self.E[self.E>0] = 1
+    
+    def difference_matrix(self):
+        """
+        Computes the diffence between expression patterns between cells
+        """
+        self.Diff = np.zeros((self.m,self.m))
+        for n,idx in self.cells.items():
+            for m,jdx in self.cells.items():
+                self.Diff[idx,jdx] = np.sum(abs(self.E[idx,:] - self.E[jdx,:]))
+   
+    def compute_difference(self,n1,n2):
+        """
+        Computes gene expression difference between cells n1 and n2
+
+        Parameters
+        ----------
+        n1 : str
+          Cell 1
+        n2 : str
+          Cell 2
+        
+        Returns 
+        -------
+        The modified self.Diff
+        """
+        return self.Diff[self.cells[n1],self.cells[n2]]
+
+
+
 class Gene:
     """
     Class to represent each gene
@@ -75,7 +151,9 @@ class Expression:
     cam : 2D list
       Data in cam_file
     nodes : dict
-      Diction that maps cell names to index.
+      Dictionary that maps cell names to index.
+    nodes_idx : dict
+      Array of nodes ordered by index
     M : int
       Number of cells
     N : int
@@ -118,6 +196,9 @@ class Expression:
        Returns the number of neurons expressing a given gene
     isoform_per_gene_count()
        Returns the number of isorforms per gene
+    expression_list()
+       Returns list of nonzero inputs with [gene,cell]
+
     """    
     def __init__(self,cur,cam_file,nodes,splice=False):
         """
@@ -139,6 +220,7 @@ class Expression:
         self.cam = aux.read.into_list2(cam_file)
         nodes = sorted(nodes)
         self.nodes = dict([(nodes[i],i) for i in range(len(nodes))])
+        self.nodes_idx = sorted(nodes)
         self.M = len(nodes)
         self.exp = dict([('pre',np.zeros([self.M,2])),
                          ('post',np.zeros([self.M,2]))
@@ -331,7 +413,19 @@ class Expression:
             data.append([nc[0],sorted(list(set(alt_genes)))])
 
         return data
-    
+   
+   
+    def expression_list(self):
+        """
+        Returns list of nonzero elements of expression matrix
+        """
+        nz = np.nonzero(self.E)
+        data = []
+        for i in range(len(nz[0])):
+            data.append([self.gene_idx[nz[1][i]],self.nodes_idx[nz[0][i]]])
+
+        return data
+
 def get_lr_discrepancies(C,lrd):
     neurons,synapses = 0,0
     discreps = []

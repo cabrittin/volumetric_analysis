@@ -1,0 +1,26 @@
+Following CAM genes are not in the rnaseq data
+oig-6
+oig-7
+T07H6.4
+
+
+Number of gene cell entries for the following timepoints / datasets
+
+52 rnaseq_exp_matrix_210_270.csv
+206 rnaseq_exp_matrix_270_330.csv
+2355 rnaseq_exp_matrix_330_390.csv
+222 rnaseq_exp_matrix_390_450.csv
+3971 rnaseq_exp_matrix_390_510.csv
+126 rnaseq_exp_matrix_450_510.csv
+2946 rnaseq_exp_matrix_510_650.csv
+29 rnaseq_exp_matrix_gt_580.csv
+648 rnaseq_exp_matrix_gt_650.csv
+480 wb_exp_matrix.csv
+
+
+For the scRNA-seq data focus on time points
+rnaseq_exp_matrix_330_390.csv
+rnaseq_exp_matrix_390_510.csv
+rnaseq_exp_matrix_510_650.csv
+
+

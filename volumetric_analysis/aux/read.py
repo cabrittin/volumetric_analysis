@@ -36,7 +36,7 @@ def into_dict(fIn,delimiter=","):
     fIn.close()
     return d  
   
-def into_dict2(fIn,delimeter=","):
+def into_dict2(fIn,delimiter=","):
     """
     Read data from file into a 2D dictionary. By default
     first element of each row is assigned to the key

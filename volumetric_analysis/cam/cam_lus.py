@@ -215,6 +215,7 @@ def sbe_pre(exp,end=500):
         for s in post:
             lus[syn[o].pre][0] += 1
             for ns in nonsyn:
+                if ns not in exp.cells.keys(): continue
                 diff = exp.compute_difference(s,ns)
                 if diff < 1:
                     lus[syn[o].pre][1] += 1
@@ -358,7 +359,8 @@ def get_synapses(cur,nodes,end=500):
     for a in cur.fetchall():
         [obj,pre,p1,p2,p3,p4,preo,p1o,p2o,p3o,p4o] = a
         s = SynObj(obj)
-        if pre in nodes: s.add_pre(pre,preo)
+        if pre not in nodes: continue
+        s.add_pre(pre,preo)
         if p1 in nodes: s.add_post(p1,p1o)
         if p2 in nodes: s.add_post(p2,p2o)
         if p3 in nodes: s.add_post(p3,p3o)
