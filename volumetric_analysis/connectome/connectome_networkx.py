@@ -386,3 +386,6 @@ class Connectome:
         for (n1,n2) in G.edges():
             if n1 == n2: H.remove_edge(n1,n2)
         return H
+
+        
+
