@@ -167,7 +167,7 @@ def ie(exp,C,iters=1000,mode='post'):
         bar.update(i)
     return lus
 
-def sbe(exp,end=500):
+def sbe(exp,end=500,rmchem=[]):
     """
     Subcellular binary expression model
 
@@ -177,7 +177,7 @@ def sbe(exp,end=500):
     end : int
        Most posterior section number
     """
-    lus_pre = sbe_pre(exp,end=end)
+    lus_pre = sbe_pre(exp,end=end,rmchem=rmchem)
     lus_gap = sbe_gap(exp,end=end)
 
     SBE = Model('SBE')
@@ -185,7 +185,7 @@ def sbe(exp,end=500):
     for n in lus_gap: SBE.add_lus(n,lus_gap[n],'gap')
     return SBE
 
-def sbe_pre(exp,end=500):
+def sbe_pre(exp,end=500,rmchem=None):
     """
     Subcellular binary expression model for chemical synapses
 
@@ -195,7 +195,7 @@ def sbe_pre(exp,end=500):
     end : int
        Most posterior section number
     """   
-    syn = get_synapses(exp.cur,exp.nodes,end=end)
+    syn = get_synapses(exp.cur,exp.nodes,end=end,rmsyn=rmchem)
     idx = 0
     lus = {}
     objs = syn.keys()
@@ -340,7 +340,7 @@ class SynObj:
 
 
     
-def get_synapses(cur,nodes,end=500):
+def get_synapses(cur,nodes,end=500,rmsyn=[]):
     """
     Gets synapse data from the Elegance database
     """
@@ -361,10 +361,10 @@ def get_synapses(cur,nodes,end=500):
         s = SynObj(obj)
         if pre not in nodes: continue
         s.add_pre(pre,preo)
-        if p1 in nodes: s.add_post(p1,p1o)
-        if p2 in nodes: s.add_post(p2,p2o)
-        if p3 in nodes: s.add_post(p3,p3o)
-        if p4 in nodes: s.add_post(p4,p4o)
+        if p1 in nodes and (pre,p1) not in rmsyn: s.add_post(p1,p1o)
+        if p2 in nodes and (pre,p2) not in rmsyn: s.add_post(p2,p2o)
+        if p3 in nodes and (pre,p3) not in rmsyn: s.add_post(p3,p3o)
+        if p4 in nodes and (pre,p4) not in rmsyn: s.add_post(p4,p4o)
         if s.pre and s.post: syn[obj] = s
 
     

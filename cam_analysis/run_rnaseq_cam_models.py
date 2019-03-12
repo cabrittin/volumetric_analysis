@@ -47,6 +47,14 @@ if __name__ == '__main__':
                         action='store',
                         help = 'Path to output file')
 
+    parser.add_argument('-s','--syn_thresh',
+                        action='store',
+                        dest="thresh",
+                        type=int,
+                        required=False,
+                        default=True,
+                        help = "Chemical synapse threshold")
+
     params = parser.parse_args()
 
     _end = 500
@@ -72,17 +80,24 @@ if __name__ == '__main__':
                 remove=remove,electrical=True,dataType='networkx')
     C.remove_self_loops()
     C.reduce_to_adjacency()    
-
     
+    if params.thresh > 0:
+        rm_edges = [e for e in C.C.edges() if C.C[e[0]][e[1]]['weight'] < params.thresh]
+        C.C.remove_edges_from(rm_edges)
+
     wbe = cam_lus.wbe(e,C)
     wbe_data = wbe.get_data()
     tmp = params.fout.replace('.','_wbe.')
+    if params.thresh > 0:
+        tmp = tmp.replace('.','_s'+str(params.thresh)+'.')
     aux.write.from_list(tmp,wbe_data) 
 
     
-    sbe = cam_lus.sbe(e,end=_end)       
+    sbe = cam_lus.sbe(e,end=_end,rmchem=rm_edges)       
     sbe_data = sbe.get_data()
     tmp = params.fout.replace('.','_sbe.')
+    if params.thresh > 0:
+        tmp = tmp.replace('.','_s'+str(params.thresh)+'.')
     aux.write.from_list(tmp,sbe_data)
         
     #e.splice = True
