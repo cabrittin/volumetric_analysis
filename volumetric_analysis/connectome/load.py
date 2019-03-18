@@ -18,10 +18,10 @@ date: 01 November 2018
 """
 
 #Brittin modules
-import volumetric_analysis.db as db 
-from volumetric_analysis.connectome.connectome_igraph import Connectome
-from volumetric_analysis.connectome.connectome_networkx import Connectome as nxConnectome
-from volumetric_analysis.connectome.connectome_display import Connectome as dConnectome
+import db as db 
+from connectome.connectome_igraph import Connectome
+from connectome.connectome_networkx import Connectome as nxConnectome
+from connectome.connectome_display import Connectome as dConnectome
 
 SCREEN = ['old','duplicate','Frag','error','unk']
 

@@ -494,20 +494,20 @@ class Boundary(object):
         """
         
         self.boundary_length = len(self.path)
-        
+       
     def set_area(self):
         """
-        Computes the area enclosed by the boundary       
+        Computes the area enclosed by the boundary  
+
+        Algorithm taken from http://alienryderflex.com/polygon_area
+        Definition of area of polygon
+        area += (B[j][0] + B[i][0])*(B[j][1] - B[i][1])
         """
         B = self.path
-        #Computes area of polygon defined by given boundary 'B'
         area = 0	
-        idx = [(i,i-1) for i in range(len(B))]
-        for (i,j) in idx:
-            #Algorithm taken from http://alienryderflex.com/polygon_area
-            #temp = (B[j][0] + B[i][0])*(B[j][1] - B[i][1])
-            #Definition of area of polygon            
-            area += (B[i][0]*B[j][1] - B[j][0]*B[i][1])
+        for i in range(len(B)):
+            j = i - 1
+            area += (B[j][0] + B[i][0])*(B[j][1] - B[i][1])
         self.area =  0.5*abs(area) 
    
 

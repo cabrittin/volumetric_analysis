@@ -22,6 +22,7 @@ Parameters:
 
 """
 import sys
+sys.path.append('./volumetric_analysis')
 import os
 import argparse
 from lxml import etree
@@ -82,6 +83,7 @@ if __name__ == '__main__':
         for _name in B.keys():
             for idx in B[_name]:
                 B[_name][idx].set_centroid()
+                B[_name][idx].set_boundary_length()
                 xseg = etree.SubElement(xlayer,'segment')
                 cell = etree.SubElement(xseg,'name')
                 cell.text = B[_name][idx].name
@@ -93,6 +95,8 @@ if __name__ == '__main__':
                 centy.text = str(int(B[_name][idx].cent[1]))
                 area = etree.SubElement(xseg,'area')
                 area.text = str(int(B[_name][idx].area))
+                length = etree.SubElement(xseg,'length')
+                length.text = str(int(B[_name][idx].boundary_length))
 
     xml_out = etree.tostring(tree,pretty_print=False)
     with open(params.fout,'wb') as fout:

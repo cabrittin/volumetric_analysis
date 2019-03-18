@@ -11,7 +11,7 @@ Inherits connectome_networkx.Connectome, and thus uses networkx data structures.
 """
 from tabulate import tabulate
 
-from volumetric_analysis.connectome.connectome_networkx import Connectome as _Connectome
+from connectome.connectome_networkx import Connectome as _Connectome
 
 class Connectome(_Connectome):
     """
