@@ -24,6 +24,13 @@ if __name__ == '__main__':
     parser.add_argument('fout',
                         action = 'store',
                         help = "Output csv file")
+    
+    parser.add_argument('--scale_adult',
+                        dest='scale_adult',
+                        action = 'store_true',
+                        required=False,
+                        default=True,
+                        help='Apply scaling for the adult')
 
     params = parser.parse_args()
 
@@ -33,13 +40,19 @@ if __name__ == '__main__':
     data = {}
     for l in root.findall('layer'):
         segs = l.findall('segment')
+        _scale = 1
+        if params.scale_adult:
+            lname = l.get('name')
+            if 'vc' in lname or 'VC' in lname:
+                _scale = 2
+        
         for s in segs:
             name = s.find('name').text
             area = int(s.find('area').text)
             length = int(s.find('length').text)
             if name not in data: data[name] = {'volume':0,'sa':0}
             data[name]['volume'] += area
-            data[name]['sa'] += length
+            data[name]['sa'] += length*_scale
 
     with open(params.fout,'w') as fout:
         for i in sorted(data.keys()):

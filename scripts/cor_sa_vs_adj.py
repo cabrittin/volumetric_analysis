@@ -12,6 +12,9 @@ sys.path.append('./volumetric_analysis')
 import argparse
 import numpy as np
 import matplotlib.pyplot as plt
+from numpy.polynomial.polynomial import polyfit
+from scipy.stats import pearsonr
+
 
 from connectome.load import from_db
 import aux
@@ -24,8 +27,14 @@ def plot_cor(ax,A):
     A[:,0] = (A[:,0] - xmu) / xmu
     A[:,1] = (A[:,1] - ymu) / ymu
     ax.plot(A[:,0],A[:,1],'bo')
-    ax.set_xlim([-2,2])
-    ax.set_ylim([-2,2])
+    ax.plot(np.unique(A[:,0]), np.poly1d(np.polyfit(A[:,0], A[:,1], 1))(np.unique(A[:,0])),'r-')
+    r =pearsonr(A[:,0],A[:,1])
+    ax.text(0.05,0.9,r'$n$ = %d'%A.shape[0],
+            transform=ax.transAxes,fontsize=24)
+    ax.text(0.05,0.83,r'$r^2$ = %1.2f' %r[0]**2,
+            transform=ax.transAxes,fontsize=24)
+
+
 
 SCALE = 450e-6
 
@@ -40,10 +49,6 @@ if __name__== '__main__':
                         action="store",
                         help="Path to stats file")
     
-    parser.add_argument('nclass',
-                        action="store",
-                        help="Path the class file")
-
     parser.add_argument('-o','--output',
                         dest = 'fout',
                         action="store",
@@ -51,38 +56,36 @@ if __name__== '__main__':
                         default = None,
                         help="Output file, if you wish to save the output."
                         )
+    
+    parser.add_argument('--title',
+                        dest = 'title',
+                        required=False,
+                        default=None,
+                        help="Plot title")
 
     params = parser.parse_args()
     
     stats = aux.read.into_list2(params.stats)
-    nclass = aux.read.into_dict(params.nclass)
     _remove = ['VC01','VD01','VB01','VB02']
     C = from_db(params.db,adjacency=True,chemical=True,electrical=True,remove=_remove,dataType='networkx')
   
-    sa = {}
     A = np.zeros((len(stats),2))
     i  = 0
     for d in stats:
         if not C.A.has_node(d[0]): continue
-        nc = nclass[d[0]]
-        if nc not in sa: sa[nc] = []
         A[i][1] = C.A.degree(d[0])
         A[i][0] = int(d[1])
-        sa[nc].append(int(d[1])*SCALE)
         i += 1
    
-    SA = [sa['Sp1'] + sa['Sp2'],
-            sa['Sa'],sa['I1'],sa['I2'],sa['SMN'],
-            sa['HMNp'],sa['HMNa']]
     
-    data = []
-    for i in range(len(SA)):
-        data.append(SA[i])
-        data.append(SA[i])
-    fig,ax = plt.subplots(1,1,figsize=(20,10))
-    #plot_cor(ax[0],A)
-    dist_adj_subgroups2(ax,data)
-    ax.set_ylim([0,500])    
+    fig,ax = plt.subplots(1,1,figsize=(15,10))
+    plot_cor(ax,A)
+    ax.set_xlim([-2,2])
+    ax.set_ylim([-2,2])
+    ax.set_xlabel('Normalized cell surface area',fontsize=24)
+    ax.set_ylabel('Normalized cell adjacency degree',fontsize=24)
+    if params.title: ax.set_title(params.title,fontsize=28)
+    if params.fout: plt.savefig(params.fout)
     plt.show()
 
 
