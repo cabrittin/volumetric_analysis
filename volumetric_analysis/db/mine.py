@@ -226,6 +226,24 @@ def get_adjacency_data(cur):
     cur.execute(sql)
     return [(a[0],a[1],int(a[2]),a[3]) for a in cur.fetchall()]
 
+def get_adjacency_from_layer(cur,layer):
+    """
+    Return list of adjacency data from given layer
+    [cell1,cell2,amount_of_contact,image_number]
+
+    Parameters:
+    -----------
+    cur : MySQLdb cursor
+    
+    """
+    sql = ("select pre,post,weight "
+           "from adjacency2 "
+           "where imgNum = '%s'" %layer)
+    cur.execute(sql)
+    return [(a[0],a[1],int(a[2])) for a in cur.fetchall()]
+
+
+
 def get_adjacency_cells(cur):
     """
     Returns list of cells in the adjacency data
