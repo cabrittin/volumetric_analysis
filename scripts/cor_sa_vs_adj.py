@@ -82,9 +82,9 @@ if __name__== '__main__':
     plot_cor(ax,A)
     ax.set_xlim([-2,2])
     ax.set_ylim([-2,2])
-    ax.set_xlabel('Normalized cell surface area',fontsize=24)
-    ax.set_ylabel('Normalized cell adjacency degree',fontsize=24)
-    if params.title: ax.set_title(params.title,fontsize=28)
+    ax.set_xlabel('Normalized cell surface area',fontsize=32)
+    ax.set_ylabel('Normalized cell adjacency degree',fontsize=32)
+    if params.title: ax.set_title(params.title,fontsize=36)
     if params.fout: plt.savefig(params.fout)
     plt.show()
 
