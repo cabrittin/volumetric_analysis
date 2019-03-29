@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import ttest_1samp
 from scipy.stats import ttest_ind
+from scipy.stats import mannwhitneyu
 
 #Brittin modules
 from connectome.load import from_db
@@ -53,6 +54,7 @@ def run(fout=None,source_data=None):
     _remove = ['VC01','VD01','VB01','VB02','HSNL','HSNR','PVNL','PVNR']
 
     n2u = from_db(N2U,adjacency=True,remove=_remove)
+    a = n2u.A.copy()
     reflected = n2u.A.map_vertex_names(lrd)
     vertices = left + right
     ns,no = get_data(n2u.A,reflected,left,right)
@@ -114,9 +116,12 @@ def run(fout=None,source_data=None):
         aux.write.from_list(fsim,dsim)
         aux.write.from_list(fovr,dovr)
         
-    tval1,upval1 = ttest_ind(ns,no)
-    tval2,upval2 = ttest_ind(js,jo)
-    tval3,upval3 = ttest_ind(bs,bo)
+    #tval1,upval1 = ttest_ind(ns,no)
+    #tval2,upval2 = ttest_ind(js,jo)
+    #tval3,upval3 = ttest_ind(bs,bo)
+    tval1,upval1 = mannwhitneyu(ns,no)
+    tval2,upval2 = mannwhitneyu(js,jo)
+    tval3,upval3 = mannwhitneyu(bs,bo)
 
     print(upval1,upval2,upval3)
     

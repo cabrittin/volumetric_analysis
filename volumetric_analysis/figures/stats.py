@@ -240,6 +240,8 @@ def plot_boxplots(ax,data,labels=None,pval=[],showfliers=False,
                     showfliers=showfliers,
                     flierprops=flierprops,
                     widths=width)
+    for i in range(len(data)):
+        print(i,'(Lower,Upper)',(np.percentile(data[i],25),np.percentile(data[i],75)))
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.spines['left'].set_visible(False)

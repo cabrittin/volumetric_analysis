@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 from scipy.stats import ttest_rel
 from scipy.stats import ttest_ind
 from scipy.stats import wilcoxon
+from scipy.stats import mannwhitneyu
 from scipy.stats import ttest_1samp
 
 #Brittin modules
@@ -90,10 +91,14 @@ if __name__=='__main__':
     print_wilcoxon(data[1],'L4 L/R')
     print_wilcoxon(data[2],'Adult/L4')
     
-    tval1,pval1 = ttest_ind(data[0],data[1])
-    tval2,pval2 = ttest_ind(data[1],data[2])
-    tval3,pval3 = ttest_ind(data[0],data[2])
+    #tval1,pval1 = ttest_ind(data[0],data[1])
+    #tval2,pval2 = ttest_ind(data[1],data[2])
+    #tval3,pval3 = ttest_ind(data[0],data[2])
     
+    tval1,pval1 = mannwhitneyu(data[0],data[1])
+    tval2,pval2 = mannwhitneyu(data[1],data[2])
+    tval3,pval3 = mannwhitneyu(data[0],data[2],alternative='less')
+
     pval = [(0,1,pval1),(1,2,pval3)]
     fig,ax = plt.subplots(1,1,figsize=(12,10))
     tpair_adj_deg(ax,data,pval)

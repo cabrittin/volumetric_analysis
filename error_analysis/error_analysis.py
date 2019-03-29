@@ -53,7 +53,10 @@ if __name__=="__main__":
 
 
     T = Graph(params.sif,params.labels)
-
+    
+    print(T.number_of_nodes())
+    print(G.number_of_nodes())
+    print(set(T.nodes()) - set(G.nodes()))
     man_not_auto = []
     auto_not_man = []
 
