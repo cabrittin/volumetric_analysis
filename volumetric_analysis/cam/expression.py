@@ -29,7 +29,7 @@ class Matrix:
     
     """
     
-    def __init__(self,_fname):
+    def __init__(self,_fname,cells=None):
         data = aux.read.into_list2(_fname)
         _genes = []
         _cells = []
@@ -37,6 +37,9 @@ class Matrix:
             if d[0] not in _genes: _genes.append(d[0])
             if d[1] not in _cells: _cells.append(d[1])
 
+        _genes = sorted(_genes)
+        _cells = sorted(_cells)
+        if cells: _cells = cells
         self.m = len(_cells)
         self.n = len(_genes)
         self.cells = dict([(_cells[i],i) for i in range(self.m)])
@@ -47,6 +50,7 @@ class Matrix:
         self.M = np.zeros((self.m,self.n))
 
         for [g,c,val] in data:
+            if c not in cells: continue
             self.M[self.cells[c],self.genes[g]] = float(val)
 
     def binarize(self,thresh=1):
@@ -87,6 +91,12 @@ class Matrix:
         The modified self.Diff
         """
         return self.Diff[self.cells[n1],self.cells[n2]]
+
+
+    def cell_expression(self,cell):
+        idx = self.cells[cell]
+        row = np.where(self.M[idx,:] > 0)[0]
+        return [self.genes_idx[i] for i in row]
 
 
 

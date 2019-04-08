@@ -116,11 +116,72 @@ def get_contins(cur,cell):
     """
     sql = ("select CON_Number "
            "from contin "
-           "where CON_AlternateName like '%%%s%%'"
+           "where CON_AlternateName like '%s'"
            %cell)
     cur.execute(sql)
     return [a[0] for a in cur.fetchall()]
-    
+   
+def get_object_contin_name(cur,obj):
+    """
+    Returns contin name of object number
+
+    Parameters:
+    -----------
+    cur : MySQLdb cursor
+    obj : str 
+        object number
+    """
+    sql = ("select CON_AlternateName "
+            "from contin "
+            "join object on object.CON_Number = contin.CON_Number "
+            "where object.OBJ_Name = %s " %(obj))
+    cur.execute(sql)
+    return cur.fetchone()[0]
+
+def get_object_contin(cur,obj):
+    """
+    Returns contin of object number
+
+    Parameters:
+    -----------
+    cur : MySQLdb cursor
+    obj : str 
+        object number
+    """
+    sql = ("select contin.CON_Number "
+            "from contin "
+            "join object on object.CON_Number = contin.CON_Number "
+            "where object.OBJ_Name = %s " %(obj))
+    cur.execute(sql)
+    return cur.fetchone()[0]
+
+
+def get_contin_edges(cur,contin,start=0,end=None):
+    """
+    Returns list of edges for contin
+
+    Parameters:
+    -----------
+    cur : MySQLdb cursor
+    contin : str
+        Contin number
+    """
+    if start or end:
+        images = get_img_number(cur,start=start,end=end)
+        images = ''.join(["'","','".join(images),"'"])
+        sql = ("select OBJName1,OBJName2 from relationship "
+                "join object as obj1 on obj1.OBJ_Name = relationship.OBJName1 "
+                "join object as obj2 on obj2.OBJ_Name = relationship.OBJName2 "
+                "where continNum = %s "
+               "and (obj1.IMG_Number in (%s) "
+               "or obj2.IMG_Number in (%s)) " %(contin,images,images))
+    else:
+        sql = ("select OBJName1,OBJName2 from relationship "
+            "where continNum = %s" %contin)
+
+    cur.execute(sql)
+    return cur.fetchall()
+
 def get_img_number(cur,**kwargs):
     """
     Returns list of image(sections) names from the NR an VC series
@@ -140,6 +201,23 @@ def get_img_number(cur,**kwargs):
            "and IMG_SectionNumber <= %d" %(int(args['start']),int(args['end'])))
     cur.execute(sql)
     return [i[0] for i in cur.fetchall()]
+
+def convert_image_name(cur,imgNum):
+    """
+    Converts imgNum to image file name without extension, as used in adjacency2 table
+
+    Parameters:
+    -----------
+    cur : MySQLdb cursors
+    imgNum : str
+        IMG_Number field entry for table image
+    """
+    sql = ("select IMG_File "
+            "from image "
+            "where IMG_Number = '%s' " %(imgNum))
+    cur.execute(sql)
+    return cur.fetchone()[0].split('.')[0]
+
 
 def get_obj_area(cur):
     """
@@ -187,6 +265,124 @@ def get_synapse_contins(cur,stype,**kwargs):
                "where synapsecombined.type like '%s' " %(stype))			
     cur.execute(sql)
     return ','.join([str(a[0]) for a in cur.fetchall()])   
+
+def get_presynapse_contins(cur,cell,start=0,end=None):
+    """
+    Returns lists of synapse contins wher cell is presynaptic
+
+    Parameters:
+    -----------
+    cur : MySQLdb cursors
+    cell: str
+        Cell name
+    start: int (optional)
+        Start image index
+    end: int (optional)
+        End image index
+    """
+    if start or end:
+        images = get_img_number(cur,start=start,end=end)
+        images = ''.join(["'","','".join(images),"'"])
+        sql = ("select synapsecombined.continNum "
+               "from synapsecombined "
+               "join object on object.CON_Number = synapsecombined.continNum "
+               "where synapsecombined.type like 'chemical' "
+               "and pre like '%%%s%%' "
+               "and object.IMG_Number in (%s) " %(cell,images))
+    else:
+        sql = ("select synapsecombined.continNum "
+               "from synapsecombined "
+               "join object on object.CON_Number = synapsecombined.continNum "
+               "where synapsecombined.type like 'chemical' " 
+               "and pre like '%%%s%%' " %(cell))
+        
+    cur.execute(sql)
+    return list(set([str(a[0]) for a in cur.fetchall()]))   
+
+def get_postsynapse_contins(cur,cell,start=0,end=None):
+    """
+    Returns lists of synapse contins wher cell is postynaptic
+
+    Parameters:
+    -----------
+    cur : MySQLdb cursors
+    cell: str
+        Cell name
+    start: int (optional)
+        Start image index
+    end: int (optional)
+        End image index
+    """
+    if start or end:
+        images = get_img_number(cur,start=start,end=end)
+        images = ''.join(["'","','".join(images),"'"])
+        sql = ("select synapsecombined.continNum "
+               "from synapsecombined "
+               "join object on object.CON_Number = synapsecombined.continNum "
+               "where synapsecombined.type like 'chemical' "
+               "and post like '%%%s%%' "
+               "and object.IMG_Number in (%s) " %(cell,images))
+    else:
+        sql = ("select synapsecombined.continNum "
+               "from synapsecombined "
+               "join object on object.CON_Number = synapsecombined.continNum "
+               "where synapsecombined.type like 'chemical' " 
+               "and post like '%%%s%%' " %(cell))
+        
+    cur.execute(sql)
+    return list(set([str(a[0]) for a in cur.fetchall()]))   
+
+def get_gajjunction_contins(cur,cell,start=0,end=None):
+    """
+    Returns lists of synapse contins wher cell is a gap junction
+
+    Parameters:
+    -----------
+    cur : MySQLdb cursors
+    cell: str
+        Cell name
+    start: int (optional)
+        Start image index
+    end: int (optional)
+        End image index
+    """
+    if start or end:
+        images = get_img_number(cur,start=start,end=end)
+        images = ''.join(["'","','".join(images),"'"])
+        sql = ("select synapsecombined.continNum "
+               "from synapsecombined "
+               "join object on object.CON_Number = synapsecombined.continNum "
+               "where synapsecombined.type like 'electrical' "
+               "and (post like '%%%s%%' or pre like '%%%s%%') "
+               "and object.IMG_Number in (%s) " %(cell,cell,images))
+    else:
+        sql = ("select synapsecombined.continNum "
+               "from synapsecombined "
+               "join object on object.CON_Number = synapsecombined.continNum "
+               "where synapsecombined.type like 'chemical' " 
+               "and (post like '%%%s%%' or pre like '%%%s%%' " %(cell,cell))
+        
+    cur.execute(sql)
+    return list(set([str(a[0]) for a in cur.fetchall()]))   
+
+def get_synapse_data_by_contin(cur,contin):
+    """
+    Returns synapse data for given contin
+    Each row is a single section of the synapse
+    Row format: [section_number,preobj,[post_obj]]
+
+    Parameters:
+    -----------
+    cur : MySQLdb cursor
+    contin : str
+        Contin number
+    """
+    sql = ("select IMG_Number,fromObj,toObj "
+            "from object "
+            "where CON_Number = %s " %(contin))
+    cur.execute(sql)
+    return [(a[0],a[1],a[2].split(',')) for a in cur.fetchall()]
+
 
 def get_synapse_data(cur,stype,**kwargs):
     """
@@ -472,7 +668,24 @@ def get_object_xy_in_layer(cur,cell,layer):
            %(cell,layer))
     cur.execute(sql)
     return [(int(a[0]),int(a[1]),int(a[2])) for a in cur.fetchall()]
-             
+            
+def get_object_xyz(cur,obj):
+    """
+    Returns (x,y,z) coordinates of object
+
+    Parameters:
+    -----------
+    cur : MySQLdb cursor
+    obj : str
+        object name
+    """
+    sql = ("select OBJ_X,OBJ_Y,image.IMG_SectionNumber "
+            "from object "
+            "join image on image.IMG_Number = object.IMG_Number "
+            "where OBJ_Name = '%s' " %(obj))
+    cur.execute(sql)
+    return cur.fetchone()
+
 def get_synapse_from_layer(cur,layer):
     """
     Returns synapses in given layer list of tuples:

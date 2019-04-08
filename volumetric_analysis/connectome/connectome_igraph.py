@@ -136,6 +136,7 @@ class Connectome:
           List of vertex names
 
         """
+        self.neurons = list(set(self.neurons) - set(vertices))
         if self.C:self.C.remove_vertices(vertices)
         if self.E:self.E.remove_vertices(vertices)
         if self.A:self.A.remove_vertices(vertices)

@@ -508,7 +508,7 @@ def tpair_syn(ax,data,pval,fout=None,ylabel=None,
               ADULT_COL,L4_COL,AL_COL]
     
     bp = plot_boxplots(ax,data,labels=labels,positions=pos,
-                       pval=pval,annotscale=0.1,
+                       pval=pval,annotscale=0.3,
                        ylabel=ylabel,
                        title=title,
                        showfliers=True,width=0.2,colors=colors)

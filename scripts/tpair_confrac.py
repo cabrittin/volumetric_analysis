@@ -14,6 +14,8 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 from scipy.stats import ttest_rel
 from scipy.stats import ttest_ind
+from scipy.stats import wilcoxon
+from scipy.stats import mannwhitneyu
 
 #Brittin modules
 from connectome.load import from_db
@@ -26,6 +28,8 @@ mpl.rcParams['ytick.labelsize'] = 32
 
 lr_pairs = './mat/lr_neurons.txt'
 
+ARCSINE = False
+
 def run(fout=None):
     N2U = 'N2U'
     JSH = 'JSH'
@@ -35,27 +39,40 @@ def run(fout=None):
 
     n2u = from_db(N2U,adjacency=True,chemical=True,
                   electrical=True,remove=_remove)
-    lncf = get_cf(n2u,vertices = lr[0],_arcsine=True)
-    rncf = get_cf(n2u,vertices = lr[1],_arcsine=True)
-    
+    lncf = get_cf(n2u,vertices = lr[0],_arcsine=ARCSINE)
+    rncf = get_cf(n2u,vertices = lr[1],_arcsine=ARCSINE)
+    ancf = get_cf(n2u,vertices = set(n2u.neurons) - set(_remove),_arcsine=ARCSINE)
+    nstd = {'gap': np.std(ancf['gap']),
+            'pre': np.std(ancf['pre']),
+            'post': np.std(ancf['post'])}
+
     jsh = from_db(JSH,adjacency=True,chemical=True,
                   electrical=True,remove=_remove)
-    ljcf = get_cf(jsh,vertices = lr[0],_arcsine=True)
-    rjcf = get_cf(jsh,vertices = lr[1],_arcsine=True)
+    ljcf = get_cf(jsh,vertices = lr[0],_arcsine=ARCSINE)
+    rjcf = get_cf(jsh,vertices = lr[1],_arcsine=ARCSINE)
+    ajcf = get_cf(jsh,vertices = set(jsh.neurons) - set(_remove),_arcsine=ARCSINE)
+    jstd = {'gap' : np.std(ajcf['gap']),
+            'pre' : np.std(ajcf['pre']),
+            'post': np.std(ajcf['post'])}
 
     cells = sorted((set(n2u.neurons)&set(jsh.neurons))-set(_remove))
-    bncf = get_cf(n2u,vertices = cells,_arcsine=True)
-    bjcf = get_cf(jsh,vertices = cells,_arcsine=True)
-    
-    data = [np.array(lncf['gap']) - np.array(rncf['gap']),
-            np.array(ljcf['gap']) - np.array(rjcf['gap']),
-            np.array(bncf['gap']) - np.array(bjcf['gap']),
-            np.array(lncf['pre']) - np.array(rncf['pre']),
-            np.array(ljcf['pre']) - np.array(rjcf['pre']),
-            np.array(bncf['pre']) - np.array(bjcf['pre']),
-            np.array(lncf['post']) - np.array(rncf['post']),
-            np.array(ljcf['post']) - np.array(rjcf['post']),
-            np.array(bncf['post']) - np.array(bjcf['post'])]
+    bncf = get_cf(n2u,vertices = cells,_arcsine=ARCSINE) 
+    bjcf = get_cf(jsh,vertices = cells,_arcsine=ARCSINE)
+    bstd = {'gap' : np.std(np.concatenate((ancf['gap'],ajcf['gap']))),
+            'pre' : np.std(np.concatenate((ancf['pre'],ajcf['pre']))),
+            'post': np.std(np.concatenate((ancf['post'],ajcf['post'])))}
+
+
+
+    data = [(lncf['gap'] - rncf['gap'])/nstd['gap'],
+            (ljcf['gap'] - rjcf['gap'])/jstd['gap'],
+            (bncf['gap'] - bjcf['gap'])/bstd['gap'],
+            (lncf['pre'] - rncf['pre'])/nstd['pre'],
+            (ljcf['pre'] - rjcf['pre'])/jstd['pre'],
+            (bncf['pre'] - bjcf['pre'])/bstd['pre'],
+            (lncf['post'] - rncf['post'])/nstd['post'],
+            (ljcf['post'] - rjcf['post'])/jstd['post'],
+            (bncf['post'] - bjcf['post'])/bstd['post']]
 
     print('Stats:')
     print_wilcoxon(data[0],'Adult L/R gap')
@@ -69,13 +86,13 @@ def run(fout=None):
     print_wilcoxon(data[8],'Adult/L4 post')
 
 
-    tval0,pval0 = ttest_ind(data[0],data[2])
-    tval1,pval1 = ttest_ind(data[0],data[1])
-    tval1,pval2 = ttest_ind(data[1],data[2])
-    tval1,pval3 = ttest_ind(data[3],data[4])
-    tval1,pval4 = ttest_ind(data[4],data[5])
-    tval1,pval5 = ttest_ind(data[6],data[7])
-    tval1,pval6 = ttest_ind(data[7],data[8])
+    tval0,pval0 = mannwhitneyu(data[0],data[2])
+    tval1,pval1 = mannwhitneyu(data[0],data[1])
+    tval1,pval2 = mannwhitneyu(data[1],data[2])
+    tval1,pval3 = mannwhitneyu(data[3],data[4])
+    tval1,pval4 = mannwhitneyu(data[4],data[5])
+    tval1,pval5 = mannwhitneyu(data[6],data[7])
+    tval1,pval6 = mannwhitneyu(data[7],data[8])
 
     pval = [
         (0,1,pval1),(1,2,pval2),
@@ -86,12 +103,12 @@ def run(fout=None):
     #tpair_confrac(ax,data,pval,fout=fout)
     tpair_syn(ax,data,pval,
               fout=fout,
-              ylabel='arcsine(CF) difference',
+              ylabel='Normalized CF difference',
               title = 'Homologous connectivity fractions (CF)',
               xticklabels = ['$C^{\mathrm{gap}}$',
                              '$C^{\mathrm{pre}}$',
                              '$C^{\mathrm{post}}$'],
-              ylim=[-1,1])
+              ylim=[-3,3])
 
     plt.tight_layout()
     plt.show()
