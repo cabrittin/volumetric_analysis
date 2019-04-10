@@ -388,4 +388,84 @@ class Connectome:
         return H
 
         
+    def split_left_right(self,left,right):
+        """
+        Split out left and right graphs
+        
+        Parameters:
+        -----------
+        left: list
+            List of left cells
+        right: list
+            List of right cells
+        """
+        if self.A:
+            self.Al = self.split_graph(self.A,left)
+            self.Ar = self.split_graph(self.A,right)
+        if self.C:
+            self.Cl = self.split_graph(self.C,left)
+            self.Cr = self.split_graph(self.C,right)
+        if self.E:
+            self.El = self.split_graph(self.E,left)
+            self.Er = self.split_graph(self.E,right)
+
+
+    @staticmethod
+    def split_graph(G,nodes):
+        """
+        Splits out the graphs with all edges connected to given nodes
+
+        Parameters:
+        -----------
+        G : networx Graph
+            Graph
+        nodes : list
+          List of nodes to keep
+        """
+        if nx.is_directed(G):
+            H = nx.DiGraph()
+        else:
+            H = nx.Graph()
+        for n in nodes:
+            if not G.has_node(n): continue
+            for m in G.neighbors(n):
+                if G.has_edge(n,m):
+                    H.add_edge(n,m,weight=G[n][m]['weight'])
+        return H
+
+
+    def map_right_graphs(self,nmap):
+        """
+        Maps the nodes in the right graphs to the left nodes
+
+        Parameters:
+        -----------
+        nmap: dict
+            dictionary to map right nodes to left nodes
+
+        """
+        if hasattr(self,'Ar'): self.Ar = self.map_graph_nodes(self.Ar,nmap)
+        if hasattr(self,'Cr'): self.Cr = self.map_graph_nodes(self.Cr,nmap)
+        if hasattr(self,'Er'): self.Er = self.map_graph_nodes(self.Er,nmap)
+
+    @staticmethod
+    def map_graph_nodes(G,lrmap):
+        """
+        Maps left and right nodes of graph
+
+        G : networkx graph
+            Graph
+        lrmap : dict
+            Dictionary that maps left to right nodes and vice versa
+        """
+        if nx.is_directed(G):
+            H = nx.DiGraph()
+        else:
+            H = nx.Graph()
+
+        for (a,b) in G.edges():
+            H.add_edge(lrmap[a],lrmap[b],weight=G[a][b]['weight'])
+        return H
+
+    
 

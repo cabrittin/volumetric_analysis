@@ -1,0 +1,48 @@
+"""
+Class to load mat files
+
+@author Christopher Brittin
+@data 09 April 2019
+"""
+
+import sys
+sys.path.append('./volumetric_analysis')
+
+import aux
+
+class MatLoader:
+    def __init__(self,mat_files='mat/mat_files.txt'):
+        self.load_mat(mat_files=mat_files)
+
+
+    def load_mat(self,mat_files='mat/mat_files.txt'):
+        self.mat_files = mat_files
+        self.mat = aux.read.into_dict(self.mat_files)
+    
+    def load_left(self):
+        self.left = aux.read.into_list(self.mat['left'])
+
+    def load_right(self):
+        self.right = aux.read.into_list(self.mat['right'])
+
+    def load_lrmap(self):
+        self.lrmap = aux.read.into_lr_dict(self.mat['lrmap'])
+
+    def load_cam_genes(self):
+        self.genes = aux.read.into_list(self.mat['genes'])
+
+
+    
+if __name__=="__main__":
+    M = MatLoader()
+
+    print(M.mat)
+    print('Left nodes:')
+    M.load_left()
+    for n in M.left: print('\t'+n)
+    print('Right nodes:')
+    M.load_right()
+    for n in M.right: print('\t'+n)
+    M.load_cam_genes()
+    for n in M.genes: print('\t'+n)
+    
