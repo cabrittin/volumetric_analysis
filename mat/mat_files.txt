@@ -1,4 +1,6 @@
 left,mat/left_nodes.txt
 right,mat/right_nodes.txt
 lrmap,mat/lr_dict.txt
+lrmap2,mat/lr_dict2.txt
 genes,mat/cam_genes.txt
+consensus,mat/consensus_graphs/consensus_%s_deg%d.graphml
