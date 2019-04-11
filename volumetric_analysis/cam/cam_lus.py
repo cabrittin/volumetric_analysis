@@ -87,7 +87,7 @@ class Model(object):
         return data
         
 
-def wbe(exp,C):
+def wbe(exp,C,cells = None):
     """
     Whole-cell binary expression model (WBE)
 
@@ -95,9 +95,13 @@ def wbe(exp,C):
     ----------
     exp : Expression object
     C : Connectome object (Networkx datatype)
+    cells: list
+     List of cells. By default all cells will be used.
     """
+
+    if not cells: cell = C.A.nodes()
     WBE = Model('WBE')
-    for n in C.A.nodes():
+    for n in cells:
         _num,_den = 0.0,0.0
         if not C.C.has_node(n): continue
         neigh = set(C.A.neighbors(n))

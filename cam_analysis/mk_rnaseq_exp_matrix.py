@@ -69,7 +69,7 @@ if __name__=="__main__":
     group = aux.read.into_dict2(params.group)
     gmap = aux.read.into_map(params.group)
 
-    #print(group)
+    print(group)
     genes = aux.read.into_list(params.genes)
     genemap = {}
     rec = []
@@ -80,22 +80,18 @@ if __name__=="__main__":
         else:
             genemap[g]=idgene
     for (idtime,tpt) in tpts:
-        print(tpt)
+        #print(tpt)
         matrix = []
         for g in genemap:
-            print('\t'+g)
+            #print('\t'+g)
             cells = get_gene_expression(cur,genemap[g],idtime)
             for c in cells:
                 if c[0] in group:
-                    if c[0] == 'ASE':
-                        matrix.append([g,'ASEL',c[1]])
-                        matrix.append([g,'ASER',c[1]])
-                    else:
-                        matrix.append([g,c[0],c[1]])
-                    #for _c in group[c[0]]:
-                    #    matrix.append([g,_c,c[1]])
+                    for _c in group[c[0]]:
+                        #print('asdfasd',_c)
+                        matrix.append([g,_c,c[1]])
                 elif c[0] in gmap:
-                    print(rec.append(c[0]))
+                    #print(rec.append(c[0]))
                     matrix.append([g,c[0],c[1]])
         if not matrix: continue
         fout = params.dout + FOUT + '_' + tpt + '.csv'

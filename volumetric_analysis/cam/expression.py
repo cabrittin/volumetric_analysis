@@ -50,7 +50,7 @@ class Matrix:
         self.M = np.zeros((self.m,self.n))
 
         for [g,c,val] in data:
-            if c not in cells: continue
+            if c not in _cells: continue
             self.M[self.cells[c],self.genes[g]] = float(val)
 
     def binarize(self,thresh=1):

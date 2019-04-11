@@ -12,6 +12,7 @@ import argparse
 import db
 import aux
 from cam.expression import Expression
+from mat_loader import MatLoader
 
 FOUT = 'wb_exp_matrix.csv'
 
@@ -28,7 +29,7 @@ if __name__ == '__main__':
 
     params = parser.parse_args()
 
- 
+    M = MatLoader()
     con = db.connect.default("N2U")
     cur = con.cursor()
     nodes = sorted(db.mine.get_adjacency_cells(cur))

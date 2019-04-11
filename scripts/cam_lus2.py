@@ -34,8 +34,8 @@ SBE_SCREEN = ['PLNL','PLNR']
 
 def run(fout=None):
     db = 'N2U'
-    wbe = aux.read.into_list2('./cam_analysis/results/rnaseq_exp_510_650_wbe_s7.csv')
-    sbe = aux.read.into_list2('./cam_analysis/results/rnaseq_exp_510_650_sbe_s7.csv')
+    wbe = aux.read.into_list2('./cam_analysis/results/all_genes_wbe_sTrue.csv')
+    sbe = aux.read.into_list2('./cam_analysis/results/all_genes_sbe_sTrue.csv')
     #ie = aux.read.into_list2('./results/'+db+'_ie.csv')
 
     sbe = [s for s in sbe if s[0] not in SBE_SCREEN]
