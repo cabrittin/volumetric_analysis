@@ -28,6 +28,7 @@ from cam.expression import Matrix
 from connectome.load import from_db
 import cam.cam_lus as cam_lus
 import aux
+from mat_loader import MatLoader
 
 cam = 'mat/cam_nr_pre_post.csv'
 ie_iter = 1000
@@ -56,6 +57,9 @@ if __name__ == '__main__':
                         help = "Chemical synapse threshold")
 
     params = parser.parse_args()
+    M = MatLoader()
+    M.load_left()
+    D = M.load_consensus_graphs(4)
 
     _end = 500
     if params.db == 'N2U': _end = 325
@@ -65,9 +69,10 @@ if __name__ == '__main__':
     cur = con.cursor()
     nodes = sorted(db.mine.get_adjacency_cells(cur))
 
-    e = Matrix(params.matrix)
+    e = Matrix(params.matrix,cells=sorted(D.A.nodes()))
     e.binarize()
     e.difference_matrix()
+    print(e.cells)
 
     e.cur = cur
     e.nodes = e.cells.keys()
@@ -85,7 +90,7 @@ if __name__ == '__main__':
         rm_edges = [e for e in C.C.edges() if C.C[e[0]][e[1]]['weight'] < params.thresh]
         C.C.remove_edges_from(rm_edges)
 
-    wbe = cam_lus.wbe(e,C)
+    wbe = cam_lus.wbe(e,D,cells=M.left)
     wbe_data = wbe.get_data()
     tmp = params.fout.replace('.','_wbe.')
     if params.thresh > 0:

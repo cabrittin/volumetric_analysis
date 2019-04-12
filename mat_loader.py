@@ -39,7 +39,7 @@ class MatLoader:
     
     def load_lrmap2(self):
         self.lrmap = aux.read.into_lr_dict(self.mat['lrmap2'])
-
+    
     def load_cam_genes(self):
         self.genes = aux.read.into_list(self.mat['genes'])
 
