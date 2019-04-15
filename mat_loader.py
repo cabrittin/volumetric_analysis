@@ -10,6 +10,8 @@ sys.path.append('./volumetric_analysis')
 import networkx as nx
 
 import aux
+from connectome import consensus
+
 
 class Connectome:
     def __init__(self,A,C,E):
@@ -22,7 +24,6 @@ class Connectome:
 class MatLoader:
     def __init__(self,mat_files='mat/mat_files.txt'):
         self.load_mat(mat_files=mat_files)
-
 
     def load_mat(self,mat_files='mat/mat_files.txt'):
         self.mat_files = mat_files
@@ -43,13 +44,23 @@ class MatLoader:
     def load_cam_genes(self):
         self.genes = aux.read.into_list(self.mat['genes'])
 
+    def load_isoforms(self):
+        self.isoforms = aux.read.into_dict(self.mat['isoforms'])
+
     def load_consensus_graphs(self,deg):
         A = nx.read_graphml(self.mat['consensus']%('adj',deg))
         C = nx.read_graphml(self.mat['consensus']%('chem',deg))
         E = nx.read_graphml(self.mat['consensus']%('gap',deg))
         return Connectome(A,C,E)
 
-    
+    def load_consensus_chemical_synapse(self,deg):
+        fin = self.mat['consensus_chemical']%deg
+        return consensus.convert_xml_to_synapse(fin)
+
+    def load_consensus_gap_junctions(self,deg):
+        fin = self.mat['consensus_gap']%deg
+        return consensus.convert_xml_to_synapse(fin)
+
 if __name__=="__main__":
     M = MatLoader()
 

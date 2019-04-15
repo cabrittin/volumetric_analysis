@@ -135,8 +135,12 @@ def get_object_contin_name(cur,obj):
             "from contin "
             "join object on object.CON_Number = contin.CON_Number "
             "where object.OBJ_Name = %s " %(obj))
-    cur.execute(sql)
-    return cur.fetchone()[0]
+    try:
+        cur.execute(sql)
+        tmp = cur.fetchone()
+        return tmp[0]
+    except:
+        return None
 
 def get_object_contin(cur,obj):
     """
@@ -332,7 +336,7 @@ def get_postsynapse_contins(cur,cell,start=0,end=None):
     cur.execute(sql)
     return list(set([str(a[0]) for a in cur.fetchall()]))   
 
-def get_gajjunction_contins(cur,cell,start=0,end=None):
+def get_gapjunction_contins(cur,cell,start=0,end=None):
     """
     Returns lists of synapse contins wher cell is a gap junction
 
@@ -359,7 +363,7 @@ def get_gajjunction_contins(cur,cell,start=0,end=None):
         sql = ("select synapsecombined.continNum "
                "from synapsecombined "
                "join object on object.CON_Number = synapsecombined.continNum "
-               "where synapsecombined.type like 'chemical' " 
+               "where synapsecombined.type like 'electrical' " 
                "and (post like '%%%s%%' or pre like '%%%s%%' " %(cell,cell))
         
     cur.execute(sql)
@@ -381,8 +385,10 @@ def get_synapse_data_by_contin(cur,contin):
             "from object "
             "where CON_Number = %s " %(contin))
     cur.execute(sql)
-    return [(a[0],a[1],a[2].split(',')) for a in cur.fetchall()]
-
+    try:
+        return [(a[0],a[1],a[2].split(',')) for a in cur.fetchall()]
+    except:
+        return None
 
 def get_synapse_data(cur,stype,**kwargs):
     """
@@ -730,8 +736,11 @@ def get_object_adjacency(cur,obj):
            "where preObj = %s "
            %(obj,obj)
            )
-    cur.execute(sql)
-    return [a[0] for a in cur.fetchall()]
+    try:
+        cur.execute(sql)
+        return [a[0] for a in cur.fetchall()]
+    except:
+        return None
 
 def order_synapses_by_section_number(cur,stype='chemical'):
     """

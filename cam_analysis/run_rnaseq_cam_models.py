@@ -20,92 +20,73 @@ Parameters:
 
 import sys
 sys.path.append('./volumetric_analysis')
+sys.path.append('.')
 import argparse
 import numpy as np
 
 import db
 from cam.expression import Matrix 
 from connectome.load import from_db
+from connectome import consensus
 import cam.cam_lus as cam_lus
 import aux
 from mat_loader import MatLoader
 
-cam = 'mat/cam_nr_pre_post.csv'
-ie_iter = 1000
+cam = 'mat/cam_isoforms.txt'
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('db',
-                        action = 'store',
-                        help = 'Database name')
     
     parser.add_argument('matrix',
                         action = 'store',
                         help = 'Path to matrix file')
 
+    parser.add_argument('deg',
+                        action = 'store',
+                        type= int,
+                        help = 'Conserved degree')
+
     parser.add_argument('fout',
                         action='store',
                         help = 'Path to output file')
 
-    parser.add_argument('-s','--syn_thresh',
-                        action='store',
-                        dest="thresh",
-                        type=int,
-                        required=False,
-                        default=True,
-                        help = "Chemical synapse threshold")
-
+    parser.add_argument('--ie_iter',
+                        dest = 'ie_iter',
+                        action = 'store',
+                        required = False,
+                        default = 1000,
+                        type = int,
+                        help = "Number IE iterations")
+    
     params = parser.parse_args()
+    
     M = MatLoader()
     M.load_left()
-    D = M.load_consensus_graphs(4)
-
-    _end = 500
-    if params.db == 'N2U': _end = 325
+    D = M.load_consensus_graphs(params.deg)
+    S = M.load_consensus_chemical_synapse(params.deg)
+    G = M.load_consensus_gap_junctions(params.deg)
     
-    mode = 'post'
-    con = db.connect.default(params.db)
-    cur = con.cursor()
-    nodes = sorted(db.mine.get_adjacency_cells(cur))
+    nodes = sorted(D.A.nodes()) 
 
-    e = Matrix(params.matrix,cells=sorted(D.A.nodes()))
+    e = Matrix(cam,params.matrix)
+    e.load_genes()
+    e.load_cells(sorted(D.A.nodes()))
+    e.assign_expression()
     e.binarize()
     e.difference_matrix()
-    print(e.cells)
-
-    e.cur = cur
-    e.nodes = e.cells.keys()
-    remove = set(nodes) - set(e.cells.keys())
-
-    #e = Expression(cur,cam,nodes)
-    #e.assign_expression_patterns(mode = mode)   
-
-    C = from_db(params.db,adjacency=True,chemical=True,
-                remove=remove,electrical=True,dataType='networkx')
-    C.remove_self_loops()
-    C.reduce_to_adjacency()    
     
-    if params.thresh > 0:
-        rm_edges = [e for e in C.C.edges() if C.C[e[0]][e[1]]['weight'] < params.thresh]
-        C.C.remove_edges_from(rm_edges)
-
     wbe = cam_lus.wbe(e,D,cells=M.left)
     wbe_data = wbe.get_data()
     tmp = params.fout.replace('.','_wbe.')
-    if params.thresh > 0:
-        tmp = tmp.replace('.','_s'+str(params.thresh)+'.')
     aux.write.from_list(tmp,wbe_data) 
 
     
-    sbe = cam_lus.sbe(e,end=_end,rmchem=rm_edges)       
+    sbe = cam_lus.sbe(e,S,G)       
     sbe_data = sbe.get_data()
     tmp = params.fout.replace('.','_sbe.')
-    if params.thresh > 0:
-        tmp = tmp.replace('.','_s'+str(params.thresh)+'.')
     aux.write.from_list(tmp,sbe_data)
-        
-    #e.splice = True
-    #e.load_genes()
-    #ie = cam_lus.ie(e,C,iters=ie_iter,mode=mode)
-    #np.savetxt('results/'+params.db+'_ie.csv',ie,delimiter=',',fmt='%1.4f')
+    
+    ie = cam_lus.ie(e,D,cells=M.left,iters=params.ie_iter)
+    tmp = params.fout.replace('.','_ie.')
+    np.savetxt(tmp,ie,delimiter=',',fmt='%1.4f')

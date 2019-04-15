@@ -3,5 +3,8 @@ right,mat/right_nodes.txt
 lrmap,mat/lr_dict.txt
 lrmap2,mat/lr_dict2.txt
 genes,mat/cam_genes.txt
+isoforms,mat/cam_isoforms.txt
 consensus,mat/consensus_graphs/consensus_%s_deg%d.graphml
 homologs,mat/homologs.txt
+consensus_chemical,mat/consensus_synapses/all_chem_deg%d.xml
+consensus_gap,mat/consensus_synapses/all_elec_deg%d.xml

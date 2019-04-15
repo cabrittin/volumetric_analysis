@@ -1,46 +1,229 @@
 import sys
 sys.path.append('./volumetric_analysis')
 sys.path.append('.')
+from lxml import etree
+from tqdm import tqdm
 
 from mat_loader import MatLoader
 import db
 import aux
 
-def scrub_synapses(G,synapses):
-    scrubbed = []
-    for [pre,_post,sect,contin,series] in synapses:
-        if not C.C.has_node(pre): continue
-        _post = _post.split(',')
-        post = [p for p in _post if C.C.has_edge(pre,p)]
-        tmp = [pre,post,sect,contin,series]
-        if not post: continue
-        scrubbed.append(tmp)
-    return scrubbed
+def scrub_left_chemical_synapses(cur,C,cells,start=0,end=None):
+    data = {}
 
+    for cname in tqdm(cells,desc="Cells processed"):
+        data[cname] = {}
+        contins = db.mine.get_presynapse_contins(cur,cname,start=start,end=end)
+        for cont in contins:
+            syn = db.mine.get_synapse_data_by_contin(cur,cont)
+            if not syn: continue
+            post,neigh,sect = [],[],[]
+            for s in syn:
+                sect.append(s[0])
+                adj = db.mine.get_object_adjacency(cur,s[1])
+                if not adj: continue
+                for n in adj:
+                    if not C.A.has_edge(cname,n): continue
+                    if n in neigh: continue
+                    neigh.append(n)
+ 
+                for p in s[2]:
+                    pname = db.mine.get_object_contin_name(cur,p)
+                    if not pname: continue
+                    if not C.C.has_edge(cname,pname): continue 
+                    if pname in post: continue
+                    if pname not in neigh: continue
+                    post.append(pname)
+
+            if not post: continue
+            data[cname][cont] = {'partners':sorted(post),
+                                'neighbors':sorted(neigh),
+                                'num_sections':len(syn),
+                                'sections':sect}
+    return data
+
+def scrub_right_chemical_synapses(cur,C,cells,lrmap,start=0,end=None):
+    data = {}
+    for cname in tqdm(cells,desc="Cells processed"):
+        data[cname] = {}
+        contins = db.mine.get_presynapse_contins(cur,cname,start=start,end=end)
+        for cont in contins:
+            syn = db.mine.get_synapse_data_by_contin(cur,cont)
+            if not syn: continue
+            post,neigh,sect = [],[],[]
+            for s in syn:
+                sect.append(s[0])
+                adj = db.mine.get_object_adjacency(cur,s[1])
+                if not adj: continue
+                for n in adj:
+                    if not C.A.has_edge(lrmap[cname],lrmap[n]): continue
+                    if n in neigh: continue
+                    neigh.append(n)
+ 
+                for p in s[2]:
+                    pname = db.mine.get_object_contin_name(cur,p)
+                    if not pname: continue
+                    if pname not in lrmap: continue
+                    if not C.C.has_edge(lrmap[cname],lrmap[pname]): continue 
+                    if pname in post: continue
+                    if pname not in neigh: continue
+                    post.append(pname)
+
+            if not post: continue
+            data[cname][cont] = {'partners':sorted(post),
+                                'neighbors':sorted(neigh),
+                                'num_sections':len(syn),
+                                'sections':sect}
+    return data
+
+def scrub_left_gapjunction_synapses(cur,C,cells,start=0,end=None):
+    data = {}
+    for cname in tqdm(cells, desc="Cells processed"):
+        data[cname] = {}
+        contins = db.mine.get_gapjunction_contins(cur,cname,start=start,end=end)
+        for cont in contins:
+            syn = db.mine.get_synapse_data_by_contin(cur,cont)
+            if not syn: continue
+            post,neigh,sect = [],[],[]
+            for s in syn:
+                preobj,postobj = s[1],s[2][0]
+                if not db.mine.get_object_contin_name(cur,s[1]) == cname:
+                    preobj,postobj = postobj,preobj
+                
+                adj = db.mine.get_object_adjacency(cur,preobj)
+                if not adj: continue
+                for n in adj:
+                    if not C.A.has_edge(cname,n): continue
+                    if n in neigh: continue
+                    neigh.append(n)
+                
+                pname = db.mine.get_object_contin_name(cur,postobj)
+                if not pname: continue
+                if not C.E.has_edge(cname,pname): continue 
+                if pname in post: continue
+                if pname not in neigh: continue
+                post.append(pname)
+
+            if not post: continue
+            data[cname][cont] = {'partners':sorted(post),
+                                'neighbors':sorted(neigh),
+                                'num_sections':len(syn),
+                                'sections':sect}
+    return data
+
+def scrub_right_gapjunction_synapses(cur,C,cells,lrmap,start=0,end=None):
+    data = {}
+    for cname in tqdm(cells,desc="Cells processed"):
+        data[cname] = {}
+        contins = db.mine.get_gapjunction_contins(cur,cname,start=start,end=end)
+        for cont in contins:
+            syn = db.mine.get_synapse_data_by_contin(cur,cont)
+            if not syn: continue
+            post,neigh,sect = [],[],[]
+            for s in syn:
+                preobj,postobj = s[1],s[2][0]
+                if not db.mine.get_object_contin_name(cur,s[1]) == cname:
+                    preobj,postobj = postobj,preobj
+                
+                adj = db.mine.get_object_adjacency(cur,preobj)
+                if not adj: continue
+                for n in adj:
+                    if not C.A.has_edge(lrmap[cname],lrmap[n]): continue
+                    if n in neigh: continue
+                    neigh.append(n)
+                
+                pname = db.mine.get_object_contin_name(cur,postobj)
+                if not pname: continue
+                if pname not in lrmap: continue
+                if not C.E.has_edge(lrmap[cname],lrmap[pname]): continue 
+                if pname in post: continue
+                if pname not in neigh: continue
+                post.append(pname)
+
+            if not post: continue
+            data[cname][cont] = {'partners':sorted(post),
+                                'neighbors':sorted(neigh),
+                                'num_sections':len(syn),
+                                'sections':sect}
+    return data
+
+
+
+def convert_to_xml(data):
+    root = etree.Element('conserved_synapses')
+    for cell in data:
+        xcell = etree.SubElement(root,'cell')
+        xcell.set('name',cell)
+        for cont in data[cell]:
+            xcont = etree.SubElement(xcell,'contin')
+            xcont.set('id',cont)
+            xnum = etree.SubElement(xcont,'num_sections')
+            xnum.text = str(data[cell][cont]['num_sections'])
+            xsect = etree.SubElement(xcont,'sections')
+            for s in data[cell][cont]['sections']:
+                xname = etree.SubElement(xsect,'name')
+                xname.text = s
+            xpartner = etree.SubElement(xcont,'partners')
+            for p in data[cell][cont]['partners']:
+                xname = etree.SubElement(xpartner,'name')
+                xname.text = p
+            xneighbor = etree.SubElement(xcont,'neighbors')
+            for n in data[cell][cont]['neighbors']:
+                xname = etree.SubElement(xneighbor,'name')
+                xname.text = n
+            xcell.append(xcont)
+        root.append(xcell)
+
+    tree = etree.ElementTree(root)
+    return tree      
+
+DEG = [4]
+DB = ['N2U','JSH']
 
 if __name__=="__main__":
-    
-    for deg in  [3,4]:
+
+    for deg in DEG:
         M = MatLoader()
+        M.load_left()
+        M.load_right()
+        M.load_lrmap()
         C = M.load_consensus_graphs(deg)
 
-        for _db in  ['N2U','JSH']:
+        for _db in DB:
             start,end = 0,325
             if _db == 'JSH':
                 start,end = 0,425
 
-            cout = './mat/consensus_synapses/%s_chem_synapses_deg%d.csv' %(_db,deg)
-            eout = './mat/consensus_synapses/%s_elec_synapses_deg%d.csv' %(_db,deg)
-    
+            clout = './mat/consensus_synapses/%s_chem_synapses_left_deg%d.xml' %(_db,deg)
+            crout = './mat/consensus_synapses/%s_chem_synapses_right_deg%d.xml' %(_db,deg)
+            elout = './mat/consensus_synapses/%s_elec_synapses_left_deg%d.xml' %(_db,deg)            
+            erout = './mat/consensus_synapses/%s_elec_synapses_right_deg%d.xml' %(_db,deg)
+
             con = db.connect.default(_db)
             cur = con.cursor()
 
-            synapses = db.mine.get_synapse_data(cur,'chemical',start=start,end=end)
-            scrub = scrub_synapses(C.C,synapses)
-            aux.write.from_list(cout,scrub)
-    
-            synapses = db.mine.get_synapse_data(cur,'electrical',start=start,end=end)
-            scrub = scrub_synapses(C.E,synapses)
-            aux.write.from_list(eout,scrub)
-    
+            print('Left chemical, DB: %s, DEG: %d' %(_db,deg))
+            data = scrub_left_chemical_synapses(cur,C,M.left,start=start,end=end)
+            tree = convert_to_xml(data)
+            xml_out = etree.tostring(tree,pretty_print=False)
+            with open(clout,'wb') as fout: fout.write(xml_out)
+            
+            print('Right chemical, DB: %s, DEG: %d' %(_db,deg))
+            data = scrub_right_chemical_synapses(cur,C,M.right,M.lrmap,start=start,end=end)
+            tree = convert_to_xml(data)
+            xml_out = etree.tostring(tree,pretty_print=False)
+            with open(crout,'wb') as fout: fout.write(xml_out)
+   
+            print('Right gap junction, DB: %s, DEG: %d' %(_db,deg))
+            data = scrub_left_gapjunction_synapses(cur,C,M.left,start=start,end=end)
+            tree = convert_to_xml(data)
+            xml_out = etree.tostring(tree,pretty_print=False)
+            with open(elout,'wb') as fout: fout.write(xml_out)
+
+            print('Right gap junction, DB: %s, DEG: %d' %(_db,deg))
+            data = scrub_right_gapjunction_synapses(cur,C,M.right,M.lrmap,start=start,end=end)
+            tree = convert_to_xml(data)
+            xml_out = etree.tostring(tree,pretty_print=False)
+            with open(erout,'wb') as fout: fout.write(xml_out)
+
             con. close()
