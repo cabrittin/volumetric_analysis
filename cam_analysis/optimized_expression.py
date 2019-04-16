@@ -158,7 +158,7 @@ if __name__=='__main__':
     e.assign_expression()
     e.binarize()
     
-    cell = 'AIBL'
+    cell = 'AIYL'
     neigh = sorted(C.A.neighbors(cell))
     genes,E = e.reduced_expression(neigh) 
     
@@ -173,7 +173,7 @@ if __name__=='__main__':
     idx = set(np.nonzero(Eopt)[0])
     _genes = [genes[i] for i in idx]
     print(len(genes),len(_genes))
-    print(_genes)
+    print(sorted(_genes))
     plt.figure()
     plt.plot(cost_rec,'b-')
     plt.show()

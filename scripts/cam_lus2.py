@@ -35,15 +35,56 @@ SBE_SCREEN = ['PLNL','PLNR']
 
 WBE = './cam_analysis/results/conserved_deg%d_wbe.csv'
 SBE = './cam_analysis/results/conserved_deg%d_sbe.csv'
-IE =  './cam_analysis/results/conserved_deg%d_ie.csv')
+IE =  './cam_analysis/results/conserved_deg%d_ie.csv'
 
-DEG = [3,4]
+DEG = [1,2,3,4]
+
+FOUT = '/home/cabrittin/Dropbox/PhD/sr_vol/figs2/fig9/cam_lus.png'
+
+
+def plot_lus(ax,mu,yerr):
+    error_kw = {'capsize': 10, 'capthick': 2,
+                'ecolor': 'black','elinewidth':2}
+    
+    ax.axvspan(-0.5,0.4,facecolor='#C3C3C3')
+    ax.axvspan(0.4,1.4,facecolor='#D8D7D7')
+    ax.axvspan(1.4,2.4,facecolor='#C3C3C3')
+    ax.axvspan(2.4,3.4,facecolor='#D8D7D7')
+    ax.axvspan(3.4,4.4,facecolor='#C3C3C3')
+    ax.axvspan(4.4,5.4,facecolor='#D8D7D7')
+
+    (n,m) = mu.shape
+    ind = np.arange(n)
+    width = 0.2
+   
+    x = [ind-2*width,ind-width,ind,ind+width]
+    rects = []
+    col = ['r','g','b','y']
+    for i in range(m):
+        _ax = ax.bar(x[i],mu[:,i],width,color=col[i],
+                    yerr=yerr[:,i],error_kw=error_kw)
+        rects.append([_ax])
+    
+    ax.set_ylabel('LUS',fontsize=28)
+    ax.set_xticks(ind-(0.5*width))
+    ax.set_xticklabels(('WBE chem.','WBE gap','SBE chem.','SBE gap','IE chem.','IE gap'))
+    ax.set_ylim([0,1.])
+    ax.set_xlim([-0.5,n-0.5])
+    ax.legend((rects[0][0],rects[1][0],rects[2][0],rects[3][0]),
+            ('Conserved 1','Conserved 2','Conserved 3','Conserved 4'),
+            fontsize=24)
+    ax.set_title('Combinatorial CAM models', fontsize=28)
+    
+
 
 def run(fout=None):
+   
+    n = len(DEG)
+    size = np.zeros((6,n))
+    mu = np.zeros((6,n))
+    std = np.zeros((6,n))
     
-    wbe_pre = [[],[]]
-    sbe_m: = [[],[]]
-    ie_val  = [[],[]]
+    idx = 0
     for deg in DEG:
         wbe = aux.read.into_list2(WBE%deg )
         sbe = aux.read.into_list2(SBE%deg)
@@ -57,26 +98,21 @@ def run(fout=None):
         sbe_gap = [float(d[2]) for d in sbe if float(d[2]) >= 0]
         ie_gap = [float(d[1]) for d in ie if float(d[1]) >= 0]
         
+        _data = [wbe_pre,wbe_gap,sbe_pre,sbe_gap,ie_pre,ie_gap]
+        size[:,idx] = np.array([len(d) for d in _data])
+        mu[:,idx] = np.array([np.mean(d) for d in _data])
+        std[:,idx] = np.array([np.std(d) for d in _data])
+        
+        
+        idx += 1
 
-        pre_size = [len(wbe_pre),len(sbe_pre),len(ie_pre)]
-        gap_size = [len(wbe_gap),len(sbe_gap),len(ie_gap)]
-        pre_mean = [np.mean(wbe_pre),np.mean(sbe_pre),np.mean(ie_pre)]
-        gap_mean = [np.mean(wbe_gap),np.mean(sbe_gap),np.mean(ie_gap)]
-        pre_std =  [np.std(wbe_pre),np.std(sbe_pre),np.std(ie_pre)]
-        gap_std =  [np.std(wbe_gap),np.std(sbe_gap),np.std(ie_gap)]
+    print(mu)
 
-    #fig,ax = plt.subplots(1,1,figsize=(12,8))
-    #expplt.plot_cam_lus(ax,[pre_mean,gap_mean],
-    #                    [pre_std,gap_std],
-    #                    fout = fout)
-    #print(pre_size,gap_size)
-    #ax.set_xticklabels(('WBE\n($n=%d,%d$)'%(pre_size[0],gap_size[0]),
-    #                    'SBE\n($n=%d,%d$)'%(pre_size[1],gap_size[1]),
-    #                    'IE\n($n=%d,%d$)'%(pre_size[2],gap_size[2])))
-    #ax.xaxis.set_tick_params(labelsize=28)
+    fig,ax = plt.subplots(1,1,figsize=(16,8))
+    plot_lus(ax,mu,std)
     #plt.tight_layout()
-    #if fout: plt.savefig(fout)
-    #plt.show()    
+    plt.savefig(FOUT)
+    plt.show()
 
 
 if __name__=='__main__':
