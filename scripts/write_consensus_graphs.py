@@ -2,27 +2,24 @@ import sys
 sys.path.append('./volumetric_analysis')
 sys.path.append('.')
 import networkx as nx
+from tqdm import tqdm
 
 from connectome.load import from_db
 from mat_loader import MatLoader
 
 def consensus_graph(G,H,deg,nodes):
     for n in nodes:
-        try:
-            neigh = set([])
+        neigh = set([])
+        for h in H:
+            if not h.has_node(n): continue
+            neigh = neigh.union(set(list(h.neighbors(n))))
+        for m in neigh:
+            _deg = 0
             for h in H:
-                neigh = neigh.union(set(list(h.neighbors(n))))
-            for m in neigh:
-                _deg = 0
-                for h in H:
-                    if h.has_edge(n,m):
-                        _deg += 1
-                if _deg >= deg:
-                    G.add_edge(n,m)
-        except:
-            print(n)
-            pass  
-    
+                if h.has_edge(n,m):
+                    _deg += 1
+            if _deg >= deg:
+                G.add_edge(n,m)
     return G
 
 DOUT = './mat/consensus_graphs/consensus_%s_deg%d.graphml'
@@ -44,7 +41,7 @@ if __name__=="__main__":
     J.split_left_right(M.left,M.right)
     J.map_right_graphs(M.lrmap)
     
-    for deg in [3,4]:
+    for deg in tqdm([1,2,3,4],desc="Degree"):
         A = nx.Graph()
         C = nx.DiGraph()
         E = nx.Graph()

@@ -57,7 +57,7 @@ gap_right = ['N2U_elec_synapses_right_deg%d.xml',
 cout =  din + 'all_chem_deg%d.xml'
 eout = din + 'all_elec_deg%d.xml'
 
-DEG = [3,4]
+DEG = [1,2,3,4]
 if __name__=="__main__":
     M = MatLoader()
     M.load_lrmap()

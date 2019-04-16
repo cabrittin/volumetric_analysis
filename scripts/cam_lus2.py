@@ -32,39 +32,51 @@ in the adjacency data.
 """
 SBE_SCREEN = ['PLNL','PLNR']
 
+
+WBE = './cam_analysis/results/conserved_deg%d_wbe.csv'
+SBE = './cam_analysis/results/conserved_deg%d_sbe.csv'
+IE =  './cam_analysis/results/conserved_deg%d_ie.csv')
+
+DEG = [3,4]
+
 def run(fout=None):
-    db = 'N2U'
-    wbe = aux.read.into_list2('./cam_analysis/results/conserved_deg3_wbe.csv' )
-    sbe = aux.read.into_list2('./cam_analysis/results/conserved_deg3_sbe.csv')
-    ie = aux.read.into_list2('./cam_analysis/results/conserved_deg3_ie.csv')
+    
+    wbe_pre = [[],[]]
+    sbe_m: = [[],[]]
+    ie_val  = [[],[]]
+    for deg in DEG:
+        wbe = aux.read.into_list2(WBE%deg )
+        sbe = aux.read.into_list2(SBE%deg)
+        ie = aux.read.into_list2(IE%deg)
 
-    sbe = [s for s in sbe if s[0] not in SBE_SCREEN]
-    wbe_pre = [float(d[1]) for d in wbe if float(d[1]) >= 0]
-    sbe_pre = [float(d[1]) for d in sbe if float(d[1]) >= 0]
-    ie_pre  = [float(d[0]) for d in ie if float(d[0]) >= 0]
-    wbe_gap = [float(d[2]) for d in wbe if float(d[2]) >= 0]
-    sbe_gap = [float(d[2]) for d in sbe if float(d[2]) >= 0]
-    ie_gap = [float(d[1]) for d in ie if float(d[1]) >= 0]
+        sbe = [s for s in sbe if s[0] not in SBE_SCREEN]
+        wbe_pre = [float(d[1]) for d in wbe if float(d[1]) >= 0]
+        sbe_pre = [float(d[1]) for d in sbe if float(d[1]) >= 0]
+        ie_pre  = [float(d[0]) for d in ie if float(d[0]) >= 0]
+        wbe_gap = [float(d[2]) for d in wbe if float(d[2]) >= 0]
+        sbe_gap = [float(d[2]) for d in sbe if float(d[2]) >= 0]
+        ie_gap = [float(d[1]) for d in ie if float(d[1]) >= 0]
+        
 
-    pre_size = [len(wbe_pre),len(sbe_pre),len(ie_pre)]
-    gap_size = [len(wbe_gap),len(sbe_gap),len(ie_gap)]
-    pre_mean = [np.mean(wbe_pre),np.mean(sbe_pre),np.mean(ie_pre)]
-    gap_mean = [np.mean(wbe_gap),np.mean(sbe_gap),np.mean(ie_gap)]
-    pre_std =  [np.std(wbe_pre),np.std(sbe_pre),np.std(ie_pre)]
-    gap_std =  [np.std(wbe_gap),np.std(sbe_gap),np.std(ie_gap)]
+        pre_size = [len(wbe_pre),len(sbe_pre),len(ie_pre)]
+        gap_size = [len(wbe_gap),len(sbe_gap),len(ie_gap)]
+        pre_mean = [np.mean(wbe_pre),np.mean(sbe_pre),np.mean(ie_pre)]
+        gap_mean = [np.mean(wbe_gap),np.mean(sbe_gap),np.mean(ie_gap)]
+        pre_std =  [np.std(wbe_pre),np.std(sbe_pre),np.std(ie_pre)]
+        gap_std =  [np.std(wbe_gap),np.std(sbe_gap),np.std(ie_gap)]
 
-    fig,ax = plt.subplots(1,1,figsize=(12,8))
-    expplt.plot_cam_lus(ax,[pre_mean,gap_mean],
-                        [pre_std,gap_std],
-                        fout = fout)
-    print(pre_size,gap_size)
-    ax.set_xticklabels(('WBE\n($n=%d,%d$)'%(pre_size[0],gap_size[0]),
-                        'SBE\n($n=%d,%d$)'%(pre_size[1],gap_size[1]),
-                        'IE\n($n=%d,%d$)'%(pre_size[2],gap_size[2])))
+    #fig,ax = plt.subplots(1,1,figsize=(12,8))
+    #expplt.plot_cam_lus(ax,[pre_mean,gap_mean],
+    #                    [pre_std,gap_std],
+    #                    fout = fout)
+    #print(pre_size,gap_size)
+    #ax.set_xticklabels(('WBE\n($n=%d,%d$)'%(pre_size[0],gap_size[0]),
+    #                    'SBE\n($n=%d,%d$)'%(pre_size[1],gap_size[1]),
+    #                    'IE\n($n=%d,%d$)'%(pre_size[2],gap_size[2])))
     #ax.xaxis.set_tick_params(labelsize=28)
-    plt.tight_layout()
-    if fout: plt.savefig(fout)
-    plt.show()    
+    #plt.tight_layout()
+    #if fout: plt.savefig(fout)
+    #plt.show()    
 
 
 if __name__=='__main__':

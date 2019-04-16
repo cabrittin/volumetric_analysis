@@ -177,7 +177,7 @@ def convert_to_xml(data):
     tree = etree.ElementTree(root)
     return tree      
 
-DEG = [4]
+DEG = [1,2]
 DB = ['N2U','JSH']
 
 if __name__=="__main__":
