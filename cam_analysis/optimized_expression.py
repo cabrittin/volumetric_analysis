@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt
 
 from mat_loader import MatLoader
 from cam.expression import Matrix
+import aux
 
 class Optimize(Matrix):
     def __init__(self,fgenes,fexp):
@@ -33,19 +34,18 @@ class Optimize(Matrix):
         genes = [self.gene_idx[j] for j in jdx]
         return genes,E.T
 
-def build_synapse_matices(cells,synapses):
+def build_synapse_matices(cells,synapses,synpartners=set([])):
     n = len(cells)
     m = len(synapses)
     cells_idx = {cells[i]:i for i in range(n)}
     
     P = np.zeros((n,m))
     A = np.zeros((n,m))
-
     jdx = 0
     for cont in synapses:
         partners = set(synapses[cont]['partners'])
         neighbors = set(synapses[cont]['neighbors'])
-        nonsyn = neighbors - partners
+        nonsyn = neighbors - partners - synpartners
         for c in partners: P[cells_idx[c],jdx] = 1
         for c in nonsyn: A[cells_idx[c],jdx] = 1
         jdx += 1
@@ -71,11 +71,18 @@ def anneal(sol):
         T = T*alpha
     return sol, cost
 
-def cost(E,S,A,gamma = [0.5,0.4,0.1]):
+def syncost(E,S,A,gamma = [0.5,0.4,0.1]):
     syn = np.sum(np.dot(E,S))
     adj = np.sum(np.dot(E,A))
     sparse = np.sum(E != 0)
     J = gamma[0] * syn - gamma[1] * adj - gamma[2] * sparse
+    return J
+
+def adjcost(E,S,A,gamma = [0.5,0.4,0.1]):
+    syn = np.sum(np.dot(E,S))
+    adj = np.sum(np.dot(E,A))
+    sparse = np.sum(E != 0)
+    J = -gamma[0] * syn + gamma[1] * adj - gamma[2] * sparse
     return J
     
 def acceptance_probability(new_cost,old_cost,T):
@@ -88,7 +95,7 @@ def perturb(coord,E):
     E[a,b] = int(not E[a,b])
     return E
 
-def run_optimization(E0,S,A,iters=100):
+def run_optimization(E0,S,A,funcCost,iters=100):
     (n,m) = E0.shape
     E = np.zeros(E0.shape)
     coord = np.nonzero(E0)
@@ -97,7 +104,7 @@ def run_optimization(E0,S,A,iters=100):
     for (a,b) in sample(coord,k): E[a,b] = 1
     if not iters: iters = 10*len(coord)
     
-    old_cost = cost(E,S,A)
+    old_cost = funcCost(E,S,A)
     T = 1.0
     T_min = 0.00001
     alpha = 0.9
@@ -115,7 +122,7 @@ def run_optimization(E0,S,A,iters=100):
             #E[rdx,nonzero] = 0
 
             #Compute new cost 
-            new_cost = cost(E,S,A)
+            new_cost = funcCost(E,S,A)
             #Decide to accept perturbation
             ap = acceptance_probability(new_cost,old_cost,T)
             if ap > random():
@@ -129,6 +136,8 @@ def run_optimization(E0,S,A,iters=100):
     return E,cost_rec
 
 cam = 'mat/cam_isoforms.txt'
+
+FOUT = 'cam_analysis/results/cam_optimize_%d_v2.csv'
 
 if __name__=='__main__':
 
@@ -146,6 +155,7 @@ if __name__=='__main__':
     
     params = parser.parse_args()
 
+    _iter = 100
     M = MatLoader()
     M.load_left()
     C = M.load_consensus_graphs(params.deg)
@@ -157,16 +167,28 @@ if __name__=='__main__':
     e.load_cells(sorted(C.A.nodes()))
     e.assign_expression()
     e.binarize()
+    gene_count = {g:[0]*_iter for g in e.genes}
+
+    for j in range(_iter):
+        print('Iter: %d/%d'%(j+1,_iter))
+        for cell in tqdm(M.left,desc='Optimize'):    
+            if not C.A.has_node(cell): continue
+            if not C.C.has_node(cell): continue
+            neigh = sorted(C.A.neighbors(cell))
+            genes,E = e.reduced_expression(neigh) 
+            P,A = build_synapse_matices(neigh,S[cell],set(C.C.neighbors(cell)))
+            #P,A = build_synapse_matices(neigh,S[cell])
+            Eopt,cost_rec = run_optimization(E,P,A,syncost)
+            idx = set(np.nonzero(Eopt)[0])
+            _genes = [genes[i] for i in idx]
+            for g in _genes: gene_count[g][j] += 1
+        
     
-    cell = 'AIYL'
-    neigh = sorted(C.A.neighbors(cell))
-    genes,E = e.reduced_expression(neigh) 
-    
-    P,A = build_synapse_matices(neigh,S[cell])
+    aux.write.from_dict(FOUT%params.deg,gene_count)
+    #sorted_genes = sorted(gene_count.items(), key=lambda kv: kv[1])
+    #for g in sorted_genes: print(g)
 
-    Eopt,cost_rec = run_optimization(E,P,A)
-
-
+    """
     print(np.sum(E),np.sum(Eopt))
     print(np.sum(np.dot(E,P)),np.sum(np.dot(E,A)))
     print(np.sum(np.dot(Eopt,P)),np.sum(np.dot(Eopt,A)))
@@ -177,3 +199,4 @@ if __name__=='__main__':
     plt.figure()
     plt.plot(cost_rec,'b-')
     plt.show()
+    """

@@ -38,9 +38,10 @@ if __name__=="__main__":
 
     J = from_db('JSH',adjacency=True,chemical=True,
                 electrical=True,dataType='networkx')
+    
     J.split_left_right(M.left,M.right)
     J.map_right_graphs(M.lrmap)
-    
+    M.left = ['OLLL']
     for deg in tqdm([1,2,3,4],desc="Degree"):
         A = nx.Graph()
         C = nx.DiGraph()
@@ -56,7 +57,6 @@ if __name__=="__main__":
         nx.write_graphml(A,aout)
         nx.write_graphml(C,cout)
         nx.write_graphml(E,gout)
-
         
 
 

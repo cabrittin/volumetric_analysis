@@ -19,32 +19,31 @@ FOUT = '/home/cabrittin/Dropbox/PhD/sr_vol/figs2/fig9/cam_lr_discrepancy.png'
 
 if __name__=='__main__':
     M = MatLoader()
-    C = M.load_consensus_graphs(4)
+    C = M.load_consensus_graphs(3)
     M.load_left()
     M.load_lrmap()
 
     count = [0,0,0,0]
     for n in M.left:
         if C.C.has_node(n):
-            count[0] += 1
             partners = set(C.C.neighbors(n))
             neighbors = set(C.A.neighbors(n))
             nonsyn = neighbors - partners
             for p in partners:
                 pmap = M.lrmap[p]
+                count[0] += 1 
                 if pmap in nonsyn:
+                    print(n,p,pmap)
                     count[1] += 1
-                    break
         
         if C.E.has_node(n):
-            count[2] += 1
             partners = set(C.E.neighbors(n))
             nonsyn = neighbors - partners
             for p in partners:
+                count[2] += 1   
                 pmap = M.lrmap[p]
                 if pmap in nonsyn:
                     count[3] += 1
-                    break
 
 
     print(count)
@@ -59,10 +58,10 @@ if __name__=='__main__':
     width = 0.3
 
     rects = ax.bar(ind,data,width,color='k')
-    ax.set_ylabel('Fraction of cell classes that make synapse',fontsize=28)
+    ax.set_ylabel('Fraction of Conserved 4 synaptic partners',fontsize=28)
     ax.set_xticks(ind)
-    ax.set_xticklabels(('Chemical\n($n$=%d)'%count[0],'Gap J.\n($n$=%d)'%count[1]))
-    ax.set_ylim([0,1])
+    ax.set_xticklabels(('Chemical\n($n$=%d)'%count[0],'Gap J.\n($n$=%d)'%count[2]))
+    ax.set_ylim([0,0.5])
     ax.set_title('Fraction of cell classes that synapse onto\n left(right) but not right(left) neighbor\n',fontsize=28)
     plt.tight_layout()
     plt.savefig(FOUT)
