@@ -30,18 +30,25 @@ def get_gene_count(E,syn,neigh):
     syn_count = np.zeros(m)
     neigh_count = np.zeros(m)
     for i in range(k):
-        ssum = np.sum(E[syn[i],:],axis=0)
+        sdx = syn[i]
+        ndx = neigh[i]
+        ssum = np.sum(E[sdx,:],axis=0)
         ssum[ssum > 0] = 1
         syn_count += ssum
-        ssum = np.sum(E[neigh[i],:],axis=0)
-        ssum[ssum > 0] = 1
-        neigh_count += ssum
+        nsum = np.sum(E[ndx,:],axis=0)
+        nsum[nsum > 0] = 1
+        neigh_count += nsum
+        diff = ssum - nsum
+        tmp = E[sdx,:] - nsum 
+        #print('gene diff',np.where(diff > 0))
+        #print(sdx,ndx,np.where(diff > 1))
 
-    print(syn_count)
-    print(neigh_count)
+    diff = syn_count - neigh_count
+    print('Sum gene diff',np.where(diff > 0))
     print(k)
-
-    print(0.5*(syn_count - neigh_count) / (syn_count + neigh_count))
+    
+    #reldff = 0.5*(syn_count - neigh_count) / (syn_count + neigh_count)
+    #print('Rel diff', np.where(reldff))
 
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description=__doc__,
@@ -55,7 +62,9 @@ if __name__=='__main__':
                         type= int,
                         help = 'Conserved degree')
 
-    
+   
+    parser.add_argument('cell',action='store',help='Cell name')
+
     params = parser.parse_args()
 
 
@@ -70,13 +79,16 @@ if __name__=='__main__':
     e.load_cells(sorted(C.A.nodes()))
     e.assign_expression()
     e.binarize()
-
     print(len(e.gene_idx),len(e.cells_idx),e.E.shape)
     syn,neigh = [],[]
-    for cell in S:
+    for cell in [params.cell]:#S:
+        cneigh = set(C.C.neighbors(cell))
         for cont in S[cell]:
-            syn.append([e.cells[n] for n in S[cell][cont]['partners']])
-            neigh.append([e.cells[n] for n in S[cell][cont]['neighbors']])
+            partners = set(S[cell][cont]['partners'])
+            neighbors = set(S[cell][cont]['neighbors'])
+            nonsyn = neighbors - partners - cneigh
+            syn.append([e.cells[n] for n in partners])
+            neigh.append([e.cells[n] for n in nonsyn])
 
 
     get_gene_count(e.E,syn,neigh)        
