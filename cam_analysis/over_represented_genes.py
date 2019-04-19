@@ -15,40 +15,15 @@ import argparse
 import numpy as np
 from tqdm import tqdm
 from random import shuffle
+import matplotlib.pyplot as plt
 
 from mat_loader import MatLoader
 from cam.expression import Matrix
-
+import cam.cam_predict as predict
 
 
 cam = 'mat/cam_isoforms.txt'
 FOUT = 'cam_analysis/results/cam_over_represent_deg%d.csv'
-
-def get_gene_count(E,syn,neigh):
-    (n,m) = E.shape
-    k = len(syn)
-    syn_count = np.zeros(m)
-    neigh_count = np.zeros(m)
-    for i in range(k):
-        sdx = syn[i]
-        ndx = neigh[i]
-        ssum = np.sum(E[sdx,:],axis=0)
-        ssum[ssum > 0] = 1
-        syn_count += ssum
-        nsum = np.sum(E[ndx,:],axis=0)
-        nsum[nsum > 0] = 1
-        neigh_count += nsum
-        diff = ssum - nsum
-        tmp = E[sdx,:] - nsum 
-        #print('gene diff',np.where(diff > 0))
-        #print(sdx,ndx,np.where(diff > 1))
-
-    diff = syn_count - neigh_count
-    print('Sum gene diff',np.where(diff > 0))
-    print(k)
-    
-    #reldff = 0.5*(syn_count - neigh_count) / (syn_count + neigh_count)
-    #print('Rel diff', np.where(reldff))
 
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description=__doc__,
@@ -72,7 +47,9 @@ if __name__=='__main__':
     M.load_left()
     C = M.load_consensus_graphs(params.deg)
     S = M.load_consensus_chemical_synapse(params.deg)
-
+    #S1 = M.load_consensus_chemical_synapse(1)
+    #C1 = M.load_consensus_graphs(1)
+    print(C.C.number_of_edges(),C1.C.number_of_edges())
     
     e = Matrix(cam,params.matrix)
     e.load_genes()
@@ -80,18 +57,23 @@ if __name__=='__main__':
     e.assign_expression()
     e.binarize()
     print(len(e.gene_idx),len(e.cells_idx),e.E.shape)
-    syn,neigh = [],[]
-    for cell in [params.cell]:#S:
-        cneigh = set(C.C.neighbors(cell))
-        for cont in S[cell]:
-            partners = set(S[cell][cont]['partners'])
-            neighbors = set(S[cell][cont]['neighbors'])
-            nonsyn = neighbors - partners - cneigh
-            syn.append([e.cells[n] for n in partners])
-            neigh.append([e.cells[n] for n in nonsyn])
+
+    syn,neigh = predict.get_synapse_data(S[params.cell],e,cpartners=set(C.C.neighbors(params.cell)),screen='N2U')
+
+    jsyn,jneigh = predict.get_synapse_data(S1[params.cell],e,cpartners=set(C1.C.neighbors(params.cell)),screen='JSH')
+    gene_sig = predict.gene_differential(e.E,syn,neigh)        
+    print(len(syn),len(jsyn))
+    
+    print(gene_sig)
+    ssig,nsig,idscore = predict.get_overlap(gene_sig,e.E,jsyn,jneigh)
+
+    print('Syn locate score: %1.3f' %idscore)
 
 
-    get_gene_count(e.E,syn,neigh)        
+    #fig,ax = plt.subplots(1,1,figsize=(10,10))
+    #ax.hist(ssig,bins=101,range=(0,1),histtype='step',color='b',label='Syn. Partners')
+    #ax.hist(nsig,bins=101,range=(0,1),histtype='step',color='r',label='Neighbors')
+    #ax.legend()
+    #plt.show()
 
     
-
