@@ -7,6 +7,7 @@ Functions for testing CAM predictions
 @date 19 April 2019
 """
 import numpy as np
+from random import random
 
 def gene_differential(E,syn,neigh):
     """
@@ -143,7 +144,41 @@ def get_overlap(sig,E,syn,neigh):
             neighscore.append(score)
             nsig.append(score)
         if max(synscore) > max(neighscore): idsyn += 1
-
+    
+     
     return ssig,nsig,idsyn/float(k)
+
+def get_random_overlap(syn,neigh):
+    """
+    Returns the probability of randomly selecting the correct synaptic partners  
+
+    Paramters:
+    ----------
+    syn : list
+     List of synaptic partners at each synapse
+    neigh : list
+     List of neighbors at each synapse
+
+    Return:
+    -------
+    idsyn : float
+     Fraction of synapses where the highest overlap score is a synaptic partner
+
+    """
+
+    k = len(syn)
+    idsyn = 0
+    for i in range(k):
+        num = float(len(syn[i]))
+        den = num + len(neigh[i]) 
+        r = random()
+        thresh = num /den
+        #print(r,thresh)
+        if r <= thresh: 
+            #print(r,thresh,syn[i],neigh[i])
+            idsyn += 1
+    #print(idsyn,k) 
+    return idsyn/float(k)
+
 
 

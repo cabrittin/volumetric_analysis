@@ -47,8 +47,8 @@ if __name__=='__main__':
     M.load_left()
     C = M.load_consensus_graphs(params.deg)
     S = M.load_consensus_chemical_synapse(params.deg)
-    #S1 = M.load_consensus_chemical_synapse(1)
-    #C1 = M.load_consensus_graphs(1)
+    S1 = M.load_consensus_chemical_synapse(1)
+    C1 = M.load_consensus_graphs(1)
     print(C.C.number_of_edges(),C1.C.number_of_edges())
     
     e = Matrix(cam,params.matrix)
@@ -60,6 +60,7 @@ if __name__=='__main__':
 
     syn,neigh = predict.get_synapse_data(S[params.cell],e,cpartners=set(C.C.neighbors(params.cell)),screen='N2U')
 
+    #jsyn,jneigh = predict.get_synapse_data(S1[params.cell],e,screen='JSH') 
     jsyn,jneigh = predict.get_synapse_data(S1[params.cell],e,cpartners=set(C1.C.neighbors(params.cell)),screen='JSH')
     gene_sig = predict.gene_differential(e.E,syn,neigh)        
     print(len(syn),len(jsyn))

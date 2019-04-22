@@ -7,4 +7,9 @@ isoforms,mat/cam_isoforms.txt
 consensus,mat/consensus_graphs/consensus_%s_deg%d.graphml
 homologs,mat/homologs.txt
 consensus_chemical,mat/consensus_synapses/all_chem_deg%d.xml
+consensus_post,mat/consensus_synapses/all_chem_post_deg%d.xml
 consensus_gap,mat/consensus_synapses/all_elec_deg%d.xml
+gene_sig_pre,cam_analysis/gene_sigs/gene_sig_pre_deg%d.csv
+gene_sig_post,cam_analysis/gene_sigs/gene_sig_post_deg%d.csv
+gene_sig_gap,cam_analysis/gene_sigs/gene_sig_gap_deg%d.csv
+gene_sig_graph,cam_analysis/gene_sigs/sig_%s_deg%d.graphml

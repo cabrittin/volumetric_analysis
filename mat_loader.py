@@ -57,9 +57,30 @@ class MatLoader:
         fin = self.mat['consensus_chemical']%deg
         return consensus.convert_xml_to_synapse(fin)
 
+    def load_consensus_chemical_post_synapse(self,deg):
+        fin = self.mat['consensus_post']%deg
+        return consensus.convert_xml_to_synapse(fin)
+
     def load_consensus_gap_junctions(self,deg):
         fin = self.mat['consensus_gap']%deg
         return consensus.convert_xml_to_synapse(fin)
+
+    def load_gene_sig_pre(self,deg):
+        fin = self.mat['gene_sig_pre']%deg
+        return aux.read.into_dict2(fin)
+
+    def load_gene_sig_post(self,deg):
+        fin = self.mat['gene_sig_post']%deg
+        return aux.read.into_dict2(fin)
+
+    def load_gene_sig_gap(self,deg):
+        fin = self.mat['gene_sig_gap']%deg
+        return aux.read.into_dict2(fin)
+    
+    def load_gene_sig_graph(self,deg):
+        pre = nx.read_graphml(self.mat['gene_sig_graph']%('pre',deg))
+        post = nx.read_graphml(self.mat['gene_sig_graph']%('post',deg))
+        return pre,post
 
 if __name__=="__main__":
     M = MatLoader()

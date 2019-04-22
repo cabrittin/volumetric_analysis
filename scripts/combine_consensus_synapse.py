@@ -48,13 +48,17 @@ chem_left = ['N2U_chem_synapses_left_deg%d.xml',
             'JSH_chem_synapses_left_deg%d.xml']
 chem_right = ['N2U_chem_synapses_right_deg%d.xml',
             'JSH_chem_synapses_right_deg%d.xml']
-
+post_left = ['N2U_chem_post_synapses_left_deg%d.xml',
+            'JSH_chem_post_synapses_left_deg%d.xml']
+post_right = ['N2U_chem_post_synapses_right_deg%d.xml',
+            'JSH_chem_post_synapses_right_deg%d.xml']
 gap_left = ['N2U_elec_synapses_left_deg%d.xml',
             'JSH_elec_synapses_left_deg%d.xml']
 gap_right = ['N2U_elec_synapses_right_deg%d.xml',
             'JSH_elec_synapses_right_deg%d.xml']
 
 cout =  din + 'all_chem_deg%d.xml'
+pout = din + 'all_chem_post_deg%d.xml'
 eout = din + 'all_elec_deg%d.xml'
 
 DEG = [1,2,3,4]
@@ -69,10 +73,6 @@ if __name__=="__main__":
         tmp = consensus.convert_xml_to_synapse(din + chem_right[0]%deg)
         tmp = map_right_left(tmp,M.lrmap)
         data = combine_data(data,tmp)
-
-        tmp = consensus.convert_xml_to_synapse(din + chem_right[0]%deg)
-        tmp = map_right_left(tmp,M.lrmap)
-        data = combine_data(data,tmp)
         
         tmp = consensus.convert_xml_to_synapse(din + chem_right[1]%deg)
         tmp = map_right_left(tmp,M.lrmap)
@@ -82,12 +82,24 @@ if __name__=="__main__":
         xml_out = etree.tostring(tree,pretty_print=False)
         with open(cout%deg,'wb') as fout: fout.write(xml_out)
 
-        data = consensus.convert_xml_to_synapse(din + gap_left[0]%deg)
-        tmp = consensus.convert_xml_to_synapse(din + gap_left[1]%deg)
+        data = consensus.convert_xml_to_synapse(din + post_left[0]%deg)
+        tmp = consensus.convert_xml_to_synapse(din + post_left[1]%deg)
         data = combine_data(data,tmp)
 
-        tmp = consensus.convert_xml_to_synapse(din + gap_right[0]%deg)
+        tmp = consensus.convert_xml_to_synapse(din + post_right[0]%deg)
         tmp = map_right_left(tmp,M.lrmap)
+        data = combine_data(data,tmp)
+
+        tmp = consensus.convert_xml_to_synapse(din + post_right[1]%deg)
+        tmp = map_right_left(tmp,M.lrmap)
+        data = combine_data(data,tmp)
+
+        tree = consensus.convert_synapse_to_xml(data)
+        xml_out = etree.tostring(tree,pretty_print=False)
+        with open(pout%deg,'wb') as fout: fout.write(xml_out)
+
+        data = consensus.convert_xml_to_synapse(din + gap_left[0]%deg)
+        tmp = consensus.convert_xml_to_synapse(din + gap_left[1]%deg)
         data = combine_data(data,tmp)
 
         tmp = consensus.convert_xml_to_synapse(din + gap_right[0]%deg)
