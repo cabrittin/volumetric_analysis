@@ -49,7 +49,7 @@ if __name__=='__main__':
         C1 = M.load_consensus_graphs(1)
     
         e = Matrix(cam,params.matrix)
-        e.load_genes()
+        e.load_genes(splice=False)
         e.load_cells(sorted(C.A.nodes()))
         e.assign_expression()
         e.binarize()
@@ -59,13 +59,15 @@ if __name__=='__main__':
         RSCORE1,RSCORE2 = [],[]
         for cell in tqdm(M.left,desc='Cells: '):
             if not C.C.has_node(cell): continue
-            syn,neigh = predict.get_synapse_data(S[cell],e,
-                cpartners=set(C.C.neighbors(cell)),screen='N2U')
+            syn,neigh,cneigh = predict.get_synapse_data(S[cell],e,
+                                cpartners=set(C.C.neighbors(cell)),screen='N2U',
+                                remove_partners = True)
+
             gene_sig = predict.gene_differential(e.E,syn,neigh)  
             if not gene_sig:
                 data[cell] = [-1,-1]
                 continue
-            jsyn,jneigh = predict.get_synapse_data(S1[cell],e,screen='JSH') 
+            jsyn,jneigh,jcneigh = predict.get_synapse_data(S1[cell],e,screen='JSH') 
             if not jsyn:
                 data[cell] = [-2,-2]
                 continue
@@ -75,9 +77,9 @@ if __name__=='__main__':
             for i in range(rand_iter):
                 rscore1.append(predict.get_random_overlap(jsyn,jneigh))
 
-            jsyn,jneigh = predict.get_synapse_data(S1[cell],e,
-                    cpartners=set(C1.C.neighbors(cell)),screen='JSH')
-            ssig,nsig,idscore2 = predict.get_overlap(gene_sig,e.E,jsyn,jneigh)
+            jsyn,jneigh,jcneigh = predict.get_synapse_data(S1[cell],e,
+                            cpartners=set(C1.C.neighbors(cell)),screen='JSH')
+            ssig,nsig,idscore2 = predict.get_overlap_spatial_loc(gene_sig,e.E,jsyn,jneigh,jcneigh)
             
             rscore2 = []
             for i in range(rand_iter):

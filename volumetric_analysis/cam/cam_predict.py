@@ -52,7 +52,7 @@ def gene_differential(E,syn,neigh):
     #print('Rel diff', np.where(reldff))
     return np.where(diff > 0)[0].tolist()
 
-def get_synapse_data(S,e,cpartners=set([]),screen=None): 
+def get_synapse_data(S,e,cpartners=set([]),screen=None,remove_partners = False): 
     """
     Formats the synapse data. Returns list synapse (syn) and neighbors (neigh)
     where cell names have been converted to cell indicies
@@ -69,16 +69,19 @@ def get_synapse_data(S,e,cpartners=set([]),screen=None):
       'N2U' for adult synapses and 'JSH' for L4 synapses.
     """
     
-    syn,neigh = [],[]
+    syn,neigh,cneigh = [],[],[]
     for cont in S:
         if screen and screen not in S[cont]['sections'][0]: continue
         partners = set(S[cont]['partners'])
         neighbors = set(S[cont]['neighbors'])
-        nonsyn = neighbors - partners - cpartners
+        nonsyn = neighbors - partners
+        if remove_partners:
+            nonsyn = nonsyn - cpartners
+        _cneigh = neighbors & cpartners
         syn.append([e.cells[n] for n in partners if n in e.cells])
         neigh.append([e.cells[n] for n in nonsyn if n in e.cells])
-    
-    return syn,neigh
+        cneigh.append([e.cells[n] for n in _cneigh if n in e.cells]) 
+    return syn,neigh,cneigh
 
 
 def score_overlap(sig,test):
@@ -147,6 +150,62 @@ def get_overlap(sig,E,syn,neigh):
     
      
     return ssig,nsig,idsyn/float(k)
+
+def get_overlap_spatial_loc(sig,E,syn,neigh,cneigh):
+    """
+    Returns the overlap between the computed the gene signature and the
+    gene expression of synaptic and (nonsynaptic) partners.
+
+    Paramters:
+    ----------
+    sig : set
+     Gene signature
+    E : numpy array
+     Expression matrix
+    syn : list
+     List of synaptic partners at each synapse
+    neigh : list
+     List of neighbors at each synapse
+    cneigh : lsit
+     List of neighbors that are synaptic partners elsewhere
+
+    Return:
+    -------
+    ssig : list
+     List of overlap scores for each synaptic partner at each synapse
+    neigh : list
+     List of overlap score for each neighbor at each synapse
+    idsyn : float
+     Fraction of synapses where the highest overlap score is a synaptic partner
+
+    """
+    
+    k = len(syn)
+    den = float(len(sig))
+    sig = set(sig)
+    ssig,nsig = [],[]
+    idsyn = 0
+    for i in range(k):
+        synscore = [0]
+        neighscore = [0]
+        for j in syn[i]:
+            _ssig = set(np.where(E[j,:] > 0)[0].tolist())
+            score = score_overlap(sig,_ssig)
+            synscore.append(score)
+            ssig.append(score)
+
+        for j in neigh[i]:
+            _nsig = set(np.where(E[j,:]> 0)[0].tolist())
+            if j in cneigh[i]:
+                _nsig = _nsig - sig
+            score = score_overlap(sig,_nsig)
+            neighscore.append(score)
+            nsig.append(score)
+        if max(synscore) > max(neighscore): idsyn += 1
+    
+     
+    return ssig,nsig,idsyn/float(k)
+
 
 def get_random_overlap(syn,neigh):
     """
