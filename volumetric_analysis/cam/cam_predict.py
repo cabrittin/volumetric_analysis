@@ -8,6 +8,8 @@ Functions for testing CAM predictions
 """
 import numpy as np
 from random import random
+from collections import defaultdict
+
 
 def gene_differential(E,syn,neigh):
     """
@@ -51,6 +53,45 @@ def gene_differential(E,syn,neigh):
     #reldff = 0.5*(syn_count - neigh_count) / (syn_count + neigh_count)
     #print('Rel diff', np.where(reldff))
     return np.where(diff > 0)[0].tolist()
+
+def gene_profile(E,syn,neigh):
+    """
+    Returns dictionary of cam profiles for postsynaptic partners
+    Dict format = {cell:cam_feature_vector}
+    
+    Parameters:
+    -----------
+    E : numpy array
+     Expression matrix
+    syn : list
+      list of synaptic partners at each synapse
+    neigh : list
+      list of (nonsynaptic) neighbors at each synapse
+
+    Note: syn[i] and neigh[i] correpspond to the ith synapse
+
+    """
+
+    (n,m) = E.shape
+    k = len(syn)
+    profile = defaultdict(lambda:np.zeros(m))
+    syn_count = defaultdict(int)
+    for i in range(k):
+        ssum = np.sum(E[syn[i],:],axis=0)
+        ssum[ssum > 0] = 1
+        nsum = np.sum(E[neigh[i],:],axis=0)
+        nsum[nsum > 0] = 1
+        diff = ssum - nsum
+        diff[diff < 1] = 0
+        for j in syn[i]: 
+            profile[j] += diff
+            syn_count[j] += 1
+    
+    for j in profile: profile[j] /= syn_count[j]
+    
+    return profile
+
+
 
 def get_synapse_data(S,e,cpartners=set([]),screen=None,remove_partners = False): 
     """
