@@ -14,6 +14,7 @@ import argparse
 from tqdm import tqdm
 import networkx as nx
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 
 from mat_loader import MatLoader
@@ -34,7 +35,25 @@ def plot_profile(ax,pre_exp,post_exp,title=None):
     #ax.set_ylabel('Expression profile')
     if title: ax.set_title(title)
  
-
+def pca_basis(profile,syn,nonsyn):
+    from sklearn.decomposition import PCA
+    n = len(profile)
+    X = np.array([v for (k,v) in profile.items()])
+    pca = PCA(n_components=5,svd_solver='full')
+    pca.fit(X)
+    print(pca.explained_variance_ratio_)
+    X = pca.transform(X)
+    Y = pca.transform(nonsyn)
+    Z = pca.transform(syn)
+    fig = plt.figure(1,figsize=(15,10))
+    print(Z.shape,X.shape)
+    ax = Axes3D(fig)#rect=[0,0,0.95,1],elev=48,azim=134)
+    ax.scatter(X[:,0],X[:,1],X[:,2],facecolor='b')
+    ax.scatter(Y[:,0],Y[:,1],Y[:,2],facecolor='r')
+    ax.scatter(Z[:,0],Z[:,1],Z[:,2],facecolor='g')
+    #plt.scatter(X[:,0],X[:,1],facecolor='b')
+    #plt.scatter(Y[:,0],Y[:,1],facecolor='r') 
+    plt.show()
 
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description=__doc__,
@@ -66,21 +85,44 @@ if __name__=='__main__':
     (n,m) = e.E.shape
 
     cell = params.cell
-    syn,neigh,cneigh = predict.get_synapse_data(S[cell],e,cpartners=set(C.C.neighbors(cell)))
+    syn,neigh,cneigh = predict.get_synapse_data(S[cell],e,
+                                cpartners=set(C.C.neighbors(cell)),remove_partners=True)
     gene_sig = predict.gene_differential(e.E,syn,neigh)
     gene_mask = np.zeros(m)
     gene_mask[gene_sig] = 1
     gene_sig = predict.gene_profile(e.E,syn,neigh)
     
     profile = {}
-    mean_profile = np.zeros(m)
+    mean_profile = np.zeros(m)    
     for c in gene_sig:
         profile[e.cells_idx[c]] = np.multiply(gene_mask,gene_sig[c])
         tmp = np.multiply(gene_mask,gene_sig[c])
         mean_profile += tmp 
 
     mean_profile /= len(gene_sig)
-  
+    
+    """
+    syn = set(C.C.neighbors(cell))
+    nonsyn = set(C.A.neighbors(cell)) - syn
+    ndata = np.zeros((len(nonsyn),m))
+    i = 0
+    for n in nonsyn:
+        idx = e.cells[n]
+        ndata[i,:] = np.multiply(e.E[idx,:],gene_mask)
+        #ndata[i,:] = e.E[idx,:]
+        i += 1
+
+    print(syn)
+    sdata = np.zeros((len(syn),m))
+    i = 0 
+    for n in syn:
+        idx = e.cells[n]
+        sdata[i,:] = np.multiply(e.E[idx,:],gene_mask)
+        #sdata[i,:] = e.E[idx,:]
+        i =+ 1
+    
+    pca_basis(profile,sdata,ndata)
+    """
     jdx = e.cells[cell]
     cexp = e.E[jdx,:]
     M = int(np.ceil(C.C.out_degree(cell) / 2))
@@ -97,5 +139,5 @@ if __name__=='__main__':
     plt.tight_layout()
     plt.savefig(FOUT%(cell,params.deg))
     plt.show()
-
+    
 
