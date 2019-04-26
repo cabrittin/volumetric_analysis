@@ -90,17 +90,30 @@ if __name__=='__main__':
     gene_sig = predict.gene_differential(e.E,syn,neigh)
     gene_mask = np.zeros(m)
     gene_mask[gene_sig] = 1
-    gene_sig = predict.gene_profile(e.E,syn,neigh)
+    gene_sig = predict.gene_mean_profile(e.E,syn,neigh)
     
-    profile = {}
-    mean_profile = np.zeros(m)    
-    for c in gene_sig:
-        profile[e.cells_idx[c]] = np.multiply(gene_mask,gene_sig[c])
-        tmp = np.multiply(gene_mask,gene_sig[c])
-        mean_profile += tmp 
+    profile = np.multiply(gene_mask,gene_sig)
+    
+    x,cost_rec = predict.run_optimation(e.E,syn,neigh,alpha=[0.5,0.5,0.0])
+    x *= 0.5
+    #for c in gene_sig:
+    #    profile[e.cells_idx[c]] = np.multiply(gene_mask,gene_sig[c])
 
-    mean_profile /= len(gene_sig)
+    jdx = e.cells[cell]
+    cexp = e.E[jdx,:]
+    fig,ax = plt.subplots(3,1,figsize=(10,15))
+    plot_profile(ax[1],cexp,profile)
+    ax[1].set_xlabel('CAM gene index')
+    ax[1].set_ylabel('Expression profile')
+    plot_profile(ax[2],cexp,x)
+    ax[2].set_xlabel('CAM gene index')
+    ax[2].set_ylabel('Optimized profile')
+    ax[0].plot(cost_rec,'b-')
+    ax[0].set_ylabel('Cost')
+    ax[0].set_xlabel('Iteration')
     
+    plt.show()
+
     """
     syn = set(C.C.neighbors(cell))
     nonsyn = set(C.A.neighbors(cell)) - syn
@@ -122,7 +135,7 @@ if __name__=='__main__':
         i =+ 1
     
     pca_basis(profile,sdata,ndata)
-    """
+    
     jdx = e.cells[cell]
     cexp = e.E[jdx,:]
     M = int(np.ceil(C.C.out_degree(cell) / 2))
@@ -139,5 +152,5 @@ if __name__=='__main__':
     plt.tight_layout()
     plt.savefig(FOUT%(cell,params.deg))
     plt.show()
-    
+    """
 

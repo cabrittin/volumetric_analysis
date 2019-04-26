@@ -54,7 +54,7 @@ def gene_differential(E,syn,neigh):
     #print('Rel diff', np.where(reldff))
     return np.where(diff > 0)[0].tolist()
 
-def gene_profile(E,syn,neigh):
+def gene_cell_profile(E,syn,neigh):
     """
     Returns dictionary of cam profiles for postsynaptic partners
     Dict format = {cell:cam_feature_vector}
@@ -89,6 +89,43 @@ def gene_profile(E,syn,neigh):
     
     for j in profile: profile[j] /= syn_count[j]
     
+    return profile
+
+def gene_mean_profile(E,syn,neigh):
+    """
+    Returns dictionary of cam profiles for postsynaptic partners
+    Dict format = {cell:cam_feature_vector}
+    
+    Parameters:
+    -----------
+    E : numpy array
+     Expression matrix
+    syn : list
+      list of synaptic partners at each synapse
+    neigh : list
+      list of (nonsynaptic) neighbors at each synapse
+
+    Note: syn[i] and neigh[i] correpspond to the ith synapse
+
+    """
+
+    (n,m) = E.shape
+    k = len(syn)
+    profile = np.zeros(m)
+    syn_count = 0
+    for i in range(k):
+        ssum = np.sum(E[syn[i],:],axis=0)
+        ssum[ssum > 0] = 1
+        nsum = np.sum(E[neigh[i],:],axis=0)
+        nsum[nsum > 0] = 1
+        diff = ssum - nsum
+        diff[diff < 1] = 0
+        if syn[i]:
+            profile += diff
+            syn_count += 1
+    
+    profile /= syn_count
+
     return profile
 
 
@@ -281,4 +318,65 @@ def get_random_overlap(syn,neigh):
     return idsyn/float(k)
 
 
+def run_optimation(E,syn,neigh,iters=None,alpha=[0.4,0.4,0.2]):
+    k = len(syn)
+    s,a = defaultdict(int),defaultdict(int)
+
+    for i in range(k):
+        for j in syn[i]: s[j] += 1
+        for j in neigh[i]: a[j] += 1
+
+    S = E[sorted(s.keys()),:]
+    A = E[sorted(a.keys()),:]
+
+    s = np.array([[s[k]] for k in sorted(s.keys())])
+    a = np.array([[a[k]] for k in sorted(a.keys())])
+
+    s = np.tile(s,E.shape[1])
+    a = np.tile(a,E.shape[1])
+
+    S = np.multiply(s,S)
+    A = np.multiply(a,A)
+
+    x = np.around(np.random.random(E.shape[1]))
+   
+    old_cost = cost(x,S,A,alpha=alpha)
+   
+    if not iters: iters = 10*E.shape[1]
+
+    T = 1.0
+    T_min = 0.01
+    alpha = 0.9
+    cost_rec = [old_cost]
+    while T > T_min:
+        i = 1
+        while i <= iters:
+            #Perturb E
+            rdx = np.random.randint(E.shape[1])
+            x[rdx] = not x[rdx]
+
+            #Compute new cost 
+            new_cost = cost(x,S,A,alpha=alpha)
+            
+            #Decide to accept perturbation
+            ap = acceptance_probability(new_cost,old_cost,T)
+            if ap > np.random.random_sample():
+                old_cost = new_cost
+                cost_rec.append(new_cost)
+            else:
+                x[rdx] = not x[rdx]
+            i += 1
+        T *= alpha
+    return x,cost_rec
+    
+    
+def cost(x,S,A,alpha = [0.4,0.4,0.2]):
+   syn = alpha[0] * np.dot(S,x).sum()
+   adj = alpha[1] * np.dot(A,x).sum()
+   reg = alpha[2] * x.sum()
+   return syn - adj - reg
+
+def acceptance_probability(new_cost,old_cost,T):
+    p =  np.exp((new_cost - old_cost) / T)
+    return min(p,1)
 
