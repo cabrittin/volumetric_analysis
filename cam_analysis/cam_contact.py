@@ -46,8 +46,8 @@ def contact_profile(e,A,cell,alpha=0.33):
 
 def generate_umap_plot(ax,M,clr,nodes=None,colorbar=False):
     print(M.shape)
-    model = umap.UMAP(n_components=15,min_dist=0.1,metric='correlation',
-            random_state=42)
+    model = umap.UMAP(n_neighbors = 15, n_components=2,min_dist=0.10,metric='jaccard',
+            random_state=12)
     res = model.fit_transform(M)
 
     if nodes:
@@ -63,11 +63,11 @@ REMOVE = ['VB01', 'VD01']
 cmap = {'SMN':0.0,'HMNa':0.1, 'HMNp':0.2,'I1':0.4, 'I2':0.5, 
         'Sa':0.7, 'Sp1':0.9, 'Sp2':0.9, 'XMN':1.0}
 
-cam_test = range(85,98)
+#cam_test = range(85,98)
 #cam_test = range(54,85)
 #cam_test = range(54)
 #cam_test = range(98,106)
-#cam_test = range(106)
+cam_test = range(106)
 
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description=__doc__,
@@ -113,7 +113,7 @@ if __name__=='__main__':
     #model = TSNE(n_components=2, random_state=0)
     clr = [cmap[nclass[n]] for n in nodes]
 
-    M = e.M[:,cam_test]
+    M = e.E[:,cam_test]
     #np.random.shuffle(M)
     fig,ax = plt.subplots(1,2,figsize=(15,10))
     generate_umap_plot(ax[1],M,clr,nodes=nodes,colorbar=True)
