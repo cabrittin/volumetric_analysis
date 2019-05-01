@@ -346,7 +346,7 @@ def run_optimation(E,syn,neigh,iters=None,alpha=[0.4,0.4,0.2]):
 
     T = 1.0
     T_min = 0.01
-    alpha = 0.9
+    beta = 0.9
     cost_rec = [old_cost]
     while T > T_min:
         i = 1
@@ -366,15 +366,15 @@ def run_optimation(E,syn,neigh,iters=None,alpha=[0.4,0.4,0.2]):
             else:
                 x[rdx] = not x[rdx]
             i += 1
-        T *= alpha
+        T *= beta
     return x,cost_rec
     
     
 def cost(x,S,A,alpha = [0.4,0.4,0.2]):
-   syn = alpha[0] * np.dot(S,x).sum()
-   adj = alpha[1] * np.dot(A,x).sum()
-   reg = alpha[2] * x.sum()
-   return syn - adj - reg
+    syn = alpha[0] * np.dot(S,x).sum()
+    adj = alpha[1] * np.dot(A,x).sum()
+    reg = alpha[2] * x.sum()
+    return syn - adj - reg
 
 def acceptance_probability(new_cost,old_cost,T):
     p =  np.exp((new_cost - old_cost) / T)

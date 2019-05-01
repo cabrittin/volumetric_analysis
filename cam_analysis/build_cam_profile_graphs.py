@@ -82,6 +82,7 @@ if __name__=='__main__':
     e.load_cells(sorted(C.A.nodes()))
     e.assign_expression()
     e.binarize()
+    #e.shuffle_rows()
     (n,m) = e.E.shape
 
     cell = params.cell
@@ -94,7 +95,7 @@ if __name__=='__main__':
     
     profile = np.multiply(gene_mask,gene_sig)
     
-    x,cost_rec = predict.run_optimation(e.E,syn,neigh,alpha=[0.5,0.5,0.0])
+    x,cost_rec = predict.run_optimation(e.E,syn,neigh,alpha=[0.4,0.4,0.2])
     x *= 0.5
     #for c in gene_sig:
     #    profile[e.cells_idx[c]] = np.multiply(gene_mask,gene_sig[c])

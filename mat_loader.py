@@ -20,11 +20,11 @@ class Connectome:
         self.E = E
         self.neurons = A.nodes()
 
-
 class MatLoader:
     def __init__(self,mat_files='mat/mat_files.txt'):
         self.load_mat(mat_files=mat_files)
-
+        self.cam = 'mat/cam_isoforms.txt' 
+    
     def load_mat(self,mat_files='mat/mat_files.txt'):
         self.mat_files = mat_files
         self.mat = aux.read.into_dict(self.mat_files)
@@ -81,6 +81,15 @@ class MatLoader:
         pre = nx.read_graphml(self.mat['gene_sig_graph']%('pre',deg))
         post = nx.read_graphml(self.mat['gene_sig_graph']%('post',deg))
         return pre,post
+
+    def load_nerve_ring_classes(self):
+        data = aux.read.into_dict(self.mat['nrclass'])
+        _data = {}
+        for d in data: _data[d] = data[d].strip()
+        return _data
+
+    def load_reduced_nodes(self):
+        return aux.read.into_list(self.mat['reduced_nodes'])
 
 if __name__=="__main__":
     M = MatLoader()

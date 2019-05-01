@@ -90,7 +90,10 @@ class Matrix:
         self.E = np.copy(self.M)
         self.E[self.E<thresh] = 0
         self.E[self.E>0] = 1
-    
+ 
+    def shuffle_rows(self):
+        np.random.shuffle(self.E.T)
+
     def difference_matrix(self):
         """
         Computes the diffence between expression patterns between cells
