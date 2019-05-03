@@ -91,6 +91,12 @@ class MatLoader:
     def load_reduced_nodes(self):
         return aux.read.into_list(self.mat['reduced_nodes'])
 
+    def load_sa(self,db):
+        fin = self.mat['lengths']%(db.lower())
+        l = aux.read.into_dict2(fin)
+        sa = {k:v[0] for (k,v) in l.items()}
+        return sa
+
 if __name__=="__main__":
     M = MatLoader()
 

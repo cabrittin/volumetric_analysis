@@ -1,3 +1,4 @@
+lengths,mat/%s_size_stats.csv
 nrclass,mat/nerve_ring_classes.txt
 reduced_nodes,mat/reduced_nodes.txt
 left,mat/left_nodes.txt
