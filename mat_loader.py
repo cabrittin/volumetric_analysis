@@ -52,6 +52,12 @@ class MatLoader:
         C = nx.read_graphml(self.mat['consensus']%('chem',deg))
         E = nx.read_graphml(self.mat['consensus']%('gap',deg))
         return Connectome(A,C,E)
+    
+    def load_consensus_master_graphs(self,deg):
+        A = nx.read_graphml(self.mat['consensus_master']%('adj',deg))
+        C = nx.read_graphml(self.mat['consensus_master']%('chem',deg))
+        E = nx.read_graphml(self.mat['consensus_master']%('gap',deg))
+        return Connectome(A,C,E)
 
     def load_consensus_chemical_synapse(self,deg):
         fin = self.mat['consensus_chemical']%deg
@@ -96,6 +102,10 @@ class MatLoader:
         l = aux.read.into_dict2(fin)
         sa = {k:v[0] for (k,v) in l.items()}
         return sa
+    
+    def load_cam_class(self,metric,camtype):
+        fin = self.mat['cam_class']%(metric,camtype)
+        return aux.read.into_dict(fin)
 
 if __name__=="__main__":
     M = MatLoader()

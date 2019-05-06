@@ -467,5 +467,3 @@ class Connectome:
             H.add_edge(lrmap[a],lrmap[b],weight=G[a][b]['weight'])
         return H
 
-    
-

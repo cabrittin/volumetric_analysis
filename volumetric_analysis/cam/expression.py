@@ -9,6 +9,7 @@ import sys
 import numpy as np
 from tabulate import tabulate
 import random
+from scipy.stats import pearsonr
 
 #Brittin modules
 import db
@@ -78,6 +79,17 @@ class Matrix:
             jdx = self.genes[g].get_idx()
             self.M[idx,jdx] = float(val)
 
+    def clean_expression(self):
+        """
+        Removes cells with no expression
+        """
+        idx = np.where(np.sum(self.M,axis=1)>0)[0]
+        self.M = self.M[idx,:]
+        cells = {}
+        self.cells = dict([(self.cells_idx[idx[i]],i) for i in range(len(idx))])
+        self.cells_idx = {y:x for x,y in self.cells.items()} 
+
+
     def binarize(self,thresh=1):
         """
         Creates a binary expression matrix
@@ -126,6 +138,49 @@ class Matrix:
         row = np.where(self.M[idx,:] > 0)[0]
         return [self.genes_idx[i] for i in row]
 
+    def distance_matrix(self,gdx=None,metric='jaccard'):
+        from itertools import combinations
+        binary = ['jaccard','hamming']
+        if metric in binary:
+            if gdx:
+                M = self.E[:,gdx]
+            else:
+                M = self.E[:,:]
+        else:
+            if gdx:
+                M = self.M[:,gdx]
+            else:
+                M = self.M[:,:]
+        
+        k = self.M.shape[0]
+        D = np.ones((k,k))
+        np.fill_diagonal(D,0)
+        comb = combinations(range(k),2)
+        if metric == 'jaccard':
+            dist = jaccard
+        elif metric == 'hamming':
+            from scipy.spatial.distance import hamming as dist
+        elif metric == 'pearsonr':
+            from scipy.stats import pearsonr
+            dist = correlation_dist
+        for (i,j) in comb:
+            r = dist(M[i,:],M[j,:])
+            D[i,j] = r
+            D[j,i] = r
+
+        return D
+
+def jaccard(u,v):
+    w = u + v
+    m = float(len(np.where(w > 0)[0]))
+    n = len(np.where(w > 1)[0])
+    if m > 0: return 1 - n / m
+    return 1
+
+def correlation_dist(u,v):
+    r = pearsonr(u,v)[0]
+    if np.isnan(r): return 0
+    return r
 
 
 class Gene:
