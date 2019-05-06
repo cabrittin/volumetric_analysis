@@ -62,7 +62,6 @@ if __name__=="__main__":
     nclass = M.load_nerve_ring_classes()
     nodes = M.load_reduced_nodes()
     single = set(nodes) - set(M.left) - set(['ASER'])
-    print(nclass)
 
     N = from_db('N2U',adjacency=True,chemical=True,electrical=True,
             remove=REMOVE,dataType='networkx')
@@ -86,14 +85,17 @@ if __name__=="__main__":
         E = nx.Graph()
         A = consensus_graph(A,[N.Al,N.Ar,J.Al,J.Ar],deg,M.left)
         A = consensus_graph(A,[Nsa,Jsa],min(deg,2),single)
-        #C = consensus_graph(C,[N.Cl,N.Cr,J.Cl,J.Cr],deg,M.left)
-        #C = consensus_graph(C,[Nsc,Jsc],min(deg,2),single)
-        #E = consensus_graph(E,[N.El,N.Er,J.El,J.Er],deg,M.left)
-        #E = consensus_graph(E,[Nse,Jse],min(deg,2),single)
+        C = consensus_graph(C,[N.Cl,N.Cr,J.Cl,J.Cr],deg,M.left)
+        C = consensus_graph(C,[Nsc,Jsc],min(deg,2),single)
+        E = consensus_graph(E,[N.El,N.Er,J.El,J.Er],deg,M.left)
+        E = consensus_graph(E,[Nse,Jse],min(deg,2),single)
         
         A = filter_graph(A,C,E)
         A.remove_nodes_from(M.right)
-        
+
+        C.remove_nodes_from(M.right)
+        E.remove_nodes_from(M.right)
+
         for n in A.nodes():
             A.node[n]['cell_class'] = 'NA'
             if n in nclass: A.node[n]['cell_class'] = nclass[n]
@@ -103,12 +105,33 @@ if __name__=="__main__":
                 A.node[n][cam] = -1
                 if n in cdict: A.node[n][cam] = int(cdict[n])
     
+        for n in C.nodes():
+            C.node[n]['cell_class'] = 'NA'
+            if n in nclass: C.node[n]['cell_class'] = nclass[n]
+        for cam in CAM_TYPES:
+            cdict = M.load_cam_class(METRIC,CAM_TYPES[cam])
+            for n in C.nodes():
+                C.node[n][cam] = -1
+                if n in cdict: C.node[n][cam] = int(cdict[n])
+        
+
+        for n in E.nodes():
+            E.node[n]['cell_class'] = 'NA'
+            if n in nclass: E.node[n]['cell_class'] = nclass[n]
+        for cam in CAM_TYPES:
+            cdict = M.load_cam_class(METRIC,CAM_TYPES[cam])
+            for n in E.nodes():
+                E.node[n][cam] = -1
+                if n in cdict: E.node[n][cam] = int(cdict[n])
+ 
+
+        
         aout = DOUT %('adj',deg) 
-        #cout = DOUT %('chem',deg)
-        #gout = DOUT %('gap',deg)
+        cout = DOUT %('chem',deg)
+        gout = DOUT %('gap',deg)
 
         nx.write_graphml(A,aout)
-        #nx.write_graphml(C,cout)
-        #nx.write_graphml(E,gout)
+        nx.write_graphml(C,cout)
+        nx.write_graphml(E,gout)
 
 
