@@ -43,9 +43,27 @@ def filter_graph(A,C,E,pct=50):
     return H
 
 
-#def apply_cam_class(M,A,metric='pearsonr'):
-#    cam_class = ['all','
+ 
+def apply_node_class(G,nclass,attr,default=-1):
+    for n in G.nodes():
+        G.node[n][attr] = default 
+        if n in nclass: G.node[n][attr] = nclass[n]
+ 
 
+def split_lateral(G,left,right):
+    """
+    Split ipsilater from contralateral connections
+    """
+    H = nx.Graph()
+    if G.is_directed(): H = nx.DiGraph()
+
+    for (u,v) in G.edges():
+        c1 = (u in left) and (v in right)
+        c2 = (u in right) and (v in left)
+        if c1 or c2: H.add_edge(u,v,weight=G[u][v]['weight'])
+    
+    G.remove_nodes_from(right)
+    return G,H
 
 
 DOUT = './mat/consensus_master_graphs/consensus_master_%s_deg%d.graphml'
@@ -54,11 +72,13 @@ METRIC = 'pearsonr'
 CAM_TYPES = {'cam_all':'all','cam_cad':'cad','cam_igsf':'igsf',
             'cam_lrr':'lrr','cam_nrx':'nrx'}
 
+
 if __name__=="__main__":
     M = MatLoader()
     M.load_left()
     M.load_right()
     M.load_lrmap()
+
     nclass = M.load_nerve_ring_classes()
     nodes = M.load_reduced_nodes()
     single = set(nodes) - set(M.left) - set(['ASER'])
@@ -90,48 +110,36 @@ if __name__=="__main__":
         E = consensus_graph(E,[N.El,N.Er,J.El,J.Er],deg,M.left)
         E = consensus_graph(E,[Nse,Jse],min(deg,2),single)
         
-        A = filter_graph(A,C,E)
-        A.remove_nodes_from(M.right)
-
-        C.remove_nodes_from(M.right)
-        E.remove_nodes_from(M.right)
-
-        for n in A.nodes():
-            A.node[n]['cell_class'] = 'NA'
-            if n in nclass: A.node[n]['cell_class'] = nclass[n]
-        for cam in CAM_TYPES:
-            cdict = M.load_cam_class(METRIC,CAM_TYPES[cam])
-            for n in A.nodes():
-                A.node[n][cam] = -1
-                if n in cdict: A.node[n][cam] = int(cdict[n])
-    
-        for n in C.nodes():
-            C.node[n]['cell_class'] = 'NA'
-            if n in nclass: C.node[n]['cell_class'] = nclass[n]
-        for cam in CAM_TYPES:
-            cdict = M.load_cam_class(METRIC,CAM_TYPES[cam])
-            for n in C.nodes():
-                C.node[n][cam] = -1
-                if n in cdict: C.node[n][cam] = int(cdict[n])
+        Ai,Ac = split_lateral(A,M.left,M.right)
+        Ci,Cc = split_lateral(C,M.left,M.right)
+        Ei,Ec = split_lateral(E,M.left,M.right)
         
-
-        for n in E.nodes():
-            E.node[n]['cell_class'] = 'NA'
-            if n in nclass: E.node[n]['cell_class'] = nclass[n]
-        for cam in CAM_TYPES:
-            cdict = M.load_cam_class(METRIC,CAM_TYPES[cam])
-            for n in E.nodes():
-                E.node[n][cam] = -1
-                if n in cdict: E.node[n][cam] = int(cdict[n])
- 
-
+        Ai = filter_graph(Ai,Ci,Ei)
+        Ac = filter_graph(Ac,Cc,Ec)
+       
+        #for G in [A,C,E]: G.remove_nodes_from(M.right)
+        for G in [Ai,Ac,Ci,Cc,Ei,Ec]: apply_node_class(G,nclass,'cell_class',default='NA')
         
-        aout = DOUT %('adj',deg) 
-        cout = DOUT %('chem',deg)
-        gout = DOUT %('gap',deg)
+        for cam in CAM_TYPES: 
+            cdict = M.load_cam_class(METRIC,CAM_TYPES[cam])
+            for (l,r) in zip(M.left,M.right):
+                if l in cdict: cdict[r] = cdict[l]
+            for G in [Ai,Ac,Ci,Cc,Ei,Ec]: apply_node_class(G,cdict,cam,default=-1)
+       
+        #if deg == 4: print(sorted(C.edges()))
+        
+        aiout = DOUT %('ipsi_adj',deg) 
+        acout = DOUT %('cont_adj',deg)
+        ciout = DOUT %('ipsi_chem',deg)
+        ccout = DOUT %('cont_chem',deg)
+        giout = DOUT %('ipsi_gap',deg)
+        gcout = DOUT %('cont_gap',deg)
 
-        nx.write_graphml(A,aout)
-        nx.write_graphml(C,cout)
-        nx.write_graphml(E,gout)
+        nx.write_graphml(Ai,aiout)
+        nx.write_graphml(Ac,acout)
+        nx.write_graphml(Ci,ciout)
+        nx.write_graphml(Cc,ccout)
+        nx.write_graphml(Ei,giout)
+        nx.write_graphml(Ec,gcout)
 
 

@@ -1,0 +1,1316 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key attr.name="weight" attr.type="double" for="edge" id="d6"/>
+<key attr.name="cam_nrx" attr.type="long" for="node" id="d5"/>
+<key attr.name="cam_lrr" attr.type="long" for="node" id="d4"/>
+<key attr.name="cam_igsf" attr.type="long" for="node" id="d3"/>
+<key attr.name="cam_cad" attr.type="long" for="node" id="d2"/>
+<key attr.name="cam_all" attr.type="long" for="node" id="d1"/>
+<key attr.name="cell_class" attr.type="string" for="node" id="d0"/>
+<graph edgedefault="undirected"><node id="ADAL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="ADAR">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="AVDR">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">3</data>
+  <data key="d3">2</data>
+  <data key="d4">2</data>
+  <data key="d5">4</data>
+</node>
+<node id="ASHL">
+  <data key="d0">Sp2</data>
+  <data key="d1">7</data>
+  <data key="d2">2</data>
+  <data key="d3">5</data>
+  <data key="d4">2</data>
+  <data key="d5">2</data>
+</node>
+<node id="AVHR">
+  <data key="d0">I1</data>
+  <data key="d1">7</data>
+  <data key="d2">0</data>
+  <data key="d3">6</data>
+  <data key="d4">2</data>
+  <data key="d5">3</data>
+</node>
+<node id="ASHR">
+  <data key="d0">Sp2</data>
+  <data key="d1">7</data>
+  <data key="d2">2</data>
+  <data key="d3">5</data>
+  <data key="d4">2</data>
+  <data key="d5">2</data>
+</node>
+<node id="AVDL">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">3</data>
+  <data key="d3">2</data>
+  <data key="d4">2</data>
+  <data key="d5">4</data>
+</node>
+<node id="FLPR">
+  <data key="d0">Sa</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="ADFL">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">5</data>
+  <data key="d4">2</data>
+  <data key="d5">0</data>
+</node>
+<node id="ADFR">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">5</data>
+  <data key="d4">2</data>
+  <data key="d5">0</data>
+</node>
+<node id="FLPL">
+  <data key="d0">Sa</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="ADEL">
+  <data key="d0">Sp2</data>
+  <data key="d1">4</data>
+  <data key="d2">3</data>
+  <data key="d3">2</data>
+  <data key="d4">5</data>
+  <data key="d5">2</data>
+</node>
+<node id="AVKR">
+  <data key="d0">I2</data>
+  <data key="d1">3</data>
+  <data key="d2">3</data>
+  <data key="d3">3</data>
+  <data key="d4">0</data>
+  <data key="d5">1</data>
+</node>
+<node id="AINL">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">1</data>
+  <data key="d3">1</data>
+  <data key="d4">5</data>
+  <data key="d5">3</data>
+</node>
+<node id="AINR">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">1</data>
+  <data key="d3">1</data>
+  <data key="d4">5</data>
+  <data key="d5">3</data>
+</node>
+<node id="ASGR">
+  <data key="d0">Sp1</data>
+  <data key="d1">3</data>
+  <data key="d2">3</data>
+  <data key="d3">6</data>
+  <data key="d4">2</data>
+  <data key="d5">0</data>
+</node>
+<node id="AUAR">
+  <data key="d0">I1</data>
+  <data key="d1">7</data>
+  <data key="d2">1</data>
+  <data key="d3">5</data>
+  <data key="d4">4</data>
+  <data key="d5">4</data>
+</node>
+<node id="AVKL">
+  <data key="d0">I2</data>
+  <data key="d1">3</data>
+  <data key="d2">3</data>
+  <data key="d3">3</data>
+  <data key="d4">0</data>
+  <data key="d5">1</data>
+</node>
+<node id="PVPL">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">3</data>
+  <data key="d4">4</data>
+  <data key="d5">4</data>
+</node>
+<node id="RICL">
+  <data key="d0">I1</data>
+  <data key="d1">1</data>
+  <data key="d2">0</data>
+  <data key="d3">0</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="RIGL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="SMBDL">
+  <data key="d0">SMN</data>
+  <data key="d1">5</data>
+  <data key="d2">1</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="AFDL">
+  <data key="d0">Sp2</data>
+  <data key="d1">4</data>
+  <data key="d2">3</data>
+  <data key="d3">6</data>
+  <data key="d4">5</data>
+  <data key="d5">2</data>
+</node>
+<node id="AFDR">
+  <data key="d0">Sp2</data>
+  <data key="d1">4</data>
+  <data key="d2">3</data>
+  <data key="d3">6</data>
+  <data key="d4">5</data>
+  <data key="d5">2</data>
+</node>
+<node id="AIAL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="AIAR">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="ADLL">
+  <data key="d0">Sp2</data>
+  <data key="d1">4</data>
+  <data key="d2">1</data>
+  <data key="d3">5</data>
+  <data key="d4">5</data>
+  <data key="d5">2</data>
+</node>
+<node id="ADLR">
+  <data key="d0">Sp2</data>
+  <data key="d1">4</data>
+  <data key="d2">1</data>
+  <data key="d3">5</data>
+  <data key="d4">5</data>
+  <data key="d5">2</data>
+</node>
+<node id="RMGL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RMFR">
+  <data key="d0">I2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="AIBL">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">6</data>
+  <data key="d4">1</data>
+  <data key="d5">2</data>
+</node>
+<node id="RIMR">
+  <data key="d0">I2</data>
+  <data key="d1">1</data>
+  <data key="d2">2</data>
+  <data key="d3">0</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="SMDDR">
+  <data key="d0">SMN</data>
+  <data key="d1">1</data>
+  <data key="d2">0</data>
+  <data key="d3">1</data>
+  <data key="d4">4</data>
+  <data key="d5">1</data>
+</node>
+<node id="AIZR">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">3</data>
+  <data key="d4">2</data>
+  <data key="d5">1</data>
+</node>
+<node id="AIBR">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">6</data>
+  <data key="d4">1</data>
+  <data key="d5">2</data>
+</node>
+<node id="RIGR">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="ASKL">
+  <data key="d0">Sp2</data>
+  <data key="d1">4</data>
+  <data key="d2">3</data>
+  <data key="d3">4</data>
+  <data key="d4">5</data>
+  <data key="d5">3</data>
+</node>
+<node id="ASKR">
+  <data key="d0">Sp2</data>
+  <data key="d1">4</data>
+  <data key="d2">3</data>
+  <data key="d3">4</data>
+  <data key="d4">5</data>
+  <data key="d5">3</data>
+</node>
+<node id="ASJL">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">5</data>
+  <data key="d4">2</data>
+  <data key="d5">3</data>
+</node>
+<node id="ASJR">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">5</data>
+  <data key="d4">2</data>
+  <data key="d5">3</data>
+</node>
+<node id="AWBL">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">3</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="RICR">
+  <data key="d0">I1</data>
+  <data key="d1">1</data>
+  <data key="d2">0</data>
+  <data key="d3">0</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="AWBR">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">3</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="AWAL">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">6</data>
+  <data key="d4">2</data>
+  <data key="d5">2</data>
+</node>
+<node id="AWAR">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">6</data>
+  <data key="d4">2</data>
+  <data key="d5">2</data>
+</node>
+<node id="ASGL">
+  <data key="d0">Sp1</data>
+  <data key="d1">3</data>
+  <data key="d2">3</data>
+  <data key="d3">6</data>
+  <data key="d4">2</data>
+  <data key="d5">0</data>
+</node>
+<node id="ASIL">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">3</data>
+  <data key="d3">6</data>
+  <data key="d4">1</data>
+  <data key="d5">4</data>
+</node>
+<node id="ASIR">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">3</data>
+  <data key="d3">6</data>
+  <data key="d4">1</data>
+  <data key="d5">4</data>
+</node>
+<node id="AVAL">
+  <data key="d0">I1</data>
+  <data key="d1">7</data>
+  <data key="d2">3</data>
+  <data key="d3">5</data>
+  <data key="d4">2</data>
+  <data key="d5">3</data>
+</node>
+<node id="AVEL">
+  <data key="d0">I2</data>
+  <data key="d1">7</data>
+  <data key="d2">3</data>
+  <data key="d3">5</data>
+  <data key="d4">1</data>
+  <data key="d5">0</data>
+</node>
+<node id="RIVL">
+  <data key="d0">HMNp</data>
+  <data key="d1">3</data>
+  <data key="d2">3</data>
+  <data key="d3">1</data>
+  <data key="d4">5</data>
+  <data key="d5">1</data>
+</node>
+<node id="RIVR">
+  <data key="d0">HMNp</data>
+  <data key="d1">3</data>
+  <data key="d2">3</data>
+  <data key="d3">1</data>
+  <data key="d4">5</data>
+  <data key="d5">1</data>
+</node>
+<node id="SAADR">
+  <data key="d0">I2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="SDQR">
+  <data key="d0">Sp1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="ALNL">
+  <data key="d0">Sp2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RIBL">
+  <data key="d0">I2</data>
+  <data key="d1">5</data>
+  <data key="d2">0</data>
+  <data key="d3">2</data>
+  <data key="d4">2</data>
+  <data key="d5">4</data>
+</node>
+<node id="SMDDL">
+  <data key="d0">SMN</data>
+  <data key="d1">1</data>
+  <data key="d2">0</data>
+  <data key="d3">1</data>
+  <data key="d4">4</data>
+  <data key="d5">1</data>
+</node>
+<node id="AIZL">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">3</data>
+  <data key="d4">2</data>
+  <data key="d5">1</data>
+</node>
+<node id="RIML">
+  <data key="d0">I2</data>
+  <data key="d1">1</data>
+  <data key="d2">2</data>
+  <data key="d3">0</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="BAGL">
+  <data key="d0">Sa</data>
+  <data key="d1">7</data>
+  <data key="d2">0</data>
+  <data key="d3">5</data>
+  <data key="d4">5</data>
+  <data key="d5">3</data>
+</node>
+<node id="AIML">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="SIBDR">
+  <data key="d0">SMN</data>
+  <data key="d1">4</data>
+  <data key="d2">3</data>
+  <data key="d3">1</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="AUAL">
+  <data key="d0">I1</data>
+  <data key="d1">7</data>
+  <data key="d2">1</data>
+  <data key="d3">5</data>
+  <data key="d4">4</data>
+  <data key="d5">4</data>
+</node>
+<node id="AVER">
+  <data key="d0">I2</data>
+  <data key="d1">7</data>
+  <data key="d2">3</data>
+  <data key="d3">5</data>
+  <data key="d4">1</data>
+  <data key="d5">0</data>
+</node>
+<node id="BAGR">
+  <data key="d0">Sa</data>
+  <data key="d1">7</data>
+  <data key="d2">0</data>
+  <data key="d3">5</data>
+  <data key="d4">5</data>
+  <data key="d5">3</data>
+</node>
+<node id="AIYL">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">6</data>
+  <data key="d4">2</data>
+  <data key="d5">4</data>
+</node>
+<node id="AIYR">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">6</data>
+  <data key="d4">2</data>
+  <data key="d5">4</data>
+</node>
+<node id="AVAR">
+  <data key="d0">I1</data>
+  <data key="d1">7</data>
+  <data key="d2">3</data>
+  <data key="d3">5</data>
+  <data key="d4">2</data>
+  <data key="d5">3</data>
+</node>
+<node id="AVBR">
+  <data key="d0">I1</data>
+  <data key="d1">2</data>
+  <data key="d2">2</data>
+  <data key="d3">6</data>
+  <data key="d4">2</data>
+  <data key="d5">3</data>
+</node>
+<node id="SMDVR">
+  <data key="d0">SMN</data>
+  <data key="d1">1</data>
+  <data key="d2">0</data>
+  <data key="d3">1</data>
+  <data key="d4">4</data>
+  <data key="d5">1</data>
+</node>
+<node id="SIBVR">
+  <data key="d0">SMN</data>
+  <data key="d1">4</data>
+  <data key="d2">3</data>
+  <data key="d3">1</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="RIBR">
+  <data key="d0">I2</data>
+  <data key="d1">5</data>
+  <data key="d2">0</data>
+  <data key="d3">2</data>
+  <data key="d4">2</data>
+  <data key="d5">4</data>
+</node>
+<node id="AVHL">
+  <data key="d0">I1</data>
+  <data key="d1">7</data>
+  <data key="d2">0</data>
+  <data key="d3">6</data>
+  <data key="d4">2</data>
+  <data key="d5">3</data>
+</node>
+<node id="HSNL">
+  <data key="d0">XMN</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="HSNR">
+  <data key="d0">XMN</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="URYVR">
+  <data key="d0">Sa</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="URYVL">
+  <data key="d0">Sa</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RMDVR">
+  <data key="d0">HMNp</data>
+  <data key="d1">0</data>
+  <data key="d2">3</data>
+  <data key="d3">0</data>
+  <data key="d4">4</data>
+  <data key="d5">1</data>
+</node>
+<node id="RMDDR">
+  <data key="d0">HMNp</data>
+  <data key="d1">0</data>
+  <data key="d2">3</data>
+  <data key="d3">0</data>
+  <data key="d4">4</data>
+  <data key="d5">1</data>
+</node>
+<node id="AVBL">
+  <data key="d0">I1</data>
+  <data key="d1">2</data>
+  <data key="d2">2</data>
+  <data key="d3">6</data>
+  <data key="d4">2</data>
+  <data key="d5">3</data>
+</node>
+<node id="SIBVL">
+  <data key="d0">SMN</data>
+  <data key="d1">4</data>
+  <data key="d2">3</data>
+  <data key="d3">1</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="SMBDR">
+  <data key="d0">SMN</data>
+  <data key="d1">5</data>
+  <data key="d2">1</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="SDQL">
+  <data key="d0">Sp1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="SMDVL">
+  <data key="d0">SMN</data>
+  <data key="d1">1</data>
+  <data key="d2">0</data>
+  <data key="d3">1</data>
+  <data key="d4">4</data>
+  <data key="d5">1</data>
+</node>
+<node id="RMDDL">
+  <data key="d0">HMNp</data>
+  <data key="d1">0</data>
+  <data key="d2">3</data>
+  <data key="d3">0</data>
+  <data key="d4">4</data>
+  <data key="d5">1</data>
+</node>
+<node id="RMDVL">
+  <data key="d0">HMNp</data>
+  <data key="d1">0</data>
+  <data key="d2">3</data>
+  <data key="d3">0</data>
+  <data key="d4">4</data>
+  <data key="d5">1</data>
+</node>
+<node id="SIAVR">
+  <data key="d0">SMN</data>
+  <data key="d1">4</data>
+  <data key="d2">1</data>
+  <data key="d3">4</data>
+  <data key="d4">5</data>
+  <data key="d5">1</data>
+</node>
+<node id="ALNR">
+  <data key="d0">Sp2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="SIAVL">
+  <data key="d0">SMN</data>
+  <data key="d1">4</data>
+  <data key="d2">1</data>
+  <data key="d3">4</data>
+  <data key="d4">5</data>
+  <data key="d5">1</data>
+</node>
+<node id="AVFL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="AVFR">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="AVJL">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">1</data>
+  <data key="d3">4</data>
+  <data key="d4">2</data>
+  <data key="d5">2</data>
+</node>
+<node id="PVCR">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">6</data>
+  <data key="d4">2</data>
+  <data key="d5">0</data>
+</node>
+<node id="PVCL">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">6</data>
+  <data key="d4">2</data>
+  <data key="d5">0</data>
+</node>
+<node id="AVJR">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">1</data>
+  <data key="d3">4</data>
+  <data key="d4">2</data>
+  <data key="d5">2</data>
+</node>
+<node id="PVPR">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">3</data>
+  <data key="d4">4</data>
+  <data key="d5">4</data>
+</node>
+<node id="ADER">
+  <data key="d0">Sp2</data>
+  <data key="d1">4</data>
+  <data key="d2">3</data>
+  <data key="d3">2</data>
+  <data key="d4">5</data>
+  <data key="d5">2</data>
+</node>
+<node id="SAAVR">
+  <data key="d0">I2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="SMBVL">
+  <data key="d0">SMN</data>
+  <data key="d1">5</data>
+  <data key="d2">1</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="SAAVL">
+  <data key="d0">I2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="IL1DL">
+  <data key="d0">Sa</data>
+  <data key="d1">5</data>
+  <data key="d2">1</data>
+  <data key="d3">2</data>
+  <data key="d4">2</data>
+  <data key="d5">4</data>
+</node>
+<node id="IL1DR">
+  <data key="d0">Sa</data>
+  <data key="d1">5</data>
+  <data key="d2">1</data>
+  <data key="d3">2</data>
+  <data key="d4">2</data>
+  <data key="d5">4</data>
+</node>
+<node id="IL1VL">
+  <data key="d0">Sa</data>
+  <data key="d1">5</data>
+  <data key="d2">1</data>
+  <data key="d3">2</data>
+  <data key="d4">2</data>
+  <data key="d5">4</data>
+</node>
+<node id="IL1VR">
+  <data key="d0">Sa</data>
+  <data key="d1">5</data>
+  <data key="d2">1</data>
+  <data key="d3">2</data>
+  <data key="d4">2</data>
+  <data key="d5">4</data>
+</node>
+<node id="OLLL">
+  <data key="d0">Sa</data>
+  <data key="d1">2</data>
+  <data key="d2">1</data>
+  <data key="d3">3</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="OLLR">
+  <data key="d0">Sa</data>
+  <data key="d1">2</data>
+  <data key="d2">1</data>
+  <data key="d3">3</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="PVNL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="PVNR">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RIAL">
+  <data key="d0">I2</data>
+  <data key="d1">1</data>
+  <data key="d2">1</data>
+  <data key="d3">0</data>
+  <data key="d4">4</data>
+  <data key="d5">1</data>
+</node>
+<node id="RIAR">
+  <data key="d0">I2</data>
+  <data key="d1">1</data>
+  <data key="d2">1</data>
+  <data key="d3">0</data>
+  <data key="d4">4</data>
+  <data key="d5">1</data>
+</node>
+<node id="SIBDL">
+  <data key="d0">SMN</data>
+  <data key="d1">4</data>
+  <data key="d2">3</data>
+  <data key="d3">1</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="AIMR">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RIPL">
+  <data key="d0">I2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RIPR">
+  <data key="d0">I2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="SAADL">
+  <data key="d0">I2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RMFL">
+  <data key="d0">I2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RMGR">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="SMBVR">
+  <data key="d0">SMN</data>
+  <data key="d1">5</data>
+  <data key="d2">1</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<edge source="ADAL" target="ADAR">
+  <data key="d6">3.0</data>
+</edge>
+<edge source="ADAL" target="AVDR">
+  <data key="d6">7.5</data>
+</edge>
+<edge source="ADAR" target="AVDL">
+  <data key="d6">7.5</data>
+</edge>
+<edge source="AVDR" target="FLPL">
+  <data key="d6">3.0</data>
+</edge>
+<edge source="ASHL" target="AVHR">
+  <data key="d6">1.5</data>
+</edge>
+<edge source="ASHL" target="ASHR">
+  <data key="d6">10.0</data>
+</edge>
+<edge source="ASHR" target="AVHL">
+  <data key="d6">1.5</data>
+</edge>
+<edge source="AVDL" target="FLPR">
+  <data key="d6">3.0</data>
+</edge>
+<edge source="FLPR" target="AIBL">
+  <data key="d6">1.5</data>
+</edge>
+<edge source="ADFL" target="ADFR">
+  <data key="d6">11.0</data>
+</edge>
+<edge source="FLPL" target="AIBR">
+  <data key="d6">1.5</data>
+</edge>
+<edge source="ADEL" target="AVKR">
+  <data key="d6">7.0</data>
+</edge>
+<edge source="AVKR" target="AVKL">
+  <data key="d6">11.5</data>
+</edge>
+<edge source="AVKR" target="PVPL">
+  <data key="d6">13.0</data>
+</edge>
+<edge source="AVKR" target="RICL">
+  <data key="d6">2.5</data>
+</edge>
+<edge source="AVKR" target="RIGL">
+  <data key="d6">1.0</data>
+</edge>
+<edge source="AVKR" target="SMBDL">
+  <data key="d6">1.5</data>
+</edge>
+<edge source="AINL" target="AINR">
+  <data key="d6">6.0</data>
+</edge>
+<edge source="AINL" target="ASGR">
+  <data key="d6">1.0</data>
+</edge>
+<edge source="AINL" target="AUAR">
+  <data key="d6">4.0</data>
+</edge>
+<edge source="AINR" target="ASGL">
+  <data key="d6">1.0</data>
+</edge>
+<edge source="AINR" target="AUAL">
+  <data key="d6">4.0</data>
+</edge>
+<edge source="AUAR" target="AUAL">
+  <data key="d6">3.5</data>
+</edge>
+<edge source="AVKL" target="RIGR">
+  <data key="d6">1.0</data>
+</edge>
+<edge source="AVKL" target="PVPR">
+  <data key="d6">13.0</data>
+</edge>
+<edge source="AVKL" target="ADER">
+  <data key="d6">7.0</data>
+</edge>
+<edge source="AVKL" target="SMBDR">
+  <data key="d6">1.5</data>
+</edge>
+<edge source="AVKL" target="RICR">
+  <data key="d6">2.5</data>
+</edge>
+<edge source="PVPL" target="PVPR">
+  <data key="d6">5.5</data>
+</edge>
+<edge source="RICL" target="AWBR">
+  <data key="d6">2.5</data>
+</edge>
+<edge source="RIGL" target="AIBR">
+  <data key="d6">6.5</data>
+</edge>
+<edge source="RIGL" target="RIGR">
+  <data key="d6">67.5</data>
+</edge>
+<edge source="RIGL" target="BAGR">
+  <data key="d6">4.5</data>
+</edge>
+<edge source="SMBDL" target="SIBVR">
+  <data key="d6">2.3333333333333335</data>
+</edge>
+<edge source="SMBDL" target="SAAVR">
+  <data key="d6">2.0</data>
+</edge>
+<edge source="AFDL" target="AFDR">
+  <data key="d6">3.5</data>
+</edge>
+<edge source="AIAL" target="AIAR">
+  <data key="d6">10.0</data>
+</edge>
+<edge source="ADLL" target="ADLR">
+  <data key="d6">9.5</data>
+</edge>
+<edge source="RMGL" target="RMFR">
+  <data key="d6">5.0</data>
+</edge>
+<edge source="AIBL" target="RIMR">
+  <data key="d6">2.25</data>
+</edge>
+<edge source="AIBL" target="SMDDR">
+  <data key="d6">2.3333333333333335</data>
+</edge>
+<edge source="AIBL" target="AIZR">
+  <data key="d6">3.5</data>
+</edge>
+<edge source="AIBL" target="AIBR">
+  <data key="d6">2.0</data>
+</edge>
+<edge source="AIBL" target="RIGR">
+  <data key="d6">6.5</data>
+</edge>
+<edge source="RIMR" target="AVAL">
+  <data key="d6">13.5</data>
+</edge>
+<edge source="RIMR" target="AVEL">
+  <data key="d6">16.5</data>
+</edge>
+<edge source="SMDDR" target="ALNL">
+  <data key="d6">1.5</data>
+</edge>
+<edge source="SMDDR" target="RIBL">
+  <data key="d6">4.333333333333333</data>
+</edge>
+<edge source="SMDDR" target="SMDDL">
+  <data key="d6">6.0</data>
+</edge>
+<edge source="AIZR" target="AIZL">
+  <data key="d6">29.5</data>
+</edge>
+<edge source="AIBR" target="AIZL">
+  <data key="d6">3.5</data>
+</edge>
+<edge source="AIBR" target="RIML">
+  <data key="d6">2.25</data>
+</edge>
+<edge source="AIBR" target="SMDDL">
+  <data key="d6">2.3333333333333335</data>
+</edge>
+<edge source="RIGR" target="BAGL">
+  <data key="d6">4.5</data>
+</edge>
+<edge source="ASKL" target="ASKR">
+  <data key="d6">10.5</data>
+</edge>
+<edge source="ASJL" target="ASJR">
+  <data key="d6">7.0</data>
+</edge>
+<edge source="AWBL" target="RICR">
+  <data key="d6">2.5</data>
+</edge>
+<edge source="AWBL" target="AWBR">
+  <data key="d6">5.0</data>
+</edge>
+<edge source="AWAL" target="AWAR">
+  <data key="d6">3.0</data>
+</edge>
+<edge source="ASIL" target="ASIR">
+  <data key="d6">6.0</data>
+</edge>
+<edge source="AVAL" target="AVAR">
+  <data key="d6">3.0</data>
+</edge>
+<edge source="AVAL" target="URYVR">
+  <data key="d6">3.3333333333333335</data>
+</edge>
+<edge source="AVEL" target="AVER">
+  <data key="d6">5.0</data>
+</edge>
+<edge source="AVEL" target="BAGR">
+  <data key="d6">1.5</data>
+</edge>
+<edge source="AVEL" target="RMDVR">
+  <data key="d6">1.5</data>
+</edge>
+<edge source="AVEL" target="URYVR">
+  <data key="d6">2.0</data>
+</edge>
+<edge source="AVEL" target="RMDDR">
+  <data key="d6">3.6666666666666665</data>
+</edge>
+<edge source="RIVL" target="RIVR">
+  <data key="d6">35.5</data>
+</edge>
+<edge source="RIVL" target="SAADR">
+  <data key="d6">2.0</data>
+</edge>
+<edge source="RIVL" target="SDQR">
+  <data key="d6">8.0</data>
+</edge>
+<edge source="RIVR" target="SAADL">
+  <data key="d6">2.0</data>
+</edge>
+<edge source="RIVR" target="SDQL">
+  <data key="d6">8.0</data>
+</edge>
+<edge source="SDQR" target="AVBL">
+  <data key="d6">2.5</data>
+</edge>
+<edge source="SDQR" target="SDQL">
+  <data key="d6">4.0</data>
+</edge>
+<edge source="RIBL" target="AVBR">
+  <data key="d6">5.5</data>
+</edge>
+<edge source="RIBL" target="SMDVR">
+  <data key="d6">8.0</data>
+</edge>
+<edge source="RIBL" target="SIBVR">
+  <data key="d6">6.0</data>
+</edge>
+<edge source="RIBL" target="RIBR">
+  <data key="d6">21.0</data>
+</edge>
+<edge source="SMDDL" target="RIBR">
+  <data key="d6">4.333333333333333</data>
+</edge>
+<edge source="SMDDL" target="ALNR">
+  <data key="d6">1.5</data>
+</edge>
+<edge source="RIML" target="AVER">
+  <data key="d6">16.5</data>
+</edge>
+<edge source="RIML" target="AVAR">
+  <data key="d6">13.5</data>
+</edge>
+<edge source="BAGL" target="AVER">
+  <data key="d6">1.5</data>
+</edge>
+<edge source="BAGL" target="BAGR">
+  <data key="d6">3.0</data>
+</edge>
+<edge source="AIML" target="SIBDR">
+  <data key="d6">2.0</data>
+</edge>
+<edge source="AVER" target="RMDDL">
+  <data key="d6">3.6666666666666665</data>
+</edge>
+<edge source="AVER" target="RMDVL">
+  <data key="d6">1.5</data>
+</edge>
+<edge source="AVER" target="URYVL">
+  <data key="d6">2.0</data>
+</edge>
+<edge source="AIYL" target="AIYR">
+  <data key="d6">2.5</data>
+</edge>
+<edge source="AVAR" target="URYVL">
+  <data key="d6">3.3333333333333335</data>
+</edge>
+<edge source="AVBR" target="AVBL">
+  <data key="d6">21.0</data>
+</edge>
+<edge source="AVBR" target="SIBVL">
+  <data key="d6">4.0</data>
+</edge>
+<edge source="AVBR" target="SDQL">
+  <data key="d6">2.5</data>
+</edge>
+<edge source="SMDVR" target="SMDVL">
+  <data key="d6">10.0</data>
+</edge>
+<edge source="SIBVR" target="AVBL">
+  <data key="d6">4.0</data>
+</edge>
+<edge source="SIBVR" target="SIBVL">
+  <data key="d6">3.0</data>
+</edge>
+<edge source="RIBR" target="AVBL">
+  <data key="d6">5.5</data>
+</edge>
+<edge source="RIBR" target="SIBVL">
+  <data key="d6">6.0</data>
+</edge>
+<edge source="RIBR" target="SMDVL">
+  <data key="d6">8.0</data>
+</edge>
+<edge source="HSNL" target="HSNR">
+  <data key="d6">1.0</data>
+</edge>
+<edge source="RMDVR" target="RMDVL">
+  <data key="d6">13.0</data>
+</edge>
+<edge source="RMDVR" target="SIAVL">
+  <data key="d6">1.3333333333333333</data>
+</edge>
+<edge source="RMDDR" target="RMDDL">
+  <data key="d6">9.0</data>
+</edge>
+<edge source="SIBVL" target="SMBDR">
+  <data key="d6">2.3333333333333335</data>
+</edge>
+<edge source="SMBDR" target="SAAVL">
+  <data key="d6">2.0</data>
+</edge>
+<edge source="RMDVL" target="SIAVR">
+  <data key="d6">1.3333333333333333</data>
+</edge>
+<edge source="AVFL" target="AVFR">
+  <data key="d6">1.5</data>
+</edge>
+<edge source="AVJL" target="PVCR">
+  <data key="d6">4.0</data>
+</edge>
+<edge source="PVCR" target="PVCL">
+  <data key="d6">5.0</data>
+</edge>
+<edge source="PVCL" target="AVJR">
+  <data key="d6">4.0</data>
+</edge>
+<edge source="SAAVR" target="SMBVL">
+  <data key="d6">22.75</data>
+</edge>
+<edge source="SAAVR" target="SAAVL">
+  <data key="d6">1.0</data>
+</edge>
+<edge source="SAAVL" target="SMBVR">
+  <data key="d6">22.75</data>
+</edge>
+<edge source="IL1DL" target="IL1DR">
+  <data key="d6">2.0</data>
+</edge>
+<edge source="IL1VL" target="IL1VR">
+  <data key="d6">8.0</data>
+</edge>
+<edge source="OLLL" target="OLLR">
+  <data key="d6">13.0</data>
+</edge>
+<edge source="PVNL" target="PVNR">
+  <data key="d6">1.0</data>
+</edge>
+<edge source="RIAL" target="RIAR">
+  <data key="d6">1.0</data>
+</edge>
+<edge source="SIBDL" target="AIMR">
+  <data key="d6">2.0</data>
+</edge>
+<edge source="RIPL" target="RIPR">
+  <data key="d6">2.0</data>
+</edge>
+<edge source="RMFL" target="RMGR">
+  <data key="d6">5.0</data>
+</edge>
+</graph></graphml>

@@ -1,1802 +1,1297 @@
 <?xml version='1.0' encoding='utf-8'?>
-<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key attr.name="weight" attr.type="double" for="edge" id="d6"/>
-<key attr.name="cam_nrx" attr.type="long" for="node" id="d5"/>
-<key attr.name="cam_lrr" attr.type="long" for="node" id="d4"/>
-<key attr.name="cam_igsf" attr.type="long" for="node" id="d3"/>
-<key attr.name="cam_cad" attr.type="long" for="node" id="d2"/>
-<key attr.name="cam_all" attr.type="long" for="node" id="d1"/>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key attr.name="weight" attr.type="double" for="edge" id="d1"/>
 <key attr.name="cell_class" attr.type="string" for="node" id="d0"/>
 <graph edgedefault="undirected"><node id="ADAL">
   <data key="d0">I1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
 <node id="PVQL">
   <data key="d0">I1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
-</node>
-<node id="ADFL">
-  <data key="d0">Sp2</data>
-  <data key="d1">3</data>
-  <data key="d2">2</data>
-  <data key="d3">5</data>
-  <data key="d4">2</data>
-  <data key="d5">0</data>
-</node>
-<node id="ASHL">
-  <data key="d0">Sp2</data>
-  <data key="d1">7</data>
-  <data key="d2">2</data>
-  <data key="d3">5</data>
-  <data key="d4">2</data>
-  <data key="d5">2</data>
-</node>
-<node id="AVDL">
-  <data key="d0">I1</data>
-  <data key="d1">3</data>
-  <data key="d2">3</data>
-  <data key="d3">2</data>
-  <data key="d4">2</data>
-  <data key="d5">4</data>
 </node>
 <node id="AWBL">
   <data key="d0">Sp2</data>
-  <data key="d1">3</data>
-  <data key="d2">2</data>
-  <data key="d3">3</data>
-  <data key="d4">5</data>
-  <data key="d5">4</data>
+</node>
+<node id="ASHL">
+  <data key="d0">Sp2</data>
+</node>
+<node id="AVDL">
+  <data key="d0">I1</data>
 </node>
 <node id="OLQVL">
   <data key="d0">Sa</data>
-  <data key="d1">2</data>
-  <data key="d2">1</data>
-  <data key="d3">3</data>
-  <data key="d4">0</data>
-  <data key="d5">4</data>
+</node>
+<node id="ADFL">
+  <data key="d0">Sp2</data>
 </node>
 <node id="ADEL">
   <data key="d0">Sp2</data>
-  <data key="d1">4</data>
-  <data key="d2">3</data>
-  <data key="d3">2</data>
-  <data key="d4">5</data>
-  <data key="d5">2</data>
-</node>
-<node id="RMDVL">
-  <data key="d0">HMNp</data>
-  <data key="d1">0</data>
-  <data key="d2">3</data>
-  <data key="d3">0</data>
-  <data key="d4">4</data>
-  <data key="d5">1</data>
-</node>
-<node id="IL2L">
-  <data key="d0">Sa</data>
-  <data key="d1">6</data>
-  <data key="d2">1</data>
-  <data key="d3">4</data>
-  <data key="d4">0</data>
-  <data key="d5">4</data>
-</node>
-<node id="SIBDL">
-  <data key="d0">SMN</data>
-  <data key="d1">4</data>
-  <data key="d2">3</data>
-  <data key="d3">1</data>
-  <data key="d4">5</data>
-  <data key="d5">4</data>
-</node>
-<node id="AINL">
-  <data key="d0">I1</data>
-  <data key="d1">3</data>
-  <data key="d2">1</data>
-  <data key="d3">1</data>
-  <data key="d4">5</data>
-  <data key="d5">3</data>
-</node>
-<node id="AVL">
-  <data key="d0">I2</data>
-  <data key="d1">3</data>
-  <data key="d2">2</data>
-  <data key="d3">1</data>
-  <data key="d4">0</data>
-  <data key="d5">2</data>
-</node>
-<node id="FLPL">
-  <data key="d0">Sa</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
-</node>
-<node id="AVM">
-  <data key="d0">Sp1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
 <node id="ALNL">
   <data key="d0">Sp2</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
-<node id="AVJL">
-  <data key="d0">I1</data>
-  <data key="d1">3</data>
-  <data key="d2">1</data>
-  <data key="d3">4</data>
-  <data key="d4">2</data>
-  <data key="d5">2</data>
-</node>
-<node id="AVKL">
+<node id="AVL">
   <data key="d0">I2</data>
-  <data key="d1">3</data>
-  <data key="d2">3</data>
-  <data key="d3">3</data>
-  <data key="d4">0</data>
-  <data key="d5">1</data>
 </node>
 <node id="SIBVL">
   <data key="d0">SMN</data>
-  <data key="d1">4</data>
-  <data key="d2">3</data>
-  <data key="d3">1</data>
-  <data key="d4">5</data>
-  <data key="d5">4</data>
 </node>
-<node id="AFDL">
-  <data key="d0">Sp2</data>
-  <data key="d1">4</data>
-  <data key="d2">3</data>
-  <data key="d3">6</data>
-  <data key="d4">5</data>
-  <data key="d5">2</data>
-</node>
-<node id="AWCL">
-  <data key="d0">Sp2</data>
-  <data key="d1">4</data>
-  <data key="d2">3</data>
-  <data key="d3">5</data>
-  <data key="d4">5</data>
-  <data key="d5">1</data>
-</node>
-<node id="SMDVL">
+<node id="SIBDL">
   <data key="d0">SMN</data>
-  <data key="d1">1</data>
-  <data key="d2">0</data>
-  <data key="d3">1</data>
-  <data key="d4">4</data>
-  <data key="d5">1</data>
 </node>
-<node id="AWAL">
-  <data key="d0">Sp2</data>
-  <data key="d1">3</data>
-  <data key="d2">2</data>
-  <data key="d3">6</data>
-  <data key="d4">2</data>
-  <data key="d5">2</data>
+<node id="AVM">
+  <data key="d0">Sp1</data>
+</node>
+<node id="IL2L">
+  <data key="d0">Sa</data>
+</node>
+<node id="RMDVL">
+  <data key="d0">HMNp</data>
+</node>
+<node id="AVJL">
+  <data key="d0">I1</data>
+</node>
+<node id="AINL">
+  <data key="d0">I1</data>
+</node>
+<node id="FLPL">
+  <data key="d0">Sa</data>
+</node>
+<node id="AVKL">
+  <data key="d0">I2</data>
 </node>
 <node id="ASGL">
   <data key="d0">Sp1</data>
-  <data key="d1">3</data>
-  <data key="d2">3</data>
-  <data key="d3">6</data>
-  <data key="d4">2</data>
-  <data key="d5">0</data>
-</node>
-<node id="RIH">
-  <data key="d0">I2</data>
-  <data key="d1">6</data>
-  <data key="d2">3</data>
-  <data key="d3">4</data>
-  <data key="d4">4</data>
-  <data key="d5">3</data>
-</node>
-<node id="AIZL">
-  <data key="d0">I1</data>
-  <data key="d1">3</data>
-  <data key="d2">2</data>
-  <data key="d3">3</data>
-  <data key="d4">2</data>
-  <data key="d5">1</data>
-</node>
-<node id="AIAL">
-  <data key="d0">I1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
-</node>
-<node id="SMBVL">
-  <data key="d0">SMN</data>
-  <data key="d1">5</data>
-  <data key="d2">1</data>
-  <data key="d3">2</data>
-  <data key="d4">0</data>
-  <data key="d5">4</data>
-</node>
-<node id="RIPL">
-  <data key="d0">I2</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
-</node>
-<node id="RIAL">
-  <data key="d0">I2</data>
-  <data key="d1">1</data>
-  <data key="d2">1</data>
-  <data key="d3">0</data>
-  <data key="d4">4</data>
-  <data key="d5">1</data>
 </node>
 <node id="URBL">
   <data key="d0">I2</data>
-  <data key="d1">6</data>
-  <data key="d2">3</data>
-  <data key="d3">4</data>
-  <data key="d4">4</data>
-  <data key="d5">3</data>
+</node>
+<node id="RIH">
+  <data key="d0">I2</data>
+</node>
+<node id="RIAL">
+  <data key="d0">I2</data>
+</node>
+<node id="AIAL">
+  <data key="d0">I1</data>
+</node>
+<node id="AFDL">
+  <data key="d0">Sp2</data>
+</node>
+<node id="AWAL">
+  <data key="d0">Sp2</data>
+</node>
+<node id="RIPL">
+  <data key="d0">I2</data>
+</node>
+<node id="SMBVL">
+  <data key="d0">SMN</data>
+</node>
+<node id="AWCL">
+  <data key="d0">Sp2</data>
+</node>
+<node id="AIZL">
+  <data key="d0">I1</data>
+</node>
+<node id="SMDVL">
+  <data key="d0">SMN</data>
 </node>
 <node id="ADLL">
   <data key="d0">Sp2</data>
-  <data key="d1">4</data>
-  <data key="d2">1</data>
-  <data key="d3">5</data>
-  <data key="d4">5</data>
-  <data key="d5">2</data>
-</node>
-<node id="RMGL">
-  <data key="d0">I1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
 <node id="ASKL">
   <data key="d0">Sp2</data>
-  <data key="d1">4</data>
-  <data key="d2">3</data>
-  <data key="d3">4</data>
-  <data key="d4">5</data>
-  <data key="d5">3</data>
 </node>
-<node id="URXL">
-  <data key="d0">Sa</data>
-  <data key="d1">6</data>
-  <data key="d2">3</data>
-  <data key="d3">4</data>
-  <data key="d4">5</data>
-  <data key="d5">1</data>
-</node>
-<node id="AIYL">
+<node id="RMGL">
   <data key="d0">I1</data>
-  <data key="d1">3</data>
-  <data key="d2">2</data>
-  <data key="d3">6</data>
-  <data key="d4">2</data>
-  <data key="d5">4</data>
-</node>
-<node id="ASEL">
-  <data key="d0">Sp2</data>
-  <data key="d1">3</data>
-  <data key="d2">2</data>
-  <data key="d3">3</data>
-  <data key="d4">1</data>
-  <data key="d5">1</data>
 </node>
 <node id="AVEL">
   <data key="d0">I2</data>
-  <data key="d1">7</data>
-  <data key="d2">3</data>
-  <data key="d3">5</data>
-  <data key="d4">1</data>
-  <data key="d5">0</data>
 </node>
 <node id="AIBL">
   <data key="d0">I1</data>
-  <data key="d1">3</data>
-  <data key="d2">2</data>
-  <data key="d3">6</data>
-  <data key="d4">1</data>
-  <data key="d5">2</data>
+</node>
+<node id="AIYL">
+  <data key="d0">I1</data>
+</node>
+<node id="ASEL">
+  <data key="d0">Sp2</data>
+</node>
+<node id="URXL">
+  <data key="d0">Sa</data>
 </node>
 <node id="AIML">
   <data key="d0">I1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
-</node>
-<node id="ASIL">
-  <data key="d0">Sp2</data>
-  <data key="d1">3</data>
-  <data key="d2">3</data>
-  <data key="d3">6</data>
-  <data key="d4">1</data>
-  <data key="d5">4</data>
 </node>
 <node id="ASJL">
   <data key="d0">Sp2</data>
-  <data key="d1">3</data>
-  <data key="d2">2</data>
-  <data key="d3">5</data>
-  <data key="d4">2</data>
-  <data key="d5">3</data>
 </node>
-<node id="RIFL">
-  <data key="d0">I1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
+<node id="ASIL">
+  <data key="d0">Sp2</data>
 </node>
 <node id="RMED">
   <data key="d0">HMNa</data>
-  <data key="d1">0</data>
-  <data key="d2">3</data>
-  <data key="d3">0</data>
-  <data key="d4">3</data>
-  <data key="d5">2</data>
-</node>
-<node id="RIS">
-  <data key="d0">I2</data>
-  <data key="d1">0</data>
-  <data key="d2">0</data>
-  <data key="d3">0</data>
-  <data key="d4">4</data>
-  <data key="d5">0</data>
-</node>
-<node id="BAGL">
-  <data key="d0">Sa</data>
-  <data key="d1">7</data>
-  <data key="d2">0</data>
-  <data key="d3">5</data>
-  <data key="d4">5</data>
-  <data key="d5">3</data>
-</node>
-<node id="RICL">
-  <data key="d0">I1</data>
-  <data key="d1">1</data>
-  <data key="d2">0</data>
-  <data key="d3">0</data>
-  <data key="d4">5</data>
-  <data key="d5">4</data>
-</node>
-<node id="PVT">
-  <data key="d0">I2</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
-</node>
-<node id="RMEV">
-  <data key="d0">HMNa</data>
-  <data key="d1">0</data>
-  <data key="d2">3</data>
-  <data key="d3">0</data>
-  <data key="d4">3</data>
-  <data key="d5">2</data>
-</node>
-<node id="RIML">
-  <data key="d0">I2</data>
-  <data key="d1">1</data>
-  <data key="d2">2</data>
-  <data key="d3">0</data>
-  <data key="d4">5</data>
-  <data key="d5">4</data>
 </node>
 <node id="DVC">
   <data key="d0">I2</data>
-  <data key="d1">3</data>
-  <data key="d2">2</data>
-  <data key="d3">6</data>
-  <data key="d4">5</data>
-  <data key="d5">2</data>
+</node>
+<node id="PVT">
+  <data key="d0">I2</data>
+</node>
+<node id="RIML">
+  <data key="d0">I2</data>
+</node>
+<node id="RIS">
+  <data key="d0">I2</data>
+</node>
+<node id="RICL">
+  <data key="d0">I1</data>
+</node>
+<node id="BAGL">
+  <data key="d0">Sa</data>
+</node>
+<node id="RIFL">
+  <data key="d0">I1</data>
 </node>
 <node id="RIVL">
   <data key="d0">HMNp</data>
-  <data key="d1">3</data>
-  <data key="d2">3</data>
-  <data key="d3">1</data>
-  <data key="d4">5</data>
-  <data key="d5">1</data>
+</node>
+<node id="RMEV">
+  <data key="d0">HMNa</data>
 </node>
 <node id="CEPVL">
   <data key="d0">Sa</data>
-  <data key="d1">1</data>
-  <data key="d2">0</data>
-  <data key="d3">1</data>
-  <data key="d4">3</data>
-  <data key="d5">2</data>
 </node>
 <node id="AUAL">
   <data key="d0">I1</data>
-  <data key="d1">7</data>
-  <data key="d2">1</data>
-  <data key="d3">5</data>
-  <data key="d4">4</data>
-  <data key="d5">4</data>
-</node>
-<node id="RIBL">
-  <data key="d0">I2</data>
-  <data key="d1">5</data>
-  <data key="d2">0</data>
-  <data key="d3">2</data>
-  <data key="d4">2</data>
-  <data key="d5">4</data>
 </node>
 <node id="RIGL">
   <data key="d0">I1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
+</node>
+<node id="RIBL">
+  <data key="d0">I2</data>
 </node>
 <node id="ALML">
   <data key="d0">Sp2</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
-</node>
-<node id="BDUL">
-  <data key="d0">I1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
-</node>
-<node id="SDQL">
-  <data key="d0">Sp1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
 <node id="PVR">
   <data key="d0">I1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
-<node id="AVHL">
+<node id="SDQL">
+  <data key="d0">Sp1</data>
+</node>
+<node id="BDUL">
   <data key="d0">I1</data>
-  <data key="d1">7</data>
-  <data key="d2">0</data>
-  <data key="d3">6</data>
-  <data key="d4">2</data>
-  <data key="d5">3</data>
 </node>
 <node id="AVAL">
   <data key="d0">I1</data>
-  <data key="d1">7</data>
-  <data key="d2">3</data>
-  <data key="d3">5</data>
-  <data key="d4">2</data>
-  <data key="d5">3</data>
+</node>
+<node id="AVHL">
+  <data key="d0">I1</data>
 </node>
 <node id="ALA">
   <data key="d0">I1</data>
-  <data key="d1">1</data>
-  <data key="d2">0</data>
-  <data key="d3">1</data>
-  <data key="d4">1</data>
-  <data key="d5">1</data>
 </node>
 <node id="HSNL">
   <data key="d0">XMN</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
-</node>
-<node id="SABD">
-  <data key="d0">SMN</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
-</node>
-<node id="URYDL">
-  <data key="d0">Sa</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
-</node>
-<node id="RMDL">
-  <data key="d0">HMNp</data>
-  <data key="d1">0</data>
-  <data key="d2">3</data>
-  <data key="d3">0</data>
-  <data key="d4">4</data>
-  <data key="d5">1</data>
 </node>
 <node id="SAAVL">
   <data key="d0">I2</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
+</node>
+<node id="RMDL">
+  <data key="d0">HMNp</data>
 </node>
 <node id="PVPL">
   <data key="d0">I1</data>
-  <data key="d1">3</data>
-  <data key="d2">2</data>
-  <data key="d3">3</data>
-  <data key="d4">4</data>
-  <data key="d5">4</data>
+</node>
+<node id="URYDL">
+  <data key="d0">Sa</data>
 </node>
 <node id="PVCL">
   <data key="d0">I1</data>
-  <data key="d1">3</data>
-  <data key="d2">2</data>
-  <data key="d3">6</data>
-  <data key="d4">2</data>
-  <data key="d5">0</data>
+</node>
+<node id="SABD">
+  <data key="d0">SMN</data>
 </node>
 <node id="AVBL">
   <data key="d0">I1</data>
-  <data key="d1">2</data>
-  <data key="d2">2</data>
-  <data key="d3">6</data>
-  <data key="d4">2</data>
-  <data key="d5">3</data>
 </node>
 <node id="RID">
   <data key="d0">I1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
-</node>
-<node id="DVA">
-  <data key="d0">Sp2</data>
-  <data key="d1">2</data>
-  <data key="d2">0</data>
-  <data key="d3">6</data>
-  <data key="d4">1</data>
-  <data key="d5">0</data>
 </node>
 <node id="AQR">
   <data key="d0">Sp2</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
+</node>
+<node id="DVA">
+  <data key="d0">Sp2</data>
 </node>
 <node id="RMEL">
   <data key="d0">HMNa</data>
-  <data key="d1">0</data>
-  <data key="d2">3</data>
-  <data key="d3">0</data>
-  <data key="d4">3</data>
-  <data key="d5">2</data>
 </node>
 <node id="SMDDL">
   <data key="d0">SMN</data>
-  <data key="d1">1</data>
-  <data key="d2">0</data>
-  <data key="d3">1</data>
-  <data key="d4">4</data>
-  <data key="d5">1</data>
 </node>
 <node id="AVFL">
   <data key="d0">I1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
 <node id="SMBDL">
   <data key="d0">SMN</data>
-  <data key="d1">5</data>
-  <data key="d2">1</data>
-  <data key="d3">2</data>
-  <data key="d4">0</data>
-  <data key="d5">4</data>
 </node>
 <node id="RIR">
   <data key="d0">I1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
 <node id="PVNL">
   <data key="d0">I1</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
 <node id="CEPDL">
   <data key="d0">Sa</data>
-  <data key="d1">1</data>
-  <data key="d2">0</data>
-  <data key="d3">1</data>
-  <data key="d4">2</data>
-  <data key="d5">2</data>
 </node>
 <node id="OLQDL">
   <data key="d0">Sa</data>
-  <data key="d1">2</data>
-  <data key="d2">1</data>
-  <data key="d3">3</data>
-  <data key="d4">0</data>
-  <data key="d5">4</data>
-</node>
-<node id="IL2VL">
-  <data key="d0">Sa</data>
-  <data key="d1">6</data>
-  <data key="d2">1</data>
-  <data key="d3">4</data>
-  <data key="d4">0</data>
-  <data key="d5">4</data>
 </node>
 <node id="URAVL">
   <data key="d0">HMNa</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
+</node>
+<node id="IL2VL">
+  <data key="d0">Sa</data>
 </node>
 <node id="IL1VL">
   <data key="d0">Sa</data>
-  <data key="d1">5</data>
-  <data key="d2">1</data>
-  <data key="d3">2</data>
-  <data key="d4">2</data>
-  <data key="d5">4</data>
 </node>
 <node id="IL1DL">
   <data key="d0">Sa</data>
-  <data key="d1">5</data>
-  <data key="d2">1</data>
-  <data key="d3">2</data>
-  <data key="d4">2</data>
-  <data key="d5">4</data>
 </node>
 <node id="OLLL">
   <data key="d0">Sa</data>
-  <data key="d1">2</data>
-  <data key="d2">1</data>
-  <data key="d3">3</data>
-  <data key="d4">0</data>
-  <data key="d5">4</data>
 </node>
 <node id="IL1L">
   <data key="d0">Sa</data>
-  <data key="d1">5</data>
-  <data key="d2">1</data>
-  <data key="d3">2</data>
-  <data key="d4">2</data>
-  <data key="d5">4</data>
 </node>
 <node id="RMDDL">
   <data key="d0">HMNp</data>
-  <data key="d1">0</data>
-  <data key="d2">3</data>
-  <data key="d3">0</data>
-  <data key="d4">4</data>
-  <data key="d5">1</data>
 </node>
 <node id="IL2DL">
   <data key="d0">Sa</data>
-  <data key="d1">6</data>
-  <data key="d2">1</data>
-  <data key="d3">4</data>
-  <data key="d4">0</data>
-  <data key="d5">4</data>
 </node>
 <node id="URADL">
   <data key="d0">HMNa</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
 <node id="RMHL">
   <data key="d0">HMNp</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
 <node id="PLNL">
   <data key="d0">Sp2</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
 <node id="SIAVL">
   <data key="d0">SMN</data>
-  <data key="d1">4</data>
-  <data key="d2">1</data>
-  <data key="d3">4</data>
-  <data key="d4">5</data>
-  <data key="d5">1</data>
 </node>
 <node id="SIADL">
   <data key="d0">SMN</data>
-  <data key="d1">4</data>
-  <data key="d2">1</data>
-  <data key="d3">4</data>
-  <data key="d4">5</data>
-  <data key="d5">1</data>
 </node>
 <node id="VD01">
   <data key="d0">VMN</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
-</node>
-<node id="RMFL">
-  <data key="d0">I2</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
 <node id="URYVL">
   <data key="d0">Sa</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
+</node>
+<node id="RMFL">
+  <data key="d0">I2</data>
 </node>
 <node id="SAADL">
   <data key="d0">I2</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
 <node id="VB01">
   <data key="d0">VMN</data>
-  <data key="d1">-1</data>
-  <data key="d2">-1</data>
-  <data key="d3">-1</data>
-  <data key="d4">-1</data>
-  <data key="d5">-1</data>
 </node>
 <edge source="ADAL" target="PVQL">
-  <data key="d6">2.5</data>
-</edge>
-<edge source="ADAL" target="ADFL">
-  <data key="d6">5.5</data>
-</edge>
-<edge source="ADAL" target="ASHL">
-  <data key="d6">11.75</data>
-</edge>
-<edge source="ADAL" target="AVDL">
-  <data key="d6">2.0</data>
+  <data key="d1">2.5</data>
 </edge>
 <edge source="ADAL" target="AWBL">
-  <data key="d6">4.0</data>
+  <data key="d1">4.0</data>
+</edge>
+<edge source="ADAL" target="ASHL">
+  <data key="d1">11.75</data>
+</edge>
+<edge source="ADAL" target="AVDL">
+  <data key="d1">2.0</data>
 </edge>
 <edge source="ADAL" target="OLQVL">
-  <data key="d6">4.0</data>
+  <data key="d1">4.0</data>
+</edge>
+<edge source="ADAL" target="ADFL">
+  <data key="d1">5.5</data>
 </edge>
 <edge source="PVQL" target="ASEL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="PVQL" target="ASJL">
-  <data key="d6">3.0</data>
+  <data key="d1">3.0</data>
 </edge>
 <edge source="PVQL" target="ASKL">
-  <data key="d6">22.25</data>
+  <data key="d1">22.25</data>
 </edge>
 <edge source="PVQL" target="ALA">
-  <data key="d6">8.0</data>
+  <data key="d1">8.0</data>
 </edge>
-<edge source="ADFL" target="AFDL">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="ADFL" target="AWCL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="ADFL" target="SMDVL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="ADFL" target="AWAL">
-  <data key="d6">5.0</data>
-</edge>
-<edge source="ADFL" target="ASGL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="ADFL" target="RIH">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="ADFL" target="AIZL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="ADFL" target="AIAL">
-  <data key="d6">3.3333333333333335</data>
-</edge>
-<edge source="ADFL" target="SMBVL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="ADFL" target="ASHL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="ADFL" target="RIPL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="ADFL" target="AWBL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="ADFL" target="RIAL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="ADFL" target="URBL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="ASHL" target="AFDL">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="ASHL" target="AIAL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="ASHL" target="AIBL">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="ASHL" target="AIZL">
-  <data key="d6">5.25</data>
-</edge>
-<edge source="ASHL" target="RMGL">
-  <data key="d6">4.25</data>
-</edge>
-<edge source="ASHL" target="RICL">
-  <data key="d6">7.75</data>
-</edge>
-<edge source="ASHL" target="AVHL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="ASHL" target="AVAL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="ASHL" target="AVEL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="ASHL" target="ASKL">
-  <data key="d6">7.0</data>
-</edge>
-<edge source="AVDL" target="ALML">
-  <data key="d6">3.6666666666666665</data>
-</edge>
-<edge source="AVDL" target="AVAL">
-  <data key="d6">7.0</data>
-</edge>
-<edge source="AVDL" target="RIFL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="AVDL" target="AVM">
-  <data key="d6">9.5</data>
-</edge>
-<edge source="AVDL" target="FLPL">
-  <data key="d6">3.0</data>
+<edge source="AWBL" target="ADFL">
+  <data key="d1">1.0</data>
 </edge>
 <edge source="AWBL" target="AIAL">
-  <data key="d6">4.0</data>
+  <data key="d1">4.0</data>
 </edge>
 <edge source="AWBL" target="AIZL">
-  <data key="d6">2.5</data>
+  <data key="d1">2.5</data>
 </edge>
 <edge source="AWBL" target="ASEL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="AWBL" target="ASGL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="AWBL" target="AUAL">
-  <data key="d6">3.5</data>
+  <data key="d1">3.5</data>
 </edge>
 <edge source="AWBL" target="RMGL">
-  <data key="d6">2.75</data>
+  <data key="d1">2.75</data>
+</edge>
+<edge source="ASHL" target="ADFL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="ASHL" target="AFDL">
+  <data key="d1">4.0</data>
+</edge>
+<edge source="ASHL" target="AIAL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="ASHL" target="AIBL">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="ASHL" target="AIZL">
+  <data key="d1">5.25</data>
+</edge>
+<edge source="ASHL" target="AVEL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="ASHL" target="RICL">
+  <data key="d1">7.75</data>
+</edge>
+<edge source="ASHL" target="ASKL">
+  <data key="d1">7.0</data>
+</edge>
+<edge source="ASHL" target="AVAL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="ASHL" target="AVHL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="ASHL" target="RMGL">
+  <data key="d1">4.25</data>
+</edge>
+<edge source="AVDL" target="ALML">
+  <data key="d1">3.6666666666666665</data>
+</edge>
+<edge source="AVDL" target="AVAL">
+  <data key="d1">7.0</data>
+</edge>
+<edge source="AVDL" target="RIFL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AVDL" target="AVM">
+  <data key="d1">9.5</data>
+</edge>
+<edge source="AVDL" target="FLPL">
+  <data key="d1">3.0</data>
 </edge>
 <edge source="OLQVL" target="CEPVL">
-  <data key="d6">8.5</data>
+  <data key="d1">8.5</data>
 </edge>
 <edge source="OLQVL" target="IL2VL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="OLQVL" target="RMHL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="OLQVL" target="DVA">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="OLQVL" target="RMDDL">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="OLQVL" target="RIGL">
-  <data key="d6">7.5</data>
-</edge>
-<edge source="OLQVL" target="RIH">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="OLQVL" target="RIBL">
-  <data key="d6">3.5</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="OLQVL" target="URBL">
-  <data key="d6">7.666666666666667</data>
+  <data key="d1">7.666666666666667</data>
 </edge>
-<edge source="ADEL" target="RMDVL">
-  <data key="d6">1.0</data>
+<edge source="OLQVL" target="RIBL">
+  <data key="d1">3.5</data>
 </edge>
-<edge source="ADEL" target="IL2L">
-  <data key="d6">2.0</data>
+<edge source="OLQVL" target="RMHL">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="ADEL" target="SIBDL">
-  <data key="d6">1.0</data>
+<edge source="OLQVL" target="RIGL">
+  <data key="d1">7.5</data>
 </edge>
-<edge source="ADEL" target="AINL">
-  <data key="d6">3.0</data>
+<edge source="OLQVL" target="RIH">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="ADEL" target="AVL">
-  <data key="d6">8.0</data>
+<edge source="OLQVL" target="DVA">
+  <data key="d1">4.0</data>
 </edge>
-<edge source="ADEL" target="FLPL">
-  <data key="d6">4.0</data>
+<edge source="OLQVL" target="RMDDL">
+  <data key="d1">3.0</data>
 </edge>
-<edge source="ADEL" target="AVM">
-  <data key="d6">1.0</data>
+<edge source="ADFL" target="ASGL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="ADFL" target="URBL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="ADFL" target="RIH">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="ADFL" target="RIAL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="ADFL" target="AIAL">
+  <data key="d1">3.3333333333333335</data>
+</edge>
+<edge source="ADFL" target="AFDL">
+  <data key="d1">4.0</data>
+</edge>
+<edge source="ADFL" target="AWAL">
+  <data key="d1">5.0</data>
+</edge>
+<edge source="ADFL" target="RIPL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="ADFL" target="SMBVL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="ADFL" target="AWCL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="ADFL" target="AIZL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="ADFL" target="SMDVL">
+  <data key="d1">2.0</data>
 </edge>
 <edge source="ADEL" target="ALNL">
-  <data key="d6">2.0</data>
+  <data key="d1">2.0</data>
 </edge>
-<edge source="ADEL" target="AVJL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="ADEL" target="AVKL">
-  <data key="d6">4.0</data>
+<edge source="ADEL" target="AVL">
+  <data key="d1">8.0</data>
 </edge>
 <edge source="ADEL" target="SIBVL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
-<edge source="RMDVL" target="AFDL">
-  <data key="d6">1.0</data>
+<edge source="ADEL" target="SIBDL">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="RMDVL" target="AUAL">
-  <data key="d6">2.0</data>
+<edge source="ADEL" target="AVM">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="RMDVL" target="AVAL">
-  <data key="d6">1.0</data>
+<edge source="ADEL" target="IL2L">
+  <data key="d1">2.0</data>
 </edge>
-<edge source="RMDVL" target="AVEL">
-  <data key="d6">4.0</data>
+<edge source="ADEL" target="RMDVL">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="RMDVL" target="IL1DL">
-  <data key="d6">8.0</data>
+<edge source="ADEL" target="AVJL">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="RMDVL" target="OLLL">
-  <data key="d6">1.0</data>
+<edge source="ADEL" target="AINL">
+  <data key="d1">3.0</data>
 </edge>
-<edge source="RMDVL" target="OLQDL">
-  <data key="d6">1.0</data>
+<edge source="ADEL" target="FLPL">
+  <data key="d1">4.0</data>
 </edge>
-<edge source="RMDVL" target="RMDDL">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="RMDVL" target="RMDL">
-  <data key="d6">4.75</data>
-</edge>
-<edge source="RMDVL" target="SMDVL">
-  <data key="d6">6.25</data>
-</edge>
-<edge source="RMDVL" target="URYDL">
-  <data key="d6">6.0</data>
-</edge>
-<edge source="RMDVL" target="SAAVL">
-  <data key="d6">4.5</data>
-</edge>
-<edge source="IL2L" target="ASJL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="IL2L" target="IL1L">
-  <data key="d6">8.5</data>
-</edge>
-<edge source="IL2L" target="URXL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="IL2L" target="OLLL">
-  <data key="d6">1.6666666666666667</data>
-</edge>
-<edge source="IL2L" target="URAVL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="IL2L" target="RMGL">
-  <data key="d6">3.75</data>
-</edge>
-<edge source="IL2L" target="RMEV">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="IL2L" target="URBL">
-  <data key="d6">3.75</data>
-</edge>
-<edge source="SIBDL" target="PVCL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="SIBDL" target="RIBL">
-  <data key="d6">12.75</data>
-</edge>
-<edge source="SIBDL" target="SIAVL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="SIBDL" target="SMDDL">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="SIBDL" target="SMBVL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="SIBDL" target="SMBDL">
-  <data key="d6">1.5</data>
-</edge>
-<edge source="SIBDL" target="SIBVL">
-  <data key="d6">18.5</data>
-</edge>
-<edge source="AINL" target="AIAL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="AINL" target="AUAL">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="AINL" target="ASGL">
-  <data key="d6">7.0</data>
-</edge>
-<edge source="AINL" target="BAGL">
-  <data key="d6">5.0</data>
-</edge>
-<edge source="AVL" target="AIBL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="AVL" target="AVKL">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="FLPL" target="AIBL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="FLPL" target="AVEL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="FLPL" target="RIH">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="FLPL" target="AVM">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="FLPL" target="SDQL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="FLPL" target="PVR">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="AVM" target="ALML">
-  <data key="d6">7.0</data>
+<edge source="ADEL" target="AVKL">
+  <data key="d1">4.0</data>
 </edge>
 <edge source="ALNL" target="RMGL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="ALNL" target="SMDVL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
-<edge source="AVJL" target="PVCL">
-  <data key="d6">3.0</data>
+<edge source="AVL" target="AIBL">
+  <data key="d1">2.0</data>
 </edge>
-<edge source="AVJL" target="RIS">
-  <data key="d6">22.5</data>
-</edge>
-<edge source="AVKL" target="AVEL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="AVKL" target="RICL">
-  <data key="d6">8.5</data>
-</edge>
-<edge source="AVKL" target="SMBDL">
-  <data key="d6">8.75</data>
-</edge>
-<edge source="AVKL" target="AQR">
-  <data key="d6">8.5</data>
-</edge>
-<edge source="AVKL" target="PVT">
-  <data key="d6">3.5</data>
-</edge>
-<edge source="AVKL" target="PVPL">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="AVKL" target="SMBVL">
-  <data key="d6">9.5</data>
-</edge>
-<edge source="AVKL" target="RIGL">
-  <data key="d6">7.75</data>
-</edge>
-<edge source="AVKL" target="RIML">
-  <data key="d6">1.0</data>
+<edge source="AVL" target="AVKL">
+  <data key="d1">3.0</data>
 </edge>
 <edge source="SIBVL" target="AVBL">
-  <data key="d6">2.0</data>
+  <data key="d1">2.0</data>
 </edge>
 <edge source="SIBVL" target="PVCL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="SIBVL" target="RIBL">
-  <data key="d6">3.3333333333333335</data>
+  <data key="d1">3.3333333333333335</data>
 </edge>
 <edge source="SIBVL" target="SIAVL">
-  <data key="d6">2.0</data>
+  <data key="d1">2.0</data>
 </edge>
-<edge source="SIBVL" target="SMBDL">
-  <data key="d6">2.0</data>
+<edge source="SIBVL" target="SIBDL">
+  <data key="d1">18.5</data>
 </edge>
 <edge source="SIBVL" target="SMBVL">
-  <data key="d6">2.5</data>
+  <data key="d1">2.5</data>
 </edge>
-<edge source="AFDL" target="URXL">
-  <data key="d6">1.0</data>
+<edge source="SIBVL" target="SMBDL">
+  <data key="d1">2.0</data>
 </edge>
-<edge source="AFDL" target="AIYL">
-  <data key="d6">2.0</data>
+<edge source="SIBDL" target="PVCL">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="AFDL" target="AWCL">
-  <data key="d6">3.0</data>
+<edge source="SIBDL" target="RIBL">
+  <data key="d1">12.75</data>
 </edge>
-<edge source="AFDL" target="ASEL">
-  <data key="d6">3.5</data>
+<edge source="SIBDL" target="SIAVL">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="AFDL" target="AVEL">
-  <data key="d6">1.0</data>
+<edge source="SIBDL" target="SMDDL">
+  <data key="d1">3.0</data>
 </edge>
-<edge source="AFDL" target="AIBL">
-  <data key="d6">2.75</data>
+<edge source="SIBDL" target="SMBVL">
+  <data key="d1">2.0</data>
 </edge>
-<edge source="AFDL" target="URBL">
-  <data key="d6">5.5</data>
+<edge source="SIBDL" target="SMBDL">
+  <data key="d1">1.5</data>
 </edge>
-<edge source="AWCL" target="AIAL">
-  <data key="d6">1.5</data>
+<edge source="AVM" target="ALML">
+  <data key="d1">7.0</data>
 </edge>
-<edge source="AWCL" target="ASEL">
-  <data key="d6">1.0</data>
+<edge source="AVM" target="FLPL">
+  <data key="d1">2.0</data>
 </edge>
-<edge source="AWCL" target="ASGL">
-  <data key="d6">2.0</data>
+<edge source="IL2L" target="ASJL">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="AWCL" target="AUAL">
-  <data key="d6">1.0</data>
+<edge source="IL2L" target="IL1L">
+  <data key="d1">8.5</data>
 </edge>
-<edge source="SMDVL" target="AVEL">
-  <data key="d6">1.0</data>
+<edge source="IL2L" target="URBL">
+  <data key="d1">3.75</data>
 </edge>
-<edge source="SMDVL" target="RIAL">
-  <data key="d6">2.5</data>
+<edge source="IL2L" target="URAVL">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="SMDVL" target="RIBL">
-  <data key="d6">1.5</data>
+<edge source="IL2L" target="OLLL">
+  <data key="d1">1.6666666666666667</data>
 </edge>
-<edge source="SMDVL" target="RIVL">
-  <data key="d6">4.75</data>
+<edge source="IL2L" target="URXL">
+  <data key="d1">2.0</data>
 </edge>
-<edge source="SMDVL" target="SAAVL">
-  <data key="d6">2.0</data>
+<edge source="IL2L" target="RMGL">
+  <data key="d1">3.75</data>
 </edge>
-<edge source="SMDVL" target="VB01">
-  <data key="d6">6.0</data>
+<edge source="IL2L" target="RMEV">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="SMDVL" target="RIS">
-  <data key="d6">4.0</data>
+<edge source="RMDVL" target="AFDL">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="SMDVL" target="RMEV">
-  <data key="d6">1.0</data>
+<edge source="RMDVL" target="AUAL">
+  <data key="d1">2.0</data>
 </edge>
-<edge source="AWAL" target="ADLL">
-  <data key="d6">1.0</data>
+<edge source="RMDVL" target="AVAL">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="AWAL" target="AIAL">
-  <data key="d6">8.25</data>
+<edge source="RMDVL" target="AVEL">
+  <data key="d1">4.0</data>
 </edge>
-<edge source="AWAL" target="AIZL">
-  <data key="d6">3.5</data>
+<edge source="RMDVL" target="IL1DL">
+  <data key="d1">8.0</data>
+</edge>
+<edge source="RMDVL" target="OLLL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RMDVL" target="OLQDL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RMDVL" target="RMDDL">
+  <data key="d1">4.0</data>
+</edge>
+<edge source="RMDVL" target="RMDL">
+  <data key="d1">4.75</data>
+</edge>
+<edge source="RMDVL" target="SAAVL">
+  <data key="d1">4.5</data>
+</edge>
+<edge source="RMDVL" target="URYDL">
+  <data key="d1">6.0</data>
+</edge>
+<edge source="RMDVL" target="SMDVL">
+  <data key="d1">6.25</data>
+</edge>
+<edge source="AVJL" target="PVCL">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="AVJL" target="RIS">
+  <data key="d1">22.5</data>
+</edge>
+<edge source="AINL" target="AIAL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="AINL" target="ASGL">
+  <data key="d1">7.0</data>
+</edge>
+<edge source="AINL" target="BAGL">
+  <data key="d1">5.0</data>
+</edge>
+<edge source="AINL" target="AUAL">
+  <data key="d1">4.0</data>
+</edge>
+<edge source="FLPL" target="AIBL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="FLPL" target="AVEL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="FLPL" target="PVR">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="FLPL" target="SDQL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="FLPL" target="RIH">
+  <data key="d1">4.0</data>
+</edge>
+<edge source="AVKL" target="AVEL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AVKL" target="PVT">
+  <data key="d1">3.5</data>
+</edge>
+<edge source="AVKL" target="RIGL">
+  <data key="d1">7.75</data>
+</edge>
+<edge source="AVKL" target="RIML">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AVKL" target="RICL">
+  <data key="d1">8.5</data>
+</edge>
+<edge source="AVKL" target="PVPL">
+  <data key="d1">4.0</data>
+</edge>
+<edge source="AVKL" target="AQR">
+  <data key="d1">8.5</data>
+</edge>
+<edge source="AVKL" target="SMBVL">
+  <data key="d1">9.5</data>
+</edge>
+<edge source="AVKL" target="SMBDL">
+  <data key="d1">8.75</data>
 </edge>
 <edge source="ASGL" target="ADLL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="ASGL" target="AIAL">
-  <data key="d6">6.0</data>
+  <data key="d1">6.0</data>
 </edge>
 <edge source="ASGL" target="AIML">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="ASGL" target="AIZL">
-  <data key="d6">2.5</data>
+  <data key="d1">2.5</data>
 </edge>
 <edge source="ASGL" target="ASEL">
-  <data key="d6">3.0</data>
+  <data key="d1">3.0</data>
 </edge>
 <edge source="ASGL" target="ASIL">
-  <data key="d6">4.0</data>
+  <data key="d1">4.0</data>
 </edge>
-<edge source="RIH" target="AIZL">
-  <data key="d6">1.0</data>
+<edge source="ASGL" target="AWCL">
+  <data key="d1">2.0</data>
 </edge>
-<edge source="RIH" target="CEPDL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="RIH" target="CEPVL">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="RIH" target="OLQDL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="RIH" target="RIAL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="AIZL" target="AIAL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="AIZL" target="RIBL">
-  <data key="d6">2.5</data>
-</edge>
-<edge source="AIZL" target="RIGL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="AIZL" target="RIML">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="AIAL" target="ASKL">
-  <data key="d6">1.5</data>
-</edge>
-<edge source="AIAL" target="AIBL">
-  <data key="d6">5.0</data>
-</edge>
-<edge source="AIAL" target="AIAL">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="AIAL" target="AIML">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="AIAL" target="ASIL">
-  <data key="d6">6.25</data>
-</edge>
-<edge source="AIAL" target="ASJL">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="SMBVL" target="AIML">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="SMBVL" target="PLNL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="SMBVL" target="RIAL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="SMBVL" target="RMGL">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="SMBVL" target="SAADL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="SMBVL" target="SMBDL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="SMBVL" target="URBL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RIPL" target="IL1DL">
-  <data key="d6">15.0</data>
-</edge>
-<edge source="RIPL" target="IL1L">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RIPL" target="URADL">
-  <data key="d6">5.0</data>
-</edge>
-<edge source="RIPL" target="RMED">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="RIPL" target="URAVL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RIPL" target="RIPL">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="RIPL" target="RMEV">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="RIPL" target="PVR">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="RIAL" target="AUAL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RIAL" target="SIAVL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RIAL" target="RMDDL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RIAL" target="SAAVL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RIAL" target="RIBL">
-  <data key="d6">1.3333333333333333</data>
+<edge source="URBL" target="AFDL">
+  <data key="d1">5.5</data>
 </edge>
 <edge source="URBL" target="IL1L">
-  <data key="d6">2.0</data>
+  <data key="d1">2.0</data>
 </edge>
 <edge source="URBL" target="OLQDL">
-  <data key="d6">4.0</data>
+  <data key="d1">4.0</data>
 </edge>
-<edge source="ADLL" target="RMGL">
-  <data key="d6">3.0</data>
+<edge source="URBL" target="SMBVL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIH" target="AIZL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIH" target="CEPDL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="RIH" target="CEPVL">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="RIH" target="OLQDL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="RIH" target="RIAL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIAL" target="AUAL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIAL" target="SIAVL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIAL" target="RIBL">
+  <data key="d1">1.3333333333333333</data>
+</edge>
+<edge source="RIAL" target="SAAVL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIAL" target="SMBVL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIAL" target="RMDDL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIAL" target="SMDVL">
+  <data key="d1">2.5</data>
+</edge>
+<edge source="AIAL" target="ASKL">
+  <data key="d1">1.5</data>
+</edge>
+<edge source="AIAL" target="AIZL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="AIAL" target="AIML">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AIAL" target="AWAL">
+  <data key="d1">8.25</data>
+</edge>
+<edge source="AIAL" target="ASJL">
+  <data key="d1">4.0</data>
+</edge>
+<edge source="AIAL" target="ASIL">
+  <data key="d1">6.25</data>
+</edge>
+<edge source="AIAL" target="AIAL">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="AIAL" target="AWCL">
+  <data key="d1">1.5</data>
+</edge>
+<edge source="AIAL" target="AIBL">
+  <data key="d1">5.0</data>
+</edge>
+<edge source="AFDL" target="AVEL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AFDL" target="AIBL">
+  <data key="d1">2.75</data>
+</edge>
+<edge source="AFDL" target="AIYL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="AFDL" target="ASEL">
+  <data key="d1">3.5</data>
+</edge>
+<edge source="AFDL" target="URXL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AFDL" target="AWCL">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="AWAL" target="ADLL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AWAL" target="AIZL">
+  <data key="d1">3.5</data>
+</edge>
+<edge source="RIPL" target="IL1DL">
+  <data key="d1">15.0</data>
+</edge>
+<edge source="RIPL" target="IL1L">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIPL" target="RMED">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="RIPL" target="PVR">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="RIPL" target="URADL">
+  <data key="d1">5.0</data>
+</edge>
+<edge source="RIPL" target="URAVL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIPL" target="RIPL">
+  <data key="d1">4.0</data>
+</edge>
+<edge source="RIPL" target="RMEV">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="SMBVL" target="AIML">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="SMBVL" target="PLNL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="SMBVL" target="RMGL">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="SMBVL" target="SAADL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="SMBVL" target="SMBDL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="AWCL" target="ASEL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AWCL" target="AUAL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AIZL" target="RIGL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AIZL" target="RIML">
+  <data key="d1">4.0</data>
+</edge>
+<edge source="AIZL" target="RIBL">
+  <data key="d1">2.5</data>
+</edge>
+<edge source="SMDVL" target="AVEL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="SMDVL" target="RIBL">
+  <data key="d1">1.5</data>
+</edge>
+<edge source="SMDVL" target="RIVL">
+  <data key="d1">4.75</data>
+</edge>
+<edge source="SMDVL" target="SAAVL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="SMDVL" target="RIS">
+  <data key="d1">4.0</data>
+</edge>
+<edge source="SMDVL" target="VB01">
+  <data key="d1">6.0</data>
+</edge>
+<edge source="SMDVL" target="RMEV">
+  <data key="d1">1.0</data>
 </edge>
 <edge source="ADLL" target="ASKL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
-<edge source="RMGL" target="ALML">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="RMGL" target="ASKL">
-  <data key="d6">2.3333333333333335</data>
-</edge>
-<edge source="RMGL" target="AVEL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="RMGL" target="RIFL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RMGL" target="URXL">
-  <data key="d6">4.25</data>
-</edge>
-<edge source="RMGL" target="RMHL">
-  <data key="d6">7.25</data>
+<edge source="ADLL" target="RMGL">
+  <data key="d1">3.0</data>
 </edge>
 <edge source="ASKL" target="AIBL">
-  <data key="d6">2.0</data>
+  <data key="d1">2.0</data>
 </edge>
 <edge source="ASKL" target="HSNL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="ASKL" target="ALA">
-  <data key="d6">1.0</data>
+  <data key="d1">2.0</data>
 </edge>
 <edge source="ASKL" target="AVHL">
-  <data key="d6">6.333333333333333</data>
+  <data key="d1">6.333333333333333</data>
 </edge>
-<edge source="URXL" target="AUAL">
-  <data key="d6">9.0</data>
+<edge source="ASKL" target="ALA">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="URXL" target="RICL">
-  <data key="d6">1.0</data>
+<edge source="ASKL" target="RMGL">
+  <data key="d1">2.3333333333333335</data>
 </edge>
-<edge source="URXL" target="URXL">
-  <data key="d6">3.0</data>
+<edge source="RMGL" target="ALML">
+  <data key="d1">3.0</data>
 </edge>
-<edge source="AIYL" target="RIML">
-  <data key="d6">5.0</data>
+<edge source="RMGL" target="AVEL">
+  <data key="d1">2.0</data>
 </edge>
-<edge source="AIYL" target="AUAL">
-  <data key="d6">1.0</data>
+<edge source="RMGL" target="RIFL">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="AIYL" target="ASIL">
-  <data key="d6">1.0</data>
+<edge source="RMGL" target="URXL">
+  <data key="d1">4.25</data>
+</edge>
+<edge source="RMGL" target="RMHL">
+  <data key="d1">7.25</data>
 </edge>
 <edge source="AVEL" target="AVAL">
-  <data key="d6">3.6666666666666665</data>
+  <data key="d1">3.6666666666666665</data>
 </edge>
 <edge source="AVEL" target="RMEL">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="AVEL" target="SMDDL">
-  <data key="d6">1.5</data>
+  <data key="d1">3.0</data>
 </edge>
 <edge source="AVEL" target="RMED">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
-<edge source="AVEL" target="RIS">
-  <data key="d6">3.0</data>
+<edge source="AVEL" target="SMDDL">
+  <data key="d1">1.5</data>
 </edge>
 <edge source="AVEL" target="RMDL">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="AVEL" target="RIBL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="AVEL" target="ALA">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="AVEL" target="RMEV">
-  <data key="d6">1.0</data>
+  <data key="d1">3.0</data>
 </edge>
 <edge source="AVEL" target="RIML">
-  <data key="d6">12.75</data>
+  <data key="d1">12.75</data>
+</edge>
+<edge source="AVEL" target="RIS">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="AVEL" target="ALA">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="AVEL" target="RIBL">
+  <data key="d1">2.0</data>
 </edge>
 <edge source="AVEL" target="RIVL">
-  <data key="d6">5.0</data>
+  <data key="d1">5.0</data>
 </edge>
-<edge source="AIBL" target="RIFL">
-  <data key="d6">1.0</data>
+<edge source="AVEL" target="RMEV">
+  <data key="d1">1.0</data>
 </edge>
 <edge source="AIBL" target="RMED">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="AIBL" target="RIS">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="AIBL" target="BAGL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="AIBL" target="RICL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="AIBL" target="PVT">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="AIBL" target="RMEV">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="AIBL" target="RIML">
-  <data key="d6">2.0</data>
+  <data key="d1">2.0</data>
 </edge>
 <edge source="AIBL" target="DVC">
-  <data key="d6">5.5</data>
+  <data key="d1">5.5</data>
+</edge>
+<edge source="AIBL" target="PVT">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="AIBL" target="RIML">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="AIBL" target="RIS">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="AIBL" target="RICL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AIBL" target="BAGL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="AIBL" target="RIFL">
+  <data key="d1">1.0</data>
 </edge>
 <edge source="AIBL" target="RIVL">
-  <data key="d6">2.75</data>
+  <data key="d1">2.75</data>
 </edge>
-<edge source="AIML" target="ASJL">
-  <data key="d6">1.0</data>
+<edge source="AIBL" target="RMEV">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="AIYL" target="AUAL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AIYL" target="ASIL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AIYL" target="RIML">
+  <data key="d1">5.0</data>
+</edge>
+<edge source="URXL" target="AUAL">
+  <data key="d1">9.0</data>
+</edge>
+<edge source="URXL" target="RICL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="URXL" target="URXL">
+  <data key="d1">3.0</data>
 </edge>
 <edge source="AIML" target="CEPVL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AIML" target="ASJL">
+  <data key="d1">1.0</data>
 </edge>
 <edge source="ASJL" target="ALA">
-  <data key="d6">2.0</data>
+  <data key="d1">2.0</data>
 </edge>
 <edge source="RMED" target="IL1VL">
-  <data key="d6">3.5</data>
+  <data key="d1">3.5</data>
 </edge>
 <edge source="RMED" target="IL2DL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="RMED" target="RMEV">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="RIS" target="RICL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RIS" target="RIML">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="RIS" target="RMDL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RIS" target="SMDDL">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="RIS" target="RMEV">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="BAGL" target="RIR">
-  <data key="d6">8.0</data>
-</edge>
-<edge source="BAGL" target="RIGL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RICL" target="AVAL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RICL" target="CEPVL">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="RICL" target="OLLL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RICL" target="RMHL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="PVT" target="RIBL">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="PVT" target="URAVL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="PVT" target="RMEV">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RMEV" target="IL1DL">
-  <data key="d6">1.5</data>
-</edge>
-<edge source="RMEV" target="RIBL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="RMEV" target="RMEL">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="RIML" target="AVAL">
-  <data key="d6">2.0</data>
-</edge>
-<edge source="RIML" target="SIADL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RIML" target="RMDL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RIML" target="RMFL">
-  <data key="d6">3.0</data>
+  <data key="d1">4.0</data>
 </edge>
 <edge source="DVC" target="AVAL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="DVC" target="DVC">
-  <data key="d6">9.0</data>
+  <data key="d1">9.0</data>
+</edge>
+<edge source="PVT" target="RIBL">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="PVT" target="URAVL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="PVT" target="RMEV">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIML" target="AVAL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="RIML" target="RMDL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIML" target="RIS">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="RIML" target="SIADL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIML" target="RMFL">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="RIS" target="RICL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIS" target="RMDL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIS" target="SMDDL">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="RIS" target="RMEV">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RICL" target="AVAL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RICL" target="CEPVL">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="RICL" target="OLLL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RICL" target="RMHL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="BAGL" target="RIR">
+  <data key="d1">8.0</data>
+</edge>
+<edge source="BAGL" target="RIGL">
+  <data key="d1">1.0</data>
 </edge>
 <edge source="RIVL" target="SDQL">
-  <data key="d6">10.0</data>
+  <data key="d1">10.0</data>
 </edge>
-<edge source="CEPVL" target="IL2VL">
-  <data key="d6">1.0</data>
+<edge source="RMEV" target="IL1DL">
+  <data key="d1">1.5</data>
+</edge>
+<edge source="RMEV" target="RIBL">
+  <data key="d1">2.0</data>
+</edge>
+<edge source="RMEV" target="RMEL">
+  <data key="d1">4.0</data>
 </edge>
 <edge source="CEPVL" target="URAVL">
-  <data key="d6">3.3333333333333335</data>
+  <data key="d1">3.3333333333333335</data>
+</edge>
+<edge source="CEPVL" target="IL2VL">
+  <data key="d1">1.0</data>
 </edge>
 <edge source="CEPVL" target="IL1VL">
-  <data key="d6">4.0</data>
+  <data key="d1">4.0</data>
 </edge>
 <edge source="CEPVL" target="RMDL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="AUAL" target="RIBL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RIBL" target="AVBL">
-  <data key="d6">7.75</data>
-</edge>
-<edge source="RIBL" target="OLQDL">
-  <data key="d6">3.5</data>
-</edge>
-<edge source="RIBL" target="SIADL">
-  <data key="d6">2.3333333333333335</data>
-</edge>
-<edge source="RIBL" target="SMBDL">
-  <data key="d6">2.5</data>
-</edge>
-<edge source="RIBL" target="RIBL">
-  <data key="d6">3.5</data>
-</edge>
-<edge source="RIBL" target="SMDDL">
-  <data key="d6">2.3333333333333335</data>
-</edge>
-<edge source="RIBL" target="SIAVL">
-  <data key="d6">2.6666666666666665</data>
-</edge>
-<edge source="RIBL" target="RIGL">
-  <data key="d6">4.25</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="RIGL" target="OLLL">
-  <data key="d6">6.0</data>
+  <data key="d1">6.0</data>
 </edge>
 <edge source="RIGL" target="OLQDL">
-  <data key="d6">6.5</data>
+  <data key="d1">6.5</data>
 </edge>
 <edge source="RIGL" target="PVPL">
-  <data key="d6">1.5</data>
+  <data key="d1">1.5</data>
+</edge>
+<edge source="RIGL" target="RIBL">
+  <data key="d1">4.25</data>
 </edge>
 <edge source="RIGL" target="RMEL">
-  <data key="d6">2.0</data>
+  <data key="d1">2.0</data>
 </edge>
 <edge source="RIGL" target="VD01">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="RIGL" target="URYDL">
-  <data key="d6">6.5</data>
-</edge>
-<edge source="RIGL" target="RMFL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RIGL" target="AQR">
-  <data key="d6">3.5</data>
+  <data key="d1">4.0</data>
 </edge>
 <edge source="RIGL" target="URYVL">
-  <data key="d6">4.666666666666667</data>
+  <data key="d1">4.666666666666667</data>
 </edge>
-<edge source="ALML" target="BDUL">
-  <data key="d6">1.6666666666666667</data>
+<edge source="RIGL" target="URYDL">
+  <data key="d1">6.5</data>
 </edge>
-<edge source="ALML" target="SDQL">
-  <data key="d6">2.0</data>
+<edge source="RIGL" target="AQR">
+  <data key="d1">3.5</data>
+</edge>
+<edge source="RIGL" target="RMFL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RIBL" target="AVBL">
+  <data key="d1">7.75</data>
+</edge>
+<edge source="RIBL" target="OLQDL">
+  <data key="d1">3.5</data>
+</edge>
+<edge source="RIBL" target="SIAVL">
+  <data key="d1">2.6666666666666665</data>
+</edge>
+<edge source="RIBL" target="SMDDL">
+  <data key="d1">2.3333333333333335</data>
+</edge>
+<edge source="RIBL" target="SIADL">
+  <data key="d1">2.3333333333333335</data>
+</edge>
+<edge source="RIBL" target="RIBL">
+  <data key="d1">3.5</data>
+</edge>
+<edge source="RIBL" target="SMBDL">
+  <data key="d1">2.5</data>
 </edge>
 <edge source="ALML" target="PVR">
-  <data key="d6">3.0</data>
+  <data key="d1">3.0</data>
 </edge>
-<edge source="BDUL" target="HSNL">
-  <data key="d6">1.0</data>
+<edge source="ALML" target="SDQL">
+  <data key="d1">2.0</data>
 </edge>
-<edge source="BDUL" target="PVCL">
-  <data key="d6">4.0</data>
-</edge>
-<edge source="BDUL" target="PVNL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="SDQL" target="SIAVL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="SDQL" target="DVA">
-  <data key="d6">1.0</data>
+<edge source="ALML" target="BDUL">
+  <data key="d1">1.6666666666666667</data>
 </edge>
 <edge source="PVR" target="IL1DL">
-  <data key="d6">3.0</data>
+  <data key="d1">3.0</data>
 </edge>
 <edge source="PVR" target="URADL">
-  <data key="d6">3.0</data>
+  <data key="d1">3.0</data>
 </edge>
-<edge source="AVAL" target="SABD">
-  <data key="d6">1.0</data>
+<edge source="SDQL" target="SIAVL">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="AVAL" target="URYDL">
-  <data key="d6">4.0</data>
+<edge source="SDQL" target="DVA">
+  <data key="d1">1.0</data>
 </edge>
-<edge source="AVAL" target="RMDL">
-  <data key="d6">2.0</data>
+<edge source="BDUL" target="PVCL">
+  <data key="d1">4.0</data>
+</edge>
+<edge source="BDUL" target="PVNL">
+  <data key="d1">1.0</data>
+</edge>
+<edge source="BDUL" target="HSNL">
+  <data key="d1">1.0</data>
 </edge>
 <edge source="AVAL" target="SAAVL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AVAL" target="RMDL">
+  <data key="d1">2.0</data>
 </edge>
 <edge source="AVAL" target="PVPL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AVAL" target="URYDL">
+  <data key="d1">4.0</data>
 </edge>
 <edge source="AVAL" target="PVCL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
+</edge>
+<edge source="AVAL" target="SABD">
+  <data key="d1">1.0</data>
 </edge>
 <edge source="ALA" target="HSNL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="ALA" target="RID">
-  <data key="d6">4.0</data>
+  <data key="d1">4.0</data>
 </edge>
 <edge source="HSNL" target="PVNL">
-  <data key="d6">3.0</data>
-</edge>
-<edge source="URYDL" target="URADL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="RMDL" target="RMDDL">
-  <data key="d6">6.666666666666667</data>
-</edge>
-<edge source="RMDL" target="SMDDL">
-  <data key="d6">4.666666666666667</data>
-</edge>
-<edge source="RMDL" target="RMHL">
-  <data key="d6">5.5</data>
-</edge>
-<edge source="RMDL" target="RMFL">
-  <data key="d6">3.0</data>
+  <data key="d1">3.0</data>
 </edge>
 <edge source="SAAVL" target="DVA">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
+</edge>
+<edge source="RMDL" target="RMDDL">
+  <data key="d1">6.666666666666667</data>
+</edge>
+<edge source="RMDL" target="SMDDL">
+  <data key="d1">4.666666666666667</data>
+</edge>
+<edge source="RMDL" target="RMHL">
+  <data key="d1">5.5</data>
+</edge>
+<edge source="RMDL" target="RMFL">
+  <data key="d1">3.0</data>
 </edge>
 <edge source="PVPL" target="PVPL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="PVPL" target="AQR">
-  <data key="d6">53.5</data>
+  <data key="d1">53.5</data>
+</edge>
+<edge source="URYDL" target="URADL">
+  <data key="d1">1.0</data>
 </edge>
 <edge source="AVBL" target="RID">
-  <data key="d6">5.0</data>
-</edge>
-<edge source="AVBL" target="DVA">
-  <data key="d6">25.5</data>
+  <data key="d1">5.0</data>
 </edge>
 <edge source="AVBL" target="AQR">
-  <data key="d6">5.0</data>
+  <data key="d1">5.0</data>
+</edge>
+<edge source="AVBL" target="DVA">
+  <data key="d1">25.5</data>
 </edge>
 <edge source="DVA" target="SIADL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="DVA" target="SIAVL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="SMDDL" target="RMDDL">
-  <data key="d6">5.5</data>
+  <data key="d1">5.5</data>
 </edge>
 <edge source="SMDDL" target="RMHL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="SMDDL" target="SIADL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="SMDDL" target="SMBDL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="SMBDL" target="SAADL">
-  <data key="d6">9.333333333333334</data>
+  <data key="d1">9.333333333333334</data>
 </edge>
 <edge source="SMBDL" target="SIADL">
-  <data key="d6">2.5</data>
+  <data key="d1">2.5</data>
 </edge>
 <edge source="CEPDL" target="OLQDL">
-  <data key="d6">8.0</data>
+  <data key="d1">8.0</data>
 </edge>
 <edge source="OLQDL" target="OLLL">
-  <data key="d6">2.0</data>
+  <data key="d1">2.0</data>
 </edge>
 <edge source="OLQDL" target="OLQDL">
-  <data key="d6">8.0</data>
-</edge>
-<edge source="IL2VL" target="IL1VL">
-  <data key="d6">1.0</data>
-</edge>
-<edge source="IL2VL" target="URAVL">
-  <data key="d6">3.0</data>
+  <data key="d1">8.0</data>
 </edge>
 <edge source="URAVL" target="IL1VL">
-  <data key="d6">4.0</data>
+  <data key="d1">4.0</data>
+</edge>
+<edge source="URAVL" target="IL2VL">
+  <data key="d1">3.0</data>
+</edge>
+<edge source="IL2VL" target="IL1VL">
+  <data key="d1">1.0</data>
 </edge>
 <edge source="IL1VL" target="IL1L">
-  <data key="d6">6.25</data>
-</edge>
-<edge source="IL1VL" target="RMDDL">
-  <data key="d6">1.0</data>
+  <data key="d1">6.25</data>
 </edge>
 <edge source="IL1VL" target="OLLL">
-  <data key="d6">3.0</data>
+  <data key="d1">3.0</data>
+</edge>
+<edge source="IL1VL" target="RMDDL">
+  <data key="d1">1.0</data>
 </edge>
 <edge source="IL1DL" target="OLLL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 <edge source="IL1DL" target="IL1L">
-  <data key="d6">7.25</data>
+  <data key="d1">7.25</data>
 </edge>
 <edge source="RMDDL" target="SAADL">
-  <data key="d6">2.0</data>
+  <data key="d1">2.0</data>
 </edge>
 <edge source="IL2DL" target="URADL">
-  <data key="d6">1.0</data>
+  <data key="d1">1.0</data>
 </edge>
 </graph></graphml>

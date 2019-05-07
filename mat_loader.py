@@ -105,7 +105,7 @@ class MatLoader:
     
     def load_cam_class(self,metric,camtype):
         fin = self.mat['cam_class']%(metric,camtype)
-        return aux.read.into_dict(fin)
+        return {k:int(v) for (k,v) in aux.read.into_dict(fin).items()}
 
 if __name__=="__main__":
     M = MatLoader()
