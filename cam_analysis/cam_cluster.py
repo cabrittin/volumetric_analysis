@@ -99,8 +99,9 @@ if __name__=='__main__':
     
     ML = MatLoader()
     ML.load_lrmap()
-    nodes = sorted(ML.load_reduced_nodes())
-        
+    #nodes = sorted(ML.load_reduced_nodes())
+    nodes = sorted(ML.load_all_tissue())
+
     e = Matrix(ML.cam,params.matrix)
     e.load_genes()
     e.load_cells(nodes)
@@ -132,6 +133,6 @@ if __name__=='__main__':
         data.append([e.cells_idx[i],cam_class[params.camtype](idx)])
         idx += 1
     fout = FOUT%(params.metric,params.camtype)
-    aux.write.from_list(fout,data) 
+    #aux.write.from_list(fout,data) 
     plt.show()
     

@@ -1,6 +1,7 @@
 lengths,mat/%s_size_stats.csv
 nrclass,mat/nerve_ring_classes.txt
 reduced_nodes,mat/reduced_nodes.txt
+all_tissue,mat/all_tissue.txt
 left,mat/left_nodes.txt
 right,mat/right_nodes.txt
 lrmap,mat/lr_dict.txt

@@ -94,7 +94,7 @@ if __name__=="__main__":
                     #print(rec.append(c[0]))
                     matrix.append([g,c[0],c[1]])
         if not matrix: continue
-        fout = params.dout + FOUT + '_' + tpt + '.csv'
+        fout = params.dout.replace('.csv','_' + tpt + '.csv')
         aux.write.from_list(fout,matrix)
 
 

@@ -1,0 +1,6 @@
+cam_analysis/data/rnaseq_exp_matrix_non_neuronal_330_390.csv,60
+cam_analysis/data/rnaseq_exp_matrix_non_neuronal_390_450.csv,60
+cam_analysis/data/rnaseq_exp_matrix_non_neuronal_390_510.csv,120
+cam_analysis/data/rnaseq_exp_matrix_non_neuronal_450_510.csv,60
+cam_analysis/data/rnaseq_exp_matrix_non_neuronal_510_650.csv,140
+cam_analysis/data/rnaseq_exp_matrix_non_neuronal_gt_650.csv,60

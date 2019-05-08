@@ -97,6 +97,9 @@ class MatLoader:
     def load_reduced_nodes(self):
         return aux.read.into_list(self.mat['reduced_nodes'])
 
+    def load_all_tissue(self):
+        return aux.read.into_list(self.mat['all_tissue'])
+
     def load_sa(self,db):
         fin = self.mat['lengths']%(db.lower())
         l = aux.read.into_dict2(fin)
