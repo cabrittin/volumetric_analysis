@@ -25,10 +25,9 @@ idx_gene = {'cad':range(85,98),'lrr':range(54,85),
             'all':range(106)}
 
 def cad_class(i):
-    if i < 11: return 0
-    elif i < 29: return 1
-    elif i < 45: return 2
-    else: return 3
+    if i < 15: return 0
+    elif i < 54: return 1
+    else: return 2
 
 def igsf_class(i):
     if i < 11: return 0

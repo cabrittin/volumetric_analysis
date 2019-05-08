@@ -1,0 +1,7 @@
+cam_analysis/data/rnaseq_exp_matrix_330_390.csv,60
+cam_analysis/data/rnaseq_exp_matrix_390_450.csv,60
+cam_analysis/data/rnaseq_exp_matrix_390_510.csv,120
+cam_analysis/data/rnaseq_exp_matrix_450_510.csv,60
+cam_analysis/data/rnaseq_exp_matrix_510_650.csv,140
+cam_analysis/data/rnaseq_exp_matrix_gt_580.csv,60
+cam_analysis/data/rnaseq_exp_matrix_gt_650.csv,60
