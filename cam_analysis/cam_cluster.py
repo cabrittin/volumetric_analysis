@@ -13,12 +13,17 @@ import numpy as np
 from itertools import combinations
 import scipy.cluster.hierarchy as sch
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import networkx as nx
+import seaborn as sns
+from collections import defaultdict
 
 from cam.expression import Matrix
 from mat_loader import MatLoader
 from connectome.load import from_db
 import aux
+
+mpl.rcParams['xtick.labelsize'] = 4
 
 idx_gene = {'cad':range(85,98),'lrr':range(54,85),
             'igsf':range(54),'nrx':range(98,106),
@@ -101,7 +106,8 @@ if __name__=='__main__':
     ML.load_lrmap()
     #nodes = sorted(ML.load_reduced_nodes())
     nodes = sorted(ML.load_all_tissue())
-
+    neurons = sorted(ML.load_reduced_nodes())
+   
     e = Matrix(ML.cam,params.matrix)
     e.load_genes()
     e.load_cells(nodes)
@@ -116,15 +122,23 @@ if __name__=='__main__':
     Y = sch.linkage(D, method='ward')
     Z = sch.dendrogram(Y, orientation='right')
 
-    fig,axmatrix = plt.subplots(1,1,figsize=(10,10))
+    #fig,axmatrix = plt.subplots(1,1,figsize=(10,10))
 
     index = Z['leaves']
+    ordered_cells = [e.cells_idx[i] for i in index]
+    tclass = ['k']*len(e.cells)
+    idx = 0
+    for i in index:
+        if e.cells_idx[i] in neurons: tclass[idx] = '#E6E6E6'
+        idx += 1
     D = D[index,:]
     D = D[:,index]
-    im = axmatrix.matshow(D, aspect='auto', origin='lower')
-    axmatrix.set_xticks([])
-    axmatrix.set_yticks([])
-    plt.colorbar(im)
+    im = sns.clustermap(D,xticklabels=ordered_cells,yticklabels=[],row_colors=tclass)
+    im.ax_row_dendrogram.set_visible(False)
+    #im = axmatrix.matshow(D, aspect='auto', origin='lower')
+    #axmatrix.set_xticks([])
+    #axmatrix.set_yticks([])
+    #plt.colorbar(im)
 
     data = []
     idx = 0
