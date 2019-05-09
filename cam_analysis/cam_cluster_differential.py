@@ -23,7 +23,8 @@ from mat_loader import MatLoader
 from connectome.load import from_db
 import aux
 
-mpl.rcParams['xtick.labelsize'] = 4
+mpl.rcParams['xtick.labelsize'] = 16 
+mpl.rcParams['xtick.labelsize'] = 14 
 
 idx_gene = {'cad':range(85,98),'lrr':range(54,85),
             'igsf':range(54),'nrx':range(98,106),
@@ -56,12 +57,6 @@ cam_class = {'cad':CAD_CLASS,'igsf':IGSF_CLASS,'lrr':LRR_CLASS,
 cam_color = {'cad':CAD_COLOR,'igsf':IGSF_COLOR,'lrr':LRR_COLOR,
             'nrx':NRX_COLOR,'all':ALL_COLOR}
 
-def overlap(u,v):
-    w = u + v
-    m = float(len(np.where(w > 0)[0]))
-    n = len(np.where(w > 1)[0])
-    if m > 0: return 1 - n / m
-    return 1
 
 REMOVE = ['VB01', 'VD01']
 FOUT = 'mat/cam_class/consensus_cam_class_all_tissue_%s_%s.csv'
@@ -92,53 +87,47 @@ if __name__=='__main__':
     #nodes = sorted(ML.load_reduced_nodes())
     nodes = sorted(ML.load_all_tissue())
     neurons = sorted(ML.load_reduced_nodes())
-   
+    camclass = ML.load_cam_class(params.metric,params.camtype)
+    
     e = Matrix(ML.cam,params.matrix)
     e.load_genes()
     e.load_cells(nodes)
     e.assign_expression()
     e.clean_expression()
     e.binarize()
-    #M = e.E[:,idx_gene]
-    #for i in range(M.shape[0]): np.random.shuffle(M[i,:])
-
-    D = e.distance_matrix(gdx=idx_gene[params.camtype],metric=params.metric)
-        
-    Y = sch.linkage(D, method='ward')
-    Z = sch.dendrogram(Y, orientation='right')
-
-    #fig,axmatrix = plt.subplots(1,1,figsize=(10,10))
-
-    index = Z['leaves']
-    k = len(e.cells)
-    ordered_cells = [None]*k
-    tclass = ['k']*k
-    cclass = [0]*k
-    ccolor = ['k']*k
-    idx = 0
-    for i in index:
-        ordered_cells[i] = e.cells_idx[i]
-        if e.cells_idx[i] in neurons: tclass[i] = '#E6E6E6'
-        cclass[i] = assign_cam_class(idx,cam_class[params.camtype])
-        ccolor[i] = cam_color[params.camtype][cclass[i]]
-        idx += 1
-    D2 = D[index,:]
-    D2 = D2[:,index]
-    im = sns.clustermap(D,row_linkage=Y,col_linkage=Y,xticklabels=ordered_cells,yticklabels=[],
-            row_colors=tclass,col_colors=ccolor)
-    #im.ax_row_dendrogram.set_visible(False)
-    #im = axmatrix.matshow(D2, aspect='auto', origin='lower')
-    #axmatrix.set_xticks([])
-    #axmatrix.set_yticks([])
-    #plt.colorbar(im)
-
+   
+    gdx = idx_gene[params.camtype]
+    cdx = [[] for i in range(max(camclass.values()) + 1)]
+    for (k,v) in camclass.items(): 
+        cdx[v].append(e.cells[k])
+    
+    M = e.M[:,gdx]
     data = []
-    idx = 0
-    for i in index: 
-        print(idx,e.cells_idx[i],cclass[i],i)
-        data.append([e.cells_idx[i],cclass[i]])
-        idx += 1
-    fout = FOUT%(params.metric,params.camtype)
-    aux.write.from_list(fout,data) 
+    maxdata = []
+    mindata = []
+    std = []
+    for c in cdx: 
+        data.append(np.mean(M[c,:],axis=0))
+        maxdata.append(np.max(M[c,:],axis=0))
+        mindata.append(np.min(M[c,:],axis=0))
+        std.append(np.std(M[c,:],axis=0))
+
+    genes = [e.gene_idx[i] for i in gdx]
+    k = len(cdx)
+    width = 1. / (k+1)
+    idx = np.arange(M.shape[1])
+    fig,ax = plt.subplots(1,1,figsize=(17,10))
+    ax.axvspan(3-width,5-width,facecolor='#969696')
+    ax.axvspan(12-width,13-width,facecolor='#969696')
+    ax.axvspan(6-width,7-width,facecolor='#e4e4e4')
+    for i in range(k):
+        ax.bar(idx + i*width,data[i],width,yerr=[mindata[i],maxdata[i]],
+                color=cam_color[params.camtype][i],label='Cluster %d'%i )
+    ax.set_xticks(idx + k/2*width)
+    ax.set_xticklabels(genes)
+    ax.set_title('Average cadherin expression by cluster',fontsize=18)
+    ax.set_ylabel('Average counts',fontsize=18)
+    ax.legend(fontsize=18)
+    plt.tight_layout()
     plt.show()
     

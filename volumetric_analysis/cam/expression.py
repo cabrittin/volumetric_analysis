@@ -154,7 +154,7 @@ class Matrix:
         
         k = self.M.shape[0]
         D = np.ones((k,k))
-        np.fill_diagonal(D,0)
+        np.fill_diagonal(D,1)
         comb = combinations(range(k),2)
         if metric == 'jaccard':
             dist = jaccard

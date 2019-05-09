@@ -18,4 +18,4 @@ gene_sig_pre,cam_analysis/gene_sigs/gene_sig_pre_deg%d.csv
 gene_sig_post,cam_analysis/gene_sigs/gene_sig_post_deg%d.csv
 gene_sig_gap,cam_analysis/gene_sigs/gene_sig_gap_deg%d.csv
 gene_sig_graph,cam_analysis/gene_sigs/sig_%s_deg%d.graphml
-cam_class,mat/cam_class/consensus_cam_class_%s_%s.csv
+cam_class,mat/cam_class/consensus_cam_class_all_tissue_%s_%s.csv

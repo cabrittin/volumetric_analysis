@@ -122,6 +122,7 @@ if __name__=="__main__":
         
         for cam in CAM_TYPES: 
             cdict = M.load_cam_class(METRIC,CAM_TYPES[cam])
+            print(cdict)
             for (l,r) in zip(M.left,M.right):
                 if l in cdict: cdict[r] = cdict[l]
             for G in [Ai,Ac,Ci,Cc,Ei,Ec]: apply_node_class(G,cdict,cam,default=-1)
