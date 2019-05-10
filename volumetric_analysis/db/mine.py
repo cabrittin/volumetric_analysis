@@ -561,6 +561,7 @@ def neuron_cylinder(cur):
            "join image on image.IMG_Number=object.IMG_Number "
            "where contin.type like 'neuron'"
            )
+    print(sql)
     cur.execute(sql)
     data = [[a[0],int(a[1]),float(a[2]),int(a[3])] for a in cur.fetchall()]
     return data     
@@ -717,6 +718,16 @@ def get_synapse_from_layer(cur,layer):
            %layer)
     cur.execute(sql)
     return [(int(a[0]),int(a[1]),int(a[2])) for a in cur.fetchall()]
+
+def get_objects_in_layer(cur,layer):
+    """
+    Return object coordinates in layer
+    """
+    sql = ("select coalesce(preObj,postObj) "
+            "from adjacency2 "
+            "where imgNum = '%s'"%layer)
+    cur.execute(sql)
+    return list(set([a[0] for a in cur.fetchall()]))
 
 def get_object_adjacency(cur,obj):
     """

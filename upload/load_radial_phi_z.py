@@ -111,8 +111,13 @@ if __name__ == '__main__':
         if not B: continue
         B['Pharynx'][0].set_centroid()
         B['Phi_Marker'][0].set_centroid()
-        data = db.mine.get_synapse_from_layer(cur,newl)
-        print(_l,len(data))
+        data = []
+        objs = db.mine.get_objects_in_layer(cur,newl)
+        for o in objs:
+            loc = db.mine.get_object_xyz(cur,o)
+            data.append((o,loc[0],loc[1])
+        #data = db.mine.get_synapse_from_layer(cur,newl)
+        #print(_l,len(data))
         if data:
             rad = compute_radial_distance(B['Pharynx'][0].path,data)
             phi = compute_angle(B['Pharynx'][0].cent,
