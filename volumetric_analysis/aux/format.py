@@ -29,7 +29,7 @@ def get_args(kwargs,default):
 def chunk_list(l,n):
     #Chunks list l into smaller lists
     #of size n
-    for i in xrange(0,len(l),n):
+    for i in range(0,len(l),n):
         yield l[i:i+n]
 
 def swap_var(x,y):

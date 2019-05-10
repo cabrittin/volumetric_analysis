@@ -726,6 +726,7 @@ def get_objects_in_layer(cur,layer):
     sql = ("select coalesce(preObj,postObj) "
             "from adjacency2 "
             "where imgNum = '%s'"%layer)
+    print(sql)
     cur.execute(sql)
     return list(set([a[0] for a in cur.fetchall()]))
 

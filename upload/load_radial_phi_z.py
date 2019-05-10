@@ -13,13 +13,49 @@ db : str
 created: Christopher Brittin
 date: 01 November 2018
 """
+import sys
+sys.path.append('./volumetric_analysis')
+
 import argparse
 from lxml import etree
 import numpy as np
+from tqdm import tqdm
+import multiprocessing as mp
 
 import db
 from trakem2.parse import ParseTrakEM2
+from aux.format import chunk_list
 
+def upload_radial(_db,P,layers):
+    con = db.connect.default(_db)
+    cur = con.cursor()
+    cur.connection.autocommit(True)
+    
+    for (_l,newl) in tqdm(layers, desc='Layers:'):
+        B = P.get_boundaries_in_layer(_l,
+                                      area_lists=['Pharynx',
+                                                  'Phi_Marker'])
+        if not B: continue
+        B['Pharynx'][0].set_centroid()
+        B['Phi_Marker'][0].set_centroid()
+        data = []
+        objs = db.mine.get_objects_in_layer(cur,newl)
+        for o in objs:
+            loc = db.mine.get_object_xyz(cur,o)
+            data.append((o,loc[0],loc[1]))
+        #data = db.mine.get_synapse_from_layer(cur,newl)
+        #print(_l,len(data))
+        if data:
+            rad = compute_radial_distance(B['Pharynx'][0].path,data)
+            phi = compute_angle(B['Pharynx'][0].cent,
+                                B['Phi_Marker'][0].cent,data)
+            data = [[d,rad[d],phi[d]] for d in rad]
+            print(data)
+            #db.insert.radial_pharynx(cur,data)
+    con.close()
+
+    return 1
+ 
 def compute_radial_distance(pharynx,data):
     radial = {}
     n = len(pharynx)
@@ -72,6 +108,18 @@ def angle_direction(marker,p):
     else:
         return 1
 
+def adjust_layer_name(db,_l):
+    #Needed for synapses
+    newl = _l
+    if params.db == 'N2U':
+        if 'VC' in _l:
+            newl = _l.replace('_VC_','VC')
+        else:
+            newl = _l.replace('_','NR')
+    elif params.db == 'JSH':
+        newl = _l.replace('JSH','JSHJSH')
+    return newl
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -83,13 +131,17 @@ if __name__ == '__main__':
     parser.add_argument('db',
                         action = 'store',
                         help = 'Database name')
-                        
+    
+    parser.add_argument('-n','--nproc',
+                        action = 'store',
+                        dest = 'nproc',
+                        required = False,
+                        default = 1,
+                        type = int,
+                        help ="Number of cores to run multiprocessing")
+                    
     
     params = parser.parse_args()
-
-    con = db.connect.default(params.db)
-    cur = con.cursor()
-    cur.connection.autocommit(True)
 
     print('TrakEM2 file: %s' %params.trakem2)
     P = ParseTrakEM2(params.trakem2)
@@ -97,34 +149,17 @@ if __name__ == '__main__':
     P.get_area_lists()
 
     layers = sorted(P.layers.keys())
-    for _l in layers:
-        if params.db == 'N2U':
-            if 'VC' in _l:
-                newl = _l.replace('_VC_','VC')
-            else:
-                newl = _l.replace('_','NR')
-        elif params.db == 'JSH':
-            newl = _l.replace('JSH','JSHJSH')
-        B = P.get_boundaries_in_layer(_l,
-                                      area_lists=['Pharynx',
-                                                  'Phi_Marker'])
-        if not B: continue
-        B['Pharynx'][0].set_centroid()
-        B['Phi_Marker'][0].set_centroid()
-        data = []
-        objs = db.mine.get_objects_in_layer(cur,newl)
-        for o in objs:
-            loc = db.mine.get_object_xyz(cur,o)
-            data.append((o,loc[0],loc[1])
-        #data = db.mine.get_synapse_from_layer(cur,newl)
-        #print(_l,len(data))
-        if data:
-            rad = compute_radial_distance(B['Pharynx'][0].path,data)
-            phi = compute_angle(B['Pharynx'][0].cent,
-                                B['Phi_Marker'][0].cent,data)
-            data = [[d,rad[d],phi[d]] for d in rad]            
-            db.insert.radial_pharynx(cur,data)
+    nlayers = [(l,l) for l in layers] 
+    
+    #clayers = chunk_list(nlayers,params.nproc)
+    
+    upload_radial(params.db,P,nlayers)
             
-    con.close()
+    #pool = mp.Pool(processes = params.nproc)
+    #results = [pool.apply_async(upload_radial,args=(params.db,P,_layers,)) for _layers in clayers]
+    ##adj = [o for p in results for o in p.get()]
+    #for p in results: p.get()
+    
+
 
 
