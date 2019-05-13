@@ -30,7 +30,7 @@ def upload_radial(_db,P,layers):
     con = db.connect.default(_db)
     cur = con.cursor()
     cur.connection.autocommit(True)
-    
+    obj_skipped = []
     for (_l,newl) in tqdm(layers, desc='Layers:'):
         B = P.get_boundaries_in_layer(_l,
                                       area_lists=['Pharynx',
@@ -42,7 +42,8 @@ def upload_radial(_db,P,layers):
         objs = db.mine.get_objects_in_layer(cur,newl)
         for o in objs:
             loc = db.mine.get_object_xyz(cur,o)
-            data.append((o,loc[0],loc[1]))
+            if loc: data.append((o,loc[0],loc[1]))
+            else: obj_skipped.append(o)
         #data = db.mine.get_synapse_from_layer(cur,newl)
         #print(_l,len(data))
         if data:
@@ -50,11 +51,10 @@ def upload_radial(_db,P,layers):
             phi = compute_angle(B['Pharynx'][0].cent,
                                 B['Phi_Marker'][0].cent,data)
             data = [[d,rad[d],phi[d]] for d in rad]
-            print(data)
-            #db.insert.radial_pharynx(cur,data)
+            db.insert.radial_pharynx(cur,data)
     con.close()
 
-    return 1
+    return obj_skipped
  
 def compute_radial_distance(pharynx,data):
     radial = {}
@@ -153,8 +153,9 @@ if __name__ == '__main__':
     
     #clayers = chunk_list(nlayers,params.nproc)
     
-    upload_radial(params.db,P,nlayers)
-            
+    obj_skipped = upload_radial(params.db,P,nlayers)
+    for o in obj_skipped:
+        print(o)
     #pool = mp.Pool(processes = params.nproc)
     #results = [pool.apply_async(upload_radial,args=(params.db,P,_layers,)) for _layers in clayers]
     ##adj = [o for p in results for o in p.get()]
