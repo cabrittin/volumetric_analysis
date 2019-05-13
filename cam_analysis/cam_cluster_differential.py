@@ -14,6 +14,7 @@ from itertools import combinations
 import scipy.cluster.hierarchy as sch
 import matplotlib.pyplot as plt
 import matplotlib as mpl
+from matplotlib.patches import Rectangle
 import networkx as nx
 import seaborn as sns
 from collections import defaultdict
@@ -40,7 +41,7 @@ LRR_CLASS = [39,64,84,93,103,109,112]
 LRR_COLOR = ['#EC360F','#fac127','#f0fc3c','#70fc3c','#3cfcf0','#3c70fc','#ad3cfc','#fc3cdf']
 
 NRX_CLASS = [25,41,66,77]
-NRX_COLOR = ['#EC360F','#f8d94d','#4df864','#55c0fa','#8255fa','#000000']
+NRX_COLOR = ['#EC360F','#f8d94d','#4df864','#55c0fa','#8255fa']
 
 ALL_CLASS = [11,20,26,39,63,84,98]
 ALL_COLOR = ['#EC360F','#fac127','#f0fc3c','#70fc3c','#3cfcf0','#3c70fc','#ad3cfc','#fc3cdf']
@@ -100,19 +101,46 @@ if __name__=='__main__':
     cdx = [[] for i in range(max(camclass.values()) + 1)]
     for (k,v) in camclass.items(): 
         cdx[v].append(e.cells[k])
-    
+    print('SMDDL',camclass['SMDDL']) 
     M = e.M[:,gdx]
+    matrix = np.zeros((len(gdx),len(cdx)))
+    print(matrix.shape)
     data = []
     maxdata = []
     mindata = []
     std = []
-    for c in cdx: 
+    i = 0
+    for c in cdx:
+        matrix[:,i] = np.mean(M[c,:],axis=0)
         data.append(np.mean(M[c,:],axis=0))
         maxdata.append(np.max(M[c,:],axis=0))
         mindata.append(np.min(M[c,:],axis=0))
         std.append(np.std(M[c,:],axis=0))
+        i += 1
 
+    #print(matrix)
+    #martrix = np.log10(matrix)
+    #print(matrix)
+    matrix[matrix<1] = 1
+    matrix = np.log10(matrix)
+    print(matrix)
+    print(cdx)
     genes = [e.gene_idx[i] for i in gdx]
+    clusters = range(1,len(cdx)+1)
+
+    cmap = sns.cubehelix_palette(np.max(matrix)*100,rot=-.3, reverse=True,
+                                    start=0)
+    print(cam_color[params.camtype])
+    g= sns.clustermap(matrix,row_cluster=False,col_cluster=False,col_colors=cam_color[params.camtype],
+                    yticklabels=genes,xticklabels=clusters,cmap=cmap,linewidth=1,
+                    cbar_kws={'label': 'log(average adjusted counts)'})
+    
+    g.cax.yaxis.label.set_size(20)
+    g.cax.set_position([.15, .2, .03, .45])
+    #g.ax_heatmap.add_patch(Rectangle((1, 3), 2, 2, fill=False, edgecolor='#ffe400', lw=3))
+    plt.show()
+
+    """
     k = len(cdx)
     width = 1. / (k+1)
     idx = np.arange(M.shape[1])
@@ -130,4 +158,4 @@ if __name__=='__main__':
     ax.legend(fontsize=18)
     plt.tight_layout()
     plt.show()
-    
+    """
