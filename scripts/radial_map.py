@@ -26,9 +26,8 @@ def run(fout=None):
     con = db.connect.default(_db)
     cur = con.cursor()
     loc = db.mine.neuron_cylinder(cur)
-    print(loc)
-    for l in loc:
-        print(l)
+    #for l in loc:
+    #    print(l)
 
 if __name__=='__main__':
     run()

@@ -723,9 +723,11 @@ def get_objects_in_layer(cur,layer):
     """
     Return object coordinates in layer
     """
-    sql = ("select coalesce(preObj,postObj) "
-            "from adjacency2 "
-            "where imgNum = '%s'"%layer)
+    sql = ("select preObj from adjacency2 where imgNum = '%s' "
+            "union "
+            "select postObj from adjacency2 where imgNum = '%s'"
+            %(layer,layer))
+    
     cur.execute(sql)
     return list(set([a[0] for a in cur.fetchall()]))
 
