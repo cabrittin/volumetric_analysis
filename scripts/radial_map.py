@@ -12,7 +12,8 @@ import sys
 sys.path.append('.')
 sys.path.append(r'./volumetric_analysis')
 import matplotlib.pyplot as plt
-
+from collections import defaultdict
+from tqdm import tqdm
 
 import db
 import figures.spatialMap as smplt
@@ -20,14 +21,22 @@ from mat_loader import MatLoader
 
 _db = 'JSH'
 
-def run(fout=None):
+
+if __name__=='__main__':
     M = MatLoader()
     nclass = M.load_nerve_ring_classes()
     con = db.connect.default(_db)
     cur = con.cursor()
-    loc = db.mine.neuron_cylinder(cur)
-    #for l in loc:
-    #    print(l)
+    radial = defaultdict(lambda:defaultdict(list))
+    print(nclass)
+    for (k,v) in tqdm(nclass.items(),desc="Cells:"):
+        loc = db.mine.neuron_cylinder(cur,k)
+        if not loc: continue
+        for l in loc: radial[v][l[2]].append(l[0])
 
-if __name__=='__main__':
-    run()
+
+    
+    #for (k,v) in radial.items():
+    #    print(k,v)
+
+    

@@ -542,7 +542,7 @@ def maxPosterior(cur,cell,contin=None):
     cur.execute(sql)
     return cur.fetchone()[0]
 
-def neuron_cylinder(cur):
+def neuron_cylinder(cur,name):
     """
     Returns the cylindrical locations of neuron segment centroids
     [cell_name,radius,phi,z]
@@ -550,20 +550,18 @@ def neuron_cylinder(cur):
     Parameters:
     ----------
     cur : MySQLdb
+    name : str
+        Cell name
     """
-    sql = ("select contin.CON_AlternateName,"
-           "radialPharynx.distance,"
-           "radialPharynx.phi,"
-           "image.IMG_SectionNumber "
-           "from radialPharynx "
-           "join object on object.OBJ_Name=radialPharynx.OBJ_Name "
-           "join contin on contin.CON_Number=object.CON_Number "
-           "join image on image.IMG_Number=object.IMG_Number "
-           "where contin.type like 'neuron'"
-           )
-    print(sql)
+    sql = ("select radialPharynx.distance,radialPharynx.phi,image.IMG_SectionNumber "
+            "from radialPharynx "
+            "join object on object.OBJ_Name=radialPharynx.OBJ_Name "
+            "join contin on contin.CON_Number=object.CON_Number "
+            "join image on image.IMG_Number=object.IMG_Number "
+            "where contin.CON_AlternateName = '%s'" %name)
+
     cur.execute(sql)
-    data = [[a[0],int(a[1]),float(a[2]),int(a[3])] for a in cur.fetchall()]
+    data = [[int(a[0]),float(a[1]),int(a[2])] for a in cur.fetchall()]
     return data     
     
 def gap_cylinder(cur,dr=0,dphi=0.1):
