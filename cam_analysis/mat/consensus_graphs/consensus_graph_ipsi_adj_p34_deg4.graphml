@@ -1,0 +1,1983 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key attr.name="weight" attr.type="double" for="edge" id="d6"/>
+<key attr.name="cam_nrx" attr.type="long" for="node" id="d5"/>
+<key attr.name="cam_lrr" attr.type="long" for="node" id="d4"/>
+<key attr.name="cam_igsf" attr.type="long" for="node" id="d3"/>
+<key attr.name="cam_cad" attr.type="long" for="node" id="d2"/>
+<key attr.name="cam_all" attr.type="long" for="node" id="d1"/>
+<key attr.name="cell_class" attr.type="string" for="node" id="d0"/>
+<graph edgedefault="undirected"><node id="ADAL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="PVCL">
+  <data key="d0">I1</data>
+  <data key="d1">5</data>
+  <data key="d2">4</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">0</data>
+</node>
+<node id="IL2DL">
+  <data key="d0">Sa</data>
+  <data key="d1">4</data>
+  <data key="d2">4</data>
+  <data key="d3">5</data>
+  <data key="d4">4</data>
+  <data key="d5">2</data>
+</node>
+<node id="AIAL">
+  <data key="d0">I1</data>
+  <data key="d1">4</data>
+  <data key="d2">0</data>
+  <data key="d3">1</data>
+  <data key="d4">1</data>
+  <data key="d5">2</data>
+</node>
+<node id="OLQDL">
+  <data key="d0">Sa</data>
+  <data key="d1">2</data>
+  <data key="d2">1</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="SMDDL">
+  <data key="d0">SMN</data>
+  <data key="d1">6</data>
+  <data key="d2">1</data>
+  <data key="d3">7</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="AVDL">
+  <data key="d0">I1</data>
+  <data key="d1">7</data>
+  <data key="d2">4</data>
+  <data key="d3">5</data>
+  <data key="d4">0</data>
+  <data key="d5">1</data>
+</node>
+<node id="RIAL">
+  <data key="d0">I2</data>
+  <data key="d1">6</data>
+  <data key="d2">4</data>
+  <data key="d3">1</data>
+  <data key="d4">1</data>
+  <data key="d5">4</data>
+</node>
+<node id="URAVL">
+  <data key="d0">HMNa</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="URYDL">
+  <data key="d0">Sa</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="URYVL">
+  <data key="d0">Sa</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="AVEL">
+  <data key="d0">I2</data>
+  <data key="d1">0</data>
+  <data key="d2">2</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="OLQVL">
+  <data key="d0">Sa</data>
+  <data key="d1">2</data>
+  <data key="d2">1</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">1</data>
+</node>
+<node id="SMBVL">
+  <data key="d0">SMN</data>
+  <data key="d1">7</data>
+  <data key="d2">4</data>
+  <data key="d3">6</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="URADL">
+  <data key="d0">HMNa</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="CEPVL">
+  <data key="d0">Sa</data>
+  <data key="d1">1</data>
+  <data key="d2">1</data>
+  <data key="d3">1</data>
+  <data key="d4">0</data>
+  <data key="d5">1</data>
+</node>
+<node id="IL1VL">
+  <data key="d0">Sa</data>
+  <data key="d1">6</data>
+  <data key="d2">1</data>
+  <data key="d3">6</data>
+  <data key="d4">0</data>
+  <data key="d5">2</data>
+</node>
+<node id="IL2VL">
+  <data key="d0">Sa</data>
+  <data key="d1">4</data>
+  <data key="d2">4</data>
+  <data key="d3">5</data>
+  <data key="d4">4</data>
+  <data key="d5">2</data>
+</node>
+<node id="AIZL">
+  <data key="d0">I1</data>
+  <data key="d1">6</data>
+  <data key="d2">4</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">0</data>
+</node>
+<node id="SIAVL">
+  <data key="d0">SMN</data>
+  <data key="d1">7</data>
+  <data key="d2">3</data>
+  <data key="d3">7</data>
+  <data key="d4">1</data>
+  <data key="d5">0</data>
+</node>
+<node id="PVR">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="PVQL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RIVL">
+  <data key="d0">HMNp</data>
+  <data key="d1">6</data>
+  <data key="d2">4</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">1</data>
+</node>
+<node id="ASHL">
+  <data key="d0">Sp2</data>
+  <data key="d1">2</data>
+  <data key="d2">4</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">0</data>
+</node>
+<node id="SDQL">
+  <data key="d0">Sp1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="SIBDL">
+  <data key="d0">SMN</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">5</data>
+  <data key="d4">1</data>
+  <data key="d5">0</data>
+</node>
+<node id="RIR">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="URBL">
+  <data key="d0">I2</data>
+  <data key="d1">7</data>
+  <data key="d2">2</data>
+  <data key="d3">5</data>
+  <data key="d4">2</data>
+  <data key="d5">0</data>
+</node>
+<node id="ALML">
+  <data key="d0">Sp2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="ALNL">
+  <data key="d0">Sp2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="AVBL">
+  <data key="d0">I1</data>
+  <data key="d1">6</data>
+  <data key="d2">4</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">2</data>
+</node>
+<node id="RMDL">
+  <data key="d0">HMNp</data>
+  <data key="d1">0</data>
+  <data key="d2">4</data>
+  <data key="d3">1</data>
+  <data key="d4">5</data>
+  <data key="d5">0</data>
+</node>
+<node id="RMHL">
+  <data key="d0">HMNp</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="FLPL">
+  <data key="d0">Sa</data>
+  <data key="d1">1</data>
+  <data key="d2">5</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">2</data>
+</node>
+<node id="AQR">
+  <data key="d0">Sp2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="AIYL">
+  <data key="d0">I1</data>
+  <data key="d1">4</data>
+  <data key="d2">3</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="RIBL">
+  <data key="d0">I2</data>
+  <data key="d1">5</data>
+  <data key="d2">1</data>
+  <data key="d3">6</data>
+  <data key="d4">0</data>
+  <data key="d5">3</data>
+</node>
+<node id="RIPL">
+  <data key="d0">I2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RMEV">
+  <data key="d0">HMNa</data>
+  <data key="d1">4</data>
+  <data key="d2">2</data>
+  <data key="d3">1</data>
+  <data key="d4">4</data>
+  <data key="d5">3</data>
+</node>
+<node id="BAGL">
+  <data key="d0">Sa</data>
+  <data key="d1">1</data>
+  <data key="d2">1</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="BDUL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="PVT">
+  <data key="d0">I2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RMDVL">
+  <data key="d0">HMNp</data>
+  <data key="d1">4</data>
+  <data key="d2">4</data>
+  <data key="d3">1</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="URXL">
+  <data key="d0">Sa</data>
+  <data key="d1">1</data>
+  <data key="d2">3</data>
+  <data key="d3">5</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="AVL">
+  <data key="d0">I2</data>
+  <data key="d1">6</data>
+  <data key="d2">4</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">0</data>
+</node>
+<node id="RIGL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RICL">
+  <data key="d0">I1</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">1</data>
+  <data key="d4">1</data>
+  <data key="d5">2</data>
+</node>
+<node id="RIFL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="AVAL">
+  <data key="d0">I1</data>
+  <data key="d1">2</data>
+  <data key="d2">4</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">0</data>
+</node>
+<node id="AIML">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="ASIL">
+  <data key="d0">Sp2</data>
+  <data key="d1">2</data>
+  <data key="d2">4</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">0</data>
+</node>
+<node id="OLLL">
+  <data key="d0">Sa</data>
+  <data key="d1">7</data>
+  <data key="d2">1</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">0</data>
+</node>
+<node id="ALA">
+  <data key="d0">I1</data>
+  <data key="d1">6</data>
+  <data key="d2">0</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">0</data>
+</node>
+<node id="RID">
+  <data key="d0">I1</data>
+  <data key="d1">7</data>
+  <data key="d2">0</data>
+  <data key="d3">7</data>
+  <data key="d4">4</data>
+  <data key="d5">2</data>
+</node>
+<node id="RMDDL">
+  <data key="d0">HMNp</data>
+  <data key="d1">4</data>
+  <data key="d2">4</data>
+  <data key="d3">1</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="RMGL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="AINL">
+  <data key="d0">I1</data>
+  <data key="d1">4</data>
+  <data key="d2">4</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="ASJL">
+  <data key="d0">Sp2</data>
+  <data key="d1">2</data>
+  <data key="d2">3</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="AVFL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="AVHL">
+  <data key="d0">I1</data>
+  <data key="d1">4</data>
+  <data key="d2">0</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">3</data>
+</node>
+<node id="AVJL">
+  <data key="d0">I1</data>
+  <data key="d1">4</data>
+  <data key="d2">4</data>
+  <data key="d3">5</data>
+  <data key="d4">0</data>
+  <data key="d5">1</data>
+</node>
+<node id="ADEL">
+  <data key="d0">Sp2</data>
+  <data key="d1">4</data>
+  <data key="d2">2</data>
+  <data key="d3">2</data>
+  <data key="d4">1</data>
+  <data key="d5">3</data>
+</node>
+<node id="ADLL">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">3</data>
+  <data key="d3">2</data>
+  <data key="d4">1</data>
+  <data key="d5">1</data>
+</node>
+<node id="CEPDL">
+  <data key="d0">Sa</data>
+  <data key="d1">1</data>
+  <data key="d2">1</data>
+  <data key="d3">1</data>
+  <data key="d4">0</data>
+  <data key="d5">1</data>
+</node>
+<node id="IL1L">
+  <data key="d0">Sa</data>
+  <data key="d1">0</data>
+  <data key="d2">1</data>
+  <data key="d3">6</data>
+  <data key="d4">0</data>
+  <data key="d5">2</data>
+</node>
+<node id="DVA">
+  <data key="d0">Sp2</data>
+  <data key="d1">5</data>
+  <data key="d2">3</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="ASGL">
+  <data key="d0">Sp1</data>
+  <data key="d1">1</data>
+  <data key="d2">4</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">0</data>
+</node>
+<node id="IL2L">
+  <data key="d0">Sa</data>
+  <data key="d1">4</data>
+  <data key="d2">4</data>
+  <data key="d3">5</data>
+  <data key="d4">4</data>
+  <data key="d5">4</data>
+</node>
+<node id="RIML">
+  <data key="d0">I2</data>
+  <data key="d1">7</data>
+  <data key="d2">3</data>
+  <data key="d3">2</data>
+  <data key="d4">1</data>
+  <data key="d5">0</data>
+</node>
+<node id="SIADL">
+  <data key="d0">SMN</data>
+  <data key="d1">4</data>
+  <data key="d2">3</data>
+  <data key="d3">7</data>
+  <data key="d4">1</data>
+  <data key="d5">1</data>
+</node>
+<node id="SIBVL">
+  <data key="d0">SMN</data>
+  <data key="d1">7</data>
+  <data key="d2">2</data>
+  <data key="d3">5</data>
+  <data key="d4">1</data>
+  <data key="d5">3</data>
+</node>
+<node id="DVC">
+  <data key="d0">I2</data>
+  <data key="d1">7</data>
+  <data key="d2">4</data>
+  <data key="d3">7</data>
+  <data key="d4">1</data>
+  <data key="d5">3</data>
+</node>
+<node id="SAAVL">
+  <data key="d0">I2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="SMDVL">
+  <data key="d0">SMN</data>
+  <data key="d1">4</data>
+  <data key="d2">1</data>
+  <data key="d3">7</data>
+  <data key="d4">5</data>
+  <data key="d5">4</data>
+</node>
+<node id="RIS">
+  <data key="d0">I2</data>
+  <data key="d1">6</data>
+  <data key="d2">1</data>
+  <data key="d3">1</data>
+  <data key="d4">1</data>
+  <data key="d5">2</data>
+</node>
+<node id="AVKL">
+  <data key="d0">I2</data>
+  <data key="d1">3</data>
+  <data key="d2">2</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="SAADL">
+  <data key="d0">I2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="SMBDL">
+  <data key="d0">SMN</data>
+  <data key="d1">5</data>
+  <data key="d2">4</data>
+  <data key="d3">6</data>
+  <data key="d4">0</data>
+  <data key="d5">4</data>
+</node>
+<node id="RMED">
+  <data key="d0">HMNa</data>
+  <data key="d1">4</data>
+  <data key="d2">2</data>
+  <data key="d3">1</data>
+  <data key="d4">4</data>
+  <data key="d5">1</data>
+</node>
+<node id="AVM">
+  <data key="d0">Sp1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="ADFL">
+  <data key="d0">Sp2</data>
+  <data key="d1">6</data>
+  <data key="d2">3</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+  <data key="d5">2</data>
+</node>
+<node id="AUAL">
+  <data key="d0">I1</data>
+  <data key="d1">0</data>
+  <data key="d2">1</data>
+  <data key="d3">2</data>
+  <data key="d4">1</data>
+  <data key="d5">2</data>
+</node>
+<node id="ASEL">
+  <data key="d0">Sp2</data>
+  <data key="d1">6</data>
+  <data key="d2">4</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">3</data>
+</node>
+<node id="IL1DL">
+  <data key="d0">Sa</data>
+  <data key="d1">3</data>
+  <data key="d2">1</data>
+  <data key="d3">6</data>
+  <data key="d4">0</data>
+  <data key="d5">2</data>
+</node>
+<node id="AWBL">
+  <data key="d0">Sp2</data>
+  <data key="d1">7</data>
+  <data key="d2">3</data>
+  <data key="d3">7</data>
+  <data key="d4">0</data>
+  <data key="d5">2</data>
+</node>
+<node id="AFDL">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">4</data>
+  <data key="d3">4</data>
+  <data key="d4">1</data>
+  <data key="d5">2</data>
+</node>
+<node id="AIBL">
+  <data key="d0">I1</data>
+  <data key="d1">7</data>
+  <data key="d2">3</data>
+  <data key="d3">7</data>
+  <data key="d4">5</data>
+  <data key="d5">0</data>
+</node>
+<node id="PVPL">
+  <data key="d0">I1</data>
+  <data key="d1">5</data>
+  <data key="d2">4</data>
+  <data key="d3">7</data>
+  <data key="d4">1</data>
+  <data key="d5">1</data>
+</node>
+<node id="PLNL">
+  <data key="d0">Sp2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RIH">
+  <data key="d0">I2</data>
+  <data key="d1">4</data>
+  <data key="d2">2</data>
+  <data key="d3">5</data>
+  <data key="d4">4</data>
+  <data key="d5">0</data>
+</node>
+<node id="SABD">
+  <data key="d0">SMN</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="AWAL">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">3</data>
+  <data key="d3">5</data>
+  <data key="d4">0</data>
+  <data key="d5">3</data>
+</node>
+<node id="AWCL">
+  <data key="d0">Sp2</data>
+  <data key="d1">3</data>
+  <data key="d2">4</data>
+  <data key="d3">2</data>
+  <data key="d4">1</data>
+  <data key="d5">1</data>
+</node>
+<node id="RMFL">
+  <data key="d0">I2</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="PVNL">
+  <data key="d0">I1</data>
+  <data key="d1">-1</data>
+  <data key="d2">-1</data>
+  <data key="d3">-1</data>
+  <data key="d4">-1</data>
+  <data key="d5">-1</data>
+</node>
+<node id="RMEL">
+  <data key="d0">HMNa</data>
+  <data key="d1">4</data>
+  <data key="d2">2</data>
+  <data key="d3">1</data>
+  <data key="d4">4</data>
+  <data key="d5">1</data>
+</node>
+<edge source="ADAL" target="PVCL">
+  <data key="d6">307.25</data>
+</edge>
+<edge source="ADAL" target="IL2DL">
+  <data key="d6">752.5</data>
+</edge>
+<edge source="ADAL" target="AIAL">
+  <data key="d6">1891.75</data>
+</edge>
+<edge source="ADAL" target="OLQDL">
+  <data key="d6">359.5</data>
+</edge>
+<edge source="ADAL" target="SMDDL">
+  <data key="d6">1103.0</data>
+</edge>
+<edge source="ADAL" target="AVDL">
+  <data key="d6">1664.25</data>
+</edge>
+<edge source="ADAL" target="RIAL">
+  <data key="d6">1024.75</data>
+</edge>
+<edge source="ADAL" target="URAVL">
+  <data key="d6">586.5</data>
+</edge>
+<edge source="ADAL" target="URYDL">
+  <data key="d6">769.5</data>
+</edge>
+<edge source="ADAL" target="URYVL">
+  <data key="d6">1196.5</data>
+</edge>
+<edge source="ADAL" target="AVEL">
+  <data key="d6">1106.5</data>
+</edge>
+<edge source="ADAL" target="OLQVL">
+  <data key="d6">1738.5</data>
+</edge>
+<edge source="ADAL" target="SMBVL">
+  <data key="d6">1806.75</data>
+</edge>
+<edge source="ADAL" target="URADL">
+  <data key="d6">546.75</data>
+</edge>
+<edge source="ADAL" target="CEPVL">
+  <data key="d6">374.5</data>
+</edge>
+<edge source="ADAL" target="IL1VL">
+  <data key="d6">339.5</data>
+</edge>
+<edge source="ADAL" target="IL2VL">
+  <data key="d6">626.0</data>
+</edge>
+<edge source="ADAL" target="AIZL">
+  <data key="d6">602.0</data>
+</edge>
+<edge source="ADAL" target="SIAVL">
+  <data key="d6">1747.5</data>
+</edge>
+<edge source="ADAL" target="PVR">
+  <data key="d6">947.0</data>
+</edge>
+<edge source="ADAL" target="PVQL">
+  <data key="d6">1914.75</data>
+</edge>
+<edge source="ADAL" target="RIVL">
+  <data key="d6">713.0</data>
+</edge>
+<edge source="PVCL" target="ASHL">
+  <data key="d6">245.5</data>
+</edge>
+<edge source="PVCL" target="SIAVL">
+  <data key="d6">508.0</data>
+</edge>
+<edge source="PVCL" target="PVR">
+  <data key="d6">1300.5</data>
+</edge>
+<edge source="PVCL" target="SDQL">
+  <data key="d6">494.5</data>
+</edge>
+<edge source="PVCL" target="SIBDL">
+  <data key="d6">1973.5</data>
+</edge>
+<edge source="PVCL" target="RIR">
+  <data key="d6">46.0</data>
+</edge>
+<edge source="IL2DL" target="BAGL">
+  <data key="d6">771.0</data>
+</edge>
+<edge source="IL2DL" target="BDUL">
+  <data key="d6">580.75</data>
+</edge>
+<edge source="IL2DL" target="PVT">
+  <data key="d6">468.0</data>
+</edge>
+<edge source="IL2DL" target="RMHL">
+  <data key="d6">1348.5</data>
+</edge>
+<edge source="IL2DL" target="RMDVL">
+  <data key="d6">301.5</data>
+</edge>
+<edge source="IL2DL" target="URXL">
+  <data key="d6">1069.0</data>
+</edge>
+<edge source="IL2DL" target="PVR">
+  <data key="d6">270.0</data>
+</edge>
+<edge source="IL2DL" target="AVL">
+  <data key="d6">302.0</data>
+</edge>
+<edge source="IL2DL" target="RIGL">
+  <data key="d6">834.5</data>
+</edge>
+<edge source="IL2DL" target="RICL">
+  <data key="d6">1454.25</data>
+</edge>
+<edge source="IL2DL" target="RIFL">
+  <data key="d6">390.0</data>
+</edge>
+<edge source="AIAL" target="AVAL">
+  <data key="d6">2058.0</data>
+</edge>
+<edge source="OLQDL" target="URBL">
+  <data key="d6">1842.5</data>
+</edge>
+<edge source="OLQDL" target="AIML">
+  <data key="d6">463.75</data>
+</edge>
+<edge source="OLQDL" target="ASIL">
+  <data key="d6">318.25</data>
+</edge>
+<edge source="OLQDL" target="BAGL">
+  <data key="d6">773.5</data>
+</edge>
+<edge source="OLQDL" target="OLLL">
+  <data key="d6">1368.5</data>
+</edge>
+<edge source="OLQDL" target="PVT">
+  <data key="d6">555.0</data>
+</edge>
+<edge source="OLQDL" target="RMDVL">
+  <data key="d6">1820.5</data>
+</edge>
+<edge source="OLQDL" target="ALA">
+  <data key="d6">396.5</data>
+</edge>
+<edge source="OLQDL" target="AVL">
+  <data key="d6">752.0</data>
+</edge>
+<edge source="OLQDL" target="RID">
+  <data key="d6">387.0</data>
+</edge>
+<edge source="OLQDL" target="RIGL">
+  <data key="d6">2113.75</data>
+</edge>
+<edge source="OLQDL" target="RIPL">
+  <data key="d6">1761.0</data>
+</edge>
+<edge source="OLQDL" target="RMDDL">
+  <data key="d6">2182.0</data>
+</edge>
+<edge source="OLQDL" target="RIBL">
+  <data key="d6">1538.25</data>
+</edge>
+<edge source="OLQDL" target="URADL">
+  <data key="d6">1440.75</data>
+</edge>
+<edge source="SMDDL" target="OLLL">
+  <data key="d6">1929.75</data>
+</edge>
+<edge source="SMDDL" target="RIBL">
+  <data key="d6">1697.75</data>
+</edge>
+<edge source="SMDDL" target="RMGL">
+  <data key="d6">1785.75</data>
+</edge>
+<edge source="SMDDL" target="SDQL">
+  <data key="d6">1069.25</data>
+</edge>
+<edge source="SMDDL" target="SIAVL">
+  <data key="d6">1705.75</data>
+</edge>
+<edge source="SMDDL" target="AVL">
+  <data key="d6">209.5</data>
+</edge>
+<edge source="SMDDL" target="RMEV">
+  <data key="d6">1271.5</data>
+</edge>
+<edge source="AVDL" target="URXL">
+  <data key="d6">657.0</data>
+</edge>
+<edge source="AVDL" target="ADEL">
+  <data key="d6">2210.75</data>
+</edge>
+<edge source="AVDL" target="ADLL">
+  <data key="d6">776.0</data>
+</edge>
+<edge source="AVDL" target="ASHL">
+  <data key="d6">1966.75</data>
+</edge>
+<edge source="AVDL" target="CEPDL">
+  <data key="d6">1446.0</data>
+</edge>
+<edge source="AVDL" target="URYDL">
+  <data key="d6">1448.75</data>
+</edge>
+<edge source="AVDL" target="SDQL">
+  <data key="d6">731.75</data>
+</edge>
+<edge source="AVDL" target="SIBDL">
+  <data key="d6">1177.25</data>
+</edge>
+<edge source="AVDL" target="RIFL">
+  <data key="d6">1336.75</data>
+</edge>
+<edge source="AVDL" target="URADL">
+  <data key="d6">187.0</data>
+</edge>
+<edge source="AVDL" target="BDUL">
+  <data key="d6">670.25</data>
+</edge>
+<edge source="AVDL" target="RIVL">
+  <data key="d6">1208.75</data>
+</edge>
+<edge source="RIAL" target="ASHL">
+  <data key="d6">2243.25</data>
+</edge>
+<edge source="RIAL" target="ASIL">
+  <data key="d6">428.5</data>
+</edge>
+<edge source="RIAL" target="IL1L">
+  <data key="d6">2121.75</data>
+</edge>
+<edge source="RIAL" target="IL2VL">
+  <data key="d6">1057.0</data>
+</edge>
+<edge source="RIAL" target="DVA">
+  <data key="d6">854.5</data>
+</edge>
+<edge source="RIAL" target="RIGL">
+  <data key="d6">2246.25</data>
+</edge>
+<edge source="RIAL" target="AQR">
+  <data key="d6">1944.0</data>
+</edge>
+<edge source="RIAL" target="URYVL">
+  <data key="d6">759.25</data>
+</edge>
+<edge source="RIAL" target="SIBDL">
+  <data key="d6">1865.5</data>
+</edge>
+<edge source="RIAL" target="RIFL">
+  <data key="d6">686.25</data>
+</edge>
+<edge source="URAVL" target="RIBL">
+  <data key="d6">351.75</data>
+</edge>
+<edge source="URAVL" target="RMDDL">
+  <data key="d6">130.75</data>
+</edge>
+<edge source="URAVL" target="SIADL">
+  <data key="d6">312.75</data>
+</edge>
+<edge source="URAVL" target="SIAVL">
+  <data key="d6">677.5</data>
+</edge>
+<edge source="URAVL" target="SIBVL">
+  <data key="d6">698.0</data>
+</edge>
+<edge source="URAVL" target="PVT">
+  <data key="d6">897.5</data>
+</edge>
+<edge source="URAVL" target="DVC">
+  <data key="d6">758.5</data>
+</edge>
+<edge source="URAVL" target="PVR">
+  <data key="d6">527.0</data>
+</edge>
+<edge source="URAVL" target="DVA">
+  <data key="d6">1756.0</data>
+</edge>
+<edge source="URYDL" target="AIML">
+  <data key="d6">443.25</data>
+</edge>
+<edge source="URYDL" target="AIZL">
+  <data key="d6">274.5</data>
+</edge>
+<edge source="URYDL" target="ASIL">
+  <data key="d6">186.0</data>
+</edge>
+<edge source="URYDL" target="AVAL">
+  <data key="d6">1386.5</data>
+</edge>
+<edge source="URYDL" target="AVHL">
+  <data key="d6">480.75</data>
+</edge>
+<edge source="URYDL" target="AVJL">
+  <data key="d6">591.0</data>
+</edge>
+<edge source="URYDL" target="OLLL">
+  <data key="d6">1735.5</data>
+</edge>
+<edge source="URYDL" target="RIVL">
+  <data key="d6">479.5</data>
+</edge>
+<edge source="URYDL" target="SAAVL">
+  <data key="d6">545.0</data>
+</edge>
+<edge source="URYDL" target="SMDVL">
+  <data key="d6">264.0</data>
+</edge>
+<edge source="URYDL" target="PVT">
+  <data key="d6">624.5</data>
+</edge>
+<edge source="URYDL" target="AVL">
+  <data key="d6">375.0</data>
+</edge>
+<edge source="URYDL" target="RMEV">
+  <data key="d6">654.5</data>
+</edge>
+<edge source="URYDL" target="RIS">
+  <data key="d6">1039.5</data>
+</edge>
+<edge source="URYDL" target="PVR">
+  <data key="d6">69.0</data>
+</edge>
+<edge source="URYDL" target="DVA">
+  <data key="d6">248.0</data>
+</edge>
+<edge source="URYDL" target="DVC">
+  <data key="d6">269.0</data>
+</edge>
+<edge source="URYDL" target="ALA">
+  <data key="d6">469.0</data>
+</edge>
+<edge source="URYVL" target="URXL">
+  <data key="d6">1905.75</data>
+</edge>
+<edge source="URYVL" target="AVKL">
+  <data key="d6">674.25</data>
+</edge>
+<edge source="URYVL" target="IL2VL">
+  <data key="d6">2183.75</data>
+</edge>
+<edge source="URYVL" target="OLLL">
+  <data key="d6">1423.75</data>
+</edge>
+<edge source="URYVL" target="RIPL">
+  <data key="d6">1288.0</data>
+</edge>
+<edge source="URYVL" target="SAADL">
+  <data key="d6">1900.5</data>
+</edge>
+<edge source="URYVL" target="SIADL">
+  <data key="d6">1304.0</data>
+</edge>
+<edge source="URYVL" target="SIBDL">
+  <data key="d6">1518.0</data>
+</edge>
+<edge source="URYVL" target="SMBDL">
+  <data key="d6">1645.25</data>
+</edge>
+<edge source="URYVL" target="PVT">
+  <data key="d6">1845.0</data>
+</edge>
+<edge source="URYVL" target="PVR">
+  <data key="d6">1093.5</data>
+</edge>
+<edge source="URYVL" target="RIS">
+  <data key="d6">2099.0</data>
+</edge>
+<edge source="URYVL" target="RIR">
+  <data key="d6">470.5</data>
+</edge>
+<edge source="URYVL" target="RMED">
+  <data key="d6">2054.0</data>
+</edge>
+<edge source="AVEL" target="URBL">
+  <data key="d6">516.0</data>
+</edge>
+<edge source="AVEL" target="AIML">
+  <data key="d6">1092.25</data>
+</edge>
+<edge source="AVEL" target="ASJL">
+  <data key="d6">359.25</data>
+</edge>
+<edge source="AVEL" target="RMDVL">
+  <data key="d6">1600.75</data>
+</edge>
+<edge source="AVEL" target="IL1L">
+  <data key="d6">2148.0</data>
+</edge>
+<edge source="AVEL" target="SMBVL">
+  <data key="d6">936.0</data>
+</edge>
+<edge source="AVEL" target="RMEV">
+  <data key="d6">1831.0</data>
+</edge>
+<edge source="AVEL" target="RIR">
+  <data key="d6">944.0</data>
+</edge>
+<edge source="AVEL" target="RIVL">
+  <data key="d6">1202.25</data>
+</edge>
+<edge source="AVEL" target="IL2L">
+  <data key="d6">669.0</data>
+</edge>
+<edge source="AVEL" target="RMED">
+  <data key="d6">1105.0</data>
+</edge>
+<edge source="AVEL" target="AVM">
+  <data key="d6">530.0</data>
+</edge>
+<edge source="OLQVL" target="URBL">
+  <data key="d6">1583.25</data>
+</edge>
+<edge source="OLQVL" target="ADFL">
+  <data key="d6">967.25</data>
+</edge>
+<edge source="OLQVL" target="AUAL">
+  <data key="d6">377.0</data>
+</edge>
+<edge source="OLQVL" target="PVT">
+  <data key="d6">1230.5</data>
+</edge>
+<edge source="OLQVL" target="DVC">
+  <data key="d6">1214.0</data>
+</edge>
+<edge source="OLQVL" target="AVL">
+  <data key="d6">1752.5</data>
+</edge>
+<edge source="OLQVL" target="RMEV">
+  <data key="d6">1657.0</data>
+</edge>
+<edge source="OLQVL" target="RIS">
+  <data key="d6">1505.5</data>
+</edge>
+<edge source="OLQVL" target="RMDDL">
+  <data key="d6">1422.5</data>
+</edge>
+<edge source="OLQVL" target="PVR">
+  <data key="d6">122.0</data>
+</edge>
+<edge source="OLQVL" target="RIR">
+  <data key="d6">198.5</data>
+</edge>
+<edge source="SMBVL" target="ADEL">
+  <data key="d6">1457.5</data>
+</edge>
+<edge source="SMBVL" target="IL1L">
+  <data key="d6">1167.25</data>
+</edge>
+<edge source="SMBVL" target="IL2L">
+  <data key="d6">1660.75</data>
+</edge>
+<edge source="SMBVL" target="OLLL">
+  <data key="d6">1766.25</data>
+</edge>
+<edge source="SMBVL" target="RIGL">
+  <data key="d6">1246.0</data>
+</edge>
+<edge source="SMBVL" target="RIR">
+  <data key="d6">1857.0</data>
+</edge>
+<edge source="URADL" target="RICL">
+  <data key="d6">432.75</data>
+</edge>
+<edge source="URADL" target="RIFL">
+  <data key="d6">595.25</data>
+</edge>
+<edge source="URADL" target="AIML">
+  <data key="d6">156.0</data>
+</edge>
+<edge source="URADL" target="AVJL">
+  <data key="d6">103.75</data>
+</edge>
+<edge source="URADL" target="BDUL">
+  <data key="d6">636.5</data>
+</edge>
+<edge source="URADL" target="RMHL">
+  <data key="d6">236.75</data>
+</edge>
+<edge source="URADL" target="PVR">
+  <data key="d6">825.0</data>
+</edge>
+<edge source="CEPVL" target="URXL">
+  <data key="d6">862.75</data>
+</edge>
+<edge source="CEPVL" target="RIFL">
+  <data key="d6">293.5</data>
+</edge>
+<edge source="CEPVL" target="ASGL">
+  <data key="d6">1117.5</data>
+</edge>
+<edge source="CEPVL" target="ASIL">
+  <data key="d6">1188.25</data>
+</edge>
+<edge source="CEPVL" target="ASJL">
+  <data key="d6">889.0</data>
+</edge>
+<edge source="CEPVL" target="RMGL">
+  <data key="d6">1181.0</data>
+</edge>
+<edge source="CEPVL" target="RIPL">
+  <data key="d6">525.75</data>
+</edge>
+<edge source="CEPVL" target="SDQL">
+  <data key="d6">1118.75</data>
+</edge>
+<edge source="CEPVL" target="RMED">
+  <data key="d6">487.0</data>
+</edge>
+<edge source="IL1VL" target="SIBVL">
+  <data key="d6">520.5</data>
+</edge>
+<edge source="IL1VL" target="PVT">
+  <data key="d6">626.0</data>
+</edge>
+<edge source="IL1VL" target="RMED">
+  <data key="d6">1288.0</data>
+</edge>
+<edge source="IL1VL" target="DVC">
+  <data key="d6">336.0</data>
+</edge>
+<edge source="IL1VL" target="SIAVL">
+  <data key="d6">1130.0</data>
+</edge>
+<edge source="IL1VL" target="DVA">
+  <data key="d6">1047.0</data>
+</edge>
+<edge source="IL1VL" target="RIGL">
+  <data key="d6">785.0</data>
+</edge>
+<edge source="IL2VL" target="URXL">
+  <data key="d6">512.0</data>
+</edge>
+<edge source="IL2VL" target="SIBVL">
+  <data key="d6">656.0</data>
+</edge>
+<edge source="IL2VL" target="PVT">
+  <data key="d6">281.0</data>
+</edge>
+<edge source="IL2VL" target="DVA">
+  <data key="d6">645.5</data>
+</edge>
+<edge source="IL2VL" target="RIGL">
+  <data key="d6">396.5</data>
+</edge>
+<edge source="IL2VL" target="RMEV">
+  <data key="d6">2106.5</data>
+</edge>
+<edge source="IL2VL" target="SIADL">
+  <data key="d6">312.25</data>
+</edge>
+<edge source="IL2VL" target="RMHL">
+  <data key="d6">466.25</data>
+</edge>
+<edge source="IL2VL" target="DVC">
+  <data key="d6">310.0</data>
+</edge>
+<edge source="IL2VL" target="SIAVL">
+  <data key="d6">409.25</data>
+</edge>
+<edge source="AIZL" target="URXL">
+  <data key="d6">246.25</data>
+</edge>
+<edge source="AIZL" target="RICL">
+  <data key="d6">1839.75</data>
+</edge>
+<edge source="AIZL" target="AIBL">
+  <data key="d6">2129.25</data>
+</edge>
+<edge source="AIZL" target="AQR">
+  <data key="d6">89.5</data>
+</edge>
+<edge source="SIAVL" target="URXL">
+  <data key="d6">691.25</data>
+</edge>
+<edge source="SIAVL" target="RIML">
+  <data key="d6">2009.75</data>
+</edge>
+<edge source="SIAVL" target="OLLL">
+  <data key="d6">781.25</data>
+</edge>
+<edge source="SIAVL" target="RIBL">
+  <data key="d6">1225.5</data>
+</edge>
+<edge source="SIAVL" target="RMGL">
+  <data key="d6">1905.0</data>
+</edge>
+<edge source="SIAVL" target="SAAVL">
+  <data key="d6">602.75</data>
+</edge>
+<edge source="SIAVL" target="AQR">
+  <data key="d6">1287.5</data>
+</edge>
+<edge source="PVR" target="ADEL">
+  <data key="d6">1288.0</data>
+</edge>
+<edge source="PVR" target="BDUL">
+  <data key="d6">1308.0</data>
+</edge>
+<edge source="PVR" target="RIVL">
+  <data key="d6">1613.5</data>
+</edge>
+<edge source="PVR" target="RMDL">
+  <data key="d6">1428.0</data>
+</edge>
+<edge source="RIVL" target="FLPL">
+  <data key="d6">1488.0</data>
+</edge>
+<edge source="RIVL" target="ALNL">
+  <data key="d6">559.5</data>
+</edge>
+<edge source="RIVL" target="BAGL">
+  <data key="d6">1352.0</data>
+</edge>
+<edge source="RIVL" target="IL1L">
+  <data key="d6">2239.0</data>
+</edge>
+<edge source="RIVL" target="RIBL">
+  <data key="d6">812.25</data>
+</edge>
+<edge source="RIVL" target="AVL">
+  <data key="d6">1324.0</data>
+</edge>
+<edge source="RIVL" target="RID">
+  <data key="d6">933.5</data>
+</edge>
+<edge source="ASHL" target="AIML">
+  <data key="d6">1707.5</data>
+</edge>
+<edge source="ASHL" target="AVJL">
+  <data key="d6">686.5</data>
+</edge>
+<edge source="SDQL" target="AVAL">
+  <data key="d6">2084.25</data>
+</edge>
+<edge source="SDQL" target="AVL">
+  <data key="d6">1631.0</data>
+</edge>
+<edge source="SIBDL" target="AVAL">
+  <data key="d6">2029.0</data>
+</edge>
+<edge source="SIBDL" target="BAGL">
+  <data key="d6">687.25</data>
+</edge>
+<edge source="SIBDL" target="RMDDL">
+  <data key="d6">688.0</data>
+</edge>
+<edge source="SIBDL" target="RMGL">
+  <data key="d6">1667.5</data>
+</edge>
+<edge source="SIBDL" target="ALA">
+  <data key="d6">336.5</data>
+</edge>
+<edge source="SIBDL" target="SMDVL">
+  <data key="d6">2159.25</data>
+</edge>
+<edge source="RIR" target="AIBL">
+  <data key="d6">427.5</data>
+</edge>
+<edge source="URBL" target="ALML">
+  <data key="d6">1002.75</data>
+</edge>
+<edge source="URBL" target="ALNL">
+  <data key="d6">774.75</data>
+</edge>
+<edge source="URBL" target="AVBL">
+  <data key="d6">197.0</data>
+</edge>
+<edge source="URBL" target="RMDL">
+  <data key="d6">965.25</data>
+</edge>
+<edge source="URBL" target="RMHL">
+  <data key="d6">753.0</data>
+</edge>
+<edge source="ALML" target="AINL">
+  <data key="d6">494.5</data>
+</edge>
+<edge source="ALML" target="AVHL">
+  <data key="d6">698.5</data>
+</edge>
+<edge source="ALML" target="ALA">
+  <data key="d6">435.5</data>
+</edge>
+<edge source="ALNL" target="SAADL">
+  <data key="d6">969.0</data>
+</edge>
+<edge source="ALNL" target="OLLL">
+  <data key="d6">946.0</data>
+</edge>
+<edge source="ALNL" target="RIGL">
+  <data key="d6">1014.5</data>
+</edge>
+<edge source="ALNL" target="RMHL">
+  <data key="d6">1110.5</data>
+</edge>
+<edge source="AVBL" target="AIYL">
+  <data key="d6">1625.5</data>
+</edge>
+<edge source="AVBL" target="RIBL">
+  <data key="d6">2214.25</data>
+</edge>
+<edge source="AVBL" target="RIPL">
+  <data key="d6">1780.5</data>
+</edge>
+<edge source="AVBL" target="RMEV">
+  <data key="d6">1795.0</data>
+</edge>
+<edge source="RMDL" target="RIFL">
+  <data key="d6">484.5</data>
+</edge>
+<edge source="RMDL" target="SAADL">
+  <data key="d6">682.75</data>
+</edge>
+<edge source="RMDL" target="ASJL">
+  <data key="d6">1037.5</data>
+</edge>
+<edge source="RMDL" target="AIML">
+  <data key="d6">1262.25</data>
+</edge>
+<edge source="RMDL" target="IL2L">
+  <data key="d6">1008.5</data>
+</edge>
+<edge source="RMHL" target="CEPDL">
+  <data key="d6">463.5</data>
+</edge>
+<edge source="RMHL" target="SMDVL">
+  <data key="d6">2046.0</data>
+</edge>
+<edge source="FLPL" target="AQR">
+  <data key="d6">2034.5</data>
+</edge>
+<edge source="AQR" target="URXL">
+  <data key="d6">116.5</data>
+</edge>
+<edge source="AQR" target="RIGL">
+  <data key="d6">1434.5</data>
+</edge>
+<edge source="AQR" target="AUAL">
+  <data key="d6">928.0</data>
+</edge>
+<edge source="AQR" target="RIBL">
+  <data key="d6">775.5</data>
+</edge>
+<edge source="AQR" target="AVJL">
+  <data key="d6">2251.5</data>
+</edge>
+<edge source="AQR" target="RID">
+  <data key="d6">1358.0</data>
+</edge>
+<edge source="AIYL" target="URXL">
+  <data key="d6">1052.5</data>
+</edge>
+<edge source="AIYL" target="ADLL">
+  <data key="d6">262.75</data>
+</edge>
+<edge source="RIBL" target="SIBVL">
+  <data key="d6">1866.25</data>
+</edge>
+<edge source="RIBL" target="ASJL">
+  <data key="d6">1625.5</data>
+</edge>
+<edge source="RIBL" target="SMDVL">
+  <data key="d6">1379.75</data>
+</edge>
+<edge source="RIBL" target="PVT">
+  <data key="d6">1864.5</data>
+</edge>
+<edge source="RIBL" target="SIADL">
+  <data key="d6">2069.5</data>
+</edge>
+<edge source="RIBL" target="RID">
+  <data key="d6">1242.0</data>
+</edge>
+<edge source="RIPL" target="CEPDL">
+  <data key="d6">712.75</data>
+</edge>
+<edge source="RIPL" target="RMEV">
+  <data key="d6">1284.0</data>
+</edge>
+<edge source="RMEV" target="RIML">
+  <data key="d6">1250.0</data>
+</edge>
+<edge source="RMEV" target="IL1L">
+  <data key="d6">410.5</data>
+</edge>
+<edge source="RMEV" target="IL1DL">
+  <data key="d6">1143.0</data>
+</edge>
+<edge source="RMEV" target="SIADL">
+  <data key="d6">542.5</data>
+</edge>
+<edge source="RMEV" target="RMDVL">
+  <data key="d6">1827.0</data>
+</edge>
+<edge source="BAGL" target="URXL">
+  <data key="d6">1046.25</data>
+</edge>
+<edge source="BAGL" target="SIBVL">
+  <data key="d6">1144.25</data>
+</edge>
+<edge source="BAGL" target="DVA">
+  <data key="d6">1976.0</data>
+</edge>
+<edge source="BAGL" target="AVAL">
+  <data key="d6">1900.75</data>
+</edge>
+<edge source="BAGL" target="SAAVL">
+  <data key="d6">2115.0</data>
+</edge>
+<edge source="BAGL" target="CEPDL">
+  <data key="d6">414.25</data>
+</edge>
+<edge source="BAGL" target="OLLL">
+  <data key="d6">1161.75</data>
+</edge>
+<edge source="BAGL" target="SMDVL">
+  <data key="d6">2162.0</data>
+</edge>
+<edge source="BAGL" target="AUAL">
+  <data key="d6">680.0</data>
+</edge>
+<edge source="BAGL" target="IL1DL">
+  <data key="d6">655.25</data>
+</edge>
+<edge source="BAGL" target="AIBL">
+  <data key="d6">1184.25</data>
+</edge>
+<edge source="BDUL" target="AIML">
+  <data key="d6">736.5</data>
+</edge>
+<edge source="BDUL" target="CEPDL">
+  <data key="d6">932.75</data>
+</edge>
+<edge source="BDUL" target="IL1DL">
+  <data key="d6">296.75</data>
+</edge>
+<edge source="PVT" target="RIH">
+  <data key="d6">2173.0</data>
+</edge>
+<edge source="PVT" target="IL1DL">
+  <data key="d6">423.5</data>
+</edge>
+<edge source="PVT" target="RID">
+  <data key="d6">1118.5</data>
+</edge>
+<edge source="RMDVL" target="RICL">
+  <data key="d6">1538.25</data>
+</edge>
+<edge source="RMDVL" target="SMBDL">
+  <data key="d6">1542.25</data>
+</edge>
+<edge source="RMDVL" target="AUAL">
+  <data key="d6">347.25</data>
+</edge>
+<edge source="RMDVL" target="RMEL">
+  <data key="d6">2132.25</data>
+</edge>
+<edge source="URXL" target="AINL">
+  <data key="d6">988.25</data>
+</edge>
+<edge source="URXL" target="ASJL">
+  <data key="d6">755.75</data>
+</edge>
+<edge source="URXL" target="AVFL">
+  <data key="d6">728.0</data>
+</edge>
+<edge source="URXL" target="AVHL">
+  <data key="d6">955.0</data>
+</edge>
+<edge source="URXL" target="AVJL">
+  <data key="d6">735.5</data>
+</edge>
+<edge source="URXL" target="OLLL">
+  <data key="d6">1046.75</data>
+</edge>
+<edge source="AVL" target="RICL">
+  <data key="d6">2220.0</data>
+</edge>
+<edge source="AVL" target="ADEL">
+  <data key="d6">1349.5</data>
+</edge>
+<edge source="AVL" target="AVHL">
+  <data key="d6">608.5</data>
+</edge>
+<edge source="AVL" target="SMDVL">
+  <data key="d6">1049.0</data>
+</edge>
+<edge source="AVL" target="IL1DL">
+  <data key="d6">501.0</data>
+</edge>
+<edge source="RIGL" target="SIBVL">
+  <data key="d6">900.75</data>
+</edge>
+<edge source="RIGL" target="RMGL">
+  <data key="d6">1588.5</data>
+</edge>
+<edge source="RIGL" target="AUAL">
+  <data key="d6">625.0</data>
+</edge>
+<edge source="RIGL" target="IL1DL">
+  <data key="d6">1163.25</data>
+</edge>
+<edge source="RICL" target="ASGL">
+  <data key="d6">1172.25</data>
+</edge>
+<edge source="RICL" target="AVJL">
+  <data key="d6">934.0</data>
+</edge>
+<edge source="RICL" target="IL2L">
+  <data key="d6">1814.25</data>
+</edge>
+<edge source="RICL" target="RMDDL">
+  <data key="d6">210.0</data>
+</edge>
+<edge source="RICL" target="RIML">
+  <data key="d6">2055.75</data>
+</edge>
+<edge source="RIFL" target="ASEL">
+  <data key="d6">2147.5</data>
+</edge>
+<edge source="RIFL" target="AVHL">
+  <data key="d6">1900.75</data>
+</edge>
+<edge source="RIFL" target="CEPDL">
+  <data key="d6">1246.5</data>
+</edge>
+<edge source="AVAL" target="SIBVL">
+  <data key="d6">1913.0</data>
+</edge>
+<edge source="AVAL" target="RID">
+  <data key="d6">1160.0</data>
+</edge>
+<edge source="AIML" target="AWBL">
+  <data key="d6">1845.75</data>
+</edge>
+<edge source="AIML" target="AIBL">
+  <data key="d6">259.75</data>
+</edge>
+<edge source="AIML" target="AVJL">
+  <data key="d6">1226.5</data>
+</edge>
+<edge source="AIML" target="ALA">
+  <data key="d6">1442.0</data>
+</edge>
+<edge source="ASIL" target="RIML">
+  <data key="d6">969.5</data>
+</edge>
+<edge source="ASIL" target="AINL">
+  <data key="d6">1803.5</data>
+</edge>
+<edge source="ASIL" target="OLLL">
+  <data key="d6">851.75</data>
+</edge>
+<edge source="ASIL" target="IL1L">
+  <data key="d6">817.0</data>
+</edge>
+<edge source="ASIL" target="IL2L">
+  <data key="d6">743.25</data>
+</edge>
+<edge source="ASIL" target="AFDL">
+  <data key="d6">2170.5</data>
+</edge>
+<edge source="ASIL" target="IL1DL">
+  <data key="d6">374.75</data>
+</edge>
+<edge source="ASIL" target="RID">
+  <data key="d6">1141.5</data>
+</edge>
+<edge source="OLLL" target="SIBVL">
+  <data key="d6">1262.0</data>
+</edge>
+<edge source="OLLL" target="ADLL">
+  <data key="d6">1043.5</data>
+</edge>
+<edge source="OLLL" target="RIML">
+  <data key="d6">395.0</data>
+</edge>
+<edge source="OLLL" target="RMGL">
+  <data key="d6">1805.5</data>
+</edge>
+<edge source="OLLL" target="ASJL">
+  <data key="d6">510.0</data>
+</edge>
+<edge source="OLLL" target="ALA">
+  <data key="d6">648.0</data>
+</edge>
+<edge source="OLLL" target="SMDVL">
+  <data key="d6">2077.25</data>
+</edge>
+<edge source="ALA" target="AVHL">
+  <data key="d6">852.0</data>
+</edge>
+<edge source="ALA" target="SAAVL">
+  <data key="d6">169.0</data>
+</edge>
+<edge source="ALA" target="IL2L">
+  <data key="d6">691.5</data>
+</edge>
+<edge source="ALA" target="IL1DL">
+  <data key="d6">567.0</data>
+</edge>
+<edge source="ALA" target="AVJL">
+  <data key="d6">1113.0</data>
+</edge>
+<edge source="ALA" target="SIADL">
+  <data key="d6">933.0</data>
+</edge>
+<edge source="RID" target="ASEL">
+  <data key="d6">1482.0</data>
+</edge>
+<edge source="RID" target="AUAL">
+  <data key="d6">1689.0</data>
+</edge>
+<edge source="RID" target="AFDL">
+  <data key="d6">571.0</data>
+</edge>
+<edge source="RID" target="PVPL">
+  <data key="d6">297.0</data>
+</edge>
+<edge source="RID" target="AVJL">
+  <data key="d6">1879.5</data>
+</edge>
+<edge source="RID" target="AWCL">
+  <data key="d6">170.0</data>
+</edge>
+<edge source="RMDDL" target="RMEL">
+  <data key="d6">1076.0</data>
+</edge>
+<edge source="RMGL" target="ADEL">
+  <data key="d6">1949.5</data>
+</edge>
+<edge source="RMGL" target="AWBL">
+  <data key="d6">2232.5</data>
+</edge>
+<edge source="RMGL" target="SAADL">
+  <data key="d6">1983.75</data>
+</edge>
+<edge source="RMGL" target="ASJL">
+  <data key="d6">1433.25</data>
+</edge>
+<edge source="RMGL" target="IL1L">
+  <data key="d6">1031.0</data>
+</edge>
+<edge source="ASJL" target="ADEL">
+  <data key="d6">1659.25</data>
+</edge>
+<edge source="ASJL" target="ASGL">
+  <data key="d6">1868.5</data>
+</edge>
+<edge source="ASJL" target="IL1L">
+  <data key="d6">1152.25</data>
+</edge>
+<edge source="ASJL" target="IL2L">
+  <data key="d6">962.25</data>
+</edge>
+<edge source="AVFL" target="ADLL">
+  <data key="d6">1932.75</data>
+</edge>
+<edge source="AVFL" target="RIML">
+  <data key="d6">1693.0</data>
+</edge>
+<edge source="AVFL" target="AVJL">
+  <data key="d6">2038.25</data>
+</edge>
+<edge source="AVHL" target="ADEL">
+  <data key="d6">1646.75</data>
+</edge>
+<edge source="AVHL" target="CEPDL">
+  <data key="d6">643.75</data>
+</edge>
+<edge source="AVJL" target="ADLL">
+  <data key="d6">737.25</data>
+</edge>
+<edge source="ADEL" target="CEPDL">
+  <data key="d6">1900.0</data>
+</edge>
+<edge source="ADEL" target="AVKL">
+  <data key="d6">870.0</data>
+</edge>
+<edge source="ADEL" target="SMDVL">
+  <data key="d6">2115.25</data>
+</edge>
+<edge source="ADLL" target="IL1DL">
+  <data key="d6">262.75</data>
+</edge>
+<edge source="ADLL" target="IL1L">
+  <data key="d6">170.5</data>
+</edge>
+<edge source="ADLL" target="IL2L">
+  <data key="d6">630.25</data>
+</edge>
+<edge source="ADLL" target="DVA">
+  <data key="d6">978.0</data>
+</edge>
+<edge source="CEPDL" target="SIBVL">
+  <data key="d6">1688.25</data>
+</edge>
+<edge source="CEPDL" target="IL1L">
+  <data key="d6">580.75</data>
+</edge>
+<edge source="IL1L" target="RMED">
+  <data key="d6">1336.5</data>
+</edge>
+<edge source="IL1L" target="SMDVL">
+  <data key="d6">1651.75</data>
+</edge>
+<edge source="DVA" target="AWBL">
+  <data key="d6">122.5</data>
+</edge>
+<edge source="DVA" target="SAADL">
+  <data key="d6">948.0</data>
+</edge>
+<edge source="DVA" target="PLNL">
+  <data key="d6">1631.0</data>
+</edge>
+<edge source="DVA" target="SAAVL">
+  <data key="d6">918.5</data>
+</edge>
+<edge source="DVA" target="RIH">
+  <data key="d6">1274.5</data>
+</edge>
+<edge source="DVA" target="SABD">
+  <data key="d6">2233.0</data>
+</edge>
+<edge source="RIML" target="PVPL">
+  <data key="d6">2170.5</data>
+</edge>
+<edge source="RIML" target="SMBDL">
+  <data key="d6">2038.5</data>
+</edge>
+<edge source="RIML" target="AVM">
+  <data key="d6">492.0</data>
+</edge>
+<edge source="SIADL" target="SAAVL">
+  <data key="d6">1151.5</data>
+</edge>
+<edge source="DVC" target="SMBDL">
+  <data key="d6">1942.0</data>
+</edge>
+<edge source="DVC" target="RMED">
+  <data key="d6">846.5</data>
+</edge>
+<edge source="SAAVL" target="AIBL">
+  <data key="d6">1221.25</data>
+</edge>
+<edge source="SAAVL" target="SMBDL">
+  <data key="d6">2165.75</data>
+</edge>
+<edge source="SMDVL" target="AVKL">
+  <data key="d6">1742.25</data>
+</edge>
+<edge source="SMDVL" target="RIH">
+  <data key="d6">1382.5</data>
+</edge>
+<edge source="SMDVL" target="IL1DL">
+  <data key="d6">579.0</data>
+</edge>
+<edge source="SMDVL" target="SMBDL">
+  <data key="d6">2031.5</data>
+</edge>
+<edge source="SMDVL" target="RMED">
+  <data key="d6">661.5</data>
+</edge>
+<edge source="SMDVL" target="SABD">
+  <data key="d6">1329.0</data>
+</edge>
+<edge source="RIS" target="AIBL">
+  <data key="d6">1456.0</data>
+</edge>
+<edge source="RIS" target="PVNL">
+  <data key="d6">1287.0</data>
+</edge>
+<edge source="SAADL" target="AIBL">
+  <data key="d6">1943.25</data>
+</edge>
+<edge source="SMBDL" target="AWBL">
+  <data key="d6">1252.0</data>
+</edge>
+<edge source="RMED" target="IL1DL">
+  <data key="d6">2198.5</data>
+</edge>
+<edge source="RMED" target="RMFL">
+  <data key="d6">1436.5</data>
+</edge>
+<edge source="AVM" target="RIH">
+  <data key="d6">369.0</data>
+</edge>
+<edge source="ADFL" target="RIH">
+  <data key="d6">583.5</data>
+</edge>
+<edge source="AUAL" target="RIH">
+  <data key="d6">1374.5</data>
+</edge>
+<edge source="AWBL" target="AFDL">
+  <data key="d6">1185.25</data>
+</edge>
+<edge source="AWBL" target="AIBL">
+  <data key="d6">950.25</data>
+</edge>
+<edge source="AWBL" target="PVPL">
+  <data key="d6">406.0</data>
+</edge>
+<edge source="AIBL" target="AWAL">
+  <data key="d6">413.25</data>
+</edge>
+</graph></graphml>
