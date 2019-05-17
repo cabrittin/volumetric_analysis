@@ -65,6 +65,7 @@ def overlap(u,v):
 
 REMOVE = ['VB01', 'VD01']
 FOUT = 'mat/cam_class/consensus_cam_class_all_tissue_%s_%s.csv'
+NODE_SCREEN = ['NSM','MC']
 
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description=__doc__,
@@ -91,7 +92,7 @@ if __name__=='__main__':
     ML.load_lrmap()
     #nodes = sorted(ML.load_reduced_nodes())
     nodes = sorted(ML.load_all_tissue())
-    neurons = sorted(ML.load_reduced_nodes())
+    neurons = sorted(ML.load_reduced_nodes()) + NODE_SCREEN
    
     e = Matrix(ML.cam,params.matrix)
     e.load_genes()
