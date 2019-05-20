@@ -18,6 +18,7 @@ import igraph
 import seaborn as sns
 from collections import defaultdict
 
+from sklearn.metrics.cluster import normalized_mutual_info_score
 from networks.random import edge_switch
 
 mpl.rcParams['xtick.labelsize'] = 16 
@@ -37,6 +38,7 @@ AIQ = DIN%('ipsi_adj',Q,DEG)
 ACP = DIN%('cont_adj',P,DEG)
 ACQ = DIN%('cont_adj',Q,DEG)
 
+AFILES = [AIP,AIQ,ACP,ACQ]
 
 def get_communities(G,cam):
     camclass = defaultdict(lambda : [])
@@ -66,34 +68,26 @@ if __name__=='__main__':
     
 
     for cam in cam_class:
-        Aip = igraph.Graph.Read_GraphML(AIP)
-        Aiq = igraph.Graph.Read_GraphML(AIQ)
-        Acp = igraph.Graph.Read_GraphML(ACP)
-        Acq = igraph.Graph.Read_GraphML(ACQ)
-        
-        mem_ip = get_membership(Aip,cam)
-        mem_iq = get_membership(Aiq,cam)
-        mem_cp = get_membership(Acp,cam)
-        mem_cq = get_membership(Acq,cam)
-
-        mip = Aip.modularity(mem_ip)
-        miq = Aiq.modularity(mem_iq)
-        mcp = Acp.modularity(mem_cp)
-        mcq = Acq.modularity(mem_cq)
-
-        edge_switch(Aip)
-        edge_switch(Aiq)
-        edge_switch(Acp)
-        edge_switch(Acq)
-
-        mipr = Aip.modularity(mem_ip)
-        miqr = Aiq.modularity(mem_iq)
-        mcpr = Acp.modularity(mem_cp)
-        mcqr = Acq.modularity(mem_cq)
-        
-        print(Aip.ecount(),Aiq.ecount(),Acp.ecount(),Acq.ecount())
-        print(cam,mip,mipr,miq,miqr,mcp,mcpr,mcq,mcqr)
-
-
-
+        mod = []
+        for a in AFILES:
+            A = igraph.Graph.Read_GraphML(a)
+            mem = get_membership(A,cam)
+            k = int(max(mem))
+            #_mod = A.modularity(mem)
+            #mod.append(_mod)
+            vc = A.community_leading_eigenvector(clusters=k,weights='weight')
+            #vc = A.community_infomap(edge_weights='weight')
+            #vc = A.community_multilevel(weights='weight')
+            print(vc.membership[2:8])
+            mi = normalized_mutual_info_score(mem,vc.membership)
+            mod.append(mi)
+            #_mod = A.modularity(vc)
+            #mod.append(_mod)
+            edge_switch(A)
+            vc = A.community_leading_eigenvector(clusters=7,weights='weight')
+            #_mod = A.modularity(mem)
+            mi = normalized_mutual_info_score(mem,vc.membership)
+            #mod.append(mi)
+            #mod.append(_mod)
+        print(cam,mod)
 

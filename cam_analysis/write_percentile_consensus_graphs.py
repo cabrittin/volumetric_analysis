@@ -1,6 +1,7 @@
 import sys
 sys.path.append('./volumetric_analysis')
 sys.path.append('.')
+import argparse
 import networkx as nx
 from tqdm import tqdm
 import numpy as np
@@ -54,7 +55,8 @@ def filter_graph_simple(A,pct=50,thresh_high=True):
         else:
             c = thresh <= A[u][v]['weight']
         if c: continue
-        H.add_edge(u,v,weight=A[u][v]['weight'])
+        H.add_edge(u,v)
+        for (a,b) in A[u][v].items(): H[u][v][a] = b
     return H
 
 
@@ -75,21 +77,46 @@ def split_lateral(G,left,right):
     for (u,v) in G.edges():
         c1 = (u in left) and (v in right)
         c2 = (u in right) and (v in left)
-        if c1 or c2: H.add_edge(u,v,weight=G[u][v]['weight'])
+        if c1 or c2: 
+            H.add_edge(u,v)
+            for (a,b) in G[u][v].items(): H[u][v][a] = b
+            #H[u][v] = G[u][v]
     
     G.remove_nodes_from(right)
     return G,H
+
+def add_cam_correlation(cam,G,D):
+    for (u,v) in G.edges():
+        if not D.has_edge(u,v):
+            G[u][v][cam] = -1
+            continue
+        G[u][v][cam] = D[u][v]['weight']
+
 
 DOUT = './cam_analysis/mat/consensus_graphs/consensus_graph_%s_p%d_deg%d.graphml'
 REMOVE = ['VB01', 'VD01','VC01']
 CAM_TYPES = {'cam_all':'all','cam_cad':'cad','cam_igsf':'igsf',
             'cam_lrr':'lrr','cam_nrx':'nrx'}
+EOUT = './cam_analysis/mat/cam_distance_graphs/cam_distance_%s_%s.graphml'
+
+idx_gene = {'cam_cad':range(85,98),'cam_lrr':range(54,85),
+            'cam_igsf':range(54),'cam_nrx':range(98,106),
+            'cam_all':range(106)}
+
 METRIC = 'pearsonr'
 deg = 3
 P = 66
 Q = 100 - P
 
 if __name__=="__main__":
+    parser = argparse.ArgumentParser(description=__doc__,
+                                     formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument('matrix',
+                        action = 'store',
+                        help = 'Path to matrix file')
+ 
+    params = parser.parse_args()
+    
     M = MatLoader()
     M.load_left()
     M.load_right()
@@ -114,7 +141,13 @@ if __name__=="__main__":
     Jse = J.split_graph(J.E,single)
     J.split_left_right(M.left,M.right)
     J.map_right_graphs(M.lrmap)
- 
+
+    e = Matrix(M.cam,params.matrix)
+    e.load_genes()
+    e.load_cells(nodes)
+    e.assign_expression()
+    e.clean_expression()
+    e.binarize()
     A = nx.Graph()
     C = nx.DiGraph()
     E = nx.Graph()
@@ -124,7 +157,14 @@ if __name__=="__main__":
     C = consensus_graph(C,[Nsc,Jsc],min(deg,2),single)
     E = consensus_graph(E,[N.El,N.Er,J.El,J.Er],deg,M.left)
     E = consensus_graph(E,[Nse,Jse],min(deg,2),single)
-        
+
+    for cam in CAM_TYPES:
+        G = e.distance_graph(gdx=idx_gene[cam],metric=METRIC)
+        add_cam_correlation(cam,A,G)
+        add_cam_correlation(cam,C,G)
+        add_cam_correlation(cam,E,G)
+        nx.write_graphml(G,EOUT%(METRIC,cam))
+
     Ai,Ac = split_lateral(A,M.left,M.right)
     Ci,Cc = split_lateral(C,M.left,M.right)
     Ei,Ec = split_lateral(E,M.left,M.right)
@@ -133,7 +173,8 @@ if __name__=="__main__":
     Acp = filter_graph_simple(Ac,pct=P)
     Aiq = filter_graph_simple(Ai,pct=Q,thresh_high=False)
     Acq = filter_graph_simple(Ac,pct=Q,thresh_high=False)
-       
+   
+
     #for G in [A,C,E]: G.remove_nodes_from(M.right)
     for G in [Aip,Aiq,Acp,Acq]: apply_node_class(G,nclass,'cell_class',default='NA')
         

@@ -170,6 +170,18 @@ class Matrix:
 
         return D
 
+    def distance_graph(self,gdx=None,metric='jaccard'):
+        import networkx as nx
+        from itertools import combinations_with_replacement
+        D = self.distance_matrix(gdx=gdx,metric=metric)
+        G = nx.Graph()
+        for (i,j) in combinations_with_replacement(range(D.shape[0]),2):
+            u = self.cells_idx[i]
+            v = self.cells_idx[j]
+            G.add_edge(u,v,weight=D[i,j])
+        return G
+
+
 def jaccard(u,v):
     w = u + v
     m = float(len(np.where(w > 0)[0]))
