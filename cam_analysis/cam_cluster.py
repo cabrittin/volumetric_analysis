@@ -86,6 +86,13 @@ if __name__=='__main__':
                         choices=['all','cad','lrr','igsf','nrx'],
                         help = 'Specify CAM choice')
 
+    parser.add_argument('-o','--output',
+                        action='store',
+                        dest='fout',
+                        required=False,
+                        default=None,
+                        help='Output file')
+
     params = parser.parse_args()
     
     ML = MatLoader()
@@ -126,12 +133,16 @@ if __name__=='__main__':
     D2 = D[index,:]
     D2 = D2[:,index]
     im = sns.clustermap(D,row_linkage=Y,col_linkage=Y,xticklabels=ordered_cells,yticklabels=[],
-            row_colors=tclass,col_colors=ccolor)
+            row_colors=tclass,col_colors=ccolor,figsize=(12,12))
     #im.ax_row_dendrogram.set_visible(False)
     #im = axmatrix.matshow(D2, aspect='auto', origin='lower')
     #axmatrix.set_xticks([])
     #axmatrix.set_yticks([])
     #plt.colorbar(im)
+
+    if params.fout: 
+        print(params.fout)
+        im.savefig(params.fout,dpi=400)
 
     data = []
     idx = 0

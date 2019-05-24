@@ -62,6 +62,7 @@ cam_color = {'cad':CAD_COLOR,'igsf':IGSF_COLOR,'lrr':LRR_COLOR,
 REMOVE = ['VB01', 'VD01']
 FOUT = 'mat/cam_class/consensus_cam_class_all_tissue_%s_%s.csv'
 
+
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -80,6 +81,13 @@ if __name__=='__main__':
                         default='all',
                         choices=['all','cad','lrr','igsf','nrx'],
                         help = 'Specify CAM choice')
+
+    parser.add_argument('-o','--output',
+                        action='store',
+                        dest='fout',
+                        required=False,
+                        default=None,
+                        help='Output file')
 
     params = parser.parse_args()
     
@@ -132,12 +140,13 @@ if __name__=='__main__':
                                     start=0)
     print(cam_color[params.camtype])
     g= sns.clustermap(matrix,row_cluster=False,col_cluster=False,col_colors=cam_color[params.camtype],
-                    yticklabels=genes,xticklabels=clusters,cmap=cmap,linewidth=1,
+                    yticklabels=genes,xticklabels=clusters,cmap=cmap,linewidth=1,#figsize=(13,15),
                     cbar_kws={'label': 'log(average adjusted counts)'})
     
     g.cax.yaxis.label.set_size(20)
     g.cax.set_position([.15, .2, .03, .45])
     #g.ax_heatmap.add_patch(Rectangle((1, 3), 2, 2, fill=False, edgecolor='#ffe400', lw=3))
+    if params.fout: g.savefig(params.fout)
     plt.show()
 
     """

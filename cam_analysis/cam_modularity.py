@@ -75,7 +75,7 @@ if __name__=='__main__':
             k = int(max(mem))
             #_mod = A.modularity(mem)
             #mod.append(_mod)
-            vc = A.community_leading_eigenvector(clusters=k,weights='weight')
+            vc = A.community_leading_eigenvector(clusters=4,weights='weight')
             #vc = A.community_infomap(edge_weights='weight')
             #vc = A.community_multilevel(weights='weight')
             print(vc.membership[2:8])
