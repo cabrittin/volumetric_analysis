@@ -1,0 +1,2174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
+         http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+<!-- Created by igraph -->
+  <key id="v_cam_nrx" for="node" attr.name="cam_nrx" attr.type="double"/>
+  <key id="v_cam_lrr" for="node" attr.name="cam_lrr" attr.type="double"/>
+  <key id="v_cam_igsf" for="node" attr.name="cam_igsf" attr.type="double"/>
+  <key id="v_cam_cad" for="node" attr.name="cam_cad" attr.type="double"/>
+  <key id="v_cam_all" for="node" attr.name="cam_all" attr.type="double"/>
+  <key id="v_cell_class" for="node" attr.name="cell_class" attr.type="string"/>
+  <key id="v_id" for="node" attr.name="id" attr.type="string"/>
+  <key id="v_cluster" for="node" attr.name="cluster" attr.type="double"/>
+  <key id="e_weight" for="edge" attr.name="weight" attr.type="double"/>
+  <graph id="G" edgedefault="undirected">
+    <node id="n0">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">ADAL</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n1">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">6</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">AVBL</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n2">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">5</data>
+      <data key="v_cam_cad">3</data>
+      <data key="v_cam_all">1</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">URXL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n3">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">1</data>
+      <data key="v_cam_cad">2</data>
+      <data key="v_cam_all">3</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">RICL</data>
+      <data key="v_cluster">2</data>
+    </node>
+    <node id="n4">
+      <data key="v_cam_nrx">3</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">2</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">ADEL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n5">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">2</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">ASHL</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n6">
+      <data key="v_cam_nrx">1</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">3</data>
+      <data key="v_cam_all">3</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">ADLL</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n7">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">3</data>
+      <data key="v_cam_all">7</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">RIML</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n8">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">2</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">AVAL</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n9">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">5</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">PVCL</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n10">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">ALML</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n11">
+      <data key="v_cam_nrx">1</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">5</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">7</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">AVDL</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n12">
+      <data key="v_cam_nrx">1</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">5</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">AVJL</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n13">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">5</data>
+      <data key="v_cam_all">1</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">FLPL</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n14">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">Sp1</data>
+      <data key="v_id">AVM</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n15">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">3</data>
+      <data key="v_cam_all">5</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">DVA</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n16">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">AQR</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n17">
+      <data key="v_cam_nrx">1</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">5</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">PVPL</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n18">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">2</data>
+      <data key="v_cam_igsf">5</data>
+      <data key="v_cam_cad">2</data>
+      <data key="v_cam_all">7</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">URBL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n19">
+      <data key="v_cam_nrx">1</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">1</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">1</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">CEPDL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n20">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">6</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">0</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">IL1L</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n21">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">4</data>
+      <data key="v_cam_igsf">5</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">IL2L</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n22">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">7</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">OLLL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n23">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">4</data>
+      <data key="v_cam_igsf">5</data>
+      <data key="v_cam_cad">2</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">RIH</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n24">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">5</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">3</data>
+      <data key="v_cam_all">7</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">AIBL</data>
+      <data key="v_cluster">1</data>
+    </node>
+    <node id="n25">
+      <data key="v_cam_nrx">3</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">0</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">AVHL</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n26">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">Sp1</data>
+      <data key="v_id">SDQL</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n27">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">2</data>
+      <data key="v_cam_all">0</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">AVEL</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n28">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">RIFL</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n29">
+      <data key="v_cam_nrx">3</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">5</data>
+      <data key="v_cam_cad">2</data>
+      <data key="v_cam_all">7</data>
+      <data key="v_cell_class">SMN</data>
+      <data key="v_id">SIBVL</data>
+      <data key="v_cluster">2</data>
+    </node>
+    <node id="n30">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">PVR</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n31">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">4</data>
+      <data key="v_cam_igsf">5</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">IL2DL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n32">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">6</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">3</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">IL1DL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n33">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">2</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">OLQDL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n34">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">RIPL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n35">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">HMNa</data>
+      <data key="v_id">URADL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n36">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">1</data>
+      <data key="v_cam_cad">0</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">AIAL</data>
+      <data key="v_cluster">1</data>
+    </node>
+    <node id="n37">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">3</data>
+      <data key="v_cam_all">2</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">ASJL</data>
+      <data key="v_cluster">1</data>
+    </node>
+    <node id="n38">
+      <data key="v_cam_nrx">3</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">6</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">ASEL</data>
+      <data key="v_cluster">1</data>
+    </node>
+    <node id="n39">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">5</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">0</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">ASKL</data>
+      <data key="v_cluster">1</data>
+    </node>
+    <node id="n40">
+      <data key="v_cam_nrx">1</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">3</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">AWCL</data>
+      <data key="v_cluster">1</data>
+    </node>
+    <node id="n41">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">6</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">AIZL</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n42">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">2</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">ASIL</data>
+      <data key="v_cluster">1</data>
+    </node>
+    <node id="n43">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">AIML</data>
+      <data key="v_cluster">1</data>
+    </node>
+    <node id="n44">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">PVQL</data>
+      <data key="v_cluster">1</data>
+    </node>
+    <node id="n45">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">1</data>
+      <data key="v_cell_class">Sp1</data>
+      <data key="v_id">ASGL</data>
+      <data key="v_cluster">1</data>
+    </node>
+    <node id="n46">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">6</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">7</data>
+      <data key="v_cell_class">SMN</data>
+      <data key="v_id">SMBVL</data>
+      <data key="v_cluster">2</data>
+    </node>
+    <node id="n47">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">URYDL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n48">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">5</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">6</data>
+      <data key="v_cell_class">SMN</data>
+      <data key="v_id">SMDDL</data>
+      <data key="v_cluster">2</data>
+    </node>
+    <node id="n49">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">1</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">6</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">RIAL</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n50">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">5</data>
+      <data key="v_cam_igsf">1</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">HMNp</data>
+      <data key="v_id">RMDDL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n51">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">HMNp</data>
+      <data key="v_id">RMHL</data>
+      <data key="v_cluster">2</data>
+    </node>
+    <node id="n52">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">SAADL</data>
+      <data key="v_cluster">2</data>
+    </node>
+    <node id="n53">
+      <data key="v_cam_nrx">1</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">3</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">SMN</data>
+      <data key="v_id">SIADL</data>
+      <data key="v_cluster">2</data>
+    </node>
+    <node id="n54">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">5</data>
+      <data key="v_cam_cad">2</data>
+      <data key="v_cam_all">3</data>
+      <data key="v_cell_class">SMN</data>
+      <data key="v_id">SIBDL</data>
+      <data key="v_cluster">2</data>
+    </node>
+    <node id="n55">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">6</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">5</data>
+      <data key="v_cell_class">SMN</data>
+      <data key="v_id">SMBDL</data>
+      <data key="v_cluster">2</data>
+    </node>
+    <node id="n56">
+      <data key="v_cam_nrx">1</data>
+      <data key="v_cam_lrr">4</data>
+      <data key="v_cam_igsf">1</data>
+      <data key="v_cam_cad">2</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">HMNa</data>
+      <data key="v_id">RMED</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n57">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">1</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">6</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">RIS</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n58">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">3</data>
+      <data key="v_cam_all">6</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">ADFL</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n59">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">0</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">AUAL</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n60">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">RMGL</data>
+      <data key="v_cluster">1</data>
+    </node>
+    <node id="n61">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">RIR</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n62">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">4</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">0</data>
+      <data key="v_cam_all">7</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">RID</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n63">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">3</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">AIYL</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n64">
+      <data key="v_cam_nrx">1</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">1</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">1</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">CEPVL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n65">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">SAAVL</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n66">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">5</data>
+      <data key="v_cam_igsf">1</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">HMNp</data>
+      <data key="v_id">RMDVL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n67">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">5</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">SMN</data>
+      <data key="v_id">SMDVL</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n68">
+      <data key="v_cam_nrx">3</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">6</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">5</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">RIBL</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n69">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">5</data>
+      <data key="v_cam_igsf">1</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">0</data>
+      <data key="v_cell_class">HMNp</data>
+      <data key="v_id">RMDL</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n70">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">HMNa</data>
+      <data key="v_id">URAVL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n71">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">6</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">6</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">IL1VL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n72">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">4</data>
+      <data key="v_cam_igsf">5</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">IL2VL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n73">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">URYVL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n74">
+      <data key="v_cam_nrx">1</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">2</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">OLQVL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <node id="n75">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">2</data>
+      <data key="v_cam_all">3</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">AVKL</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n76">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">0</data>
+      <data key="v_cam_all">6</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">ALA</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n77">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">2</data>
+      <data key="v_cam_cad">1</data>
+      <data key="v_cam_all">1</data>
+      <data key="v_cell_class">Sa</data>
+      <data key="v_id">BAGL</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n78">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">3</data>
+      <data key="v_cam_all">7</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">AWBL</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n79">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">RMFL</data>
+      <data key="v_cluster">2</data>
+    </node>
+    <node id="n80">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">3</data>
+      <data key="v_cam_all">7</data>
+      <data key="v_cell_class">SMN</data>
+      <data key="v_id">SIAVL</data>
+      <data key="v_cluster">2</data>
+    </node>
+    <node id="n81">
+      <data key="v_cam_nrx">3</data>
+      <data key="v_cam_lrr">4</data>
+      <data key="v_cam_igsf">1</data>
+      <data key="v_cam_cad">2</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">HMNa</data>
+      <data key="v_id">RMEV</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n82">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">ALNL</data>
+      <data key="v_cluster">1</data>
+    </node>
+    <node id="n83">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">AVFL</data>
+      <data key="v_cluster">1</data>
+    </node>
+    <node id="n84">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">BDUL</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n85">
+      <data key="v_cam_nrx">3</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">5</data>
+      <data key="v_cam_cad">3</data>
+      <data key="v_cam_all">3</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">AWAL</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n86">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">RIGL</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n87">
+      <data key="v_cam_nrx">2</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">4</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">3</data>
+      <data key="v_cell_class">Sp2</data>
+      <data key="v_id">AFDL</data>
+      <data key="v_cluster">4</data>
+    </node>
+    <node id="n88">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">PVNL</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n89">
+      <data key="v_cam_nrx">3</data>
+      <data key="v_cam_lrr">1</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">7</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">DVC</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n90">
+      <data key="v_cam_nrx">1</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">6</data>
+      <data key="v_cell_class">HMNp</data>
+      <data key="v_id">RIVL</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n91">
+      <data key="v_cam_nrx">4</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">I1</data>
+      <data key="v_id">AINL</data>
+      <data key="v_cluster">0</data>
+    </node>
+    <node id="n92">
+      <data key="v_cam_nrx">-1</data>
+      <data key="v_cam_lrr">-1</data>
+      <data key="v_cam_igsf">-1</data>
+      <data key="v_cam_cad">-1</data>
+      <data key="v_cam_all">-1</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">PVT</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n93">
+      <data key="v_cam_nrx">0</data>
+      <data key="v_cam_lrr">0</data>
+      <data key="v_cam_igsf">7</data>
+      <data key="v_cam_cad">4</data>
+      <data key="v_cam_all">6</data>
+      <data key="v_cell_class">I2</data>
+      <data key="v_id">AVL</data>
+      <data key="v_cluster">5</data>
+    </node>
+    <node id="n94">
+      <data key="v_cam_nrx">1</data>
+      <data key="v_cam_lrr">4</data>
+      <data key="v_cam_igsf">1</data>
+      <data key="v_cam_cad">2</data>
+      <data key="v_cam_all">4</data>
+      <data key="v_cell_class">HMNa</data>
+      <data key="v_id">RMEL</data>
+      <data key="v_cluster">3</data>
+    </node>
+    <edge source="n0" target="n1">
+      <data key="e_weight">12808.2</data>
+    </edge>
+    <edge source="n0" target="n2">
+      <data key="e_weight">17643.5</data>
+    </edge>
+    <edge source="n0" target="n3">
+      <data key="e_weight">9637.75</data>
+    </edge>
+    <edge source="n0" target="n4">
+      <data key="e_weight">10597.2</data>
+    </edge>
+    <edge source="n0" target="n5">
+      <data key="e_weight">31449.2</data>
+    </edge>
+    <edge source="n0" target="n6">
+      <data key="e_weight">11319.5</data>
+    </edge>
+    <edge source="n0" target="n7">
+      <data key="e_weight">35886</data>
+    </edge>
+    <edge source="n0" target="n8">
+      <data key="e_weight">8699.5</data>
+    </edge>
+    <edge source="n1" target="n9">
+      <data key="e_weight">40196</data>
+    </edge>
+    <edge source="n1" target="n24">
+      <data key="e_weight">18033.8</data>
+    </edge>
+    <edge source="n1" target="n5">
+      <data key="e_weight">28607</data>
+    </edge>
+    <edge source="n1" target="n25">
+      <data key="e_weight">14802.5</data>
+    </edge>
+    <edge source="n1" target="n11">
+      <data key="e_weight">17798.8</data>
+    </edge>
+    <edge source="n1" target="n16">
+      <data key="e_weight">26463.5</data>
+    </edge>
+    <edge source="n1" target="n26">
+      <data key="e_weight">8218.25</data>
+    </edge>
+    <edge source="n1" target="n27">
+      <data key="e_weight">15659.8</data>
+    </edge>
+    <edge source="n1" target="n28">
+      <data key="e_weight">18064</data>
+    </edge>
+    <edge source="n1" target="n29">
+      <data key="e_weight">9007.75</data>
+    </edge>
+    <edge source="n1" target="n7">
+      <data key="e_weight">17665.2</data>
+    </edge>
+    <edge source="n1" target="n30">
+      <data key="e_weight">8574</data>
+    </edge>
+    <edge source="n1" target="n15">
+      <data key="e_weight">20391.5</data>
+    </edge>
+    <edge source="n1" target="n17">
+      <data key="e_weight">16500</data>
+    </edge>
+    <edge source="n1" target="n12">
+      <data key="e_weight">14397.5</data>
+    </edge>
+    <edge source="n2" target="n18">
+      <data key="e_weight">13801.5</data>
+    </edge>
+    <edge source="n2" target="n58">
+      <data key="e_weight">9468</data>
+    </edge>
+    <edge source="n2" target="n43">
+      <data key="e_weight">8521.5</data>
+    </edge>
+    <edge source="n2" target="n59">
+      <data key="e_weight">31826</data>
+    </edge>
+    <edge source="n2" target="n19">
+      <data key="e_weight">52000.5</data>
+    </edge>
+    <edge source="n2" target="n49">
+      <data key="e_weight">25933.5</data>
+    </edge>
+    <edge source="n2" target="n3">
+      <data key="e_weight">8079.5</data>
+    </edge>
+    <edge source="n2" target="n60">
+      <data key="e_weight">13196.2</data>
+    </edge>
+    <edge source="n2" target="n61">
+      <data key="e_weight">30223</data>
+    </edge>
+    <edge source="n3" target="n18">
+      <data key="e_weight">11981.8</data>
+    </edge>
+    <edge source="n3" target="n48">
+      <data key="e_weight">12306</data>
+    </edge>
+    <edge source="n3" target="n8">
+      <data key="e_weight">13943.2</data>
+    </edge>
+    <edge source="n3" target="n51">
+      <data key="e_weight">26762.8</data>
+    </edge>
+    <edge source="n3" target="n26">
+      <data key="e_weight">8522.75</data>
+    </edge>
+    <edge source="n3" target="n55">
+      <data key="e_weight">8433</data>
+    </edge>
+    <edge source="n4" target="n18">
+      <data key="e_weight">7877.75</data>
+    </edge>
+    <edge source="n4" target="n22">
+      <data key="e_weight">7916</data>
+    </edge>
+    <edge source="n4" target="n23">
+      <data key="e_weight">22169</data>
+    </edge>
+    <edge source="n4" target="n8">
+      <data key="e_weight">12971</data>
+    </edge>
+    <edge source="n4" target="n82">
+      <data key="e_weight">7899.25</data>
+    </edge>
+    <edge source="n4" target="n21">
+      <data key="e_weight">8173.75</data>
+    </edge>
+    <edge source="n5" target="n36">
+      <data key="e_weight">18269.2</data>
+    </edge>
+    <edge source="n5" target="n28">
+      <data key="e_weight">36059.5</data>
+    </edge>
+    <edge source="n5" target="n58">
+      <data key="e_weight">11054</data>
+    </edge>
+    <edge source="n5" target="n6">
+      <data key="e_weight">15351.2</data>
+    </edge>
+    <edge source="n5" target="n24">
+      <data key="e_weight">13732.2</data>
+    </edge>
+    <edge source="n5" target="n41">
+      <data key="e_weight">8635.75</data>
+    </edge>
+    <edge source="n5" target="n38">
+      <data key="e_weight">9471.5</data>
+    </edge>
+    <edge source="n5" target="n85">
+      <data key="e_weight">12096.2</data>
+    </edge>
+    <edge source="n5" target="n78">
+      <data key="e_weight">9690.5</data>
+    </edge>
+    <edge source="n6" target="n46">
+      <data key="e_weight">18510</data>
+    </edge>
+    <edge source="n6" target="n85">
+      <data key="e_weight">28148.2</data>
+    </edge>
+    <edge source="n6" target="n78">
+      <data key="e_weight">18749.2</data>
+    </edge>
+    <edge source="n6" target="n38">
+      <data key="e_weight">17153.2</data>
+    </edge>
+    <edge source="n6" target="n39">
+      <data key="e_weight">17032.2</data>
+    </edge>
+    <edge source="n6" target="n76">
+      <data key="e_weight">9410.5</data>
+    </edge>
+    <edge source="n6" target="n24">
+      <data key="e_weight">16794.2</data>
+    </edge>
+    <edge source="n6" target="n8">
+      <data key="e_weight">8196.5</data>
+    </edge>
+    <edge source="n7" target="n48">
+      <data key="e_weight">13728.2</data>
+    </edge>
+    <edge source="n7" target="n49">
+      <data key="e_weight">10380.2</data>
+    </edge>
+    <edge source="n7" target="n28">
+      <data key="e_weight">55055.5</data>
+    </edge>
+    <edge source="n7" target="n52">
+      <data key="e_weight">25019.5</data>
+    </edge>
+    <edge source="n7" target="n41">
+      <data key="e_weight">21582.8</data>
+    </edge>
+    <edge source="n7" target="n8">
+      <data key="e_weight">8697.75</data>
+    </edge>
+    <edge source="n7" target="n75">
+      <data key="e_weight">22723</data>
+    </edge>
+    <edge source="n7" target="n68">
+      <data key="e_weight">19224.5</data>
+    </edge>
+    <edge source="n7" target="n65">
+      <data key="e_weight">16286</data>
+    </edge>
+    <edge source="n7" target="n79">
+      <data key="e_weight">17540.2</data>
+    </edge>
+    <edge source="n7" target="n67">
+      <data key="e_weight">14446.5</data>
+    </edge>
+    <edge source="n7" target="n69">
+      <data key="e_weight">11421.8</data>
+    </edge>
+    <edge source="n8" target="n9">
+      <data key="e_weight">8112.5</data>
+    </edge>
+    <edge source="n8" target="n13">
+      <data key="e_weight">20683.2</data>
+    </edge>
+    <edge source="n8" target="n11">
+      <data key="e_weight">13944.5</data>
+    </edge>
+    <edge source="n8" target="n49">
+      <data key="e_weight">17785.2</data>
+    </edge>
+    <edge source="n8" target="n27">
+      <data key="e_weight">24523.2</data>
+    </edge>
+    <edge source="n8" target="n15">
+      <data key="e_weight">7967.5</data>
+    </edge>
+    <edge source="n8" target="n24">
+      <data key="e_weight">22819</data>
+    </edge>
+    <edge source="n8" target="n59">
+      <data key="e_weight">8480.25</data>
+    </edge>
+    <edge source="n8" target="n65">
+      <data key="e_weight">45465.5</data>
+    </edge>
+    <edge source="n8" target="n66">
+      <data key="e_weight">33798.2</data>
+    </edge>
+    <edge source="n8" target="n89">
+      <data key="e_weight">16481.5</data>
+    </edge>
+    <edge source="n8" target="n16">
+      <data key="e_weight">22161.5</data>
+    </edge>
+    <edge source="n8" target="n67">
+      <data key="e_weight">12897.2</data>
+    </edge>
+    <edge source="n8" target="n69">
+      <data key="e_weight">15683.5</data>
+    </edge>
+    <edge source="n9" target="n10">
+      <data key="e_weight">11713.8</data>
+    </edge>
+    <edge source="n9" target="n11">
+      <data key="e_weight">11290</data>
+    </edge>
+    <edge source="n9" target="n12">
+      <data key="e_weight">9210.5</data>
+    </edge>
+    <edge source="n9" target="n13">
+      <data key="e_weight">12203.5</data>
+    </edge>
+    <edge source="n9" target="n14">
+      <data key="e_weight">19631.5</data>
+    </edge>
+    <edge source="n9" target="n15">
+      <data key="e_weight">7891</data>
+    </edge>
+    <edge source="n9" target="n16">
+      <data key="e_weight">13932.5</data>
+    </edge>
+    <edge source="n9" target="n17">
+      <data key="e_weight">14938</data>
+    </edge>
+    <edge source="n10" target="n28">
+      <data key="e_weight">8072.5</data>
+    </edge>
+    <edge source="n10" target="n84">
+      <data key="e_weight">19333.2</data>
+    </edge>
+    <edge source="n10" target="n30">
+      <data key="e_weight">13207</data>
+    </edge>
+    <edge source="n10" target="n26">
+      <data key="e_weight">9857</data>
+    </edge>
+    <edge source="n11" target="n25">
+      <data key="e_weight">15592.5</data>
+    </edge>
+    <edge source="n11" target="n14">
+      <data key="e_weight">13541.5</data>
+    </edge>
+    <edge source="n11" target="n29">
+      <data key="e_weight">13044.8</data>
+    </edge>
+    <edge source="n11" target="n15">
+      <data key="e_weight">17033.5</data>
+    </edge>
+    <edge source="n11" target="n62">
+      <data key="e_weight">17579.5</data>
+    </edge>
+    <edge source="n11" target="n12">
+      <data key="e_weight">22947.5</data>
+    </edge>
+    <edge source="n11" target="n30">
+      <data key="e_weight">8015</data>
+    </edge>
+    <edge source="n12" target="n25">
+      <data key="e_weight">16299.8</data>
+    </edge>
+    <edge source="n12" target="n14">
+      <data key="e_weight">15971</data>
+    </edge>
+    <edge source="n12" target="n57">
+      <data key="e_weight">11738.5</data>
+    </edge>
+    <edge source="n13" target="n23">
+      <data key="e_weight">13250.5</data>
+    </edge>
+    <edge source="n13" target="n15">
+      <data key="e_weight">13474</data>
+    </edge>
+    <edge source="n14" target="n84">
+      <data key="e_weight">15412</data>
+    </edge>
+    <edge source="n14" target="n30">
+      <data key="e_weight">16227</data>
+    </edge>
+    <edge source="n14" target="n62">
+      <data key="e_weight">14907.5</data>
+    </edge>
+    <edge source="n15" target="n27">
+      <data key="e_weight">11452</data>
+    </edge>
+    <edge source="n15" target="n29">
+      <data key="e_weight">33641</data>
+    </edge>
+    <edge source="n15" target="n41">
+      <data key="e_weight">15723</data>
+    </edge>
+    <edge source="n15" target="n80">
+      <data key="e_weight">28070.5</data>
+    </edge>
+    <edge source="n15" target="n30">
+      <data key="e_weight">15943</data>
+    </edge>
+    <edge source="n15" target="n24">
+      <data key="e_weight">10229.5</data>
+    </edge>
+    <edge source="n15" target="n17">
+      <data key="e_weight">19214.5</data>
+    </edge>
+    <edge source="n15" target="n26">
+      <data key="e_weight">16225.5</data>
+    </edge>
+    <edge source="n15" target="n53">
+      <data key="e_weight">13685</data>
+    </edge>
+    <edge source="n15" target="n55">
+      <data key="e_weight">11324</data>
+    </edge>
+    <edge source="n15" target="n67">
+      <data key="e_weight">11705</data>
+    </edge>
+    <edge source="n15" target="n16">
+      <data key="e_weight">66934.5</data>
+    </edge>
+    <edge source="n15" target="n62">
+      <data key="e_weight">15093.5</data>
+    </edge>
+    <edge source="n15" target="n61">
+      <data key="e_weight">28081</data>
+    </edge>
+    <edge source="n16" target="n61">
+      <data key="e_weight">18596.5</data>
+    </edge>
+    <edge source="n16" target="n17">
+      <data key="e_weight">38798</data>
+    </edge>
+    <edge source="n16" target="n89">
+      <data key="e_weight">13556.5</data>
+    </edge>
+    <edge source="n16" target="n77">
+      <data key="e_weight">23658.5</data>
+    </edge>
+    <edge source="n17" target="n28">
+      <data key="e_weight">15283</data>
+    </edge>
+    <edge source="n17" target="n61">
+      <data key="e_weight">15136</data>
+    </edge>
+    <edge source="n18" target="n19">
+      <data key="e_weight">23395.5</data>
+    </edge>
+    <edge source="n18" target="n20">
+      <data key="e_weight">25237</data>
+    </edge>
+    <edge source="n18" target="n21">
+      <data key="e_weight">10763.2</data>
+    </edge>
+    <edge source="n18" target="n22">
+      <data key="e_weight">17108</data>
+    </edge>
+    <edge source="n19" target="n31">
+      <data key="e_weight">11331.5</data>
+    </edge>
+    <edge source="n19" target="n35">
+      <data key="e_weight">9132.25</data>
+    </edge>
+    <edge source="n19" target="n60">
+      <data key="e_weight">11299.8</data>
+    </edge>
+    <edge source="n19" target="n66">
+      <data key="e_weight">21366.8</data>
+    </edge>
+    <edge source="n19" target="n22">
+      <data key="e_weight">11419.5</data>
+    </edge>
+    <edge source="n20" target="n22">
+      <data key="e_weight">18414.2</data>
+    </edge>
+    <edge source="n20" target="n94">
+      <data key="e_weight">20404.2</data>
+    </edge>
+    <edge source="n20" target="n66">
+      <data key="e_weight">18325.2</data>
+    </edge>
+    <edge source="n20" target="n50">
+      <data key="e_weight">19886.8</data>
+    </edge>
+    <edge source="n20" target="n21">
+      <data key="e_weight">14525</data>
+    </edge>
+    <edge source="n21" target="n22">
+      <data key="e_weight">13268.8</data>
+    </edge>
+    <edge source="n21" target="n94">
+      <data key="e_weight">19729</data>
+    </edge>
+    <edge source="n21" target="n81">
+      <data key="e_weight">9531.5</data>
+    </edge>
+    <edge source="n22" target="n64">
+      <data key="e_weight">16830.8</data>
+    </edge>
+    <edge source="n22" target="n71">
+      <data key="e_weight">14654</data>
+    </edge>
+    <edge source="n22" target="n32">
+      <data key="e_weight">11367</data>
+    </edge>
+    <edge source="n22" target="n94">
+      <data key="e_weight">18402.5</data>
+    </edge>
+    <edge source="n22" target="n66">
+      <data key="e_weight">20547.2</data>
+    </edge>
+    <edge source="n22" target="n50">
+      <data key="e_weight">23494.2</data>
+    </edge>
+    <edge source="n22" target="n68">
+      <data key="e_weight">17162.2</data>
+    </edge>
+    <edge source="n23" target="n33">
+      <data key="e_weight">10910.5</data>
+    </edge>
+    <edge source="n23" target="n49">
+      <data key="e_weight">18374</data>
+    </edge>
+    <edge source="n23" target="n74">
+      <data key="e_weight">29477</data>
+    </edge>
+    <edge source="n23" target="n52">
+      <data key="e_weight">50417.5</data>
+    </edge>
+    <edge source="n23" target="n41">
+      <data key="e_weight">14515.5</data>
+    </edge>
+    <edge source="n23" target="n34">
+      <data key="e_weight">12142.5</data>
+    </edge>
+    <edge source="n23" target="n63">
+      <data key="e_weight">14620.5</data>
+    </edge>
+    <edge source="n23" target="n68">
+      <data key="e_weight">9815.5</data>
+    </edge>
+    <edge source="n23" target="n94">
+      <data key="e_weight">11488.5</data>
+    </edge>
+    <edge source="n23" target="n79">
+      <data key="e_weight">20161.5</data>
+    </edge>
+    <edge source="n23" target="n51">
+      <data key="e_weight">15417.5</data>
+    </edge>
+    <edge source="n23" target="n55">
+      <data key="e_weight">9149.5</data>
+    </edge>
+    <edge source="n23" target="n56">
+      <data key="e_weight">11473.5</data>
+    </edge>
+    <edge source="n23" target="n81">
+      <data key="e_weight">23456.5</data>
+    </edge>
+    <edge source="n23" target="n61">
+      <data key="e_weight">41646.5</data>
+    </edge>
+    <edge source="n24" target="n36">
+      <data key="e_weight">62083.5</data>
+    </edge>
+    <edge source="n24" target="n27">
+      <data key="e_weight">8819.5</data>
+    </edge>
+    <edge source="n24" target="n75">
+      <data key="e_weight">8281.25</data>
+    </edge>
+    <edge source="n24" target="n38">
+      <data key="e_weight">41064</data>
+    </edge>
+    <edge source="n24" target="n87">
+      <data key="e_weight">11442.8</data>
+    </edge>
+    <edge source="n24" target="n39">
+      <data key="e_weight">12369</data>
+    </edge>
+    <edge source="n24" target="n40">
+      <data key="e_weight">32070.5</data>
+    </edge>
+    <edge source="n24" target="n89">
+      <data key="e_weight">11268.5</data>
+    </edge>
+    <edge source="n24" target="n45">
+      <data key="e_weight">11032.8</data>
+    </edge>
+    <edge source="n25" target="n61">
+      <data key="e_weight">21693.5</data>
+    </edge>
+    <edge source="n26" target="n51">
+      <data key="e_weight">10909.5</data>
+    </edge>
+    <edge source="n26" target="n57">
+      <data key="e_weight">9677</data>
+    </edge>
+    <edge source="n27" target="n41">
+      <data key="e_weight">13287.5</data>
+    </edge>
+    <edge source="n27" target="n59">
+      <data key="e_weight">10083.5</data>
+    </edge>
+    <edge source="n27" target="n75">
+      <data key="e_weight">26842</data>
+    </edge>
+    <edge source="n27" target="n76">
+      <data key="e_weight">9904</data>
+    </edge>
+    <edge source="n27" target="n57">
+      <data key="e_weight">10252.5</data>
+    </edge>
+    <edge source="n27" target="n69">
+      <data key="e_weight">22025.2</data>
+    </edge>
+    <edge source="n28" target="n36">
+      <data key="e_weight">26010.5</data>
+    </edge>
+    <edge source="n28" target="n83">
+      <data key="e_weight">11370</data>
+    </edge>
+    <edge source="n28" target="n84">
+      <data key="e_weight">19599</data>
+    </edge>
+    <edge source="n28" target="n44">
+      <data key="e_weight">12814.5</data>
+    </edge>
+    <edge source="n28" target="n60">
+      <data key="e_weight">8988</data>
+    </edge>
+    <edge source="n29" target="n48">
+      <data key="e_weight">20162</data>
+    </edge>
+    <edge source="n29" target="n54">
+      <data key="e_weight">23497.8</data>
+    </edge>
+    <edge source="n29" target="n50">
+      <data key="e_weight">21189.2</data>
+    </edge>
+    <edge source="n29" target="n79">
+      <data key="e_weight">14247.2</data>
+    </edge>
+    <edge source="n29" target="n51">
+      <data key="e_weight">25185.2</data>
+    </edge>
+    <edge source="n29" target="n52">
+      <data key="e_weight">22114.2</data>
+    </edge>
+    <edge source="n29" target="n53">
+      <data key="e_weight">8438.75</data>
+    </edge>
+    <edge source="n29" target="n80">
+      <data key="e_weight">21387</data>
+    </edge>
+    <edge source="n29" target="n55">
+      <data key="e_weight">25433.5</data>
+    </edge>
+    <edge source="n29" target="n62">
+      <data key="e_weight">19921.5</data>
+    </edge>
+    <edge source="n30" target="n64">
+      <data key="e_weight">10994</data>
+    </edge>
+    <edge source="n30" target="n34">
+      <data key="e_weight">17459.5</data>
+    </edge>
+    <edge source="n30" target="n88">
+      <data key="e_weight">11559.5</data>
+    </edge>
+    <edge source="n31" target="n32">
+      <data key="e_weight">19446.5</data>
+    </edge>
+    <edge source="n31" target="n33">
+      <data key="e_weight">12785.5</data>
+    </edge>
+    <edge source="n31" target="n34">
+      <data key="e_weight">19220.8</data>
+    </edge>
+    <edge source="n31" target="n35">
+      <data key="e_weight">9947.25</data>
+    </edge>
+    <edge source="n32" target="n33">
+      <data key="e_weight">18152.2</data>
+    </edge>
+    <edge source="n32" target="n47">
+      <data key="e_weight">12977</data>
+    </edge>
+    <edge source="n32" target="n35">
+      <data key="e_weight">13085.8</data>
+    </edge>
+    <edge source="n32" target="n34">
+      <data key="e_weight">21578.2</data>
+    </edge>
+    <edge source="n32" target="n66">
+      <data key="e_weight">41694.8</data>
+    </edge>
+    <edge source="n33" target="n47">
+      <data key="e_weight">13460.2</data>
+    </edge>
+    <edge source="n34" target="n70">
+      <data key="e_weight">22968.2</data>
+    </edge>
+    <edge source="n34" target="n35">
+      <data key="e_weight">25779.8</data>
+    </edge>
+    <edge source="n34" target="n71">
+      <data key="e_weight">21333</data>
+    </edge>
+    <edge source="n34" target="n72">
+      <data key="e_weight">22040.5</data>
+    </edge>
+    <edge source="n34" target="n77">
+      <data key="e_weight">11375.5</data>
+    </edge>
+    <edge source="n36" target="n37">
+      <data key="e_weight">10443</data>
+    </edge>
+    <edge source="n36" target="n38">
+      <data key="e_weight">8398.25</data>
+    </edge>
+    <edge source="n36" target="n39">
+      <data key="e_weight">59999.2</data>
+    </edge>
+    <edge source="n36" target="n40">
+      <data key="e_weight">16584.2</data>
+    </edge>
+    <edge source="n36" target="n41">
+      <data key="e_weight">14876.2</data>
+    </edge>
+    <edge source="n36" target="n42">
+      <data key="e_weight">12886.2</data>
+    </edge>
+    <edge source="n36" target="n43">
+      <data key="e_weight">24508.2</data>
+    </edge>
+    <edge source="n36" target="n44">
+      <data key="e_weight">12691</data>
+    </edge>
+    <edge source="n36" target="n45">
+      <data key="e_weight">55795.2</data>
+    </edge>
+    <edge source="n36" target="n46">
+      <data key="e_weight">10086.5</data>
+    </edge>
+    <edge source="n37" target="n44">
+      <data key="e_weight">66273</data>
+    </edge>
+    <edge source="n37" target="n43">
+      <data key="e_weight">29440.2</data>
+    </edge>
+    <edge source="n37" target="n39">
+      <data key="e_weight">28602.5</data>
+    </edge>
+    <edge source="n37" target="n76">
+      <data key="e_weight">9527.5</data>
+    </edge>
+    <edge source="n38" target="n78">
+      <data key="e_weight">15444.8</data>
+    </edge>
+    <edge source="n38" target="n44">
+      <data key="e_weight">8001.25</data>
+    </edge>
+    <edge source="n38" target="n91">
+      <data key="e_weight">11590</data>
+    </edge>
+    <edge source="n38" target="n85">
+      <data key="e_weight">50907</data>
+    </edge>
+    <edge source="n38" target="n63">
+      <data key="e_weight">38599.8</data>
+    </edge>
+    <edge source="n38" target="n40">
+      <data key="e_weight">42829</data>
+    </edge>
+    <edge source="n38" target="n45">
+      <data key="e_weight">8148</data>
+    </edge>
+    <edge source="n39" target="n44">
+      <data key="e_weight">38751.5</data>
+    </edge>
+    <edge source="n40" target="n63">
+      <data key="e_weight">19893.5</data>
+    </edge>
+    <edge source="n40" target="n87">
+      <data key="e_weight">10260</data>
+    </edge>
+    <edge source="n40" target="n45">
+      <data key="e_weight">15736</data>
+    </edge>
+    <edge source="n40" target="n42">
+      <data key="e_weight">48096.8</data>
+    </edge>
+    <edge source="n41" target="n49">
+      <data key="e_weight">44993.8</data>
+    </edge>
+    <edge source="n41" target="n46">
+      <data key="e_weight">26667.5</data>
+    </edge>
+    <edge source="n41" target="n78">
+      <data key="e_weight">16718.2</data>
+    </edge>
+    <edge source="n41" target="n58">
+      <data key="e_weight">33753.8</data>
+    </edge>
+    <edge source="n41" target="n87">
+      <data key="e_weight">15565.2</data>
+    </edge>
+    <edge source="n41" target="n63">
+      <data key="e_weight">24935.2</data>
+    </edge>
+    <edge source="n41" target="n85">
+      <data key="e_weight">23201.2</data>
+    </edge>
+    <edge source="n41" target="n55">
+      <data key="e_weight">31194.5</data>
+    </edge>
+    <edge source="n41" target="n86">
+      <data key="e_weight">17599</data>
+    </edge>
+    <edge source="n41" target="n61">
+      <data key="e_weight">9952</data>
+    </edge>
+    <edge source="n41" target="n45">
+      <data key="e_weight">9406</data>
+    </edge>
+    <edge source="n41" target="n68">
+      <data key="e_weight">17322.8</data>
+    </edge>
+    <edge source="n42" target="n45">
+      <data key="e_weight">19928.5</data>
+    </edge>
+    <edge source="n43" target="n60">
+      <data key="e_weight">16534.8</data>
+    </edge>
+    <edge source="n43" target="n63">
+      <data key="e_weight">10930.2</data>
+    </edge>
+    <edge source="n43" target="n83">
+      <data key="e_weight">9398.5</data>
+    </edge>
+    <edge source="n43" target="n45">
+      <data key="e_weight">30666.5</data>
+    </edge>
+    <edge source="n44" target="n60">
+      <data key="e_weight">15764.2</data>
+    </edge>
+    <edge source="n44" target="n83">
+      <data key="e_weight">23146.8</data>
+    </edge>
+    <edge source="n44" target="n76">
+      <data key="e_weight">12097.5</data>
+    </edge>
+    <edge source="n46" target="n58">
+      <data key="e_weight">20770.8</data>
+    </edge>
+    <edge source="n46" target="n75">
+      <data key="e_weight">8584.25</data>
+    </edge>
+    <edge source="n46" target="n78">
+      <data key="e_weight">13578.8</data>
+    </edge>
+    <edge source="n46" target="n64">
+      <data key="e_weight">9120.75</data>
+    </edge>
+    <edge source="n46" target="n79">
+      <data key="e_weight">14170.8</data>
+    </edge>
+    <edge source="n46" target="n60">
+      <data key="e_weight">12072.5</data>
+    </edge>
+    <edge source="n46" target="n51">
+      <data key="e_weight">17558.8</data>
+    </edge>
+    <edge source="n46" target="n52">
+      <data key="e_weight">39452.2</data>
+    </edge>
+    <edge source="n46" target="n53">
+      <data key="e_weight">23435</data>
+    </edge>
+    <edge source="n46" target="n80">
+      <data key="e_weight">30523.2</data>
+    </edge>
+    <edge source="n46" target="n54">
+      <data key="e_weight">9766.75</data>
+    </edge>
+    <edge source="n46" target="n55">
+      <data key="e_weight">143108</data>
+    </edge>
+    <edge source="n46" target="n81">
+      <data key="e_weight">8179.5</data>
+    </edge>
+    <edge source="n47" target="n68">
+      <data key="e_weight">14828.8</data>
+    </edge>
+    <edge source="n47" target="n66">
+      <data key="e_weight">15291.8</data>
+    </edge>
+    <edge source="n48" target="n49">
+      <data key="e_weight">26030.2</data>
+    </edge>
+    <edge source="n48" target="n50">
+      <data key="e_weight">21193.8</data>
+    </edge>
+    <edge source="n48" target="n51">
+      <data key="e_weight">19136.2</data>
+    </edge>
+    <edge source="n48" target="n52">
+      <data key="e_weight">22078.5</data>
+    </edge>
+    <edge source="n48" target="n53">
+      <data key="e_weight">27872.2</data>
+    </edge>
+    <edge source="n48" target="n54">
+      <data key="e_weight">10845.5</data>
+    </edge>
+    <edge source="n48" target="n55">
+      <data key="e_weight">10213</data>
+    </edge>
+    <edge source="n48" target="n56">
+      <data key="e_weight">18034.5</data>
+    </edge>
+    <edge source="n48" target="n57">
+      <data key="e_weight">21157</data>
+    </edge>
+    <edge source="n49" target="n58">
+      <data key="e_weight">27577</data>
+    </edge>
+    <edge source="n49" target="n63">
+      <data key="e_weight">20685.2</data>
+    </edge>
+    <edge source="n49" target="n59">
+      <data key="e_weight">16184.2</data>
+    </edge>
+    <edge source="n49" target="n64">
+      <data key="e_weight">9258.75</data>
+    </edge>
+    <edge source="n49" target="n65">
+      <data key="e_weight">17346.5</data>
+    </edge>
+    <edge source="n49" target="n66">
+      <data key="e_weight">39723.5</data>
+    </edge>
+    <edge source="n49" target="n50">
+      <data key="e_weight">49739.5</data>
+    </edge>
+    <edge source="n49" target="n61">
+      <data key="e_weight">11798</data>
+    </edge>
+    <edge source="n49" target="n67">
+      <data key="e_weight">47893.8</data>
+    </edge>
+    <edge source="n49" target="n68">
+      <data key="e_weight">13776</data>
+    </edge>
+    <edge source="n49" target="n69">
+      <data key="e_weight">27332.8</data>
+    </edge>
+    <edge source="n50" target="n73">
+      <data key="e_weight">20193.5</data>
+    </edge>
+    <edge source="n50" target="n64">
+      <data key="e_weight">17669.8</data>
+    </edge>
+    <edge source="n50" target="n71">
+      <data key="e_weight">50132.2</data>
+    </edge>
+    <edge source="n50" target="n52">
+      <data key="e_weight">30781.2</data>
+    </edge>
+    <edge source="n50" target="n55">
+      <data key="e_weight">11489.5</data>
+    </edge>
+    <edge source="n51" target="n54">
+      <data key="e_weight">8800.25</data>
+    </edge>
+    <edge source="n51" target="n60">
+      <data key="e_weight">12314.5</data>
+    </edge>
+    <edge source="n51" target="n69">
+      <data key="e_weight">10003</data>
+    </edge>
+    <edge source="n51" target="n55">
+      <data key="e_weight">7924.5</data>
+    </edge>
+    <edge source="n51" target="n61">
+      <data key="e_weight">27460.5</data>
+    </edge>
+    <edge source="n51" target="n79">
+      <data key="e_weight">38832.2</data>
+    </edge>
+    <edge source="n52" target="n86">
+      <data key="e_weight">18247.8</data>
+    </edge>
+    <edge source="n52" target="n79">
+      <data key="e_weight">21648</data>
+    </edge>
+    <edge source="n52" target="n55">
+      <data key="e_weight">11414.5</data>
+    </edge>
+    <edge source="n53" target="n54">
+      <data key="e_weight">19612.5</data>
+    </edge>
+    <edge source="n53" target="n80">
+      <data key="e_weight">37366.5</data>
+    </edge>
+    <edge source="n53" target="n75">
+      <data key="e_weight">18492.2</data>
+    </edge>
+    <edge source="n53" target="n67">
+      <data key="e_weight">9702.75</data>
+    </edge>
+    <edge source="n53" target="n55">
+      <data key="e_weight">85972.5</data>
+    </edge>
+    <edge source="n54" target="n80">
+      <data key="e_weight">39088</data>
+    </edge>
+    <edge source="n54" target="n55">
+      <data key="e_weight">31265.8</data>
+    </edge>
+    <edge source="n55" target="n80">
+      <data key="e_weight">29909.2</data>
+    </edge>
+    <edge source="n55" target="n58">
+      <data key="e_weight">12432.5</data>
+    </edge>
+    <edge source="n55" target="n75">
+      <data key="e_weight">17312</data>
+    </edge>
+    <edge source="n55" target="n86">
+      <data key="e_weight">11867.8</data>
+    </edge>
+    <edge source="n56" target="n62">
+      <data key="e_weight">8882</data>
+    </edge>
+    <edge source="n56" target="n57">
+      <data key="e_weight">8550.5</data>
+    </edge>
+    <edge source="n56" target="n66">
+      <data key="e_weight">9487</data>
+    </edge>
+    <edge source="n56" target="n81">
+      <data key="e_weight">59114</data>
+    </edge>
+    <edge source="n56" target="n94">
+      <data key="e_weight">15945.5</data>
+    </edge>
+    <edge source="n57" target="n64">
+      <data key="e_weight">11780</data>
+    </edge>
+    <edge source="n57" target="n75">
+      <data key="e_weight">16247.5</data>
+    </edge>
+    <edge source="n57" target="n67">
+      <data key="e_weight">23849</data>
+    </edge>
+    <edge source="n57" target="n69">
+      <data key="e_weight">20957.5</data>
+    </edge>
+    <edge source="n57" target="n68">
+      <data key="e_weight">19534</data>
+    </edge>
+    <edge source="n57" target="n93">
+      <data key="e_weight">38683</data>
+    </edge>
+    <edge source="n57" target="n94">
+      <data key="e_weight">10139.5</data>
+    </edge>
+    <edge source="n57" target="n81">
+      <data key="e_weight">34241.5</data>
+    </edge>
+    <edge source="n58" target="n78">
+      <data key="e_weight">27725.8</data>
+    </edge>
+    <edge source="n58" target="n85">
+      <data key="e_weight">26175.5</data>
+    </edge>
+    <edge source="n58" target="n59">
+      <data key="e_weight">26597.5</data>
+    </edge>
+    <edge source="n58" target="n61">
+      <data key="e_weight">14142.5</data>
+    </edge>
+    <edge source="n59" target="n87">
+      <data key="e_weight">27684</data>
+    </edge>
+    <edge source="n59" target="n63">
+      <data key="e_weight">24415.8</data>
+    </edge>
+    <edge source="n59" target="n68">
+      <data key="e_weight">47887.8</data>
+    </edge>
+    <edge source="n60" target="n82">
+      <data key="e_weight">17205.8</data>
+    </edge>
+    <edge source="n60" target="n83">
+      <data key="e_weight">12403.5</data>
+    </edge>
+    <edge source="n60" target="n69">
+      <data key="e_weight">11725.2</data>
+    </edge>
+    <edge source="n60" target="n66">
+      <data key="e_weight">16716.5</data>
+    </edge>
+    <edge source="n61" target="n86">
+      <data key="e_weight">9807</data>
+    </edge>
+    <edge source="n61" target="n63">
+      <data key="e_weight">8561</data>
+    </edge>
+    <edge source="n61" target="n93">
+      <data key="e_weight">54065</data>
+    </edge>
+    <edge source="n62" target="n91">
+      <data key="e_weight">23265</data>
+    </edge>
+    <edge source="n62" target="n76">
+      <data key="e_weight">31990</data>
+    </edge>
+    <edge source="n63" target="n75">
+      <data key="e_weight">9518.25</data>
+    </edge>
+    <edge source="n63" target="n85">
+      <data key="e_weight">23070.5</data>
+    </edge>
+    <edge source="n63" target="n87">
+      <data key="e_weight">53587.8</data>
+    </edge>
+    <edge source="n63" target="n68">
+      <data key="e_weight">37423.8</data>
+    </edge>
+    <edge source="n64" target="n71">
+      <data key="e_weight">17919.8</data>
+    </edge>
+    <edge source="n64" target="n69">
+      <data key="e_weight">15038</data>
+    </edge>
+    <edge source="n65" target="n82">
+      <data key="e_weight">9107.25</data>
+    </edge>
+    <edge source="n65" target="n67">
+      <data key="e_weight">28339.5</data>
+    </edge>
+    <edge source="n66" target="n69">
+      <data key="e_weight">11648.2</data>
+    </edge>
+    <edge source="n67" target="n90">
+      <data key="e_weight">25714.2</data>
+    </edge>
+    <edge source="n67" target="n81">
+      <data key="e_weight">14157</data>
+    </edge>
+    <edge source="n68" target="n73">
+      <data key="e_weight">18059.2</data>
+    </edge>
+    <edge source="n68" target="n77">
+      <data key="e_weight">11262.8</data>
+    </edge>
+    <edge source="n69" target="n90">
+      <data key="e_weight">14571.8</data>
+    </edge>
+    <edge source="n69" target="n75">
+      <data key="e_weight">26237.8</data>
+    </edge>
+    <edge source="n70" target="n71">
+      <data key="e_weight">17649</data>
+    </edge>
+    <edge source="n70" target="n72">
+      <data key="e_weight">15683.8</data>
+    </edge>
+    <edge source="n71" target="n73">
+      <data key="e_weight">10863.8</data>
+    </edge>
+    <edge source="n71" target="n74">
+      <data key="e_weight">10165.8</data>
+    </edge>
+    <edge source="n71" target="n72">
+      <data key="e_weight">16254.2</data>
+    </edge>
+    <edge source="n72" target="n74">
+      <data key="e_weight">12508.5</data>
+    </edge>
+    <edge source="n73" target="n74">
+      <data key="e_weight">18018.5</data>
+    </edge>
+    <edge source="n74" target="n77">
+      <data key="e_weight">14772.2</data>
+    </edge>
+    <edge source="n75" target="n80">
+      <data key="e_weight">24049.2</data>
+    </edge>
+    <edge source="n75" target="n92">
+      <data key="e_weight">64204</data>
+    </edge>
+    <edge source="n75" target="n89">
+      <data key="e_weight">42931</data>
+    </edge>
+    <edge source="n75" target="n79">
+      <data key="e_weight">21582.2</data>
+    </edge>
+    <edge source="n75" target="n93">
+      <data key="e_weight">34795.5</data>
+    </edge>
+    <edge source="n75" target="n86">
+      <data key="e_weight">10738.8</data>
+    </edge>
+    <edge source="n77" target="n91">
+      <data key="e_weight">10641</data>
+    </edge>
+    <edge source="n78" target="n85">
+      <data key="e_weight">41907.2</data>
+    </edge>
+    <edge source="n79" target="n86">
+      <data key="e_weight">20512.5</data>
+    </edge>
+    <edge source="n79" target="n92">
+      <data key="e_weight">10338.5</data>
+    </edge>
+    <edge source="n79" target="n89">
+      <data key="e_weight">14979</data>
+    </edge>
+    <edge source="n81" target="n92">
+      <data key="e_weight">20882.5</data>
+    </edge>
+    <edge source="n81" target="n93">
+      <data key="e_weight">14663.5</data>
+    </edge>
+    <edge source="n81" target="n94">
+      <data key="e_weight">20990.5</data>
+    </edge>
+    <edge source="n85" target="n87">
+      <data key="e_weight">17549</data>
+    </edge>
+    <edge source="n86" target="n92">
+      <data key="e_weight">18445.5</data>
+    </edge>
+    <edge source="n86" target="n89">
+      <data key="e_weight">32946.5</data>
+    </edge>
+    <edge source="n89" target="n90">
+      <data key="e_weight">9603</data>
+    </edge>
+    <edge source="n89" target="n92">
+      <data key="e_weight">71862.5</data>
+    </edge>
+    <edge source="n92" target="n93">
+      <data key="e_weight">44687</data>
+    </edge>
+  </graph>
+</graphml>

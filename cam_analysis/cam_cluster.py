@@ -27,8 +27,9 @@ mpl.rcParams['xtick.labelsize'] = 4
 
 idx_gene = {'cad':range(85,98),'lrr':range(54,85),
             'igsf':range(54),'nrx':range(98,106),
-            'all':range(106)}
-
+            'all':range(106),
+            'cad_lron':list(range(69,84)) + list(range(85,98)),
+            'non_cad_lron':list(range(69)) + [85] + list(range(98,106))}
 CAD_CLASS = [7,21,34,46,74,82,103]
 CAD_COLOR = ['#EC360F','#fac127','#f0fc3c','#70fc3c','#3cfcf0','#3c70fc','#ad3cfc','#fc3cdf']
 
@@ -44,6 +45,12 @@ NRX_COLOR = ['#EC360F','#f8d94d','#4df864','#55c0fa','#8255fa','#000000']
 ALL_CLASS = [11,20,26,39,63,84,98]
 ALL_COLOR = ['#EC360F','#fac127','#f0fc3c','#70fc3c','#3cfcf0','#3c70fc','#ad3cfc','#fc3cdf']
 
+CAD_LRON_CLASS = [28,46,52,70,91,97]
+CAD_LRON_COLOR = ['#EC360F','#fac127','#f0fc3c','#70fc3c','#3cfcf0','#3c70fc','#ad3cfc']  
+
+NON_CAD_LRON_CLASS = [19,30,33,43,58,83,98]   
+NON_CAD_LRON_COLOR = ['#EC360F','#fac127','#f0fc3c','#70fc3c','#3cfcf0','#3c70fc','#ad3cfc','#fc3cdf']   
+
 def assign_cam_class(i,cam_bounds):
     for j in range(len(cam_bounds)):
         if i < cam_bounds[j]: return j
@@ -51,10 +58,12 @@ def assign_cam_class(i,cam_bounds):
 
 
 cam_class = {'cad':CAD_CLASS,'igsf':IGSF_CLASS,'lrr':LRR_CLASS,
-            'nrx':NRX_CLASS,'all':ALL_CLASS}
+    'nrx':NRX_CLASS,'all':ALL_CLASS,'cad_lron':CAD_LRON_CLASS,
+    'non_cad_lron':NON_CAD_LRON_CLASS}
 
 cam_color = {'cad':CAD_COLOR,'igsf':IGSF_COLOR,'lrr':LRR_COLOR,
-            'nrx':NRX_COLOR,'all':ALL_COLOR}
+    'nrx':NRX_COLOR,'all':ALL_COLOR,'cad_lron':CAD_LRON_COLOR,
+    'non_cad_lron':NON_CAD_LRON_COLOR}
 
 def overlap(u,v):
     w = u + v
@@ -83,7 +92,7 @@ if __name__=='__main__':
     parser.add_argument('camtype',
                         action = 'store',
                         default='all',
-                        choices=['all','cad','lrr','igsf','nrx'],
+                        choices=['all','cad','lrr','igsf','nrx','cad_lron','non_cad_lron'],
                         help = 'Specify CAM choice')
 
     parser.add_argument('-o','--output',
@@ -109,9 +118,11 @@ if __name__=='__main__':
     e.binarize()
     #M = e.E[:,idx_gene]
     #for i in range(M.shape[0]): np.random.shuffle(M[i,:])
-
+    
+    #for (i,g) in  e.gene_idx.items(): print(i,g)
+    
     D = e.distance_matrix(gdx=idx_gene[params.camtype],metric=params.metric)
-        
+
     Y = sch.linkage(D, method='ward')
     Z = sch.dendrogram(Y, orientation='right')
 

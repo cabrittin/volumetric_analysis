@@ -1,0 +1,11 @@
+numpy
+matplotlib
+matplotlib-venn
+networkx
+multiprocessing-on-dill
+mysqlclient
+scipy
+scikit-learn
+python-igraph
+progressbar
+lxml
