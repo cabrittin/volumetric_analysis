@@ -124,7 +124,7 @@ if __name__=='__main__':
     D = e.distance_matrix(gdx=idx_gene[params.camtype],metric=params.metric)
 
     Y = sch.linkage(D, method='ward')
-    Z = sch.dendrogram(Y, orientation='right')
+    Z = sch.dendrogram(Y, orientation='right',no_plot=True)
 
     #fig,axmatrix = plt.subplots(1,1,figsize=(10,10))
 
