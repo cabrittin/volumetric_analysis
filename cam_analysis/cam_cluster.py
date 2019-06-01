@@ -75,6 +75,9 @@ def overlap(u,v):
 REMOVE = ['VB01', 'VD01']
 FOUT = 'mat/cam_class/consensus_cam_class_all_tissue_%s_%s.csv'
 NODE_SCREEN = ['NSM','MC']
+TOP_CLUSTERS = '/home/cabrittin/repo/bitbucket/volumetric2/mat/topological_clusters/con_adj_deg4_l66.csv'
+CLUSTER_COLOR = '/home/cabrittin/repo/bitbucket/volumetric2/mat/cont_cluster_colors.txt'
+
 
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description=__doc__,
@@ -109,7 +112,10 @@ if __name__=='__main__':
     #nodes = sorted(ML.load_reduced_nodes())
     nodes = sorted(ML.load_all_tissue())
     neurons = sorted(ML.load_reduced_nodes()) + NODE_SCREEN
-   
+    
+    clusters = aux.read.into_dict(TOP_CLUSTERS)
+    cluster_color = aux.read.into_dict(CLUSTER_COLOR)
+
     e = Matrix(ML.cam,params.matrix)
     e.load_genes()
     e.load_cells(nodes)
@@ -137,7 +143,12 @@ if __name__=='__main__':
     idx = 0
     for i in index:
         ordered_cells[i] = e.cells_idx[i]
-        if e.cells_idx[i] in neurons: tclass[i] = '#E6E6E6'
+        if e.cells_idx[i] in neurons: 
+            #tclass[i] = '#E6E6E6'
+            if e.cells_idx[i] in clusters: 
+                tclass[i] = cluster_color[clusters[e.cells_idx[i]]]
+            else:
+                tclass[i] = '#E6E6E6'
         cclass[i] = assign_cam_class(idx,cam_class[params.camtype])
         ccolor[i] = cam_color[params.camtype][cclass[i]]
         idx += 1
