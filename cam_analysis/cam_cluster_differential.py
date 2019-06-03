@@ -41,8 +41,10 @@ IGSF_COLOR = ['#EC360F','#fac127','#f0fc3c','#70fc3c','#3cfcf0','#3c70fc','#ad3c
 LRR_CLASS = [39,64,84,93,103,109,112]
 LRR_COLOR = ['#EC360F','#fac127','#f0fc3c','#70fc3c','#3cfcf0','#3c70fc','#ad3cfc','#fc3cdf']
 
-NRX_CLASS = [25,41,66,77]
-NRX_COLOR = ['#EC360F','#f8d94d','#4df864','#55c0fa','#8255fa','#000000']
+#NRX_CLASS = [25,41,66,77]
+#NRX_COLOR = ['#EC360F','#f8d94d','#4df864','#55c0fa','#8255fa','#000000']
+NRX_CLASS = [15,30,42,54,65]
+NRX_COLOR = ['#EC360F','#f8d94d','#4df864','#107902','#55c0fa','#8255fa']
 
 ALL_CLASS = [11,20,26,39,63,84,98]
 ALL_COLOR = ['#EC360F','#fac127','#f0fc3c','#70fc3c','#3cfcf0','#3c70fc','#ad3cfc','#fc3cdf']
