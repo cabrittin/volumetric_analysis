@@ -116,15 +116,15 @@ if __name__=='__main__':
     e.assign_expression()
     e.clean_expression()
     e.binarize()
-   
-    gdx = idx_gene[params.camtype]
+    
+    _tmp = aux.read.into_list('mat/non_cadlron_differential.txt')
+    gdx = [e.genes[g].idx for g in _tmp]
+    #gdx = idx_gene[params.camtype]
     cdx = [[] for i in range(max(camclass.values()) + 1)]
     for (k,v) in camclass.items(): 
         cdx[v].append(e.cells[k])
-    print('SMDDL',camclass['SMDDL']) 
     M = e.M[:,gdx]
     matrix = np.zeros((len(gdx),len(cdx)))
-    print(matrix.shape)
     data = []
     maxdata = []
     mindata = []
@@ -143,14 +143,11 @@ if __name__=='__main__':
     #print(matrix)
     matrix[matrix<1] = 1
     matrix = np.log10(matrix)
-    print(matrix)
-    print(cdx)
     genes = [e.gene_idx[i] for i in gdx]
     clusters = range(1,len(cdx)+1)
 
     cmap = sns.cubehelix_palette(np.max(matrix)*100,rot=-.3, reverse=True,
                                     start=0)
-    print(cam_color[params.camtype])
     g= sns.clustermap(matrix,row_cluster=False,col_cluster=False,col_colors=cam_color[params.camtype],
                     yticklabels=genes,xticklabels=clusters,cmap=cmap,linewidth=1,#figsize=(13,15),
                     cbar_kws={'label': 'log(average adjusted counts)'})
@@ -160,23 +157,3 @@ if __name__=='__main__':
     #g.ax_heatmap.add_patch(Rectangle((1, 3), 2, 2, fill=False, edgecolor='#ffe400', lw=3))
     if params.fout: g.savefig(params.fout)
     plt.show()
-
-    """
-    k = len(cdx)
-    width = 1. / (k+1)
-    idx = np.arange(M.shape[1])
-    fig,ax = plt.subplots(1,1,figsize=(17,10))
-    ax.axvspan(3-width,5-width,facecolor='#969696')
-    ax.axvspan(12-width,13-width,facecolor='#969696')
-    ax.axvspan(6-width,7-width,facecolor='#e4e4e4')
-    for i in range(k):
-        ax.bar(idx + i*width,data[i],width,yerr=[mindata[i],maxdata[i]],
-                color=cam_color[params.camtype][i],label='Cluster %d'%i )
-    ax.set_xticks(idx + k/2*width)
-    ax.set_xticklabels(genes)
-    ax.set_title('Average cadherin expression by cluster',fontsize=18)
-    ax.set_ylabel('Average counts',fontsize=18)
-    ax.legend(fontsize=18)
-    plt.tight_layout()
-    plt.show()
-    """

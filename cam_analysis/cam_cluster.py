@@ -49,7 +49,8 @@ ALL_COLOR = ['#EC360F','#fac127','#f0fc3c','#70fc3c','#3cfcf0','#3c70fc','#ad3cf
 CAD_LRON_CLASS = [28,46,52,70,91,97]
 CAD_LRON_COLOR = ['#EC360F','#fac127','#f0fc3c','#70fc3c','#3cfcf0','#3c70fc','#ad3cfc']  
 
-NON_CAD_LRON_CLASS = [19,30,33,43,58,83,98]   
+#NON_CAD_LRON_CLASS = [19,30,33,43,58,83,98]   
+NON_CAD_LRON_CLASS = [12,27,33,42,52,62,65]   
 NON_CAD_LRON_COLOR = ['#EC360F','#fac127','#f0fc3c','#70fc3c','#3cfcf0','#3c70fc','#ad3cfc','#fc3cdf']   
 
 def assign_cam_class(i,cam_bounds):
@@ -76,8 +77,8 @@ def overlap(u,v):
 REMOVE = ['VB01', 'VD01']
 FOUT = 'mat/cam_class/consensus_cam_class_all_tissue_%s_%s.csv'
 NODE_SCREEN = ['NSM','MC']
-TOP_CLUSTERS = '/home/cabrittin/repo/bitbucket/volumetric2/mat/topological_clusters/bio_cont_adj_deg4_l66.csv'
-CLUSTER_COLOR = '/home/cabrittin/repo/bitbucket/volumetric2/mat/bio_cont_cluster_colors.txt'
+TOP_CLUSTERS = '/home/cabrittin/repo/bitbucket/volumetric2/mat/topological_clusters/bio_ipsi_adj_deg4_l66.csv'
+CLUSTER_COLOR = '/home/cabrittin/repo/bitbucket/volumetric2/mat/bio_ipsi_cluster_colors.txt'
 
 
 if __name__=='__main__':

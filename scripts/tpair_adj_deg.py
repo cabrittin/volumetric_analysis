@@ -71,11 +71,12 @@ def run(fout=None,source_data=None):
     bdelta = [bnd[k] - bjd[k] for k in bnd.keys() if k in bjd.keys()]
 
     data = [ndelta,jdelta,bdelta]
-
+    
+    print(bdelta)
     print('Stats:')
     print_wilcoxon(ndelta,'Adult L/R')
     print_wilcoxon(jdelta,'L4 L/R')
-    print_wilcoxon(bdelta,'Adult/L4')
+    print_wilcoxon(bdelta,'Adult/L4',alternative="greater")
     
     tval1,pval1 = ttest_ind(ndelta,jdelta)
     tval2,pval2 = ttest_ind(jdelta,bdelta)

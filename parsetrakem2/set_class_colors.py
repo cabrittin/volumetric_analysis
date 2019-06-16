@@ -35,7 +35,8 @@ Parameters:
   -o, --output  (str): Output file
 
 """
-
+import sys
+sys.path.append('./volumetric_analysis')
 import argparse
 
 #Local modules

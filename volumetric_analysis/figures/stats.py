@@ -642,8 +642,8 @@ def stars(p):
    else:
        return "ns"
 
-def print_wilcoxon(data,label=None):
-    stat,pval = wilcoxon(data)
+def print_wilcoxon(data,label=None,alternative="two-sided"):
+    stat,pval = wilcoxon(data,alternative=alternative)
     _tmp = (': n=%d,mu=%1.3f,std=%1.3f,se=%1.3f,p-val=%.2E'
            %(len(data),np.mean(data),
              np.std(data),np.std(data)/np.sqrt(len(data)),
