@@ -36,7 +36,7 @@ def run(fout=None,source_data=None):
     N2U = 'N2U'
     JSH = 'JSH'
 
-    _lr = aux.read.into_list2(lr_pairs) 
+    _lr = [l for l in aux.read.into_list2(lr_pairs) if '#' not in l[0]]
     lr = list(zip(*_lr))
     nodes = lr[0]
     _remove = ['VC01','VD01','VB01','VB02']
@@ -65,7 +65,7 @@ def run(fout=None,source_data=None):
         dout = fsplit[0] + '_adult_l4_homologous.' + fsplit[1]
         write_out(zip(cells,cells),bnd,bjd,dout)    
     
-
+    
     ndelta = [lnd[k1] - rnd[k2] for (k1,k2) in _lr]
     jdelta = [ljd[k1] - rjd[k2] for (k1,k2) in _lr]
     bdelta = [bnd[k] - bjd[k] for k in bnd.keys() if k in bjd.keys()]
