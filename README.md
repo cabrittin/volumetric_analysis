@@ -11,7 +11,7 @@ Also see updated repos
 * https://github.com/cabrittin/elegansbrainmap
 * https://github.com/cabrittin/parsetrakem2
 
-Associated preprints:
+### Associated preprints:
 * Brittin, Cook, Hall, Emmons and Cohen. 'Volumetric reconstruction of *Caenorhabditis elegans* nerve ring supports combinatorial CAM expression model for synaptic specificity'. (2018) ([biorxiv](https://www.biorxiv.org/content/early/2018/12/04/485771)). 
 
 
