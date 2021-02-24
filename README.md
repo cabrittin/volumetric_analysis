@@ -1,6 +1,6 @@
 # volumetric_analysis
 
-## This code is now deprecated. Please see the most updated paper:
+## This code is now deprecated and not maintained. Please see the most updated paper:
 
 
 Brittin, C. A. , Cook, S. J., Hall, D.H., Emmons, S. W., Cohen. N. A multiscale brain map derived from whole-brain volumetric reconstructions. Nature (2021). [[paper](https://dx.doi.org/10.1038/s41586-021-03284-x)] 
